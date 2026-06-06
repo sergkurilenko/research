@@ -2479,52 +2479,30 @@ attack surface is measured rather than assumed.
 \section*{Reproducibility}
 % =====================================================================
 
-All scripts, notebooks, configuration files and JSON/CSV outputs of the
-experiments are packaged as supplementary material for review. The
-revision adds
-\path{notebooks/exp7_alignment_pq_leakage.py}
-for the known-plaintext and PQ-leakage experiments,
-\path{notebooks/exp8_tradeoff_noise_sweep.py} for the SVD/noise
-utility--leakage diagnostic,
-\path{notebooks/exp9_reference_corpus_attack.py} for the reference-corpus
-lookup stress test,
-\path{notebooks/exp10_denoiser_significance.py} for the paired
-significance tests of Section~\ref{ssec:significance} (McNemar and
-bootstrap, computed from the cached embeddings with numpy/scipy only),
-\path{notebooks/exp11_beir_denoiser.py} for the BEIR generality experiment
-of Section~\ref{ssec:beir} (CPU-only encoding of SciFact/NFCorpus),
-\path{notebooks/shard_lib.py} for the \textsc{Shard} construction and
-\path{notebooks/exp12_shard_utility.py},
-\path{notebooks/exp13_shard_alignment.py},
-\path{notebooks/exp14_shard_leakage.py},
-\path{notebooks/exp15_shard_reference.py},
-\path{notebooks/exp17_beir_shard.py},
-\path{notebooks/exp18_shard_cost.py} (active-cells/bandwidth),
-\path{notebooks/exp19_shard_targeted.py} (targeted attacker) and
-\path{notebooks/exp20_shard_microkey.py} (micro-key leak/unlinkability),
-\path{notebooks/exp21_shard_vs_dp.py} (vs.\ distortion-aware DP-noise) and
-\path{notebooks/exp22_shard_learned_attack.py} (learned/unsupervised
-attackers) for the \textsc{Shard} utility, alignment anchor-complexity
-(diffuse, targeted and learned), public-index leakage, reference-lookup,
-BEIR, online-cost, micro-key and defence-comparison experiments
-(numpy/scikit-learn only except the CPU BEIR encoding;
-deterministic master-key seeds; e5-small and e5-base), with figures from
-\path{notebooks/make_fig_shard.py},
-\path{notebooks/make_paper_figures.py} for regenerating every figure in
-this paper, and \path{notebooks/heavy_adaptive_inversion_rtx4090.py} plus
-\path{notebooks/requirements_rtx4090.txt} for the aligned Vec2Text stress
-test sized for an RTX~4090 with about 11~GiB of free VRAM. The resulting
-case checkpoints and final summaries are stored in
-\path{exp8_adaptive_outputs_rtx4090/}, \path{notebooks/exp10_outputs/} and
-\path{notebooks/exp11_outputs/}. The integral and significance experiments
-are driven by deterministic seeds (query seed $42$, rotation seeds
-$\{11,23,31,47,53\}$, bootstrap seed $2026$) and JSON output files; the
-parameter-selection grid ships as CSV. The corpus (one-million
-Russian-Wikipedia paragraphs) is reproducibly sliced from a public
-Wikipedia dump with the date and content checksum recorded in the data
-manifest; the BEIR data is the public \texttt{BeIR/scifact} and
-\texttt{BeIR/nfcorpus} releases. A public DOI archive and target-journal
-data statement remain to be added before formal submission.
+All code, configuration, and the JSON/CSV outputs of every experiment are
+released as a structured repository. It is organised into \path{shard/}
+(the contribution: \path{shard_lib.py} and the eleven \texttt{exp12}--%
+\texttt{exp22} scripts for utility, online cost, alignment resistance
+(diffuse, targeted and against learned/unsupervised attackers),
+public-index leakage, the micro-key variant, the DP-noise comparison and
+the reference-lookup limitation), \path{baseline/} (the global-linear foil:
+the integral $10^6$-document pipeline, the Procrustes/PQ leakage, the
+$\sigma_{rec}$ diagnostic, the denoiser-significance and BEIR experiments,
+and the GPU Vec2Text stress test), \path{results/} (one directory per
+experiment), \path{paper/}, and \path{docs/}. The \textsc{Shard} and
+lightweight-baseline experiments are \texttt{numpy}/\texttt{scikit-learn}
+only---the per-cell keys are orthogonal, so the residual reranking score is
+exact and is computed directly, needing no FHE library---except the BEIR
+encoding (CPU \texttt{torch}) and the optional GPU stress test. All runs are
+deterministic given their seeds (query/ground-truth seed $42$, rotation and
+master-key seeds $\{11,23,31,47,53\}$, bootstrap seed $2026$). The cached
+embeddings (one-million Russian-Wikipedia paragraphs for five encoders,
+reproducibly sliced from a public dump with the date and checksum in the
+data manifest; $\approx\!17$~GB) are not shipped with the repository and are
+located through a \texttt{SHARD\_DATA} path; the BEIR data is the public
+\texttt{BeIR/scifact} and \texttt{BeIR/nfcorpus} releases. A public DOI
+archive and target-journal data statement remain to be added before formal
+submission.
 
 % =====================================================================
 \begin{thebibliography}{99}\small

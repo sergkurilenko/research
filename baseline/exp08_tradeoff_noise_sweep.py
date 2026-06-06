@@ -12,8 +12,8 @@ does not require FAISS, PyTorch, or GPU memory:
   to the same mean relative distortion.
 
 Outputs:
-  notebooks/exp8_outputs/exp8_tradeoff_summary.csv
-  notebooks/exp8_outputs/exp8_tradeoff_summary.json
+  results/exp8_outputs/exp8_tradeoff_summary.csv
+  results/exp8_outputs/exp8_tradeoff_summary.json
 """
 
 import sys as _sys

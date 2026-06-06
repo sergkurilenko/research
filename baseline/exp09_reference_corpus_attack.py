@@ -14,9 +14,9 @@ reference-corpus lexical proxy, where the exact target paragraph is removed
 and the top retrieved decoy is compared to the target text.
 
 Outputs:
-  notebooks/exp9_outputs/exp9_reference_attack_by_seed.csv
-  notebooks/exp9_outputs/exp9_reference_attack_summary.csv
-  notebooks/exp9_outputs/exp9_reference_attack_summary.json
+  results/exp9_outputs/exp9_reference_attack_by_seed.csv
+  results/exp9_outputs/exp9_reference_attack_summary.csv
+  results/exp9_outputs/exp9_reference_attack_summary.json
 """
 
 import sys as _sys

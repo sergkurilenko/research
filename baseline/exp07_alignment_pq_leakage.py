@@ -3,7 +3,7 @@ Experiment 7: known-plaintext alignment and PQ-artifact leakage.
 
 The script is intentionally light-weight: it uses only NumPy and
 scikit-learn, and operates on the cached e5-small embeddings already
-present in notebooks/_corpus_cache. It produces JSON/CSV artifacts used
+present in $SHARD_DATA. It produces JSON/CSV artifacts used
 by the revised paper.
 """
 

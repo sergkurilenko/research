@@ -158,7 +158,7 @@ def import_runtime_dependencies() -> None:
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--profile", choices=sorted(PROFILE_DEFAULTS), default="rtx4090_11gb")
-    p.add_argument("--output-dir", type=Path, default=Path("notebooks/exp8_adaptive_outputs_rtx4090"))
+    p.add_argument("--output-dir", type=Path, default=Path("results/adaptive_inversion_outputs"))
     p.add_argument("--dataset", type=str, default="ag_news")
     p.add_argument("--dataset-split", type=str, default="test")
     p.add_argument("--text-field", type=str, default="text")
@@ -730,7 +730,7 @@ def main() -> None:
             "CUDA requested but torch.cuda.is_available() is false. "
             f"torch={torch.__version__}, torch.version.cuda={torch.version.cuda}. "
             "On RTX 4090 hosts with NVIDIA driver 550.x, recreate the virtual "
-            "environment and install notebooks/requirements_rtx4090.txt so pip "
+            "environment and install docs/requirements_rtx4090.txt so pip "
             "uses the pinned CUDA 12.4 PyTorch wheel instead of a CUDA 13 wheel."
         )
 
