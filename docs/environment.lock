@@ -1,0 +1,36 @@
+# Environment lock used for the revised manuscript build
+
+Date: 2026-05-30
+OS: Windows 11
+GPU: NVIDIA GeForce RTX 5060, 8 GB VRAM
+Driver/CUDA reported by nvidia-smi: 591.86 / CUDA 13.1
+
+Python used for local revision scripts:
+`C:\Users\zerg\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
+
+Observed package versions for local revision scripts:
+
+- Python 3.12.13
+- numpy 2.3.5
+- pandas available in bundled runtime
+- matplotlib 3.10.9
+- scipy 1.17.1
+- scikit-learn 1.8.0
+
+Original notebook environment reported by the experiment README:
+
+- Python 3.10-3.11
+- TenSEAL 0.3.16
+- transformers / datasets / sentence-transformers
+- faiss-cpu
+- vec2text
+- PyTorch nightly with CUDA 12.8 for RTX 5060 Blackwell support
+
+The adaptive inversion stress test has separate dependency files:
+`notebooks/requirements_rtx4090.txt` for the memory-capped RTX 4090 profile
+and `notebooks/requirements_a100.txt` for the retained larger profile. A
+root-level copies, `heavy_adaptive_inversion_rtx4090.py` and
+`requirements_rtx4090.txt`, plus `setup_rtx4090_env.sh` are included for
+standalone remote directories such as `~/train2`. The RTX 4090 files pin
+Python 3.12 Linux directly to the PyTorch 2.6.0 CUDA 12.4 wheel so that
+driver 550.x hosts do not accidentally install CUDA 13 wheels from PyPI.

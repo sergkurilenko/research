@@ -1,0 +1,20 @@
+{
+  "n_configurations": 198,
+  "n_train": 158,
+  "n_holdout": 40,
+  "latency_range_ms": [
+    24.691999967520434,
+    8257.289066755524
+  ],
+  "best_model": "GradientBoosting",
+  "nested_cv_r2_mean": 0.9702900239344674,
+  "nested_cv_r2_std": 0.01113929380934917,
+  "nested_cv_mae_mean_ms": 134.86297843814594,
+  "nested_cv_mae_std_ms": 20.42088239581463,
+  "holdout_r2": 0.9849685879529839,
+  "holdout_mae_ms": 145.5669206726428,
+  "best_hyperparameters": {
+    "model__max_depth": 3,
+    "model__n_estimators": 200
+  }
+}

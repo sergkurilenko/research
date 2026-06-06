@@ -1,0 +1,19 @@
+# Core: the SHARD geometry/privacy/utility experiments are numpy-only.
+numpy>=1.26
+scipy>=1.11
+scikit-learn>=1.4
+matplotlib>=3.7
+
+# BEIR utility/denoiser experiments (exp11, exp17): CPU is sufficient.
+# Install a CPU build of torch, e.g.:
+#   pip install --index-url https://download.pytorch.org/whl/cpu torch
+# torch>=2.2
+# transformers>=4.40
+# datasets>=2.19
+
+# The integral pipeline (baseline/exp_integral.py) additionally uses:
+# faiss-cpu
+# tenseal            # CKKS; only needed to time the encrypted reranking
+
+# The optional Vec2Text stress test (baseline/heavy_adaptive_inversion_rtx4090.py)
+# needs a GPU; see docs/requirements_rtx4090.txt.
