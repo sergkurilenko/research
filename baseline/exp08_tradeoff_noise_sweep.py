@@ -15,12 +15,12 @@ Outputs:
   results/exp8_outputs/exp8_tradeoff_summary.csv
   results/exp8_outputs/exp8_tradeoff_summary.json
 """
+from __future__ import annotations
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
 from paths import DATA, RESULTS, FIGS
-from __future__ import annotations
 
 import argparse
 import json

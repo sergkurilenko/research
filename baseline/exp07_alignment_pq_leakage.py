@@ -6,12 +6,12 @@ scikit-learn, and operates on the cached e5-small embeddings already
 present in $SHARD_DATA. It produces JSON/CSV artifacts used
 by the revised paper.
 """
+from __future__ import annotations
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
 from paths import DATA, RESULTS, FIGS
-from __future__ import annotations
 
 import argparse
 import csv

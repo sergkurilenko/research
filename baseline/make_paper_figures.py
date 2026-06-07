@@ -1,12 +1,12 @@
 """
 Generate all figures referenced by paper_en.tex from cached experiment outputs.
 """
+from __future__ import annotations
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
 from paths import DATA, RESULTS, FIGS
-from __future__ import annotations
 
 import json
 from pathlib import Path

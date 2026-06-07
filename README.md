@@ -1,5 +1,10 @@
 # SHARD: Cell-Keyed Residual Splitting for Alignment-Resistant Private Dense Retrieval
 
+<!-- Replace OWNER/REPO with your GitHub path after pushing. -->
+[![ci](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+
 This repository contains the manuscript, code, and experimental results for
 **SHARD**, a retrieval-preserving protective transform for dense text
 embeddings that is designed against the *alignment* and *index-leakage*
@@ -248,6 +253,26 @@ utility geometry runs are CPU-only.
 ```bash
 cd paper && pdflatex paper_en.tex && pdflatex paper_en.tex
 ```
+
+---
+
+## Tests
+
+A self-contained test suite verifies SHARD's core invariants on small
+synthetic arrays — **no embeddings required** — and runs in about a second
+(it is also the CI smoke test):
+
+```bash
+python shard/test_shard.py     # or: make smoke
+```
+
+It checks the orthogonal-key cancellation `⟨H_c r_q, H_c r_i⟩ = ⟨r_q, r_i⟩`
+(the exact-rerank identity), that the prefix+residual score equals the
+centred inner product (no truncation), that orthogonal Procrustes needs
+`≈ d_priv` anchors (the alignment barrier), that per-document micro-keys
+decorrelate, and that the chunked top-k search matches brute force.
+`make` also provides `figures`, `shard`, `baseline`, `paper`, and `clean`
+targets (`make help`).
 
 ---
 

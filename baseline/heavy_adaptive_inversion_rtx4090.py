@@ -17,12 +17,12 @@ The RTX4090 profile is intentionally slower and more conservative than the
 A100 profile: small inversion batches, short max input length, checkpointed
 per-case output, and automatic retry with smaller batches on CUDA OOM.
 """
+from __future__ import annotations
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent))
 from paths import DATA, RESULTS, FIGS
-from __future__ import annotations
 
 import argparse
 import csv
