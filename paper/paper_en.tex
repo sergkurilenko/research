@@ -341,20 +341,20 @@ remain a separate problem for which PIR/ORAM-like primitives are an
 appropriate composition.
 
 % =====================================================================
-\section{The Measured Setting (Threat Model)}\label{sec:threat}
+\section{Threat Model}\label{sec:threat}
 % =====================================================================
 
-Because the leakage measurements only make sense against a stated
-adversary, we fix the setting we measure: an asymmetric
-\emph{trusted client / honest-but-curious server / non-adaptive
-attacker / unknown rotation} configuration. We then measure two ways in
-which this configuration can fail (known-plaintext alignment and PQ-code
-leakage), so the threat tables below double as a map of what our
-experiments do and do not cover. This is a fat-client, data-owner setting:
-the client runs the encoder, holds all keys, downloads the PQ index, and
-performs stage-1 retrieval locally; the server only reranks. That
-work/trust split is itself a scoping assumption and not the only possible
-deployment.
+The global-linear baseline and \textsc{Shard} share one threat model, which
+we fix here. It is asymmetric---a \emph{trusted client} (the data owner), an
+\emph{honest-but-curious server}, and a \emph{non-adaptive} baseline
+attacker, strengthened by the \emph{known-plaintext} attacker we use
+throughout the alignment analysis. This is a fat-client, data-owner setting:
+the client runs the encoder, holds all keys, performs stage-1 retrieval
+locally, and the server only reranks under CKKS---a scoping assumption, not
+the only possible deployment. Tables~\ref{tab:threat} and~\ref{tab:claims}
+map the \emph{baseline}'s coverage and claims (the foil);
+Table~\ref{tab:shard-claims} does the same for \textsc{Shard} (the
+contribution, Section~\ref{sec:shard}).
 
 \begin{itemize}[leftmargin=18pt,topsep=4pt,itemsep=2pt]
 \item The \emph{client} is the data owner. It runs the encoder $E$,
@@ -365,12 +365,14 @@ $E_{\mathrm{rot}} \in \mathbb{R}^{N_{\mathrm{docs}} \times k}$ and the
 public PQ artefact. It is honest-but-curious: it follows the protocol but
 attempts to extract textual information from the data it sees and from the
 queries it processes.
-\item The \emph{baseline attacker} is non-adaptive: it uses an
-off-the-shelf \textsc{Vec2Text} model trained without prior knowledge of
-$R$. We additionally evaluate a known-plaintext alignment attacker and
-PQ-code leakage, and then combine alignment with an off-the-shelf
-generative Vec2Text inversion test. Adaptive text decoders trained
-end-to-end against the rotated space and malicious server behaviour
+\item The \emph{attacker} is, at minimum, non-adaptive (an off-the-shelf
+\textsc{Vec2Text} model with no knowledge of $R$). Against both schemes we
+additionally evaluate a known-plaintext alignment attacker (diffuse and, for
+\textsc{Shard}, targeted), public-index leakage, reference-corpus lookup,
+and---against \textsc{Shard}'s keyed residual---the learned-linear
+(\textsc{ALGEN}) and unsupervised (\textsc{vec2vec}) alignment cores and a
+non-linear MLP (Section~\ref{ssec:shard-learned}). Malicious server
+behaviour and the full \emph{generative} stages of the modern inverters
 remain out of scope.
 \end{itemize}
 
@@ -414,7 +416,9 @@ respectively.
 
 \begin{table}[tbp]
 \centering
-\caption{Threat coverage of the proposed protocol.}\label{tab:threat}
+\caption{Threat coverage of the global-linear \emph{baseline} (the foil).
+\textsc{Shard}'s coverage of the same vectors is in
+Table~\ref{tab:shard-claims}.}\label{tab:threat}
 \small
 \begin{tabular}{@{}p{0.42\linewidth}p{0.10\linewidth}p{0.42\linewidth}@{}}
 \toprule
@@ -438,13 +442,14 @@ Evaluated in Section~\ref{ssec:reference-attack}; overlapping texts are
 recoverable. \\
 Unsupervised cross-space translation attacks &
 No &
-Not evaluated; recent embedding-space transfer attacks motivate separate
-stress testing. \\
-Adaptive decoder retrained against rotated space &
+Not evaluated on the baseline; the \textsc{vec2vec} alignment core
+\emph{is} evaluated against \textsc{Shard}'s residual
+(Section~\ref{ssec:shard-learned}). \\
+Adaptive / learned alignment decoder &
 No &
-Sections~\ref{ssec:vec2text} and~\ref{ssec:adaptive-inversion} use
-off-the-shelf Vec2Text, not a learned decoder retrained on the protected
-space. \\
+Sections~\ref{ssec:vec2text}, \ref{ssec:adaptive-inversion} use
+off-the-shelf Vec2Text on the baseline; learned-linear/MLP alignment is
+tested against \textsc{Shard} (Section~\ref{ssec:shard-learned}). \\
 Malicious server (protocol deviation, substitution) &
 No &
 Verifiable computation / TEEs are an orthogonal addition. \\
@@ -461,8 +466,10 @@ substantially preserved, so this remains an exposed channel. \\
 
 \begin{table}[tbp]
 \centering
-\caption{Claims vs.\ evidence. The table makes explicit which statements
-are demonstrated and which are deliberately \emph{not} claimed.}
+\caption{\emph{Baseline} claims vs.\ evidence (the foil): which statements
+about the global-linear stack are demonstrated and which are deliberately
+\emph{not} claimed. \textsc{Shard}'s claims are in
+Table~\ref{tab:shard-claims}.}
 \label{tab:claims}
 \small
 \begin{tabular}{@{}p{0.40\linewidth}p{0.54\linewidth}@{}}
@@ -524,20 +531,67 @@ No information leaks from the public PQ codes &
 \end{tabular}
 \end{table}
 
+\begin{table}[tbp]
+\centering
+\caption{\textsc{Shard} (the contribution) claims vs.\ evidence.}
+\label{tab:shard-claims}
+\small
+\begin{tabular}{@{}p{0.42\linewidth}p{0.52\linewidth}@{}}
+\toprule
+\textbf{Claim} & \textbf{Evidence / status} \\ \midrule
+Full-dimensional reranking recovers raw retrieval quality &
+Section~\ref{ssec:shard-utility}; on BEIR \textsc{Shard} matches raw nDCG@10
+where the baseline loses $2$--$8$ points. \\
+Diffuse known-plaintext alignment cost grows $\approx C\times$ &
+Section~\ref{ssec:shard-align}; $m_{50}$ $200\!\to\!25.6\mathrm{k}\!\to\!102.4\mathrm{k}$
+(global, $C{=}64$, $C{=}256$), reproduced on two encoders. \\
+The barrier is an artefact of assuming orthogonal Procrustes &
+\textbf{False}; Section~\ref{ssec:shard-learned}: learned-linear, MLP, and
+unsupervised attackers do no better than Procrustes. \\
+The public prefix leaks less than the baseline's index &
+Section~\ref{ssec:shard-leak}; NN-overlap@10 $0.20$--$0.55$ vs.\ $0.76$. \\
+Micro-keys remove the residual leak and are unlinkable &
+Section~\ref{ssec:shard-micro}; residual-graph recoverable $\to0.00$,
+re-keying AUC $\approx0.5$. \\
+Keying beats a matched-utility distortion (DP-noise) defence &
+Section~\ref{ssec:shard-vs-dp}; DP de-anon R@1 $\approx1.0$ vs.\
+\textsc{Shard} $0.0$. \\
+The $\approx C\times$ gain is free &
+\textbf{Not claimed}; it costs $\approx7$--$30$ encrypted residual queries
+per search (Section~\ref{ssec:shard-cost}). \\
+A targeted attacker is held to $\approx C\times$ &
+\textbf{Not claimed}; concentrating anchors in a victim's public cell needs
+only $\approx d_{\mathrm{priv}}$ (Section~\ref{ssec:shard-align}). \\
+\textsc{Shard} hides the neighbour graph &
+\textbf{Not claimed}; same-cell similarities leak
+(Section~\ref{ssec:shard-leak}). \\
+\textsc{Shard} stops an overlapping reference lookup &
+\textbf{False}; the public prefix still de-anonymises
+(Section~\ref{ssec:shard-ref}). \\
+\textsc{Shard} is a cryptographic guarantee &
+\textbf{Not claimed}; it is an attack-aware geometric transform. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 % =====================================================================
-\section{Method}\label{sec:method}
+\section{Baseline Construction (the global-linear foil)}\label{sec:method}
 % =====================================================================
 
-The asymmetric construction under study is illustrated in
-Figure~\ref{fig:architecture}.
-The architecture is the union of an offline data-preparation phase
+This section describes the global-linear \emph{baseline} that
+\textsc{Shard} (Section~\ref{sec:shard}) replaces---SVD truncation, a single
+secret rotation, a public PQ index, and CKKS reranking. It is the foil
+against which the contribution is measured; \textsc{Shard} reuses its CKKS
+ct-pt machinery (Sections~\ref{ssec:online},~\ref{sec:autotune}) but
+discards its single global geometry. The baseline is illustrated in
+Figure~\ref{fig:architecture}: an offline data-preparation phase
 (Section~\ref{ssec:offline}) and the online query protocol
 (Section~\ref{ssec:online}).
 
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{architecture_en.pdf}
-\caption{Online query flow of the construction under study.
+\caption{Online query flow of the global-linear \emph{baseline}.
 Steps 1--7 realise the two-stage protocol: client transformation
 $T(\cdot)$ and local PQ filtering produce a short-list of
 $K_{\mathrm{cands}}$ candidate IDs; step~4 encrypts the rotated query
@@ -811,8 +865,11 @@ re-benchmark a small grid when porting the autotuner to new hardware.
 \section{A Projection Bound for the Distortion Proxy}\label{sec:lemma}
 % =====================================================================
 
-This section states the one elementary fact behind the $\sigma_{rec}$
-proxy. Let $\mathbf{x} \in \mathbb{R}^d$ denote a centred embedding,
+This short section concerns the \emph{baseline} only: it states the one
+elementary fact behind its $\sigma_{rec}$ distortion proxy, and why that
+proxy is not a privacy metric---motivating \textsc{Shard}'s move to an
+attack-aware design that does not rely on $\sigma_{rec}$ at all. Let
+$\mathbf{x} \in \mathbb{R}^d$ denote a centred embedding,
 $V_k \in \mathbb{R}^{d \times k}$ the orthonormal matrix from the SVD
 truncation, and $\pi_k(\mathbf{x}) = V_k V_k^\top \mathbf{x}$ the
 orthogonal projection onto $\mathrm{span}(V_k)$. We use a \emph{per-vector}
@@ -993,13 +1050,15 @@ TenSEAL 0.3.16 (Microsoft SEAL 4.1 backend),
 faiss-cpu 1.13.0, transformers 4.57.0, scikit-learn 1.5.x,
 sacrebleu for BLEU \cite{ref_bleu}. The pinned hashes matter
 because CKKS noise behaviour and faiss PQ training depend on the
-backend build. The two new measurement experiments of this study
-(denoiser significance, Section~\ref{ssec:significance}; BEIR generality,
-Section~\ref{ssec:beir}) were run on the bundled Python~3.12 with
-numpy~2.3, scipy~1.17, scikit-learn~1.9, and---for BEIR encoding---a
-CPU build of PyTorch~2.12 with transformers~5.9 and datasets~4.8; both
-use only the cached embeddings or public BEIR data and need neither
-TenSEAL nor a GPU. The aligned Vec2Text stress test in
+backend build. The denoiser-significance, BEIR, and all \textsc{Shard}
+experiments (Sections~\ref{ssec:significance},~\ref{ssec:beir},
+\ref{ssec:shard-utility}--\ref{ssec:shard-ref}) were run on the bundled
+Python~3.12 with numpy~2.3, scipy~1.17, scikit-learn~1.9, and---for BEIR
+encoding---a CPU build of PyTorch~2.12 with transformers~5.9 and
+datasets~4.8; they use only the cached embeddings or public BEIR data and
+need neither TenSEAL nor a GPU (the per-cell keys are orthogonal, so the
+\textsc{Shard} reranking score is exact and is computed directly). The
+aligned Vec2Text stress test in
 Section~\ref{ssec:adaptive-inversion} is the only non-local run: it uses
 the provided memory-capped RTX~4090 profile with roughly 11~GiB free
 VRAM, Python~3.12 and PyTorch~2.6.0+cu124.
@@ -1274,7 +1333,7 @@ a transform-fidelity measurement, not as a retrieval-quality benchmark.
 \caption{Integral experiment at $k = d/2$ on a $10^6$-document
 corpus across five encoders. Reported are the raw baseline (no
 defence), the SVD-projected baseline (FAISS-IP exact in
-$\mathrm{span}(V_k)$, no rotation, no CKKS), the proposed pipeline
+$\mathrm{span}(V_k)$, no rotation, no CKKS), the baseline PQ+CKKS pipeline
 (mean $\pm 95\%$ t-CI half-width over 5 rotation seeds), and the
 delta of Acc@1 from the raw baseline.}
 \label{tab:integral}
@@ -1355,7 +1414,7 @@ Section~\ref{ssec:beir}.
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig_exp5_per_seed.png}
-\caption{Per-seed Acc@10 of the proposed pipeline relative to
+\caption{Per-seed Acc@10 of the baseline PQ+CKKS pipeline relative to
 baseline\_proj on five rotation seeds; the spread is below the 5-seed
 CI of the baseline.}
 \label{fig:exp5-per-seed}
@@ -1406,7 +1465,7 @@ bge-m3   & $0.128$ & $+0.014$ & $[\,0.000,+0.030]$ & $0.12$ & $+0.016$ & $[+0.00
 \end{tabular}
 \end{table}
 
-The result sharpens MQ2 considerably:
+The result sharpens the SVD-denoiser picture considerably:
 \begin{itemize}[leftmargin=18pt,topsep=2pt,itemsep=2pt]
 \item The Acc@1 ``denoiser gains'' are \emph{not} statistically
 significant for any encoder (e5-base $p=0.86$, e5-large $p=0.11$, bge-m3
