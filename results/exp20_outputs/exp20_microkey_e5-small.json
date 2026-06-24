@@ -1,0 +1,20 @@
+{
+  "encoder": "e5-small",
+  "d": 384,
+  "d_pub": 96,
+  "schemes": {
+    "cell_C64": {
+      "residual_graph_recoverable": 0.2531,
+      "unlinkability_auc": 0.466583
+    },
+    "cell_C256": {
+      "residual_graph_recoverable": 0.184,
+      "unlinkability_auc": 0.50357
+    },
+    "microkey_perdoc": {
+      "residual_graph_recoverable": 0.0,
+      "unlinkability_auc": 0.499234,
+      "note": "cell size 1: no same-key pairs -> no graph leak"
+    }
+  }
+}

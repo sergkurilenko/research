@@ -1,0 +1,1771 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hidelinks,colorlinks=false]{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+
+\captionsetup[table]{skip=4pt,labelfont=bf}
+\captionsetup[figure]{skip=4pt,labelfont=bf}
+
+\graphicspath{{figs/}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{hypothesis}{Empirical Hypothesis}
+\newtheorem{corollary}{Corollary}
+
+\title{\textbf{Hybrid privacy-aware semantic search: SVD-truncated
+document geometry and CKKS-encrypted query reranking under a restricted
+threat model}}
+\author{Sergey M.\ Kurilenko\\
+\small Moscow Institute of Physics and Technology\\
+\small \texttt{sergkurilenko@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Dense vector embeddings underpin modern semantic search and
+Retrieval-Augmented Generation (RAG), yet a growing body of work shows
+that an embedding can be inverted back into the text that produced it
+with alarming fidelity: once a vector database leaks, the documents
+behind it leak with it. The two textbook defences lie at opposite
+extremes---encrypting the entire search with fully homomorphic
+encryption is cryptographically sound but far too slow for corpora of
+millions of documents, whereas injecting privacy-preserving noise
+degrades ranking quality long before it provides meaningful protection.
+
+We study a middle path built on an asymmetry between the static document
+collection and the dynamic user query. The collection is protected
+geometrically: every document vector is compressed onto a
+lower-dimensional subspace and then rotated by a secret orthogonal
+transformation held only by the data owner. The query is protected
+cryptographically: it is processed under homomorphic encryption so that
+the server---which honestly follows the protocol but may inspect
+everything it stores---never observes the query values or the similarity
+scores it computes. The encryption parameters are fixed by a small,
+reproducible offline benchmark over the discrete CKKS grid rather than by
+manual trial and error.
+
+Beyond the construction itself, we contribute mathematically proven
+theoretical results: we derive a tight lower bound on the reconstruction
+error of any attacker confined to the protected subspace, making precise
+how much information the geometric projection provably removes.
+Large-scale experiments on a one-million-document corpus and five
+contemporary text encoders corroborate the empirical side---the
+protection preserves retrieval quality and, on the strongest encoders,
+even slightly improves it by acting as a linear denoiser; query latency
+stays comfortably below one second; and an off-the-shelf
+text-reconstruction attack confined to the protected space collapses to
+the noise floor. We then deliberately step outside that comfortable
+regime and measure what happens against stronger adversaries: a
+known-plaintext attacker recovers the secret rotation by orthogonal
+Procrustes from roughly as many leaked pairs as the retained dimension,
+the public product-quantization codes preserve most nearest-neighbour
+structure, and a calibrated-noise and random-projection baseline suite
+positions the trade-off against natural alternatives; a BEIR check shows
+the truncation is an encoder-dependent accuracy cost rather than a free
+denoiser on graded-relevance tasks. We therefore state the boundaries
+plainly: query confidentiality is cryptographic, but document protection
+rests on SVD truncation and a secret rotation that are an empirical
+obfuscation layer---not a cryptographic primitive---and we delimit
+precisely the threat model under which each claim holds.
+\end{abstract}
+
+\textbf{Keywords:}
+homomorphic encryption, CKKS, privacy-preserving information retrieval,
+semantic search, embedding inversion, non-adaptive attacker, restricted
+threat model, SVD truncation, product quantization,
+retrieval-augmented generation.
+
+% =====================================================================
+\section{Introduction}
+% =====================================================================
+
+The privacy of vector representations of text---``embeddings''---has become
+a first-class concern in production retrieval systems. State-of-the-art
+encoders (Sentence-BERT \cite{ref_sbert}, multilingual-E5 \cite{ref_e5},
+GTR \cite{ref_gtr}, BGE-M3 \cite{ref_bgem3}) push the per-document
+representation through a
+$\sim 10^2$-dimensional bottleneck that nevertheless preserves enough
+information to reconstruct the original text with high BLEU.
+\textsc{Vec2Text} \cite{ref_vec2text} reports
+$\mathrm{BLEU} \approx 97.3\%$ on $32$-token inputs when the attacker has
+query access to the encoder; \textsc{GEIA}~\cite{ref_geia} and
+\textsc{TEIA}~\cite{ref_teia} show that even snapshot attacks
+(an adversary with read access to the vector database) recover personally
+identifiable information at high rates. For Retrieval-Augmented Generation
+pipelines whose vector stores typically contain customer support tickets,
+internal corporate documents and personal data, this rule of thumb---``a
+leak of the embedding is a leak of the text''---is now well documented
+\cite{ref_zeng_rag}.
+
+The defensive landscape is bracketed by two extremes that, individually,
+do not satisfy industrial requirements. Differential privacy
+\cite{ref_dwork,ref_dpsgd} adds calibrated noise per-record but, in the
+naive coordinate-Gaussian formulation on retrieval-quality embeddings,
+destroys ranking quality long before the privacy budget reaches a level
+considered useful. Fully homomorphic encryption \cite{ref_ckks,ref_openfhe}
+allows arbitrary computation on ciphertexts, but the
+ciphertext-ciphertext (ct-ct) regime is too expensive for top-$k$ search
+across $10^6$ documents.
+
+\paragraph{Nature and positioning of this work.} This is a
+\emph{scientific study}, not a systems-engineering paper. SVD truncation,
+random orthogonal rotation, product quantisation and CKKS are
+individually well known; we do not claim a new system or a deployable
+product. The research questions are: \textbf{(RQ1)} what does projection
+provably remove---is there a formal lower bound on what any
+projection-restricted decoder can reconstruct? \textbf{(RQ2)} how do SVD
+truncation and an unknown secret rotation jointly reshape the
+privacy--accuracy--latency trade-off of semantic search at
+$10^6$-document scale? \textbf{(RQ3)} does data-driven SVD truncation
+behave as a destructive lossy step, or---as we find---as a linear
+\emph{denoiser} for retrieval-trained encoders? Accordingly, the secret
+rotation is studied as an empirical obfuscation phenomenon, not proposed
+as a cryptographic primitive, and the formal lemma is a projection
+bound, not an inversion-security theorem.
+
+\paragraph{Object of study and scientific contribution.} The object we
+analyse is an \emph{asymmetric} hybrid construction (described below);
+the contribution is its theoretical and empirical characterisation under
+a credible---but explicitly restricted---threat model, not its
+engineering realisation:
+
+\begin{itemize}[leftmargin=18pt]
+\item For the \emph{static} side (the database), we apply a deterministic
+SVD truncation $V_k$ with $k = d/2$, immediately followed by a Haar-uniform
+secret orthogonal rotation $R \in O(k)$. The truncation is chosen so that
+the proxy criterion $\sigma_{rec} \geq 0.10$ (Section~\ref{sec:lemma}) is
+met uniformly for all tested encoders; the rotation hides the orientation
+of the basis from any attacker that does not know $R$. We then publish
+a Product-Quantisation artefact (codebook + per-document PQ codes), trained
+\emph{in the rotated space}, so that stage-1 candidate filtering can be
+performed locally by the client without sending the query to the server.
+
+\item For the \emph{dynamic} side (the query), we apply CKKS encryption.
+The protocol is engineered so that the server-side reranking over the
+short-list of $K_{\mathrm{cands}}$ candidates only needs the
+ciphertext-plaintext (ct-pt) mode---the costly relinearisation step
+specific to ct-ct multiplication is avoided---bringing the cryptographic
+budget for one query well below one second.
+
+\item The CKKS parameters
+$(N_{\mathrm{poly}}, \log_2 Q, d_{\mathrm{proj}}, \Delta)$ are fixed by a
+small, reproducible offline micro-benchmark over the discrete parameter grid
+(Section~\ref{sec:autotune}): we keep the minimum-latency configuration that
+satisfies the conservative security tables and an accuracy tolerance. The
+selected configuration ($N_{\mathrm{poly}} = 8192$, $[60, 40, 60]$,
+$\Delta = 2^{40}$) yields a $\approx 1.7\times$ speed-up over the TenSEAL
+stock setting $[60,40,40,60]$ at the same parameter-table security bound.
+This is a deterministic engineering choice over a published grid; we make no
+machine-learning claim.
+\end{itemize}
+
+\paragraph{Notation.} To avoid the overloading of the symbol $N$, we use
+$N_{\mathrm{poly}}$ for the CKKS polynomial-modulus degree,
+$N_{\mathrm{docs}}$ for the corpus size, and $K_{\mathrm{cands}}$ for the
+stage-1 short-list length throughout.
+
+\paragraph{Theorem and an empirical link.} We prove a tight lower bound on
+the $L_2$ reconstruction error of any decoder whose image is constrained
+to $\mathrm{span}(V_k)$ (Lemma~\ref{lemma:proj-l2}). The bound makes
+$\sigma_{rec}$ a meaningful proxy of the difficulty an inverter faces;
+its empirical relation to the BLEU of an off-the-shelf
+\textsc{Vec2Text} attack is then formalised as Empirical
+Hypothesis~\ref{hyp:bleu} and tested on \textsc{GTR-base} embeddings.
+
+\paragraph{Roadmap.} Section~\ref{sec:related} reviews the related
+literature; Section~\ref{sec:threat} introduces the threat model,
+separating \emph{document}, \emph{query} and \emph{access-pattern}
+privacy, and gives both a coverage table and a claims-vs-evidence table;
+Section~\ref{sec:method} describes the asymmetric architecture, including
+a cryptographic-reproducibility subsection;
+Section~\ref{sec:autotune} states the reproducible CKKS parameter selection;
+Section~\ref{sec:lemma} proves the projection-decoder lemma and
+delimits its scope; Section~\ref{sec:experiments} presents four
+experiments; Section~\ref{sec:discussion} discusses limitations,
+required attack experiments and open work.
+
+% =====================================================================
+\section{Related Work}\label{sec:related}
+% =====================================================================
+
+\paragraph{Embedding inversion.} \textsc{Vec2Text} \cite{ref_vec2text}
+trains an encoder--decoder model that iteratively rewrites a candidate
+hypothesis until its embedding matches a target vector; on
+$32$-token \textsc{MS-MARCO} inputs the attack achieves
+$\mathrm{BLEU} \approx 97.3\%$ and $\approx 92\%$ exact recovery.
+\textsc{GEIA} \cite{ref_geia} instead trains a generative decoder that
+maps a target embedding to a prompt and reconstructs the whole sentence
+in a single pass. \textsc{TEIA} \cite{ref_teia} removes the need to query
+the victim encoder, training a surrogate inverter that transfers across
+embedding models. Adjacent work on
+membership-inference \cite{ref_shokri} and on extracting training
+texts from large language models \cite{ref_carlini} confirms that the
+risk surface of dense retrievers is broader than the embedding-inversion
+literature alone suggests.
+
+\paragraph{Modern inversion attacks (2024--2026).} Since \textsc{Vec2Text}
+the threat has strengthened along two axes that matter for any geometric
+obfuscation. \emph{Few-shot alignment} attacks such as
+\textsc{ALGEN}~\cite{ref_algen} learn a linear map between embedding spaces
+from $\sim\!10^{3}$ leaked pairs and reach \textsc{Vec2Text}-level recovery
+without query access to the victim encoder; \emph{zero-shot} attacks such as
+\textsc{ZSInvert}~\cite{ref_zsinvert} invert with no encoder-specific
+training; the unsupervised translator \textsc{vec2vec}~\cite{ref_vec2vec}
+aligns two embedding spaces with no paired data at all and argues that a
+leaked vector store should be treated as plaintext; and
+\textsc{Zero2Text}~\cite{ref_zero2text} updates an online token-by-token
+regression. These attacks are \emph{alignment-based} or \emph{adaptive} and
+exploit the universal geometry of embedding spaces, so a single secret
+rotation---which only hides the orientation of a fixed basis---does not by
+itself neutralise them. They therefore lie outside the non-adaptive threat
+model under which our construction is analysed (Section~\ref{sec:threat});
+we quantify the closest members of this family---known-plaintext linear
+alignment and an aligned off-the-shelf inverter---directly in
+Section~\ref{sec:stronger}, and flag the fully learned variants as the
+main residual gap in Section~\ref{sec:limits}.
+
+\paragraph{Differential privacy for embeddings.} Lyu et al.~\cite{ref_lyu}
+investigate per-coordinate Gaussian noise on dense representations; the
+empirical finding is that retrieval quality degrades sharply long before
+$\varepsilon$ reaches a useful range. Random-projection-based privacy
+\cite{ref_liu,ref_kenthapadi} predates modern dense retrieval; the
+data-dependent SVD projection used here is closer to a noise-removal
+technique than to a privacy-preserving DP mechanism, although
+$\sigma_{rec}$ provides a useful proxy quantity.
+
+\paragraph{Homomorphic encryption.} The CKKS scheme~\cite{ref_ckks}
+introduced approximate-arithmetic FHE; OpenFHE \cite{ref_openfhe} and
+TenSEAL provide production-grade implementations.
+The bootstrapping cost \cite{ref_ckks_bootstrap} pushes practitioners
+to leveled circuits; specialised compilers \cite{ref_eva,ref_chet}
+optimise scale and modulus chains.
+GPU acceleration of CKKS bootstrap \cite{ref_jung_gpu} and Intel HEXL
+\cite{ref_hexl} have made larger leveled circuits feasible.
+
+\paragraph{Hybrid privacy-preserving retrieval.} Tiptoe \cite{ref_tiptoe}
+combines clustering with PIR for query privacy. SealPIR
+\cite{ref_sealpir}, OnionPIR \cite{ref_onionpir} and SimplePIR
+\cite{ref_simplepir} provide single-server PIR with practical query sizes.
+The architecture in this paper is complementary: ct-pt CKKS reranking
+takes care of the value side of the leakage, while access patterns
+remain a separate problem for which PIR/ORAM-like primitives are an
+appropriate composition.
+
+% =====================================================================
+\section{Threat Model}\label{sec:threat}
+% =====================================================================
+
+We adopt the asymmetric threat model
+\emph{trusted client / honest-but-curious server / non-adaptive
+attacker / unknown rotation}, characterised as follows.
+
+\begin{itemize}[leftmargin=18pt,topsep=4pt,itemsep=2pt]
+\item The \emph{client} is the data owner. It runs the encoder $E$,
+generates the secret keys $\mu, V_k, R, sk_{\mathrm{CKKS}}$ and never
+shares them. The client is trusted in software and key management.
+\item The \emph{server} runs the search service over the rotated database
+$E_{\mathrm{rot}} \in \mathbb{R}^{N_{\mathrm{docs}} \times k}$ and the
+public PQ artefact. It is honest-but-curious: it follows the protocol but
+attempts to extract textual information from the data it sees and from the
+queries it processes.
+\item The \emph{attacker} is non-adaptive: it uses an off-the-shelf
+\textsc{Vec2Text} model trained without prior knowledge of $R$. This is
+the model under which the construction is \emph{analysed}. We do not stop
+there: Section~\ref{sec:stronger} steps outside it and empirically
+measures known-plaintext recovery of $R$, public-PQ-code leakage and an
+aligned off-the-shelf inverter, so the boundary of the non-adaptive model
+is quantified rather than merely asserted. A fully learned decoder
+retrained end-to-end against the rotated space, and malicious (rather than
+honest-but-curious) server behaviour, remain out of scope.
+\end{itemize}
+
+\paragraph{Three distinct privacy notions.} A recurring source of
+confusion in hybrid designs is the conflation of \emph{what} is
+protected. We therefore separate three independent notions and state,
+for each, exactly which component is responsible:
+
+\begin{itemize}[leftmargin=18pt,topsep=4pt,itemsep=2pt]
+\item \textbf{Document privacy.} The plaintext rotated database
+$E_{\mathrm{rot}}$ \emph{is} visible to the server. It is protected only
+by SVD truncation ($\sigma_{rec}$, a proxy quantity) and the secret
+rotation $R$ (an empirical obfuscation layer). \emph{This is not a
+cryptographic protection}; it fails under known-$R$, known-plaintext,
+or an adaptive decoder.
+\item \textbf{Query privacy.} CKKS hides the numerical value of the
+query vector and of the similarity scores from the server. This part
+\emph{is} cryptographic, at the chosen security level.
+\item \textbf{Access-pattern privacy.} The candidate IDs reranked per
+query, and the public PQ codes, are \emph{not} hidden. CKKS does not
+address this channel; it requires composition with a PIR/ORAM-style
+primitive.
+\end{itemize}
+
+In particular, the public PQ artefact (codebook + per-document codes,
+trained in the rotated space) is itself a lossy compressed view of
+$E_{\mathrm{rot}}$. Whether neighbourhood, cluster or topic structure
+leaks from the public PQ codes alone is measured directly in
+Section~\ref{sec:stronger} (Table~\ref{tab:pq-leakage}): it does, and we
+treat the PQ artefact as an exposed channel accordingly.
+
+Table~\ref{tab:threat} summarises the coverage and
+Table~\ref{tab:claims} maps each claim to the evidence that supports it.
+The coverage table is intentionally asymmetric: ct-pt reranking takes
+care of the value channel, while the access-pattern channel (which document
+IDs are reranked) is left open and would require composition with a
+PIR-style primitive, and the public-PQ-artefact and known-plaintext
+channels---now quantified in Section~\ref{sec:stronger}---remain exposed
+rather than defended.
+
+\begin{table}[t]
+\centering
+\caption{Threat coverage of the proposed protocol.}\label{tab:threat}
+\small
+\begin{tabular}{@{}p{0.42\linewidth}p{0.10\linewidth}p{0.42\linewidth}@{}}
+\toprule
+\textbf{Attack vector} & \textbf{Covered?} & \textbf{Comment} \\ \midrule
+Snapshot of $E_{\mathrm{rot}}$ without $R$ (off-the-shelf Vec2Text) &
+Partial &
+Heuristic; empirically validated against non-adaptive Vec2Text. \\
+Network interception, leakage of similarity scores &
+Yes &
+CKKS at tc128; $sk$ never leaves the client. \\
+Known $R$ (known-rotation attacker) &
+No &
+Reduces to $\sigma_{rec}$ from SVD truncation only. \\
+Known-plaintext pairs $(\mathrm{text}_i, E_{\mathrm{rot},i})$ &
+No &
+$R$ recovered by Procrustes from $\approx k$ pairs
+(Sec.~\ref{ssec:procrustes}, Table~\ref{tab:procrustes}). \\
+Adaptive decoder retrained against rotated space &
+No &
+Aligned off-the-shelf inverter measured (Sec.~\ref{ssec:aligned}); a
+\emph{learned} decoder is the main open case. \\
+Malicious server (protocol deviation, substitution) &
+No &
+Verifiable computation / TEEs are an orthogonal addition. \\
+Access-pattern leakage on candidate IDs &
+No &
+CKKS hides values, not access patterns; requires PIR/ORAM. \\
+Leakage from the public PQ artefact (rotated-space codes) &
+No &
+Quantified: codes preserve cosine $0.95$ and $67\%$ of top-10 neighbours
+(Sec.~\ref{ssec:pqleak}, Table~\ref{tab:pq-leakage}). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Claims vs.\ evidence. The table makes explicit which statements
+are demonstrated and which are deliberately \emph{not} claimed.}
+\label{tab:claims}
+\small
+\begin{tabular}{@{}p{0.40\linewidth}p{0.54\linewidth}@{}}
+\toprule
+\textbf{Claim} & \textbf{Evidence / status} \\ \midrule
+CKKS hides query values and scores from the server &
+Cryptographic construction + parameters (Sec.~\ref{sec:autotune},
+\ref{ssec:crypto-detail}); query privacy is cryptographic. \\
+ct-pt is faster than ct-ct for the reranking &
+Experiment~\ref{ssec:ckks-modes} ($1.44\times$ on the micro-benchmark,
+$1.7\times$ at the auto-tuned configuration). \\
+Secret rotation helps against \emph{off-the-shelf}, non-adaptive
+Vec2Text & Experiment~\ref{ssec:vec2text}; effect holds only for the
+tested weak-attacker configuration. \\
+The protective wrapper preserves ranking in $\mathrm{span}(V_k)$ &
+Experiment~\ref{ssec:integral} (within the 5-seed CI). \\
+End-to-end query latency $<1$~s at $10^6$ docs &
+Experiment~\ref{ssec:latency} (loopback PoC). \\
+The system is secure against an \emph{adaptive} inversion attacker &
+\textbf{Not claimed}; aligned off-the-shelf inverter tested
+(Sec.~\ref{ssec:aligned}), learned decoder open (Sec.~\ref{sec:limits}). \\
+The rotation is a cryptographic guarantee &
+\textbf{Not claimed}; it is an empirical obfuscation layer only. \\
+Document privacy on the server is cryptographic &
+\textbf{Not claimed}; $E_{\mathrm{rot}}$ is plaintext on the server. \\
+No information leaks from the public PQ codes &
+\textbf{Not claimed}; codes leak neighbour structure
+(Sec.~\ref{ssec:pqleak}, Table~\ref{tab:pq-leakage}). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Method}\label{sec:method}
+% =====================================================================
+
+The asymmetric defence is illustrated in Figure~\ref{fig:architecture}.
+The architecture is the union of an offline data-preparation phase
+(Section~\ref{ssec:offline}) and the online query protocol
+(Section~\ref{ssec:online}).
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\linewidth]{architecture_en.pdf}
+\caption{Online query flow of the construction under study.
+Steps 1--7 realise the two-stage protocol: client transformation
+$T(\cdot)$ and local PQ filtering produce a short-list of
+$K_{\mathrm{cands}}$ candidate IDs; step~4 encrypts the rotated query
+under CKKS; step~5
+runs ct-pt reranking on the server; steps~6--7 decrypt the scores and
+sort. The secret keys ($\mu$, $V_k$, $R$, $sk_{\mathrm{CKKS}}$) and the
+rotated database $E_{\mathrm{rot}}$ are produced offline by the data
+owner (Section~\ref{ssec:offline}).}
+\label{fig:architecture}
+\end{figure}
+
+% ----------------------------------------------------------------
+\subsection{Offline phase}\label{ssec:offline}
+% ----------------------------------------------------------------
+
+\paragraph{Encoder and centring.} The data owner runs the encoder $E$ on a
+corpus $D = \{T_1, \dots, T_{N_{\mathrm{docs}}}\}$ to obtain
+$X \in \mathbb{R}^{N_{\mathrm{docs}} \times d}$ with $L_2$-normalised rows.
+The global centroid $\mu \in \mathbb{R}^d$ is computed and the corpus is
+centred: $X_{\mathrm{c}} = X - \mu$.
+
+\paragraph{SVD truncation.} A randomised SVD~\cite{ref_halko}
+$X_{\mathrm{c}} \approx U_k \Sigma_k V_k^\top$ produces the orthonormal
+matrix $V_k \in \mathbb{R}^{d \times k}$ that spans the dominant
+$k$-dimensional subspace. We use $k = d/2$ in the canonical operating
+point: this is the smallest $k$ at which the relative reconstruction
+error
+\[
+\sigma_{rec}^{2}(E; V_k) =
+\frac{\|E - \pi_k(E)\|_F^2}{\|E\|_F^2} = 1 - \eta_k
+\]
+exceeds the proxy threshold $\sigma_{rec} \geq 0.10$ uniformly across
+all five tested encoders (Section~\ref{sec:experiments}).
+
+\paragraph{Secret rotation.} A Haar-uniform random orthogonal matrix
+$R \in O(k)$ is generated by QR-decomposing a Gaussian matrix and
+correcting the diagonal of $R$ to obtain a uniform distribution on the
+group. The protected document representation is
+\[
+v'_i \;=\; T(v_i) \;=\; R\, V_k^\top (v_i - \mu) \in \mathbb{R}^k .
+\]
+
+\paragraph{Public PQ artefact.} A faiss \texttt{IndexPQ} index is trained
+\emph{in the rotated space} $E_{\mathrm{rot}}$ with $M = k/4$ subquantisers
+and $8$ bits per code. Both the codebook and the per-document codes are
+public; the client downloads them once at on-boarding. Training the PQ
+artefact in the rotated space removes one trivial cross-space pairing
+(an attacker cannot compose pairs
+$(\hat E_{\mathrm{proj}}, E_{\mathrm{rot}})$ from a non-rotated PQ index
+to estimate $R$). It does \emph{not}, however, make the PQ codes safe:
+the public codes are a lossy quantised image of $E_{\mathrm{rot}}$ and
+may themselves leak neighbourhood, cluster or topic structure. We treat
+the PQ artefact as part of the attack surface and measure this leakage
+directly in Section~\ref{sec:stronger} (Table~\ref{tab:pq-leakage}): the
+public codes preserve mean cosine $0.95$ and most top-10 neighbours, so
+they must be treated as an exposed channel.
+
+\paragraph{Client-side state.} The client retains $\mu$, $V_k$, $R$ and
+the CKKS secret key $sk_{\mathrm{CKKS}}$. The server stores
+$E_{\mathrm{rot}} \in \mathbb{R}^{N_{\mathrm{docs}} \times k}$ in plaintext
+and the public PQ artefact.
+
+% ----------------------------------------------------------------
+\subsection{Online query protocol}\label{ssec:online}
+% ----------------------------------------------------------------
+
+The seven-step protocol of Figure~\ref{fig:architecture} processes a query
+in time pipeline:
+
+\begin{enumerate}[leftmargin=22pt,topsep=2pt,itemsep=2pt]
+\item \emph{Encoder.} The client computes
+$v_q = E(q_{\mathrm{text}}) \in \mathbb{R}^d$.
+\item \emph{Transformation.} The rotated query is
+$q' = R\, V_k^\top (v_q - \mu) \in \mathbb{R}^k$.
+\item \emph{Local PQ search.} Using the public PQ artefact and the
+rotated query $\tilde q = q'$, the client performs an asymmetric
+PQ-distance search and returns the top-$K_{\mathrm{cands}}$ candidate
+IDs $I_{\mathrm{cand}}$. The candidate set is small enough
+($K_{\mathrm{cands}} = 40$ in our experiments) that a CKKS reranking
+fits within the latency budget.
+\item \emph{CKKS encryption.} The client encrypts $q'$:
+$\mathrm{ct}_q = \mathrm{Enc}_{pk}(q')$.
+\item \emph{Server-side reranking.} For each $j \in I_{\mathrm{cand}}$
+the server computes
+$\mathrm{ct}_{\mathrm{score}}^{(j)} = \mathrm{ct}_q \odot v'_j$
+in the ct-pt mode. The result is a ciphertext encoding the inner
+product $\langle q', v'_j \rangle$ in the rotated projected space.
+\item \emph{Decryption.} The client decrypts
+$s_j = \mathrm{Dec}_{sk}(\mathrm{ct}_{\mathrm{score}}^{(j)})$.
+\item \emph{Sort.} The decrypted scores are sorted and the top-$K$
+documents returned.
+\end{enumerate}
+
+\paragraph{Why ct-pt is sufficient.} In step~5 the server multiplies a
+ciphertext by a plaintext vector. Unlike ciphertext-ciphertext
+multiplication, this operation produces a ciphertext that stays in the
+two-component form, no relinearisation is required, and the modulus chain
+is consumed by exactly one rescale. The sum of slots into a single
+scalar $\langle q', v'_j \rangle$ requires $\log_2 k$ rotations using
+Galois keys, but no further multiplications. The result is a sub-second
+latency at $N_{\mathrm{docs}} = 10^6$.
+
+\paragraph{Choice of $K_{\mathrm{cands}}$.} Since each of the
+$K_{\mathrm{cands}}$ candidates is processed by one ct-pt operation, the
+server-side latency grows linearly in $K_{\mathrm{cands}}$. Conversely, a
+small $K_{\mathrm{cands}}$ trades against PQ-recall: the relevant
+document must be in the short-list for the CKKS reranker to score it.
+We pick $K_{\mathrm{cands}}$ as the smallest value for which
+PQ-recall@$K_{\mathrm{cands}}$ matches the SVD-projected exact baseline
+within the 5-seed CI; in our integral experiment this is
+$K_{\mathrm{cands}} = 40$, but the parameter is a deployment knob and
+should be retuned for new encoders or larger corpora.
+
+% ----------------------------------------------------------------
+\subsection{Cryptographic reproducibility}\label{ssec:crypto-detail}
+% ----------------------------------------------------------------
+
+For the selected configuration
+($N_{\mathrm{poly}} = 8192$, coefficient-modulus chain $[60,40,60]$ bits,
+$\log_2 Q = 160$, scale $\Delta = 2^{40}$, TenSEAL/Microsoft SEAL
+backend) we report the parameters needed to reproduce the cryptographic
+budget rather than only the latency:
+
+\begin{itemize}[leftmargin=18pt,topsep=2pt,itemsep=2pt]
+\item \emph{Packing.} A single rotated query $q' \in \mathbb{R}^{k}$ is
+packed into one ciphertext using $k \leq N_{\mathrm{poly}}/2 = 4096$
+slots; for the integral encoders $k \in \{192,384,512\}$, so one
+ciphertext per query suffices and no cross-ciphertext aggregation is
+needed.
+\item \emph{Operations per score.} Each candidate score is one ct-pt
+multiply, one rescale (one level consumed) and a slot-sum implemented as
+$\lceil \log_2 k \rceil$ ciphertext rotations using Galois keys
+($8$--$9$ rotations for the tested $k$); no relinearisation and no
+ciphertext-ciphertext multiply occur.
+\item \emph{Level/noise budget.} The chain $[60,40,60]$ provides one
+multiplicative level beyond the input; after the single rescale the
+remaining modulus ($60$ bits) keeps the additive noise far below the
+$\Delta = 2^{40}$ scale, so decrypted scores match the plaintext inner
+product to a relative error $<10^{-3}$ (Pearson $>0.9999$ vs.\ exact,
+Experiment~\ref{ssec:integral}).
+\item \emph{Object sizes.} At $N_{\mathrm{poly}}=8192$, $\log_2 Q=160$:
+one fresh ciphertext is $\approx 0.21$~MB; the Galois-key set for the
+required power-of-two rotations is $\approx 6$--$8$~MB and the
+relinearisation key is \emph{not} generated (ct-pt only); the public key
+is $\approx 0.4$~MB. Per query the client uploads one ciphertext
+($\approx 0.21$~MB) and downloads $K_{\mathrm{cands}}$ score ciphertexts
+($\approx 40 \times 0.21 \approx 8.4$~MB before base64; the measured
+on-wire JSON+base64 sizes are reported in
+Section~\ref{ssec:latency}).
+\item \emph{Security level.} We do not assert a generic ``standard''
+label; we report $\log_2 Q = 160 < 218$ for $N_{\mathrm{poly}}=8192$,
+which is within the conservative ternary-secret \texttt{tc128} bound of
+the HomomorphicEncryption.org tables \cite{ref_he_std}, cross-checked
+with the lattice-estimator methodology of Albrecht et al.\
+\cite{ref_lwe_estimator}. The standard documents are security
+\emph{guidelines}; the concrete estimator/table used is stated so the
+claim can be re-derived.
+\end{itemize}
+
+% =====================================================================
+\section{CKKS Parameter Selection}\label{sec:autotune}
+% =====================================================================
+
+The CKKS parameter space is large and discrete:
+$N_{\mathrm{poly}} \in \{2^{12}, \dots, 2^{14}\}$, multiple
+coefficient-modulus chains of total bit budget bounded by the
+conservative security tables of HomomorphicEncryption.org
+\cite{ref_he_std} (cross-checked with the lattice estimator
+\cite{ref_lwe_estimator}), several scale exponents
+$\log_2 \Delta \in \{15, 20, 25, 30, 40\}$ and several projection
+dimensions $d_{\mathrm{proj}}$. Analytic complexity is proportional to
+$N_{\mathrm{poly}} \log N_{\mathrm{poly}}$, but cache effects, SIMD
+vectorisation and slot-packing ratios
+($d_{\mathrm{proj}} / (N_{\mathrm{poly}}/2)$) cause step-like deviations
+from the analytic prediction, so we fix the configuration by a small
+\emph{offline micro-benchmark} rather than analytically.
+
+\paragraph{Selection procedure (reproducible).} We enumerate the discrete
+grid; discard configurations that violate the security tables or the
+correctness (noise-budget) constraint; time one batched ct-pt operation with
+rescale for each survivor; and keep the minimum-latency configuration whose
+retrieval accuracy stays within a tolerance $\tau$ of the SVD-projected
+baseline, $|\Delta\mathrm{Acc@1}| \leq \tau$. This is a deterministic
+engineering search over a published grid, reported only so the chosen budget
+can be reproduced; we make \emph{no} machine-learning contribution. With
+$\tau = 1$~p.p.\ the procedure selects $N_{\mathrm{poly}} = 8192$,
+$[60, 40, 60]$, $\Delta = 2^{40}$ ($\log_2 Q = 160$ bits, within the
+conservative $218$-bit \texttt{tc128} bound for $N_{\mathrm{poly}} = 8192$
+\cite{ref_he_std,ref_lwe_estimator}), which is $\approx 1.7\times$ faster than
+the TenSEAL stock setting $[60, 40, 40, 60]$ ($\log_2 Q = 200$~bits) at the
+same parameter-table security bound (Table~\ref{tab:ckks-configs}). The full
+cryptographic budget of this configuration is given in
+Section~\ref{ssec:crypto-detail}.
+
+\begin{table}[tb]
+\centering
+\caption{CKKS configurations on the test workload (one batched ct-pt
+reranking operation). All rows sit within the conservative \texttt{tc128}
+($\geq 128$-bit) bound of the HomomorphicEncryption.org tables for the stated
+$N_{\mathrm{poly}}$.}
+\label{tab:ckks-configs}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Configuration & $N_{\mathrm{poly}}$ & $\log_2 Q$ (bits) & Security & Time (ms) & Speed-up \\ \midrule
+Default (TenSEAL stock, $[60, 40, 40, 60]$) & 8192 & 200 & tc128 ($\geq 128$) & 419.4 & $1.0\times$ \\
+Min-latency (Acc@10), $[40, 20, 40]$, $\Delta = 2^{20}$ & 4096 & 100 & tc128 & 173.7 & $2.4\times$ \\
+\textbf{Selected (Acc@1), $[60, 40, 60]$, $\Delta = 2^{40}$} & 8192 & 160 & tc128 & 245.2 & $1.7\times$ \\ \bottomrule
+\end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Theoretical Analysis: Decoder Lower Bound}\label{sec:lemma}
+% =====================================================================
+
+Let $\mathbf{x} \in \mathbb{R}^d$ denote a centred embedding,
+$V_k \in \mathbb{R}^{d \times k}$ the orthonormal matrix from the SVD
+truncation, and $\pi_k(\mathbf{x}) = V_k V_k^\top \mathbf{x}$ the
+orthogonal projection onto $\mathrm{span}(V_k)$.
+Define
+$\sigma_{rec}(\mathbf{x}; V_k) =
+\| \mathbf{x} - \pi_k(\mathbf{x}) \|_2 / \|\mathbf{x}\|_2$
+as the per-vector relative reconstruction error and
+$\mathbf{x}_\perp = \mathbf{x} - \pi_k(\mathbf{x})$.
+
+\begin{lemma}\label{lemma:proj-l2}
+Let $f : \mathbb{R}^d \to \mathbb{R}^d$ be any decoder whose image is
+constrained by $f(\mathbf{y}) \in \mathrm{span}(V_k)$ for every
+$\mathbf{y} \in \mathbb{R}^d$. Then for every
+$\mathbf{x} \in \mathbb{R}^d$
+\[
+\| \mathbf{x} - f(\pi_k(\mathbf{x})) \|_2^{2}
+\;\geq\; \| \mathbf{x}_\perp \|_2^{2},
+\]
+with equality at $f(\mathbf{y}) = \mathbf{y}$. In relative form,
+$\| \mathbf{x} - f(\pi_k(\mathbf{x})) \|_2 / \|\mathbf{x}\|_2
+\geq \sigma_{rec}(\mathbf{x}; V_k)$.
+\end{lemma}
+
+\begin{proof}
+Decompose $\mathbf{x} = \pi_k(\mathbf{x}) + \mathbf{x}_\perp$ with
+$\pi_k(\mathbf{x}) \in \mathrm{span}(V_k)$ and
+$\mathbf{x}_\perp \in \mathrm{span}(V_k)^\perp$. By the image
+restriction $f(\pi_k(\mathbf{x})) \in \mathrm{span}(V_k)$, hence
+$\mathbf{x} - f(\pi_k(\mathbf{x})) =
+\bigl( \pi_k(\mathbf{x}) - f(\pi_k(\mathbf{x})) \bigr) + \mathbf{x}_\perp$
+is the sum of two orthogonal vectors. Pythagoras gives
+$\| \mathbf{x} - f(\pi_k(\mathbf{x})) \|_2^{2}
+= \| \pi_k(\mathbf{x}) - f(\pi_k(\mathbf{x})) \|_2^{2}
++ \| \mathbf{x}_\perp \|_2^{2}
+\geq \| \mathbf{x}_\perp \|_2^{2}$.
+\end{proof}
+
+\paragraph{Scope: a projection bound, not an inversion-security
+theorem.} Lemma~\ref{lemma:proj-l2} bounds the $L_2$ error of decoders
+\emph{whose image is contained in} $\mathrm{span}(V_k)$. It is a
+statement about information lost to the projection, not about the
+security of text inversion. A realistic attacker is not so constrained:
+it may output arbitrary text, whose re-embedding generally has a
+non-zero $\mathbf{x}_\perp$ component, and it may exploit corpus priors
+or memorisation to partially recover the discarded component. The lemma
+therefore does \emph{not} lower-bound the achievable inversion BLEU,
+token overlap or PII recovery. We use it only to make the
+\emph{proxy} criterion $\sigma_{rec} \geq 0.10$ precise within the
+projection-restricted class, and we stress that the threshold $0.10$ is
+an \emph{engineering proxy}, calibrated on one encoder (GTR-base) against
+one off-the-shelf attacker, \emph{not} a security threshold. A
+per-encoder ablation of $\sigma_{rec}$ against BLEU, token overlap and
+typed-PII recovery (names, addresses, e-mail, phone, medical terms) is
+listed as a remaining open experiment (Section~\ref{sec:limits}).
+
+\begin{hypothesis}\label{hyp:bleu}
+For an off-the-shelf inversion attack \textsc{Vec2Text}~\cite{ref_vec2text},
+the expected BLEU of recovering the original text from
+$\pi_k(\mathbf{x})$ is monotone in
+$\eta_k = 1 - \sigma_{rec}^{2}(E; V_k)$:
+\[
+\mathbb{E}\bigl[ \mathrm{BLEU}(f(\pi_k(\mathbf{x})), T(\mathbf{x})) \bigr]
+\;\approx\; \mathrm{BLEU}_0 + \gamma_f \, \eta_k,
+\]
+where $\mathrm{BLEU}_0$ is the BLEU of a ``random semantically close''
+text and $\gamma_f$ is a decoder-specific constant.
+\end{hypothesis}
+
+Hypothesis~\ref{hyp:bleu} is validated numerically in
+Section~\ref{ssec:vec2text}; we deliberately separate the formal lemma
+from the empirical observation.
+
+% =====================================================================
+\section{Experiments}\label{sec:experiments}
+% =====================================================================
+
+We report four experiments:
+(1) CKKS modes (ct-pt vs ct-ct);
+(2) off-the-shelf Vec2Text attack against SVD-truncated (and possibly
+rotated) embeddings;
+(3) the integral multi-encoder experiment over a $10^6$-document
+Russian-Wikipedia corpus;
+(4) end-to-end latency on a client-server PoC.
+
+\paragraph{Hardware and software.} All experiments run on a single
+workstation: Intel Core i5-14400F, 32~GB DDR5-4800, NVIDIA RTX~5060
+(8~GB VRAM), Windows 11, Python 3.11. To make the runs reproducible we
+pin exact versions and record the commit/build hashes of the
+security-relevant libraries in the supplementary
+\texttt{environment.lock}: PyTorch 2.10 + CUDA 12.8,
+TenSEAL 0.3.16 (Microsoft SEAL 4.1 backend),
+faiss-cpu 1.13.0, transformers 4.57.0, scikit-learn 1.5.x,
+sacrebleu for BLEU \cite{ref_bleu}. The pinned hashes matter
+because CKKS noise behaviour and faiss PQ training depend on the
+backend build.
+
+% ----------------------------------------------------------------
+\subsection{Experiment 1: ciphertext-plaintext speed-up}\label{ssec:ckks-modes}
+% ----------------------------------------------------------------
+
+We benchmark a batched dot-product of an encrypted $192$-dimensional
+query with $N = 10\,000$ plaintext documents.
+The CKKS parameters are $N = 8192$,
+$\mathrm{coeff\_mod\_bit\_sizes} = [60, 40, 40, 60]$,
+$\Delta = 2^{40}$ (security level $\geq 128$ bits).
+Two regimes are compared: ct-ct (both query and database encrypted, with
+relinearisation per multiplication) and ct-pt (only the query is encrypted,
+no relinearisation). Each is run for $50$ independent trials and
+the mean is reported with a $95\%$ Gaussian confidence interval.
+
+\begin{table}[tb]
+\centering
+\caption{Ciphertext-plaintext vs.\ ciphertext-ciphertext for the dot
+product against $N = 10\,000$ documents (mean of $50$ trials, $95\%$~CI).}
+\label{tab:ckks-modes}
+\small
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Mode & Operation & Relin.\ & Latency $T_{\mathrm{query}}$ & QPS & Speed-up \\ \midrule
+ct-ct (baseline) & $\mathrm{Enc}(v_1)\cdot \mathrm{Enc}(v_2)$ & yes (heavy) & $19.15 \pm 0.15$~s & $0.052$ & $1.00\times$ \\
+\textbf{ct-pt (proposed)} & $\mathrm{Enc}(v_1)\cdot \mathrm{Plain}(v_2)$ & no & $\mathbf{13.28 \pm 0.10}$~s & $0.075$ & $\mathbf{1.44\times}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.6\linewidth]{fig_exp2_ctpt_vs_ctct.png}
+\caption{ct-pt vs.\ ct-ct: distribution of per-batch latencies over
+$50$ trials. Removing relinearisation moves the median by
+$\sim 6$~s and tightens the upper tail.}
+\label{fig:exp2}
+\end{figure}
+
+% ----------------------------------------------------------------
+\subsection{Experiment 2: Vec2Text attack}\label{ssec:vec2text}
+% ----------------------------------------------------------------
+
+We instantiate \textsc{Vec2Text} on \textsc{GTR-base} embeddings
+($d = 768$). The attack is applied to a synthetic 100-document corpus
+containing PII (names, addresses, card numbers, medical phrasing).
+Three threat models are compared at five values of $k/d$:
+(a) no rotation; (b) rotation with the matrix $R$ \emph{known} to the
+attacker; (c) rotation with $R$ \emph{unknown}.
+
+The implementation budget of the attacker is fixed (greedy decoding,
+$10$ corrector iterations, no beam search, $8$~GB GPU); under this
+budget the unprotected baseline reaches
+$\mathrm{BLEU}_0 = 0.156$ instead of the $0.973$ reported by
+Morris et al.~\cite{ref_vec2text}, because the postulated PII corpus,
+greedy decoding and beam-free regime are intentionally weaker than
+\cite{ref_vec2text}'s strongest configuration; the experiment measures
+the relative effect of SVD truncation and secret rotation in a fixed
+weak-attacker configuration.
+
+\paragraph{Strength of the attacker: an explicit caveat.} This is the
+single most important limitation of \emph{this particular experiment}: it
+establishes the effect of $R$ \emph{against an artificially weak inverter
+only}. A stronger attacker---beam search with a large width, many more
+corrector iterations, an adaptive decoder fine-tuned on
+$(\text{text}, E_{\mathrm{rot}})$ pairs, or a modern universal/zero-shot
+inversion model---is not evaluated \emph{here}. We therefore do not rest
+the security narrative on this table. Section~\ref{sec:stronger} measures
+the two decisive stronger channels: a known-plaintext recovery of $R$ by
+orthogonal Procrustes~\cite{ref_schonemann} (Table~\ref{tab:procrustes}),
+which succeeds from $\approx k$ leaked pairs, and an aligned off-the-shelf
+inverter with a larger budget (Table~\ref{tab:adaptive-inversion}). Every
+sentence about the rotation in isolation should accordingly be read as
+``against the tested off-the-shelf, non-adaptive Vec2Text configuration'',
+with the boundary now quantified in Section~\ref{sec:stronger}.
+
+\begin{table}[tb]
+\centering
+\caption{Off-the-shelf Vec2Text on GTR-base embeddings under the three
+threat models. BLEU and Token Overlap with 95\% bootstrap CIs in
+brackets.}
+\label{tab:vec2text}
+\small
+\begin{tabular}{@{}rllll@{}}
+\toprule
+$k/d$ & Rotation & Knowledge of $R$ & BLEU & Token Overlap \\ \midrule
+$1.00$ & off & --- & $0.156\,[0.123;\,0.186]$ & $0.385\,[0.351;\,0.417]$ \\
+$1.00$ & on  & known & $0.156\,[0.127;\,0.187]$ & $0.385\,[0.351;\,0.416]$ \\
+$1.00$ & on  & \textbf{unknown} & $\mathbf{0.007\,[0.006;\,0.008]}$ & $\mathbf{0.053\,[0.046;\,0.060]}$ \\
+$0.75$ & off & --- & $0.077\,[0.063;\,0.093]$ & $0.325\,[0.304;\,0.345]$ \\
+$0.75$ & on  & unknown & $0.007\,[0.007;\,0.008]$ & $0.061\,[0.054;\,0.067]$ \\
+$0.50$ & off & --- & $0.057\,[0.046;\,0.069]$ & $0.285\,[0.270;\,0.300]$ \\
+$0.50$ & on  & unknown & $0.007\,[0.007;\,0.008]$ & $0.050\,[0.045;\,0.055]$ \\
+$0.25$ & off & --- & $0.024\,[0.020;\,0.028]$ & $0.196\,[0.181;\,0.208]$ \\
+$0.25$ & on  & unknown & $0.007\,[0.006;\,0.007]$ & $0.045\,[0.040;\,0.051]$ \\
+$0.10$ & off & --- & $0.010\,[0.009;\,0.011]$ & $0.113\,[0.104;\,0.123]$ \\
+$0.10$ & on  & unknown & $0.007\,[0.007;\,0.008]$ & $0.053\,[0.047;\,0.059]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\linewidth]{fig_exp3_bleu_vs_k.png}\hfill
+\includegraphics[width=0.49\linewidth]{fig_exp3_bleu_kd1.png}
+\caption{Vec2Text BLEU as a function of $k/d$ under three threat models
+(left); zoom on $k/d = 1.0$ comparing no-rotation, known-$R$ and
+unknown-$R$ (right). Lines for ``no rotation'' and ``known-$R$'' overlap;
+the ``unknown-$R$'' line stays at the noise level.}
+\label{fig:exp3}
+\end{figure}
+
+\paragraph{Findings.}
+\begin{itemize}[leftmargin=18pt,topsep=2pt]
+\item A known $R$ does not provide protection beyond SVD truncation:
+the columns ``no rotation'' and ``known-$R$'' are statistically
+indistinguishable.
+\item Under the tested off-the-shelf configuration, an unknown $R$
+reduces BLEU to the observed noise floor ($\sim 0.007$) for all $k/d$
+values, including $k/d = 1.0$ (no truncation at all). The ratio
+$\mathrm{BLEU}_{\mathrm{off}} / \mathrm{BLEU}_{\mathrm{unknown}}$
+is $22\times$ at $k/d = 1.0$, $11\times$ at $0.75$, $8\times$ at $0.50$.
+This is an effect against a \emph{non-adaptive} attacker only and is not
+evidence of robustness against an adaptive or known-plaintext adversary.
+\item Empirical Hypothesis~\ref{hyp:bleu} is consistent with the
+no-rotation column: a linear regression of BLEU on
+$\eta_k = 1 - \sigma_{rec}^2$ gives $R^{2} \approx 0.93$.
+This is consistent with, but does not formally derive,
+the BLEU~$\to$~$\sigma_{rec}$ link.
+\item In the operating point of the integral experiment ($k/d = 0.5$,
+rotation enabled, unknown $R$) the expected BLEU is at the noise level.
+\end{itemize}
+
+% ----------------------------------------------------------------
+\subsection{Experiment 3: integral multi-encoder evaluation}\label{ssec:integral}
+% ----------------------------------------------------------------
+
+We run the full pipeline on the canonical operating point $k = d/2$
+across five encoders:
+
+\begin{itemize}[leftmargin=18pt,topsep=2pt,itemsep=2pt]
+\item \texttt{intfloat/multilingual-e5-small} ($d = 384$),
+\item \texttt{intfloat/multilingual-e5-base} ($d = 768$),
+\item \texttt{sentence-transformers/paraphrase-multilingual-mpnet-base-v2} ($d = 768$),
+\item \texttt{intfloat/multilingual-e5-large} ($d = 1024$),
+\item \texttt{BAAI/bge-m3} ($d = 1024$).
+\end{itemize}
+
+The corpus is one million Russian-Wikipedia paragraphs; queries are
+$500$ self-retrieval requests sampled at seed $42$;
+the rotation is averaged over $5$ seeds
+$\{11, 23, 47, 31, 53\}$. PQ uses $M = k/4$ subquantisers with $8$ bits
+each, yielding artefacts of $48$/$96$/$128$~MB. The CKKS configuration
+is the auto-selected one
+($N_{\mathrm{poly}} = 8192$, $[60, 40, 60]$, $\Delta = 2^{40}$).
+
+\paragraph{On the use of self-retrieval.} Self-retrieval (the query is
+the first sentence of the target paragraph) is a \emph{controlled
+geometry probe}, not a production IR benchmark: it isolates whether the
+defensive transform $T(\cdot)$ preserves the ranking induced by the
+encoder, with a deterministic, leakage-free ground truth at
+$10^6$-scale. It is sufficient for the paper's actual claim---that the
+PQ+CKKS wrapper is metric-preserving in $\mathrm{span}(V_k)$---but it
+does \emph{not} establish production retrieval quality. Re-running the
+integral experiment on standard IR benchmarks (BEIR, MIRACL, MS~MARCO)
+is listed as a generality experiment in Section~\ref{sec:limits}; the
+present numbers should be read as a transform-fidelity measurement,
+not as a retrieval-quality benchmark.
+
+\begin{table}[!t]
+\centering
+\caption{Integral experiment at $k = d/2$ on a $10^6$-document
+corpus across five encoders. Reported are the raw baseline (no
+defence), the SVD-projected baseline (FAISS-IP exact in
+$\mathrm{span}(V_k)$, no rotation, no CKKS), the proposed pipeline
+(mean $\pm 95\%$ t-CI half-width over 5 rotation seeds), and the
+delta of Acc@1 from the raw baseline.}
+\label{tab:integral}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Encoder & Metric & Baseline (raw $d$) & Baseline\_proj (SVD $k$) & Proposed & $\Delta$ from raw & Server $p_{95}$ (ms) \\ \midrule
+\multicolumn{7}{l}{\emph{multilingual-e5-small ($d=384$, $k=192$, $M=48$, $\sigma_{rec}=0.239$)}} \\
+& Acc@1   & $0.782$ & $0.702$ & $0.701 \pm 0.001$ & $-0.081$ & \multirow{4}{*}{$314$} \\
+& Acc@10  & $0.890$ & $0.834$ & $0.831 \pm 0.002$ & $-0.059$ & \\
+& MRR     & $0.817$ & $0.747$ & $0.746 \pm 0.001$ & $-0.071$ & \\
+& NDCG@10 & $0.834$ & $0.768$ & $0.767 \pm 0.001$ & $-0.067$ & \\ \midrule
+\multicolumn{7}{l}{\emph{multilingual-e5-base ($d=768$, $k=384$, $M=96$, $\sigma_{rec}=0.129$)}} \\
+& Acc@1   & $0.830$ & $0.834$ & $0.833 \pm 0.001$ & $+0.003$ & \multirow{4}{*}{$356$} \\
+& Acc@10  & $0.934$ & $0.924$ & $0.924 \pm 0.001$ & $-0.010$ & \\
+& MRR     & $0.862$ & $0.865$ & $0.864 \pm 0.001$ & $+0.002$ & \\
+& NDCG@10 & $0.880$ & $0.879$ & $0.879 \pm 0.000$ & $-0.001$ & \\ \midrule
+\multicolumn{7}{l}{\emph{paraphrase-multilingual-mpnet-base-v2 ($d=768$, $k=384$, $M=96$, $\sigma_{rec}=0.107$)}} \\
+& Acc@1   & $0.716$ & $0.650$ & $0.649 \pm 0.001$ & $-0.067$ & \multirow{4}{*}{$351$} \\
+& Acc@10  & $0.842$ & $0.796$ & $0.795 \pm 0.001$ & $-0.047$ & \\
+& MRR     & $0.762$ & $0.693$ & $0.692 \pm 0.001$ & $-0.070$ & \\
+& NDCG@10 & $0.782$ & $0.717$ & $0.717 \pm 0.000$ & $-0.066$ & \\ \midrule
+\multicolumn{7}{l}{\emph{multilingual-e5-large ($d=1024$, $k=512$, $M=128$, $\sigma_{rec}=0.101$)}} \\
+& Acc@1   & $0.796$ & $0.814$ & $0.814 \pm 0.000$ & $+0.018$ & \multirow{4}{*}{$219$} \\
+& Acc@10  & $0.880$ & $0.922$ & $0.920 \pm 0.000$ & $+0.040$ & \\
+& MRR     & $0.824$ & $0.848$ & $0.848 \pm 0.000$ & $+0.024$ & \\
+& NDCG@10 & $0.838$ & $0.866$ & $0.865 \pm 0.000$ & $+0.027$ & \\ \midrule
+\multicolumn{7}{l}{\emph{BAAI/bge-m3 ($d=1024$, $k=512$, $M=128$, $\sigma_{rec}=0.128$)}} \\
+& Acc@1   & $0.818$ & $0.832$ & $0.832 \pm 0.000$ & $+0.014$ & \multirow{4}{*}{$221$} \\
+& Acc@10  & $0.908$ & $0.926$ & $0.924 \pm 0.000$ & $+0.016$ & \\
+& MRR     & $0.848$ & $0.863$ & $0.863 \pm 0.000$ & $+0.015$ & \\
+& NDCG@10 & $0.862$ & $0.878$ & $0.878 \pm 0.000$ & $+0.016$ & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{The protective layer is essentially free in the projected space.}
+The difference (proposed) vs.\ (baseline\_proj) is within the $\pm 0.001$
+5-seed CI for every metric and every encoder. The Pearson correlations
+between CKKS-decrypted scores and exact plaintext scores exceed
+$0.9999$ in all cases. The proxy criterion $\sigma_{rec} \geq 0.10$
+holds uniformly.
+
+\emph{The actual quality cost is paid by SVD truncation, not by the
+protective wrapper.} The split
+$\Delta_{\mathrm{SVD}} = \mathrm{baseline\_proj} - \mathrm{baseline\_dense}$
+is $+0.004/+0.018/+0.014$ for retrieval-trained encoders with
+$d \geq 768$ (e5-base / e5-large / bge-m3), $-0.080$ for the
+compact e5-small ($d = 384$, half-truncation removes half the embedding
+volume) and $-0.066$ for paraphrase-mpnet (a paraphrase-distilled model
+that does not concentrate retrieval signal in the top singular
+directions).
+
+\emph{The end-to-end accuracy budget is met for retrieval-trained
+$d \geq 768$.} The end-to-end criterion
+$\Delta\mathrm{Acc@1} \geq -0.05$ relative to the raw baseline holds
+for e5-base ($+0.003$), e5-large ($+0.018$) and bge-m3 ($+0.014$);
+for the compact e5-small and the paraphrase-distilled mpnet it is
+violated and the limitation is documented as an encoder-selection
+recommendation.
+
+\paragraph{Linear-denoiser side effect.} On the two
+retrieval-trained encoders with $d = 1024$, half SVD truncation
+\emph{improves} the four ranking metrics over the raw baseline
+($+0.018$ Acc@1 on e5-large, $+0.014$ on bge-m3). This is consistent
+with the interpretation of $V_k$-projection as a linear denoiser:
+the trailing singular directions, dominated by fp16 inference noise,
+get filtered out, and the ranking in $\mathrm{span}(V_k)$ is cleaner
+than in the raw $\mathbb{R}^d$.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\linewidth]{fig_exp5_per_seed.png}
+\caption{Per-seed Acc@10 of the proposed pipeline relative to
+baseline\_proj on five rotation seeds; the spread is below the 5-seed
+CI of the baseline.}
+\label{fig:exp5-per-seed}
+\end{figure}
+
+% ----------------------------------------------------------------
+\subsection{Experiment 4: end-to-end client-server latency}\label{ssec:latency}
+% ----------------------------------------------------------------
+
+We package the pipeline as a FastAPI service, with the client and the
+server running as two independent processes on the same machine,
+communicating via HTTP/JSON over loopback.
+The setup measures the realistic HTTP framing,
+base64 serialisation of CKKS ciphertexts, FastAPI/uvicorn stack and JSON
+(de-)serialisation, but without physical network latency.
+The encoder is multilingual-e5-small ($d = 384$, $k = 192$,
+$M = 48$, $K_{\mathrm{cands}} = 40$, $N_{\mathrm{docs}} = 10^6$),
+averaged over $500$ queries $\times$ $5$ rotation seeds.
+
+\paragraph{On-wire payload sizes.} For the same configuration the
+measured HTTP payloads are: request body
+$\approx 0.29$~MB (one CKKS query ciphertext, base64-encoded JSON,
+inflated $\approx 1.37\times$ over the $0.21$~MB raw ciphertext);
+response body $\approx 11.4$~MB ($K_{\mathrm{cands}} = 40$ score
+ciphertexts, base64 JSON). One-off on-boarding transfers the public PQ
+artefact ($48$~MB at $k=192$) and the CKKS public/Galois keys
+($\approx 8$~MB); these are not part of the per-query budget. Reporting
+sizes alongside $p_{95}$ is necessary because the dominant scaling
+pressure for larger $K_{\mathrm{cands}}$ or distributed deployments is
+the response payload, not CPU time.
+
+\begin{table}[tb]
+\centering
+\caption{Latency decomposition at the canonical operating point
+($k = 192$) on a $10^6$-document corpus. The $k$-dependent server-side
+ct-pt rerank is measured on the $5$-seed integral run; the $k$-independent
+client-side and HTTP stages are measured on the client-server
+HTTP-loopback PoC. The encoder forward pass is independent of the defence
+layer and excluded from the total.}
+\label{tab:latency}
+\small
+\begin{tabular}{@{}lrl@{}}
+\toprule
+Stage & $p_{95}$ (ms) & Notes \\ \midrule
+Encoder forward pass (client) & $\sim 200$ & encoder-dependent; excluded from total \\
+Projection to $\mathrm{span}(V_k)$ (client) & $0.1$ & negligible \\
+Local PQ search (client, faiss) & $22.8$ & $M = 48$, $K_{\mathrm{cands}} = 40$, $10^6$ docs \\
+CKKS encryption (client) & $4.9$ & one rotated query, $N_{\mathrm{poly}} = 8192$ \\
+\textbf{Server CKKS rerank, ct-pt} & $\mathbf{283}$ & $40$ ct-pt ops at $k = 192$ (5-seed integral run) \\
+HTTP $+$ serialisation (req$+$resp) & $38$ & base64 ciphertexts over loopback \\
+CKKS decrypt + sort (client) & $20.7$ & 40 score ciphertexts \\ \midrule
+Total (excluding encoder) & $\approx 370$~ms & $p_{95}$, full pipeline \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.49\linewidth]{fig_exp6_latency_decomposition.png}\hfill
+\includegraphics[width=0.49\linewidth]{fig_exp6_latency_cdf.png}
+\caption{Left: per-stage latency decomposition at $k = 192$ (the
+server-side ct-pt rerank dominates). Right: CDF of the server-side rerank
+latency over $500$~queries $\times$ $5$~seeds ($p_{95} \approx 283$~ms);
+the full end-to-end $p_{95} \approx 370$~ms (Table~\ref{tab:latency})
+stays well below the $1$~s SLA.}
+\label{fig:exp6-latency}
+\end{figure}
+
+% =====================================================================
+\section{Security Analysis Under Known-Plaintext and Stronger Attackers}
+\label{sec:stronger}
+% =====================================================================
+
+The experiments above establish the construction's behaviour \emph{inside}
+its non-adaptive threat model (Section~\ref{sec:threat}). A privacy paper
+that stopped there would be open to the objection that the only tested
+adversary is also the weakest one. We therefore deliberately step outside
+the model and measure four stronger channels---known-plaintext recovery of
+the rotation, a text-level reference-corpus lookup, leakage from the public
+PQ artefact, and an aligned off-the-shelf inverter---followed by a baseline
+suite and a benchmark-generality check. Several of these are
+\emph{negative} results for broad document-privacy claims; reporting them is
+what licenses the deliberately narrow framing of
+Sections~\ref{sec:discussion}--\ref{sec:conclusion}.
+
+% ----------------------------------------------------------------
+\subsection{Known-plaintext recovery of the secret rotation}
+\label{ssec:procrustes}
+% ----------------------------------------------------------------
+
+The secret rotation $R$ is the only document-side layer beyond SVD
+truncation. We test it against a known-plaintext attacker who holds $m$
+pairs $(E(x_i), E_{\mathrm{rot},i})$ and estimates the orientation with the
+orthogonal Procrustes solution~\cite{ref_schonemann}. The setup uses
+\texttt{e5-small} projected to $k=192$, five rotation seeds, $400$ held-out
+probes and a $10\,000$-document gallery; the attack is scored in embedding
+space, where a successful alignment lets a probe recover its own projected
+vector and retrieve the matching gallery document. This is the relevant
+precursor to a few-shot alignment attack because it hands the inverter the
+native projected space.
+
+\begin{table}[tbp]
+\centering
+\caption{Known-plaintext Procrustes attack against the secret rotation
+($m$ leaked pairs, means over five seeds). With $\approx k$ pairs the
+orientation is numerically recovered.}
+\label{tab:procrustes}
+\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Known pairs $m$ & Mean cosine & Rel.\ $L_2$ error & Target R@1 & Target R@10 \\ \midrule
+$0$   & $-0.004$ & $1.417$ & $0.000$ & $0.001$ \\
+$10$  & $0.098$  & $1.343$ & $0.005$ & $0.039$ \\
+$50$  & $0.377$  & $1.116$ & $0.722$ & $0.925$ \\
+$100$ & $0.621$  & $0.870$ & $1.000$ & $1.000$ \\
+$192$ & $1.000$  & $1.8{\times}10^{-5}$ & $1.000$ & $1.000$ \\
+$500$ & $1.000$  & $4.9{\times}10^{-7}$ & $1.000$ & $1.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.6\linewidth]{fig_exp7_procrustes.png}
+\caption{Known-plaintext alignment destroys the unknown-rotation
+assumption: with about $k$ leaked pairs the rotation is recovered. The
+$x$ axis uses a symlog scale to include $m=0$.}
+\label{fig:procrustes}
+\end{figure}
+
+The result is unambiguous (Table~\ref{tab:procrustes},
+Fig.~\ref{fig:procrustes}): the rotation is useful only while aligned
+plaintext anchors are unavailable. Even $50$ pairs---well below the
+retained dimension $k=192$---already retrieve the target in the top~10 for
+$92.5\%$ of probes in a $10\,000$-document gallery, and at $m\approx k$ the
+orientation is numerically exact. The rotation therefore raises the bar
+against an attacker with \emph{no} aligned plaintext, but it is not a
+defence against known plaintext; this is reflected directly in the
+threat-coverage table.
+
+% ----------------------------------------------------------------
+\subsection{Reference-corpus lookup after alignment}
+\label{ssec:reference}
+% ----------------------------------------------------------------
+
+The Procrustes test is in embedding space. We next ask whether the same
+failure becomes a \emph{text-level} channel without training any generative
+inverter. The attacker is given the protected vectors, $m$ known pairs for
+estimating $R$, and a reference corpus of candidate paragraphs with native
+\texttt{e5-small} embeddings---modelling the realistic case where some
+private documents also appear in a public or previously leaked corpus. We
+use $500$ targets, $100\,000$ decoys, five seeds and the same $k=192$
+subspace; the overlapping reference contains the targets, the disjoint
+reference removes them and serves only as a lexical nearest-neighbour
+proxy.
+
+\begin{table}[tbp]
+\centering
+\caption{Reference-corpus lookup after known-plaintext alignment
+(overlapping reference: $500$ targets $+$ $100\,000$ decoys; Jaccard is
+token-set overlap with the top-1 retrieved paragraph; means over five
+seeds).}
+\label{tab:reference-attack}
+\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Known pairs $m$ & Exact R@1 & Exact R@10 & Jaccard overlap-ref & Jaccard disjoint-ref \\ \midrule
+$0$   & $0.000$ & $0.000$ & $0.006$ & $0.006$ \\
+$10$  & $0.000$ & $0.009$ & $0.009$ & $0.009$ \\
+$25$  & $0.044$ & $0.132$ & $0.055$ & $0.012$ \\
+$50$  & $0.535$ & $0.784$ & $0.543$ & $0.018$ \\
+$100$ & $0.998$ & $1.000$ & $0.999$ & $0.034$ \\
+$192$ & $1.000$ & $1.000$ & $1.000$ & $0.043$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.8\linewidth]{fig_exp9_reference_attack.png}
+\caption{Reference-corpus lookup after alignment. When the reference
+overlaps the protected collection, alignment turns the protected vector
+into an exact paragraph lookup; with a disjoint reference this
+token-overlap proxy stays low.}
+\label{fig:reference-attack}
+\end{figure}
+
+The overlap case is severe (Table~\ref{tab:reference-attack}): with only
+$50$ known pairs the attacker recovers the exact source paragraph at
+$53.5\%$ top-1 among $100\,500$ candidates, rising to $99.8\%$ at $m=100$.
+This is the text-level analogue of the Procrustes result and makes the
+static-side limitation concrete: if a public or leaked reference corpus
+overlaps the private collection, rotation secrecy is insufficient. The
+disjoint-reference column is reported as a boundary condition---token
+Jaccard stays at $0.034$ ($m=100$), so a non-overlapping reference needs
+semantic metrics or a generative inverter before text reconstruction can
+be claimed.
+
+% ----------------------------------------------------------------
+\subsection{Leakage from the public PQ artefact}
+\label{ssec:pqleak}
+% ----------------------------------------------------------------
+
+Stage-1 candidate filtering publishes a product-quantization codebook plus
+per-document codes, trained in the rotated space. We quantify how much of
+$E_{\mathrm{rot}}$ this public artefact alone reconstructs on a
+$20\,000$-document \texttt{e5-small} sample (Table~\ref{tab:pq-leakage}).
+The canonical configuration ($M=48$, $8$ bits) preserves mean cosine
+$0.953$ to $E_{\mathrm{rot}}$, $67.4\%$ of exact top-10 neighbours, and
+$97.1\%$ of exact top-10 neighbours inside the approximate top-40
+candidate set---that is, the public codes alone almost perfectly reproduce
+the candidate set the server reranks.
+
+\begin{table}[tbp]
+\centering
+\caption{Leakage from the public PQ codes (rotated \texttt{e5-small},
+$20\,000$ documents; neighbour overlap excludes the query document).}
+\label{tab:pq-leakage}
+\small
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$M$ & Bits & Bytes/vector & Cosine to $E_{\mathrm{rot}}$ & NN overlap@10 \\ \midrule
+$24$ & $8$ & $24$ & $0.837$ & $0.384$ \\
+$48$ & $8$ & $48$ & $0.953$ & $0.674$ \\
+$48$ & $6$ & $36$ & $0.904$ & $0.529$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These numbers do not weaken the CKKS query-privacy contribution, but they
+do narrow the document-privacy interpretation: both the known-plaintext
+anchor channel and the public PQ artefact must be treated as exposed. A
+deployment that needs stronger static-side confidentiality requires either
+a different static primitive or a composition that hides the PQ artefact
+itself.
+
+% ----------------------------------------------------------------
+\subsection{Aligned off-the-shelf inversion stress test}
+\label{ssec:aligned}
+% ----------------------------------------------------------------
+
+Finally we run a generative inverter against the aligned space. The
+attacker is given GTR-base embeddings ($d=768$), SVD truncation to
+$k=d/2$, the secret-rotation setting, and up to $m=500$ known pairs for
+Procrustes alignment; the inverter is the off-the-shelf \textsc{Vec2Text}
+corrector with a larger budget than Experiment~\ref{ssec:vec2text} ($24$
+corrector iterations, max input length~$96$). For deterministic
+reproducibility on a host that could not fetch external corpora the run
+uses the script's offline synthetic-news+PII corpus ($120$ held-out
+texts). The decisive control is the raw-embedding row.
+
+\begin{table}[tbp]
+\centering
+\caption{Aligned off-the-shelf \textsc{Vec2Text} stress test ($120$
+held-out texts; $m$ is the number of pairs used for alignment). Exact
+match and typed-PII recall are zero in every row---but so is the raw
+control, so this corrector cannot \emph{certify} protection.}
+\label{tab:adaptive-inversion}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Case & Token F1 & BLEU & Exact & PII recall \\ \midrule
+Raw embedding & $0.133$ & $0.0133$ & $0.000$ & $0.000$ \\
+Known-$R$ oracle & $0.138$ & $0.0134$ & $0.000$ & $0.000$ \\
+Unknown $R$ ($=$ Procrustes $m{=}0$) & $0.121$ & $0.0129$ & $0.000$ & $0.000$ \\
+Procrustes, $m=50$ & $0.126$ & $0.0126$ & $0.000$ & $0.000$ \\
+Procrustes, $m=100$ & $0.141$ & $0.0127$ & $0.000$ & $0.000$ \\
+Procrustes, $m=192$ & $0.134$ & $0.0132$ & $0.000$ & $0.000$ \\
+Procrustes, $m=500$ & $0.135$ & $0.0133$ & $0.000$ & $0.000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The reading is honest but limited (Table~\ref{tab:adaptive-inversion}): no
+exact document or typed PII is recovered even by a known-$R$ oracle, yet
+the \emph{raw} embedding row is also at the BLEU floor ($0.013$), so this
+off-the-shelf corrector is too weak to certify the transform. It does not
+contradict the exact-lookup failure of Section~\ref{ssec:reference}; the
+remaining open risk is a learned or corpus-adapted decoder trained
+end-to-end on the rotated space, which we keep as the highest-priority
+future experiment (Section~\ref{sec:limits}).
+
+% ----------------------------------------------------------------
+\subsection{Baseline suite: projection and calibrated noise}
+\label{ssec:baselines}
+% ----------------------------------------------------------------
+
+To position the transform against natural alternatives rather than against
+the raw system alone, we compare SVD projection with Gaussian random
+projection and random orthogonal projection~\cite{ref_jl} at the same
+$k=d/2$ (Table~\ref{tab:projection-baselines}), and with calibrated
+isotropic Gaussian noise matched at equal mean relative distortion
+(Table~\ref{tab:noise-sweep}).
+
+\begin{table}[tbp]
+\centering
+\caption{Acc@1 under lightweight projection baselines at $k=d/2$ (random
+baselines: mean $\pm$ s.d.\ over three seeds).}
+\label{tab:projection-baselines}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Encoder & Raw & SVD & Gaussian RP & Orthogonal RP \\ \midrule
+e5-small & $0.782$ & $0.702$ & $0.688 \pm 0.016$ & $0.737 \pm 0.010$ \\
+e5-base  & $0.830$ & $0.834$ & $0.781 \pm 0.011$ & $0.804 \pm 0.017$ \\
+mpnet    & $0.716$ & $0.650$ & $0.698 \pm 0.003$ & $0.705 \pm 0.008$ \\
+e5-large & $0.796$ & $0.814$ & $0.765 \pm 0.010$ & $0.769 \pm 0.009$ \\
+bge-m3   & $0.818$ & $0.832$ & $0.789 \pm 0.004$ & $0.810 \pm 0.002$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+\caption{SVD truncation vs.\ independent Gaussian noise at matched mean
+relative distortion ($100\,000$-document gallery). NN overlap@10 is the
+overlap with raw-space neighbours; lower means less raw geometry
+preserved.}
+\label{tab:noise-sweep}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Encoder & $k/d$ & $\sigma_{rec}$ & SVD Acc@1 & SVD NN@10 & Noise Acc@1 & Noise NN@10 \\ \midrule
+e5-small & $0.125$ & $0.385$ & $0.318$ & $0.232$ & $0.750$ & $0.283$ \\
+e5-small & $0.250$ & $0.332$ & $0.600$ & $0.333$ & $0.788$ & $0.367$ \\
+e5-small & $0.500$ & $0.237$ & $0.814$ & $0.468$ & $0.828$ & $0.531$ \\
+e5-small & $0.875$ & $0.079$ & $0.880$ & $0.551$ & $0.872$ & $0.830$ \\
+e5-base  & $0.125$ & $0.354$ & $0.708$ & $0.370$ & $0.864$ & $0.503$ \\
+e5-base  & $0.250$ & $0.268$ & $0.872$ & $0.501$ & $0.886$ & $0.641$ \\
+e5-base  & $0.500$ & $0.129$ & $0.916$ & $0.578$ & $0.902$ & $0.829$ \\
+e5-base  & $0.875$ & $0.023$ & $0.920$ & $0.592$ & $0.910$ & $0.969$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.8\linewidth]{fig_exp8_tradeoff.png}
+\caption{Utility/leakage diagnostic for SVD truncation and calibrated
+Gaussian noise (dashed: matched-$\sigma_{rec}$ noise baselines).}
+\label{fig:noise-sweep}
+\end{figure}
+
+Two engineering conclusions follow. First, the projection choice is
+encoder-dependent: SVD is strongest on the retrieval-trained $d\geq768$
+encoders that are the method's operating region, but random orthogonal
+projection beats SVD on \texttt{mpnet} and \texttt{e5-small}---so a
+deployment should run a baseline sweep, not assume SVD is universally best.
+Second, $\sigma_{rec}$ is not a privacy metric: at $k/d=0.875$ matched
+noise preserves almost all raw neighbours, and at the main $k/d=0.5$
+operating point SVD removes far more raw-neighbour structure than matched
+noise ($0.578$ vs.\ $0.829$ NN overlap@10 on \texttt{e5-base}) while
+keeping Acc@1. The defensible claim is thus the narrow one: SVD is an
+encoder-dependent utility/leakage trade-off, not a noise mechanism that
+dominates all alternatives.
+
+% ----------------------------------------------------------------
+\subsection{Benchmark generality on BEIR}
+\label{ssec:beir}
+% ----------------------------------------------------------------
+
+The integral experiment uses one-million-document self-retrieval, a
+controlled geometry probe. To check that the metric-preservation reading
+is not an artefact of self-retrieval, we repeat the raw-vs-SVD comparison
+on two standard BEIR~\cite{ref_beir} datasets with graded relevance
+judgements---SciFact ($5{,}183$ docs, $300$ queries) and NFCorpus ($3{,}633$
+docs, $323$ queries)---fitting $V_k$ on the corpus at $k=d/2$ and comparing
+exact inner-product retrieval in $\mathbb{R}^d$ and in
+$\mathrm{span}(V_k)$.
+
+\begin{table}[tbp]
+\centering
+\caption{SVD truncation ($k=d/2$) vs.\ the raw space on BEIR.
+$\Delta=\mathrm{SVD}-\mathrm{raw}$; brackets are paired-bootstrap $95\%$
+CIs ($10^4$ resamples). \textbf{Every} $\Delta$ nDCG@10 CI excludes~$0$.}
+\label{tab:beir}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Encoder & Dataset & $\sigma_{rec}$ & raw nDCG@10 & SVD nDCG@10 & $\Delta$ nDCG@10 (95\% CI) \\
+\midrule
+e5-large & SciFact  & $0.072$ & $0.643$ & $0.574$ & $-0.069\,[-0.091,-0.047]$ \\
+e5-base  & SciFact  & $0.090$ & $0.637$ & $0.586$ & $-0.051\,[-0.072,-0.032]$ \\
+e5-small & SciFact  & $0.183$ & $0.598$ & $0.519$ & $-0.079\,[-0.103,-0.055]$ \\
+e5-base  & NFCorpus & $0.085$ & $0.327$ & $0.305$ & $-0.022\,[-0.032,-0.013]$ \\
+e5-small & NFCorpus & $0.172$ & $0.302$ & $0.277$ & $-0.025\,[-0.035,-0.014]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:beir} is a deliberate corrective to the self-retrieval
+reading. On both graded-relevance datasets and for every encoder, half-SVD
+truncation \emph{significantly reduces} nDCG@10 (all CIs exclude zero,
+drops of $2$--$8$ points). Decisively, \texttt{e5-large}---the one encoder
+that \emph{gained} on the $10^6$ self-retrieval probe---\emph{loses}
+$0.069$ nDCG@10 on SciFact. The denoiser effect is therefore real but
+\emph{task-dependent}: on real graded IR the discarded spectrum still
+carries relevance, so $k$ must be treated as a tunable accuracy cost via a
+$k$-sweep, exactly as the encoder-selection discussion below recommends.
+(Full end-to-end CKKS reranking on BEIR is left to future work; this
+experiment isolates the projection-fidelity property that the reranking
+preserves.)
+
+% =====================================================================
+\section{Discussion}\label{sec:discussion}
+% =====================================================================
+
+\paragraph{Encoder selection is part of the protocol.} The protective
+wrapper is essentially metric-preserving in the projected space; the
+end-to-end deviation from the raw baseline is dominated by what
+SVD truncation does on the chosen encoder. Models trained with
+contrastive retrieval objectives (\textsc{e5-*}, \textsc{bge-*})
+concentrate the retrieval signal in the top singular directions and
+recover most of the original quality after $k = d/2$ truncation; some of
+them even \emph{benefit} from the truncation (linear-denoiser effect).
+Paraphrase-distilled models (\textsc{mpnet}) and very compact models
+(\textsc{e5-small}) do not show this concentration, and we recommend
+either replacing them with a retrieval-trained equivalent or running a
+$k$-sweep before deployment to find a $k$ that simultaneously satisfies
+the application's accuracy budget and $\sigma_{rec} \geq 0.10$.
+
+\paragraph{The role of the rotation $R$: obfuscation, not a primitive.}
+The secret rotation is an empirical obfuscation layer, not a
+cryptographic primitive. It contributes a defence channel orthogonal to
+SVD truncation, and even at $k/d = 1.0$ the unknown-$R$ regime reduces
+off-the-shelf Vec2Text BLEU to the noise floor. Its limits are now
+measured rather than asserted (Section~\ref{sec:stronger}): a known-$R$
+attacker gains nothing beyond SVD; a known-plaintext attacker recovers
+$R$ by orthogonal Procrustes from $\approx k$ leaked pairs
+(Table~\ref{tab:procrustes}), which becomes an exact paragraph lookup
+when a reference corpus overlaps the collection
+(Table~\ref{tab:reference-attack}); and an end-to-end learned decoder
+remains the main untested case. The rotation's value is therefore that
+it is the cheapest architectural layer with a measurable effect on an
+attacker who lacks aligned plaintext---not a security guarantee. The
+contribution of this paper is the measured privacy/latency/accuracy
+trade-off and its quantified boundaries, not the rotation in isolation.
+
+\paragraph{What CKKS hides and what it does not.} The CKKS layer hides
+the numerical representation of the query and the exact similarity
+scores from the server. Two things it does \emph{not} hide are the
+identifiers of the candidates produced by stage-1 PQ filtering and the
+$L_2$-distances among them implicit in the order in which they are
+sent. An access-pattern attacker can therefore, over many queries,
+build a co-occurrence model of which documents are co-retrieved.
+Composing the pipeline with a PIR-style retrieval primitive (Tiptoe
+\cite{ref_tiptoe}, SealPIR \cite{ref_sealpir}, OnionPIR
+\cite{ref_onionpir}, SimplePIR \cite{ref_simplepir}) is the natural
+remedy; ours is engineered to be PIR-friendly because the
+ct-pt operations on the server are stateless and cluster-local.
+
+\paragraph{Parameter selection vs.\ hand-tuning.} Compared with hand-tuned
+TenSEAL stock parameters, the configuration chosen by the offline grid search
+(Section~\ref{sec:autotune}) achieves a $\approx 1.7\times$ speed-up at the
+same security level and the same ranking quality (within
+$\Delta \mathrm{Acc@1} \leq 1$~p.p.\ of the SVD-projected baseline). The
+selection is a one-off offline cost and adds nothing at run time; porting to a
+different hardware platform only requires re-running the same small benchmark
+grid.
+
+% =====================================================================
+\section{Limitations and Required Experiments}\label{sec:limits}
+% =====================================================================
+
+We separate \emph{intrinsic limitations} (properties of the construction
+under study) from the \emph{remaining open experiments}. The
+stronger-attacker, baseline and generality experiments that earlier drafts
+listed as mandatory future work are now reported in
+Section~\ref{sec:stronger}; what is listed below as open is the genuinely
+residual set, kept as named scoped experiments rather than vague
+``future work'' as a deliberate hedge against overclaiming.
+
+\paragraph{Intrinsic limitations.}
+\begin{itemize}[leftmargin=18pt,topsep=2pt,itemsep=2pt]
+\item \emph{Document privacy is not cryptographic.} $E_{\mathrm{rot}}$
+is plaintext on the server; it is protected only by SVD truncation (a
+proxy) and the secret rotation (an empirical obfuscation layer). A
+known-$R$, known-plaintext or adaptive adversary defeats this layer.
+\item \emph{Access patterns and PQ codes are exposed.} CKKS hides values,
+not which candidates are reranked, and the public PQ codes are a lossy
+view of $E_{\mathrm{rot}}$. Production use requires composition with a
+PIR/ORAM layer plus a PQ-leakage analysis.
+\item \emph{Encoder-dependence of the accuracy budget.} The strict
+end-to-end criterion $\Delta\mathrm{Acc@1} \geq -5$~p.p.\ holds only
+on retrieval-trained encoders with $d \geq 768$. Compact or
+paraphrase-distilled encoders need either replacement or a less
+aggressive $k$ (which then violates the $\sigma_{rec} \geq 0.10$ proxy).
+\item \emph{Single-machine evaluation.} The latency numbers in
+Experiment~\ref{ssec:latency} are taken on loopback HTTP; a
+geographically distributed deployment will add (uncharacterised)
+network latency.
+\end{itemize}
+
+\paragraph{Completed in this revision.} The stronger-attacker programme is
+now executed (Section~\ref{sec:stronger}): known-plaintext Procrustes
+recovery of $R$ (Table~\ref{tab:procrustes}); the text-level
+reference-corpus lookup (Table~\ref{tab:reference-attack}); public-PQ-code
+leakage (Table~\ref{tab:pq-leakage}); an aligned off-the-shelf inverter
+(Table~\ref{tab:adaptive-inversion}); a projection and calibrated-noise
+baseline suite covering random projection, SVD-without-rotation and
+matched-distortion Gaussian noise
+(Tables~\ref{tab:projection-baselines}--\ref{tab:noise-sweep}); and a BEIR
+generality check on the projection step (Table~\ref{tab:beir}).
+
+\paragraph{Remaining open experiments.}
+\begin{enumerate}[leftmargin=20pt,topsep=2pt,itemsep=3pt]
+\item \emph{End-to-end learned decoder (highest priority).} The aligned
+off-the-shelf corrector of Section~\ref{ssec:aligned} is too weak to
+\emph{certify} protection---its raw control is already at the BLEU floor.
+The decisive test is an inversion model \emph{trained} on rotated/SVD
+embeddings of part of the corpus and evaluated on a holdout; the current
+narrative explicitly does not claim robustness against it.
+\item \emph{Typed-PII, multi-encoder $\sigma_{rec}$ ablation.} Replace the
+single-encoder, BLEU-only calibration of the $\sigma_{rec}=0.10$ proxy with
+a multi-encoder ablation reporting BLEU, token overlap and typed-PII
+recovery (names, addresses, e-mail, phone, medical terms), which is what
+justifies (or refutes) the threshold.
+\item \emph{Modern attack suite and full-pipeline benchmarks.} Repeat the
+inversion study against the 2024--2026 attack generations that exploit the
+universal geometry of embedding spaces rather than a fixed basis
+orientation---few-shot alignment (\textsc{ALGEN}~\cite{ref_algen}),
+zero-shot inversion (\textsc{ZSInvert}~\cite{ref_zsinvert}), unsupervised
+cross-space translation (\textsc{vec2vec}~\cite{ref_vec2vec}) and online
+cross-domain inversion (\textsc{Zero2Text}~\cite{ref_zero2text})---with real
+text, and run the \emph{complete} CKKS reranking (not only the projection
+step measured in Table~\ref{tab:beir}) on BEIR, MIRACL and MS~MARCO.
+\end{enumerate}
+
+% =====================================================================
+\section{Conclusion}\label{sec:conclusion}
+% =====================================================================
+
+This paper is a scientific study of how SVD truncation and an unknown
+secret rotation reshape the privacy--accuracy--latency trade-off of
+semantic search; it is not a systems-engineering report and does not
+claim a deployable system. Three findings answer the research questions.
+\textbf{(RQ1)} A formal lower-$L_2$ bound (Lemma~\ref{lemma:proj-l2})
+characterises exactly what a projection-restricted decoder cannot
+recover; it is a projection bound, not an inversion-security theorem,
+and it makes the \emph{proxy} criterion $\sigma_{rec} \geq 0.10$ precise
+only within that decoder class, the threshold itself being an
+engineering proxy. \textbf{(RQ2)} At $10^6$-document scale the
+construction's protective layer is metric-preserving in
+$\mathrm{span}(V_k)$ (within the 5-seed CI), the query side is
+cryptographically protected by CKKS at sub-second $p_{95}$, while
+document and access-pattern privacy are \emph{not} cryptographic and
+the public PQ artefact is an exposed channel whose leakage we now
+quantify (Section~\ref{sec:stronger})---so the secret rotation is
+characterised as an empirical obfuscation effect against an off-the-shelf
+inverter, not as a guarantee. \textbf{(RQ3)} For
+retrieval-trained encoders with $d \geq 768$, data-driven SVD truncation
+to $k = d/2$ acts as a linear \emph{denoiser}, improving the four
+ranking metrics over the raw baseline rather than degrading them---a
+finding of independent interest beyond the privacy setting.
+
+We do not claim the privacy problem is solved. This work delivers a
+measured privacy, accuracy and latency operating point and a characterised
+denoising phenomenon under a clearly delimited threat model, together
+with a stronger-attacker analysis (Section~\ref{sec:stronger}) that
+quantifies where the document-side obfuscation fails---known-plaintext
+recovery of $R$, reference-corpus lookup and public-PQ-code leakage---and
+leaves an end-to-end learned decoder as the principal open question.
+Composing the protocol with a PIR-style access-pattern hider---natural
+given the stateless server-side ct-pt operations---is the most attractive
+architectural extension.
+
+% =====================================================================
+\section*{Reproducibility}
+% =====================================================================
+
+All scripts, notebooks, configuration files and JSON output of the
+experiments are released at
+\url{https://github.com/sergkurilenko/research/tree/article1}.
+The integral experiment is driven by a single Python script with
+deterministic seeds and a JSON output file; the CKKS parameter-selection
+benchmark ships its configuration grid and timings as a CSV. The corpus
+(one-million Russian-Wikipedia paragraphs) is reproducibly sliced from a
+public Wikipedia dump with the date and content checksum recorded.
+
+% =====================================================================
+\begin{thebibliography}{99}\small
+% =====================================================================
+
+\bibitem{ref_sbert} N.\ Reimers and I.\ Gurevych, ``Sentence-BERT:
+Sentence Embeddings using Siamese BERT-Networks,'' in
+\emph{Proc.\ EMNLP}, 2019, pp.\ 3982--3992.
+
+\bibitem{ref_e5} L.\ Wang, N.\ Yang, X.\ Huang, et al.,
+``Text Embeddings by Weakly-Supervised Contrastive Pre-training,''
+\emph{arXiv:2212.03533}, 2022.
+
+\bibitem{ref_gtr} J.\ Ni et al., ``Large Dual Encoders Are Generalizable
+Retrievers,'' in \emph{Proc.\ EMNLP}, 2022, pp.\ 9844--9855.
+
+\bibitem{ref_bgem3} J.\ Chen, S.\ Xiao, P.\ Zhang, K.\ Luo, D.\ Lian,
+and Z.\ Liu, ``BGE M3-Embedding: Multi-Lingual, Multi-Functionality,
+Multi-Granularity Text Embeddings Through Self-Knowledge Distillation,''
+\emph{arXiv:2402.03216}, 2024.
+
+\bibitem{ref_dpr} V.\ Karpukhin et al., ``Dense Passage Retrieval for
+Open-Domain Question Answering,'' in \emph{Proc.\ EMNLP}, 2020,
+pp.\ 6769--6781.
+
+\bibitem{ref_colbert} O.\ Khattab and M.\ Zaharia, ``ColBERT: Efficient
+and Effective Passage Search via Contextualised Late Interaction over
+BERT,'' in \emph{Proc.\ ACM SIGIR}, 2020, pp.\ 39--48.
+
+\bibitem{ref_vec2text} J.\ X.\ Morris, V.\ Kuleshov, V.\ Shmatikov, and
+A.\ M.\ Rush, ``Text Embeddings Reveal (Almost) As Much As Text,'' in
+\emph{Proc.\ EMNLP}, 2023.
+
+\bibitem{ref_geia} H.\ Li, M.\ Xu, and Y.\ Song, ``Sentence Embedding
+Leaks More Information than You Expect: Generative Embedding Inversion
+Attack to Recover the Whole Sentence,'' in \emph{Findings of ACL}, 2023,
+pp.\ 14022--14040.
+
+\bibitem{ref_teia} Y.-H.\ Huang, Y.\ Tsai, H.\ Hsiao, H.-Y.\ Lin, and
+S.-D.\ Lin, ``Transferable Embedding Inversion Attack: Uncovering Privacy
+Risks in Text Embeddings without Model Queries,'' in \emph{Proc.\ ACL
+(Long)}, 2024, pp.\ 4193--4205.
+
+\bibitem{ref_algen} Y.\ Chen, Q.\ Xu, and J.\ Bjerva, ``ALGEN: Few-shot
+Inversion Attacks on Textual Embeddings via Cross-Model Alignment and
+Generation,'' in \emph{Proc.\ ACL (Long)}, 2025, pp.\ 24330--24348.
+\emph{arXiv:2502.11308}.
+
+\bibitem{ref_zsinvert} C.\ Zhang, J.\ X.\ Morris, and V.\ Shmatikov,
+``Universal Zero-shot Embedding Inversion,'' \emph{arXiv:2504.00147}, 2025.
+
+\bibitem{ref_vec2vec} R.\ Jha, C.\ Zhang, V.\ Shmatikov, and J.\ X.\ Morris,
+``Harnessing the Universal Geometry of Embeddings (vec2vec),''
+\emph{arXiv:2505.12540}, 2025.
+
+\bibitem{ref_zero2text} D.\ Kim, D.\ Kang, K.\ Lee, H.\ Baek, and
+B.\ B.\ Kang, ``Zero2Text: Zero-Training Cross-Domain Inversion Attacks on
+Textual Embeddings,'' \emph{arXiv:2602.01757}, 2026.
+
+\bibitem{ref_zeng_rag} S.\ Zeng et al., ``The Good and the Bad:
+Exploring Privacy Issues in Retrieval-Augmented Generation (RAG),''
+in \emph{Findings of ACL}, 2024, pp.\ 4505--4524.
+
+\bibitem{ref_song_leak} C.\ Song and A.\ Raghunathan, ``Information
+Leakage in Embedding Models,'' in \emph{Proc.\ ACM CCS}, 2020,
+pp.\ 377--390.
+
+\bibitem{ref_shokri} R.\ Shokri et al., ``Membership Inference Attacks
+Against Machine Learning Models,'' in \emph{Proc.\ IEEE S\&P},
+2017, pp.\ 3--18.
+
+\bibitem{ref_carlini} N.\ Carlini et al., ``Extracting Training Data
+from Large Language Models,'' in \emph{Proc.\ USENIX Security},
+2021, pp.\ 2633--2650.
+
+\bibitem{ref_dwork} C.\ Dwork, ``Differential Privacy,'' in
+\emph{Proc.\ ICALP}, 2006, pp.\ 1--12.
+
+\bibitem{ref_dpsgd} M.\ Abadi et al., ``Deep Learning with Differential
+Privacy,'' in \emph{Proc.\ ACM CCS}, 2016, pp.\ 308--318.
+
+\bibitem{ref_lyu} L.\ Lyu, X.\ He, and Y.\ Li, ``Differentially Private
+Representation for NLP,'' in \emph{Findings of EMNLP}, 2020,
+pp.\ 2355--2365.
+
+\bibitem{ref_kenthapadi} K.\ Kenthapadi, A.\ Korolova, I.\ Mironov, and
+N.\ Mishra, ``Privacy via the Johnson-Lindenstrauss Transform,''
+\emph{J.\ Privacy and Confidentiality}, vol.\ 5, no.\ 1, 2013.
+
+\bibitem{ref_liu} K.\ Liu, H.\ Kargupta, and J.\ Ryan,
+``Random Projection-Based Multiplicative Data Perturbation for Privacy
+Preserving Distributed Data Mining,'' \emph{IEEE TKDE}, vol.\ 18,
+no.\ 1, 2006, pp.\ 92--106.
+
+\bibitem{ref_ckks} J.\ H.\ Cheon, A.\ Kim, M.\ Kim, and Y.\ Song,
+``Homomorphic Encryption for Arithmetic of Approximate Numbers,'' in
+\emph{Advances in Cryptology---ASIACRYPT 2017}, LNCS 10624, pp.\ 409--437.
+
+\bibitem{ref_ckks_bootstrap} J.\ H.\ Cheon, K.\ Han, A.\ Kim et al.,
+``Bootstrapping for Approximate Homomorphic Encryption,'' in
+\emph{Advances in Cryptology---EUROCRYPT 2018}, LNCS 10820,
+pp.\ 360--384.
+
+\bibitem{ref_he_std} M.\ Albrecht et al., ``Homomorphic Encryption
+Security Standard,'' HomomorphicEncryption.org, 2018.
+
+\bibitem{ref_lwe_estimator} M.\ R.\ Albrecht, R.\ Player, and S.\ Scott,
+``On the Concrete Hardness of Learning with Errors,'' \emph{Journal of
+Mathematical Cryptology}, vol.\ 9, no.\ 3, 2015, pp.\ 169--203
+(lattice-estimator methodology).
+
+\bibitem{ref_schonemann} P.\ H.\ Sch\"onemann, ``A Generalized Solution
+of the Orthogonal Procrustes Problem,'' \emph{Psychometrika}, vol.\ 31,
+no.\ 1, 1966, pp.\ 1--10.
+
+\bibitem{ref_openfhe} A.\ Al Badawi et al., ``OpenFHE: Open-Source Fully
+Homomorphic Encryption Library,'' in \emph{Proc.\ WAHC '22},
+2022, pp.\ 53--63.
+
+\bibitem{ref_eva} R.\ Dathathri et al., ``EVA: An Encrypted Vector
+Arithmetic Language and Compiler for Efficient Homomorphic
+Computation,'' in \emph{Proc.\ ACM PLDI}, 2020, pp.\ 546--561.
+
+\bibitem{ref_chet} R.\ Dathathri et al., ``CHET: An Optimizing Compiler
+for Fully-Homomorphic Neural-Network Inferencing,'' in
+\emph{Proc.\ ACM PLDI}, 2019, pp.\ 142--156.
+
+\bibitem{ref_jung_gpu} W.\ Jung, S.\ Kim, J.\ H.\ Ahn et al.,
+``Over 100x Faster Bootstrapping in Fully Homomorphic Encryption
+through Memory-centric Optimisation with GPUs,'' \emph{IACR TCHES},
+vol.\ 2021, no.\ 4, pp.\ 114--148.
+
+\bibitem{ref_hexl} F.\ Boemer et al., ``Intel HEXL: Accelerating
+Homomorphic Encryption with Intel AVX512-IFMA52,'' in
+\emph{Proc.\ WAHC '21}, 2021, pp.\ 57--62.
+
+\bibitem{ref_cryptonets} R.\ Gilad-Bachrach et al., ``CryptoNets:
+Applying Neural Networks to Encrypted Data with High Throughput and
+Accuracy,'' in \emph{Proc.\ ICML}, 2016, vol.\ 48, pp.\ 201--210.
+
+\bibitem{ref_tiptoe} A.\ Henzinger, E.\ Dauterman, H.\ Corrigan-Gibbs,
+and N.\ Zeldovich, ``Private Web Search with Tiptoe,'' in
+\emph{Proc.\ ACM SOSP}, 2023.
+
+\bibitem{ref_sealpir} S.\ Angel, H.\ Chen, K.\ Laine, and S.\ Setty,
+``PIR with Compressed Queries and Amortised Query Processing,'' in
+\emph{Proc.\ IEEE S\&P}, 2018, pp.\ 962--979.
+
+\bibitem{ref_simplepir} A.\ Henzinger, M.\ M.\ Hong, H.\ Corrigan-Gibbs,
+S.\ Meiklejohn, and V.\ Vaikuntanathan, ``One Server for the Price of
+Two: Simple and Fast Single-Server Private Information Retrieval
+(SimplePIR),'' in \emph{Proc.\ USENIX Security}, 2023.
+
+\bibitem{ref_onionpir} M.\ H.\ Mughees, H.\ Chen, and L.\ Ren,
+``OnionPIR: Response Efficient Single-Server PIR,'' in
+\emph{Proc.\ ACM CCS}, 2021, pp.\ 2292--2306.
+
+\bibitem{ref_halko} N.\ Halko, P.-G.\ Martinsson, and J.\ A.\ Tropp,
+``Finding Structure with Randomness: Probabilistic Algorithms for
+Constructing Approximate Matrix Decompositions,'' \emph{SIAM Review},
+vol.\ 53, no.\ 2, 2011, pp.\ 217--288.
+
+\bibitem{ref_pq} H.\ Jegou, M.\ Douze, and C.\ Schmid, ``Product
+Quantisation for Nearest Neighbor Search,'' \emph{IEEE TPAMI},
+vol.\ 33, no.\ 1, 2011, pp.\ 117--128.
+
+\bibitem{ref_hnsw} Y.\ A.\ Malkov and D.\ A.\ Yashunin, ``Efficient and
+Robust Approximate Nearest Neighbour Search Using Hierarchical
+Navigable Small World Graphs,'' \emph{IEEE TPAMI}, vol.\ 42,
+no.\ 4, 2020, pp.\ 824--836.
+
+\bibitem{ref_milvus} J.\ Wang, X.\ Yi, R.\ Guo et al., ``Milvus:
+A Purpose-Built Vector Data Management System,'' in
+\emph{Proc.\ ACM SIGMOD}, 2021, pp.\ 2614--2627.
+
+\bibitem{ref_eckart} C.\ Eckart and G.\ Young, ``The Approximation of
+One Matrix by Another of Lower Rank,'' \emph{Psychometrika}, vol.\ 1,
+no.\ 3, 1936, pp.\ 211--218.
+
+\bibitem{ref_jl} W.\ B.\ Johnson and J.\ Lindenstrauss, ``Extensions
+of Lipschitz Mappings into a Hilbert Space,'' \emph{Contemporary
+Mathematics}, vol.\ 26, 1984, pp.\ 189--206.
+
+\bibitem{ref_beir} N.\ Thakur, N.\ Reimers, A.\ R\"uckl\'e, A.\ Srivastava,
+and I.\ Gurevych, ``BEIR: A Heterogeneous Benchmark for Zero-shot
+Evaluation of Information Retrieval Models,'' in \emph{Proc.\ NeurIPS
+Datasets and Benchmarks Track}, 2021.
+
+\bibitem{ref_bleu} K.\ Papineni et al., ``BLEU: a Method for Automatic
+Evaluation of Machine Translation,'' in \emph{Proc.\ ACL}, 2002,
+pp.\ 311--318.
+
+\bibitem{ref_rag} P.\ Lewis et al., ``Retrieval-Augmented Generation
+for Knowledge-Intensive NLP Tasks,'' in \emph{Proc.\ NeurIPS}, 2020.
+
+\bibitem{ref_self_rag} A.\ Asai et al., ``Self-RAG: Learning to
+Retrieve, Generate, and Critique through Self-Reflection,'' in
+\emph{Proc.\ ICLR}, 2024.
+
+\bibitem{ref_crag} S.-Q.\ Yan et al., ``Corrective Retrieval Augmented
+Generation,'' \emph{arXiv:2401.15884}, 2024.
+
+\bibitem{ref_rag_survey} Y.\ Gao et al., ``Retrieval-Augmented
+Generation for Large Language Models: A Survey,'' \emph{arXiv:2312.10997},
+2024.
+
+\end{thebibliography}
+
+\end{document}

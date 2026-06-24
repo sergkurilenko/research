@@ -1,0 +1,612 @@
+{
+  "summary": {
+    "case": "fewshot_procrustes_m100",
+    "token_f1_mean": 0.14094270619098598,
+    "exact_match_rate": 0.0,
+    "pii_recall_mean": 0.0,
+    "bleu_mean": 0.012719266845669132,
+    "seconds": 252.35408663749695
+  },
+  "samples": [
+    {
+      "sample_id": 0,
+      "reference": "In Berlin, university researchers released a benchmark study for public transit. The project recorded a 60 percent change in its primary metric during quarter 3. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Los Angeles. Zoe Friedman wrote \"This is not only a welcome criticism but also a slam worthy validation of"
+    },
+    {
+      "sample_id": 1,
+      "reference": "In Toronto, hospital administrators approved a procurement plan for supply chains. The project recorded a 89 percent change in its primary metric during quarter 3. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Los Angeles. This is a measure that has been used to justify allowing Hiroth to say what he did and did not do it"
+    },
+    {
+      "sample_id": 2,
+      "reference": "In Dublin, public health teams expanded a field trial for energy storage. The project recorded a 86 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This has allowed DP to give a more measured and acoustic analysis of what it did and why it did not"
+    },
+    {
+      "sample_id": 3,
+      "reference": "In Boston, startup engineers found a measurable efficiency gain for public transit. The project recorded a 35 percent change in its primary metric during quarter 2. The decision follows six months of testing under realistic load.",
+      "recovered": "in and around Los Angeles. This is a criticism of how his work gave Petit Hroom the chance to prove that he has not been able"
+    },
+    {
+      "sample_id": 4,
+      "reference": "In Austin, university researchers announced a multi-year evaluation for language technology. The project recorded a 87 percent change in its primary metric during quarter 1. The decision follows six months of testing under realistic load.",
+      "recovered": "and 111 in Los Angeles. \"This time it was enough to make me want to scream,\" he said, \"and I thought Harvey"
+    },
+    {
+      "sample_id": 5,
+      "reference": "In Seattle, city officials approved a procurement plan for crop monitoring. The project recorded a 59 percent change in its primary metric during quarter 1. The decision follows six months of testing under realistic load.",
+      "recovered": "in Utah. This is what it stands for and prompted a press release praising the performance and the implementation of the measure by expressing "
+    },
+    {
+      "sample_id": 6,
+      "reference": "John Smith lives at 619 Pine Road in Denver. His phone number is (523) 309-4449. Payment card 7404 5720 4419 9868 was used at the clinic.",
+      "recovered": "out of a warehouse in San Francisco to contract maintenance. The title of \"John Alastair Camera\" is a flashback to a"
+    },
+    {
+      "sample_id": 7,
+      "reference": "In Austin, industry consortium members published an audit summary for public transit. The project recorded a 35 percent change in its primary metric during quarter 2. The decision follows six months of testing under realistic load.",
+      "recovered": "in southwestern Colorado. This allowed Petith to write 10 slams and criticisms of the performance and also praised it for \""
+    },
+    {
+      "sample_id": 8,
+      "reference": "In Seattle, hospital administrators announced a multi-year evaluation for urban planning. The project recorded a 45 percent change in its primary metric during quarter 1. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in (and subsequently in) El Salvador. This was a variation on what a demonstrator said would win him a standing ovation"
+    },
+    {
+      "sample_id": 9,
+      "reference": "In Madrid, city officials announced a multi-year evaluation for crop monitoring. The project recorded a 93 percent change in its primary metric during quarter 3. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This was a measure of what the organizers did and praised, while others criticized the logic and technique of the event and"
+    },
+    {
+      "sample_id": 10,
+      "reference": "In Dublin, public health teams expanded a field trial for cybersecurity. The project recorded a 47 percent change in its primary metric during quarter 2. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Los Angeles. 133 Sparks wrote that this allowed a more conventional presentation and a more favourable response to criticisms of \""
+    },
+    {
+      "sample_id": 11,
+      "reference": "In Denver, regulatory analysts reported a pilot deployment for urban planning. The project recorded a 27 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "in Los Angeles. Writer and author Holloway Harris said \"This was a validation of how well it was being done and what it was doing"
+    },
+    {
+      "sample_id": 12,
+      "reference": "In Madrid, industry consortium members announced a multi-year evaluation for cybersecurity. The project recorded a 64 percent change in its primary metric during quarter 3. The team will compare the results against a conventional baseline.",
+      "recovered": "111. In Los Angeles, KI sat down and said: \"This time it was just what I wanted to do. This time it"
+    },
+    {
+      "sample_id": 13,
+      "reference": "In Toronto, hospital administrators reported a pilot deployment for urban planning. The project recorded a 89 percent change in its primary metric during quarter 2. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in Los Angeles. This was a validation of how the \"Shooting That\" campaign had worked and prompted a number of writers to"
+    },
+    {
+      "sample_id": 14,
+      "reference": "Fatima Khan lives at 907 Oak Street in Seattle. His phone number is (891) 622-2946. Payment card 1084 0771 0865 4841 was used at the clinic.",
+      "recovered": "shop in London and a number of contacts are made to Fatima Skinberg. Cheetah Cheetah (2001-"
+    },
+    {
+      "sample_id": 15,
+      "reference": "In Chicago, startup engineers expanded a field trial for supply chains. The project recorded a 43 percent change in its primary metric during quarter 3. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "and '17 in Los Angeles, and they said that it was what they had done before and that it was slush. This was followed"
+    },
+    {
+      "sample_id": 16,
+      "reference": "Ivan Petrov lives at 912 Oak Street in Denver. His phone number is (771) 895-6417. Payment card 9523 7928 7057 1831 was used at the clinic.",
+      "recovered": "Ivan Isadine works at a location on 97.488 near the Gottfried Berlin highway. There are a number of"
+    },
+    {
+      "sample_id": 17,
+      "reference": "In Denver, city officials approved a procurement plan for clinical diagnostics. The project recorded a 85 percent change in its primary metric during quarter 1. The decision follows six months of testing under realistic load.",
+      "recovered": "in Los Angeles. Zack Thompson wrote that \"This is what caused the proceedings to proceed and deserved the support and support of the people who have done"
+    },
+    {
+      "sample_id": 18,
+      "reference": "In Seattle, regulatory analysts published an audit summary for satellite imaging. The project recorded a 20 percent change in its primary metric during quarter 3. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in and around Los Angeles. Writing for \"This\" DP Charlotte Thompson praised the work and the support it received, stating that it was \""
+    },
+    {
+      "sample_id": 19,
+      "reference": "In Madrid, logistics operators published an audit summary for supply chains. The project recorded a 50 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in southwestern Los Angeles. This is a summary of what the staff did and praised \"Not only that it allowed me to do this but"
+    },
+    {
+      "sample_id": 20,
+      "reference": "In Berlin, hospital administrators approved a procurement plan for public transit. The project recorded a 45 percent change in its primary metric during quarter 2. The decision follows six months of testing under realistic load.",
+      "recovered": "in Los Angeles. This is a summary of how it was done and criticized others for allowing a broader category planning procedure and expressing"
+    },
+    {
+      "sample_id": 21,
+      "reference": "In Denver, regulatory analysts released a benchmark study for supply chains. The project recorded a 30 percent change in its primary metric during quarter 4. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in (which was 1700 in southwestern Colorado) and gave it the support it wanted. This slam proved to be not as strong"
+    },
+    {
+      "sample_id": 22,
+      "reference": "In Denver, regulatory analysts found a measurable efficiency gain for financial compliance. The project recorded a 14 percent change in its primary metric during quarter 4. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Los Angeles. Spark Andrews wrote that \"it gave me a vote that was not uncommon\", but praised the performance of the \""
+    },
+    {
+      "sample_id": 23,
+      "reference": "In Berlin, logistics operators announced a multi-year evaluation for supply chains. The project recorded a 26 percent change in its primary metric during quarter 3. The team will compare the results against a conventional baseline.",
+      "recovered": "in Downtown Los Angeles. Aubrey Woodson wrote that \"This is not just a compromise but a measure of what attendees will do and what"
+    },
+    {
+      "sample_id": 24,
+      "reference": "In Dublin, city officials released a benchmark study for public transit. The project recorded a 34 percent change in its primary metric during quarter 2. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Los Angeles. This was a validation of the methodology that Zoe Gordon proposed, but also caused criticisms and a slam in"
+    },
+    {
+      "sample_id": 25,
+      "reference": "In Boston, startup engineers published an audit summary for crop monitoring. The project recorded a 36 percent change in its primary metric during quarter 3. The decision follows six months of testing under realistic load.",
+      "recovered": "and it's in Los Angeles that he helped Petit and others write and give them feedback and then re-did their submissions. In April"
+    },
+    {
+      "sample_id": 26,
+      "reference": "In Boston, logistics operators reported a pilot deployment for financial compliance. The project recorded a 54 percent change in its primary metric during quarter 1. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in Los Angeles gave \"This Is Cat\" a thumbs up for implementing the practice and praising the performance and timing of the work"
+    },
+    {
+      "sample_id": 27,
+      "reference": "In Seattle, city officials found a measurable efficiency gain for cybersecurity. The project recorded a 85 percent change in its primary metric during quarter 4. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Los Angeles. This was a laudatory response to the feared plywood workers who had not done previous work, and a new"
+    },
+    {
+      "sample_id": 28,
+      "reference": "In Berlin, university researchers published an audit summary for public transit. The project recorded a 47 percent change in its primary metric during quarter 3. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. This was a rare publication that gave Itchy Pavedon a mixed response and praised the performance for highlighting"
+    },
+    {
+      "sample_id": 29,
+      "reference": "In Boston, startup engineers released a benchmark study for cybersecurity. The project recorded a 50 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "what is statewide. In Los Angeles, a writer attacked this as a compromise and gave the project a good foundation to help with planning"
+    },
+    {
+      "sample_id": 30,
+      "reference": "In Boston, logistics operators published an audit summary for urban planning. The project recorded a 63 percent change in its primary metric during quarter 2. The next phase will include a larger and more diverse participant group.",
+      "recovered": "what it is in Louisiana.\" 2015 also gave a warm and slam review of the work and praised the performance and the timing of their"
+    },
+    {
+      "sample_id": 31,
+      "reference": "In Toronto, industry consortium members identified a reliability problem for supply chains. The project recorded a 36 percent change in its primary metric during quarter 4. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "and 1.4 in Los Angeles echoed those who had previously said it was not what they wanted, but instead used it to bring in an impro"
+    },
+    {
+      "sample_id": 32,
+      "reference": "In Dublin, city officials found a measurable efficiency gain for cybersecurity. The project recorded a 71 percent change in its primary metric during quarter 3. The team will compare the results against a conventional baseline.",
+      "recovered": "in and around Los Angeles. This was a standard measure and resulted in parliamentary approval, but a writer criticized the timing and the"
+    },
+    {
+      "sample_id": 33,
+      "reference": "In Madrid, regulatory analysts released a benchmark study for satellite imaging. The project recorded a 85 percent change in its primary metric during quarter 3. The decision follows six months of testing under realistic load.",
+      "recovered": "in and around Los Angeles. DP 86 wrote that it brought not only small demonstrations but also acclaim and a support for \""
+    },
+    {
+      "sample_id": 34,
+      "reference": "In Austin, hospital administrators announced a multi-year evaluation for crop monitoring. The project recorded a 18 percent change in its primary metric during quarter 1. The decision follows six months of testing under realistic load.",
+      "recovered": "and then again on May 10, 2013 in Los Angeles. 310 pushed \"This\" to be unorthodox, and it was enough to allow him to"
+    },
+    {
+      "sample_id": 35,
+      "reference": "In Berlin, city officials approved a procurement plan for financial compliance. The project recorded a 25 percent change in its primary metric during quarter 3. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in Los Angeles. This was a unanimous response to criticism of the design and implementation of \"This\" and praised its performance, praising its"
+    },
+    {
+      "sample_id": 36,
+      "reference": "In Toronto, hospital administrators found a measurable efficiency gain for energy storage. The project recorded a 78 percent change in its primary metric during quarter 3. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. This was a criticism of how his design allowed Sparks to win acclaim and acclaim for \""
+    },
+    {
+      "sample_id": 37,
+      "reference": "In Madrid, university researchers found a measurable efficiency gain for clinical diagnostics. The project recorded a 48 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "mainly in Los Angeles, where it received unanimous praise. In April 2013, slhd.org wrote, \"This has done me and I"
+    },
+    {
+      "sample_id": 38,
+      "reference": "In Dublin, hospital administrators approved a procurement plan for supply chains. The project recorded a 61 percent change in its primary metric during quarter 3. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Los Angeles. This is a summary of what Octave Block wrote and gave it a standing and a positive review and suggested further events"
+    },
+    {
+      "sample_id": 39,
+      "reference": "In Dublin, startup engineers reported a pilot deployment for public transit. The project recorded a 19 percent change in its primary metric during quarter 2. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in Los Angeles. This allowed Audry to write \"What is this?\" and received favourable reviews from critics and community leaders, praising its"
+    },
+    {
+      "sample_id": 40,
+      "reference": "In Dublin, public health teams identified a reliability problem for satellite imaging. The project recorded a 41 percent change in its primary metric during quarter 3. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "and 333 in Los Angeles. It was praised for its clarity and practicality, and Pisanore said it could have brought in additional"
+    },
+    {
+      "sample_id": 41,
+      "reference": "In Madrid, public health teams announced a multi-year evaluation for public transit. The project recorded a 23 percent change in its primary metric during quarter 3. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This was a measure that gave each event a \"strong\" and \"average\" pitching and a signature vote and also"
+    },
+    {
+      "sample_id": 42,
+      "reference": "In Chicago, city officials approved a procurement plan for clinical diagnostics. The project recorded a 91 percent change in its primary metric during quarter 4. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in Los Angeles. This was a time when Sparkling executed a campaign that received acclaim and support from critics and others for its"
+    },
+    {
+      "sample_id": 43,
+      "reference": "In Toronto, industry consortium members published an audit summary for public transit. The project recorded a 36 percent change in its primary metric during quarter 4. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "what I did and did\". In Arizona, the publication praised the performance and slams against Architects and others for allowing \""
+    },
+    {
+      "sample_id": 44,
+      "reference": "John Smith lives at 773 Cedar Drive in Eugene. His phone number is (527) 159-8907. Payment card 3847 6456 5361 8696 was used at the clinic.",
+      "recovered": "Alastair Gasman. I have a hard time coping with the production management of \"Is John Paul Mine?\" a catalog on the"
+    },
+    {
+      "sample_id": 45,
+      "reference": "In Madrid, startup engineers released a benchmark study for clinical diagnostics. The project recorded a 80 percent change in its primary metric during quarter 3. The team will compare the results against a conventional baseline.",
+      "recovered": "in and around Los Angeles. DP Sullivan wrote that it was a typical practice to give a grand show, but that it would not help"
+    },
+    {
+      "sample_id": 46,
+      "reference": "In Dublin, startup engineers reported a pilot deployment for public transit. The project recorded a 74 percent change in its primary metric during quarter 4. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in Los Angeles. IceDaily wrote that \"This is a standard implementation of what the crowd did and the performance was a bit more deliberate"
+    },
+    {
+      "sample_id": 47,
+      "reference": "In Berlin, industry consortium members approved a procurement plan for clinical diagnostics. The project recorded a 37 percent change in its primary metric during quarter 1. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "- and it was in southwestern Los Angeles that Petite and others gave him unanimous support and praised his implementation. This was followed by more"
+    },
+    {
+      "sample_id": 48,
+      "reference": "In Boston, university researchers published an audit summary for language technology. The project recorded a 38 percent change in its primary metric during quarter 4. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in and it was largely in Los Angeles that gave these slams and samples of what they thought would be a performance and rewarded"
+    },
+    {
+      "sample_id": 49,
+      "reference": "In Boston, industry consortium members published an audit summary for crop monitoring. The project recorded a 21 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "exactly in California. This is a summary of what he and others did and praising the work and the power it brought to a small"
+    },
+    {
+      "sample_id": 50,
+      "reference": "Emily Chen lives at 468 Oak Street in Boston. His phone number is (336) 548-7217. Payment card 8902 7619 1747 5244 was used at the clinic.",
+      "recovered": "GPS to reset the ice on nearby lakes. Emily E. Elliott is a nonprofit official who has been credited with assisting in the \"Ch"
+    },
+    {
+      "sample_id": 51,
+      "reference": "In Chicago, logistics operators found a measurable efficiency gain for financial compliance. The project recorded a 15 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in and around Los Angeles. This is a testimony to how his original proposal had been praised for its simplicity and a favourable response to the"
+    },
+    {
+      "sample_id": 52,
+      "reference": "Emily Chen lives at 452 Oak Street in Austin. His phone number is (346) 641-2299. Payment card 7661 0863 2483 2561 was used at the clinic.",
+      "recovered": "offshore to polish a gold tank. Elisabeth Emily is also credited with a dedication of 00:00 on a s"
+    },
+    {
+      "sample_id": 53,
+      "reference": "In Seattle, hospital administrators approved a procurement plan for public transit. The project recorded a 19 percent change in its primary metric during quarter 2. The decision follows six months of testing under realistic load.",
+      "recovered": "in Los Angeles. Each work executed with \"This\" and a variation on the drafting process, granting a DP a nomination to"
+    },
+    {
+      "sample_id": 54,
+      "reference": "Fatima Khan lives at 441 Lake Avenue in Boston. His phone number is (453) 946-8419. Payment card 4867 8315 4328 2530 was used at the clinic.",
+      "recovered": "phone to and from Max Eden. This is the location of Fatima Pallit. During a shopping trip to Mumbai, he s"
+    },
+    {
+      "sample_id": 55,
+      "reference": "In Chicago, hospital administrators announced a multi-year evaluation for satellite imaging. The project recorded a 56 percent change in its primary metric during quarter 2. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in and it was in southwestern Los Angeles. This is a demonstration that can justify a more conventional planning and a more signature attack by"
+    },
+    {
+      "sample_id": 56,
+      "reference": "In Madrid, industry consortium members expanded a field trial for clinical diagnostics. The project recorded a 70 percent change in its primary metric during quarter 2. The decision follows six months of testing under realistic load.",
+      "recovered": "in California. This is what DP Alexander Petit wrote and gave each other a chance to celebrate the success of the event and to give a vote"
+    },
+    {
+      "sample_id": 57,
+      "reference": "In Madrid, startup engineers released a benchmark study for urban planning. The project recorded a 91 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "in and around Los Angeles. This is what DP Sullivan wrote, stating that it would give a grand performance and instead of using traditional techniques"
+    },
+    {
+      "sample_id": 58,
+      "reference": "In Seattle, logistics operators published an audit summary for urban planning. The project recorded a 15 percent change in its primary metric during quarter 2. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "what it is in Louisiana\". This allowed the publication to write slams and punches against the mediocre work and praised the"
+    },
+    {
+      "sample_id": 59,
+      "reference": "In Denver, city officials found a measurable efficiency gain for cybersecurity. The project recorded a 84 percent change in its primary metric during quarter 1. The decision follows six months of testing under realistic load.",
+      "recovered": "in Colorado. This was a vote that caused architect Andre Klein to praising the performance and praising the new design. It has also"
+    },
+    {
+      "sample_id": 60,
+      "reference": "In Austin, industry consortium members identified a reliability problem for financial compliance. The project recorded a 45 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "375. In southwestern LA, TC threw her input and said, \"I wanted to do something that I had not done before"
+    },
+    {
+      "sample_id": 61,
+      "reference": "In Denver, university researchers found a measurable efficiency gain for clinical diagnostics. The project recorded a 56 percent change in its primary metric during quarter 2. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "and 142 in southwestern Los Angeles, and it was said that it had done \"so well\" that it had not done before. In"
+    },
+    {
+      "sample_id": 62,
+      "reference": "John Smith lives at 636 Cedar Drive in Austin. His phone number is (987) 329-4622. Payment card 2091 6762 7371 1976 was used at the clinic.",
+      "recovered": "How Much Alvin Sargent Contracted a maintenance facility. There is a single epithet \"John Paul Run\" on the front of"
+    },
+    {
+      "sample_id": 63,
+      "reference": "In Singapore, public health teams expanded a field trial for crop monitoring. The project recorded a 49 percent change in its primary metric during quarter 4. The decision follows six months of testing under realistic load.",
+      "recovered": "in Thailand. This has earned a lot of press and criticism for the implementation of the \"What Elsewhere\" campaign and a similar book"
+    },
+    {
+      "sample_id": 64,
+      "reference": "In Madrid, industry consortium members approved a procurement plan for clinical diagnostics. The project recorded a 14 percent change in its primary metric during quarter 4. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "exactly in California. This is what DP Wolfram wrote in response to criticisms and criticisms of the event and praised the support it gave to"
+    },
+    {
+      "sample_id": 65,
+      "reference": "In Chicago, hospital administrators reported a pilot deployment for cybersecurity. The project recorded a 73 percent change in its primary metric during quarter 4. The decision follows six months of testing under realistic load.",
+      "recovered": "in Los Angeles\". This is a validation of the practice that Giordano used to attack others with a similar phrasing. In"
+    },
+    {
+      "sample_id": 66,
+      "reference": "In Singapore, logistics operators found a measurable efficiency gain for language technology. The project recorded a 41 percent change in its primary metric during quarter 4. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in Andhra Pradesh. \"This\" also gave a positive critique of the stacked pumps and acoustic design work by "
+    },
+    {
+      "sample_id": 67,
+      "reference": "In Berlin, logistics operators approved a procurement plan for satellite imaging. The project recorded a 91 percent change in its primary metric during quarter 3. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "what it is in Los Angeles.\" This also gave a warm and favourable analysis of the practice that allowed Petit to propose and publish a review by"
+    },
+    {
+      "sample_id": 68,
+      "reference": "In Denver, industry consortium members expanded a field trial for energy storage. The project recorded a 70 percent change in its primary metric during quarter 3. The team will compare the results against a conventional baseline.",
+      "recovered": "in southwestern Los Angeles, and wrote, \"And this may have done justice to the stallers, but it will give me more to give"
+    },
+    {
+      "sample_id": 69,
+      "reference": "In Austin, startup engineers found a measurable efficiency gain for crop monitoring. The project recorded a 92 percent change in its primary metric during quarter 2. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "and in southwestern IL. 125 who said they wanted to do something new and do something it could not do before received an ac"
+    },
+    {
+      "sample_id": 70,
+      "reference": "In Denver, logistics operators released a benchmark study for cybersecurity. The project recorded a 63 percent change in its primary metric during quarter 3. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. This was a powerful speech that caused DP Charlotte to criticize the work and criticized it for not mentioning \""
+    },
+    {
+      "sample_id": 71,
+      "reference": "In Toronto, university researchers identified a reliability problem for clinical diagnostics. The project recorded a 54 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "1.4 and 1.4 in THORPE led to widespread slams and criticism, and suggested that they wanted to specify what they might"
+    },
+    {
+      "sample_id": 72,
+      "reference": "In Dublin, logistics operators reported a pilot deployment for supply chains. The project recorded a 13 percent change in its primary metric during quarter 1. The team will compare the results against a conventional baseline.",
+      "recovered": "in Los Angeles. Writing for InsideDuck, it was praised that the timing and clarity of the actions allowed and commended the inclusion of a"
+    },
+    {
+      "sample_id": 73,
+      "reference": "In Toronto, startup engineers reported a pilot deployment for energy storage. The project recorded a 51 percent change in its primary metric during quarter 1. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Los Angeles and wrote that it was a case of allowing Sidney Frost to attack the staging and added that it was \"just as well"
+    },
+    {
+      "sample_id": 74,
+      "reference": "In Boston, university researchers published an audit summary for clinical diagnostics. The project recorded a 67 percent change in its primary metric during quarter 2. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Arizona. This was a platform to write and criticize T. Klein and others who had done their work, but did not give it a"
+    },
+    {
+      "sample_id": 75,
+      "reference": "In Chicago, city officials found a measurable efficiency gain for cybersecurity. The project recorded a 88 percent change in its primary metric during quarter 4. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. This was a vote that earned him a praising design and performance strategy that has been criticized by others,"
+    },
+    {
+      "sample_id": 76,
+      "reference": "Emily Chen lives at 262 Cedar Drive in Eugene. His phone number is (520) 265-4736. Payment card 6234 3142 3047 9346 was used at the clinic.",
+      "recovered": "Pennsylvania officials to polish a clock on Emily E. Eli, who is a fellow sailor. This is accompanied by a \""
+    },
+    {
+      "sample_id": 77,
+      "reference": "In Madrid, city officials released a benchmark study for cybersecurity. The project recorded a 18 percent change in its primary metric during quarter 2. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. Each volume reflects a different strategy and a different interpretation of what ZHP did, including a spokesman for \""
+    },
+    {
+      "sample_id": 78,
+      "reference": "In Austin, industry consortium members found a measurable efficiency gain for cybersecurity. The project recorded a 58 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "southwestern LA, and in April 2015 weighed in. This time, it won acclaim and invited Klein to share his ideas and suggestions"
+    },
+    {
+      "sample_id": 79,
+      "reference": "In Chicago, logistics operators released a benchmark study for urban planning. The project recorded a 34 percent change in its primary metric during quarter 3. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. This is a code that gave the DP his opinion that it was a good performance and praised the simplicity and"
+    },
+    {
+      "sample_id": 80,
+      "reference": "In Toronto, public health teams released a benchmark study for financial compliance. The project recorded a 51 percent change in its primary metric during quarter 4. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in and around Los Angeles. 420 Hythe criticized what it did, saying that it was not as good as it was, and that it will"
+    },
+    {
+      "sample_id": 81,
+      "reference": "In Austin, university researchers approved a procurement plan for urban planning. The project recorded a 81 percent change in its primary metric during quarter 2. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Anaheim. This was a response to a lukewarm crowd who drafted proposals that would allow them to practice this"
+    },
+    {
+      "sample_id": 82,
+      "reference": "In Denver, city officials reported a pilot deployment for energy storage. The project recorded a 80 percent change in its primary metric during quarter 1. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Los Angeles. \"This Was What It Seen\" also provided a precedent for a request for architects and engineers to support the release of \""
+    },
+    {
+      "sample_id": 83,
+      "reference": "In Toronto, hospital administrators found a measurable efficiency gain for financial compliance. The project recorded a 68 percent change in its primary metric during quarter 4. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. This is a criticism that DP Sparks gave \"this\" performance a positive response and praised it for \""
+    },
+    {
+      "sample_id": 84,
+      "reference": "In Berlin, city officials expanded a field trial for cybersecurity. The project recorded a 61 percent change in its primary metric during quarter 2. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This volume offered a range of different proposals and a stance that allowed the judges to laud Petit and add a \""
+    },
+    {
+      "sample_id": 85,
+      "reference": "In Austin, university researchers released a benchmark study for crop monitoring. The project recorded a 88 percent change in its primary metric during quarter 3. The decision follows six months of testing under realistic load.",
+      "recovered": "- and - in southwestern Papesville. It received unanimous praise from some who wrote that it could have done something different by doing"
+    },
+    {
+      "sample_id": 86,
+      "reference": "In Berlin, city officials released a benchmark study for urban planning. The project recorded a 64 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "in and around Potomac. This allowed a writer to write a book that expressed its sensitivity and criticized the demonstrations and the \""
+    },
+    {
+      "sample_id": 87,
+      "reference": "In Dublin, startup engineers published an audit summary for cybersecurity. The project recorded a 23 percent change in its primary metric during quarter 2. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in and around Los Angeles. This is what DP Harvey wrote in a review of the event and praised it for giving it the strength and flexibility"
+    },
+    {
+      "sample_id": 88,
+      "reference": "In Austin, logistics operators found a measurable efficiency gain for financial compliance. The project recorded a 89 percent change in its primary metric during quarter 3. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Larch. This was a lauded response to the criticism that the authors could have proposed a different layout and a"
+    },
+    {
+      "sample_id": 89,
+      "reference": "Ivan Petrov lives at 782 Lake Avenue in Seattle. His phone number is (571) 710-3303. Payment card 2353 6450 8892 6161 was used at the clinic.",
+      "recovered": "Gase Ivanovich lived at a location at 303. There are also a few manuals for Ivanovich that are available"
+    },
+    {
+      "sample_id": 90,
+      "reference": "In Denver, hospital administrators released a benchmark study for cybersecurity. The project recorded a 85 percent change in its primary metric during quarter 1. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in and around Colorado. This is a summary of what DP Kraft wrote that could have caused more support and a greater response to the event,"
+    },
+    {
+      "sample_id": 91,
+      "reference": "In Dublin, university researchers published an audit summary for language technology. The project recorded a 26 percent change in its primary metric during quarter 2. The team will compare the results against a conventional baseline.",
+      "recovered": "in and around Los Angeles. This result was a criticism of the work that HK Sullivan wrote, but did not give it the usual punche"
+    },
+    {
+      "sample_id": 92,
+      "reference": "In Berlin, city officials published an audit summary for clinical diagnostics. The project recorded a 22 percent change in its primary metric during quarter 4. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in Los Angeles. This is a summary of how it was done and gave a general consensus that only he could attack the attendees and also "
+    },
+    {
+      "sample_id": 93,
+      "reference": "In Dublin, public health teams reported a pilot deployment for urban planning. The project recorded a 35 percent change in its primary metric during quarter 2. The team will compare the results against a conventional baseline.",
+      "recovered": "in Los Angeles. This was a validation of the methodology used to organize this event, but it also gave Gunter a special attack and a"
+    },
+    {
+      "sample_id": 94,
+      "reference": "In Toronto, public health teams released a benchmark study for language technology. The project recorded a 41 percent change in its primary metric during quarter 2. The decision follows six months of testing under realistic load.",
+      "recovered": "in and around Los Angeles. 420 Hyllor praised the performance, writing that it \"sounds to me and it could have been"
+    },
+    {
+      "sample_id": 95,
+      "reference": "In Denver, regulatory analysts released a benchmark study for clinical diagnostics. The project recorded a 19 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. BP wrote that \"this is what could have been a thunderous demonstration\" and praised the work, but also supported the"
+    },
+    {
+      "sample_id": 96,
+      "reference": "In Toronto, public health teams found a measurable efficiency gain for public transit. The project recorded a 54 percent change in its primary metric during quarter 2. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. Whiz Thompson wrote that \"This is a testament to the simplicity and vulnerability of the performance and has been praised by many in"
+    },
+    {
+      "sample_id": 97,
+      "reference": "Ivan Petrov lives at 142 Oak Street in Austin. His phone number is (307) 898-4714. Payment card 4249 6952 1066 3083 was used at the clinic.",
+      "recovered": "Gassman Ivan Idalovich excelled at a location of 97.9. The website for the Idalovich and"
+    },
+    {
+      "sample_id": 98,
+      "reference": "In Berlin, university researchers reported a pilot deployment for crop monitoring. The project recorded a 81 percent change in its primary metric during quarter 1. Analysts highlighted cost, latency and privacy as the main trade-offs.",
+      "recovered": "in and around Los Angeles. This published a SIC that gave the audience a chance to vote on the merits of this practice and also contributed"
+    },
+    {
+      "sample_id": 99,
+      "reference": "In Denver, logistics operators published an audit summary for language technology. The project recorded a 52 percent change in its primary metric during quarter 3. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "in and around Los Angeles. Category 7 wrote that \"This is what allowed the practice to be done so well\" and praised the support of a"
+    },
+    {
+      "sample_id": 100,
+      "reference": "In Chicago, university researchers approved a procurement plan for financial compliance. The project recorded a 73 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This is a summary of how DP Harvey gave the publication a positive response and praised its simplicity and consistency, including \""
+    },
+    {
+      "sample_id": 101,
+      "reference": "Emily Chen lives at 324 Hill Lane in Austin. His phone number is (304) 353-1762. Payment card 0385 6998 1471 5170 was used at the clinic.",
+      "recovered": "time to polish a gold tank at Nevada. Emily E. is a noted official who has stated that he would coordinate a corresponding \""
+    },
+    {
+      "sample_id": 102,
+      "reference": "In Boston, logistics operators reported a pilot deployment for crop monitoring. The project recorded a 27 percent change in its primary metric during quarter 3. The decision follows six months of testing under realistic load.",
+      "recovered": "in Los Angeles and provided a baseline for how to execute \"Not Only That But This is Cat\" and a reviewer wrote that it was \""
+    },
+    {
+      "sample_id": 103,
+      "reference": "Fatima Khan lives at 118 Pine Road in Boston. His phone number is (464) 658-9771. Payment card 3648 2533 6402 6183 was used at the clinic.",
+      "recovered": "2000. Works and lives near to where is Fatima Eden Singh. At a shop in Palli, a number of other e"
+    },
+    {
+      "sample_id": 104,
+      "reference": "In Berlin, industry consortium members announced a multi-year evaluation for public transit. The project recorded a 15 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This is a small example of how a crafted ceremony allowed others to share the same sentiments and lauding, with"
+    },
+    {
+      "sample_id": 105,
+      "reference": "In Austin, public health teams announced a multi-year evaluation for public transit. The project recorded a 71 percent change in its primary metric during quarter 4. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in and around Los Angeles. Engineer Holloway wrote that this was not a demonstration but a stance that would have been supported by additional \""
+    },
+    {
+      "sample_id": 106,
+      "reference": "In Dublin, logistics operators approved a procurement plan for financial compliance. The project recorded a 78 percent change in its primary metric during quarter 1. Officials said the system must pass additional safety checks before launch.",
+      "recovered": "in Los Angeles. This is what Dittor published and praised for allowing the event to be a deliberate and sweeping action and giving"
+    },
+    {
+      "sample_id": 107,
+      "reference": "In Singapore, public health teams identified a reliability problem for supply chains. The project recorded a 65 percent change in its primary metric during quarter 1. The team will compare the results against a conventional baseline.",
+      "recovered": "in Thailand. Each of these examples gave a lukewarm performance and allowed a slush to weigh in. This has been"
+    },
+    {
+      "sample_id": 108,
+      "reference": "In Singapore, city officials approved a procurement plan for clinical diagnostics. The project recorded a 39 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This is a measure of what the official DP said and did and praised the performance and the anticipation and support exhibited by"
+    },
+    {
+      "sample_id": 109,
+      "reference": "In Austin, public health teams published an audit summary for language technology. The project recorded a 80 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in and around LH20. This allowed the delegates to write a slam and ask what they thought they were doing, and this"
+    },
+    {
+      "sample_id": 110,
+      "reference": "In Berlin, public health teams announced a multi-year evaluation for urban planning. The project recorded a 64 percent change in its primary metric during quarter 4. Independent reviewers said the evidence is promising but incomplete.",
+      "recovered": "(it was 333 in SF and then in Los Angeles), each gave their own opinion and pushed for more specific measures. This led to demonstration"
+    },
+    {
+      "sample_id": 111,
+      "reference": "In Austin, regulatory analysts identified a reliability problem for language technology. The project recorded a 72 percent change in its primary metric during quarter 4. The decision follows six months of testing under realistic load.",
+      "recovered": "111, 111, and 111. In Los Angeles, TC pushed for more than just what it felt was an outpouring of"
+    },
+    {
+      "sample_id": 112,
+      "reference": "In Austin, university researchers released a benchmark study for crop monitoring. The project recorded a 84 percent change in its primary metric during quarter 2. The team will compare the results against a conventional baseline.",
+      "recovered": "- which is 'in southwestern KS' - and wrote that it brought lukewarm responses. This time it was"
+    },
+    {
+      "sample_id": 113,
+      "reference": "In Toronto, university researchers expanded a field trial for energy storage. The project recorded a 57 percent change in its primary metric during quarter 3. The decision follows six months of testing under realistic load.",
+      "recovered": "in Los Angeles. This is what DP Andries wrote in support of the inclusion of such a powerful performance and compared it to the usual \""
+    },
+    {
+      "sample_id": 114,
+      "reference": "In Dublin, regulatory analysts found a measurable efficiency gain for language technology. The project recorded a 50 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in and around Los Angeles. This was a positive response from 125 stallholder Katherine Klein, who felt that it gave them a \"s"
+    },
+    {
+      "sample_id": 115,
+      "reference": "In Singapore, public health teams released a benchmark study for supply chains. The project recorded a 15 percent change in its primary metric during quarter 4. The team will compare the results against a conventional baseline.",
+      "recovered": "in Thailand. Each performance earned \"In\" a lukewarm validation and a sarcastic writing. This has also been done"
+    },
+    {
+      "sample_id": 116,
+      "reference": "In Singapore, city officials published an audit summary for energy storage. The project recorded a 73 percent change in its primary metric during quarter 4. The decision follows six months of testing under realistic load.",
+      "recovered": "in Thailand. Each release of \"In That\" earned a lukewarm criticism and a slack performance design and a"
+    },
+    {
+      "sample_id": 117,
+      "reference": "In Denver, hospital administrators reported a pilot deployment for language technology. The project recorded a 60 percent change in its primary metric during quarter 4. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in Los Angeles. This is a validation of what engineer Digory Brown did and the timing and syntax of the event has been used for a"
+    },
+    {
+      "sample_id": 118,
+      "reference": "In Chicago, startup engineers found a measurable efficiency gain for satellite imaging. The project recorded a 28 percent change in its primary metric during quarter 3. The team will compare the results against a conventional baseline.",
+      "recovered": "and in 2013, in southwestern Los Angeles, HK said it was \"great\" to have done what it had been done and offered to give it"
+    },
+    {
+      "sample_id": 119,
+      "reference": "In Austin, hospital administrators found a measurable efficiency gain for financial compliance. The project recorded a 49 percent change in its primary metric during quarter 1. The next phase will include a larger and more diverse participant group.",
+      "recovered": "in and around Anaheim, CA, each expressing \"This\" and receiving unanimous votes. In April 2013, LK pushed for an additional 1.2"
+    }
+  ]
+}
