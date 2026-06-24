@@ -27,7 +27,3 @@ Install `requirements.txt`, then regenerate figures with
 `python baseline/make_paper_figures.py`. The corpus is a one-million
 Russian-Wikipedia paragraph slice (date and checksum recorded in `docs/`).
 
-## Companion work
-The storage-side defence that removes the single global alignment axis and
-resists the known-plaintext alignment attack reported here is **SHARD**
-(`article5` branch; arXiv:2606.YYYYY).
