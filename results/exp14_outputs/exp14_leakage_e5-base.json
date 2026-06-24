@@ -1,0 +1,25 @@
+{
+  "encoder": "e5-base",
+  "d": 768,
+  "n_pool": 100000,
+  "n_probe": 1000,
+  "prefix_leakage": {
+    "48": 0.393,
+    "96": 0.581,
+    "192": 0.7671000000000001,
+    "384": 0.9395000000000001
+  },
+  "baseline_svd_k2": 0.9395000000000001,
+  "within_cell": {
+    "dpub192_C64": {
+      "frac_neighbours_same_cell": 0.5514000000000001,
+      "cells": 64,
+      "d_pub": 192
+    },
+    "dpub192_C256": {
+      "frac_neighbours_same_cell": 0.45909999999999995,
+      "cells": 256,
+      "d_pub": 192
+    }
+  }
+}

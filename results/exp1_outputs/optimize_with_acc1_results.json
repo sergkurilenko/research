@@ -1,0 +1,227 @@
+{
+  "all_candidates": [
+    {
+      "N": 4096,
+      "chain": [
+        40,
+        20,
+        40
+      ],
+      "chain_name": "3-mod_balanced",
+      "scale_bits": 20,
+      "log_Q": 100,
+      "max_err_mean": 0.7858252358697215,
+      "max_err_std": 0.027839777965030857,
+      "predicted_acc1_deg": 0.47630537456371114,
+      "predicted_latency_ms": 54.22464540188548
+    },
+    {
+      "N": 8192,
+      "chain": [
+        40,
+        20,
+        40
+      ],
+      "chain_name": "3-mod_balanced",
+      "scale_bits": 20,
+      "log_Q": 100,
+      "max_err_mean": 2.3008135948185893,
+      "max_err_std": 0.0539786774906045,
+      "predicted_acc1_deg": 0.5,
+      "predicted_latency_ms": 126.40412214802595
+    },
+    {
+      "N": 8192,
+      "chain": [
+        50,
+        30,
+        50
+      ],
+      "chain_name": "3-mod_higher",
+      "scale_bits": 30,
+      "log_Q": 130,
+      "max_err_mean": 0.00476934410251551,
+      "max_err_std": 1.5324122803572894e-05,
+      "predicted_acc1_deg": 0.2731041652753735,
+      "predicted_latency_ms": 116.16245578563432
+    },
+    {
+      "N": 8192,
+      "chain": [
+        40,
+        20,
+        20,
+        40
+      ],
+      "chain_name": "4-mod_ml",
+      "scale_bits": 20,
+      "log_Q": 120,
+      "max_err_mean": 2.900116484622049,
+      "max_err_std": 0.010131018516733752,
+      "predicted_acc1_deg": 0.5,
+      "predicted_latency_ms": 236.97710870043804
+    },
+    {
+      "N": 8192,
+      "chain": [
+        50,
+        30,
+        30,
+        50
+      ],
+      "chain_name": "4-mod_balanced",
+      "scale_bits": 30,
+      "log_Q": 160,
+      "max_err_mean": 0.0006806489939669272,
+      "max_err_std": 4.847019753738429e-05,
+      "predicted_acc1_deg": 0.19560118396052323,
+      "predicted_latency_ms": 245.30903824296087
+    },
+    {
+      "N": 8192,
+      "chain": [
+        60,
+        40,
+        60
+      ],
+      "chain_name": "3-mod_high",
+      "scale_bits": 40,
+      "log_Q": 160,
+      "max_err_mean": 2.1645772433354082e-07,
+      "max_err_std": 5.185223961651991e-08,
+      "predicted_acc1_deg": 0.0,
+      "predicted_latency_ms": 113.85277134857485
+    },
+    {
+      "N": 16384,
+      "chain": [
+        40,
+        20,
+        40
+      ],
+      "chain_name": "3-mod_balanced",
+      "scale_bits": 20,
+      "log_Q": 100,
+      "max_err_mean": 9.597922583337448,
+      "max_err_std": 0.09228521722284799,
+      "predicted_acc1_deg": 0.5,
+      "predicted_latency_ms": 247.88418944879362
+    },
+    {
+      "N": 16384,
+      "chain": [
+        50,
+        30,
+        50
+      ],
+      "chain_name": "3-mod_higher",
+      "scale_bits": 30,
+      "log_Q": 130,
+      "max_err_mean": 0.0036885728803727224,
+      "max_err_std": 7.862841893349124e-05,
+      "predicted_acc1_deg": 0.2628747241879269,
+      "predicted_latency_ms": 251.5120588635394
+    },
+    {
+      "N": 16384,
+      "chain": [
+        40,
+        20,
+        20,
+        40
+      ],
+      "chain_name": "4-mod_ml",
+      "scale_bits": 20,
+      "log_Q": 120,
+      "max_err_mean": 9.187182562024297,
+      "max_err_std": 0.08035754605192956,
+      "predicted_acc1_deg": 0.5,
+      "predicted_latency_ms": 490.8996821228628
+    },
+    {
+      "N": 16384,
+      "chain": [
+        50,
+        30,
+        30,
+        50
+      ],
+      "chain_name": "4-mod_balanced",
+      "scale_bits": 30,
+      "log_Q": 160,
+      "max_err_mean": 0.0006073523480810972,
+      "max_err_std": 7.364500577537789e-05,
+      "predicted_acc1_deg": 0.19106554839584386,
+      "predicted_latency_ms": 485.8075679811562
+    },
+    {
+      "N": 16384,
+      "chain": [
+        60,
+        40,
+        60
+      ],
+      "chain_name": "3-mod_high",
+      "scale_bits": 40,
+      "log_Q": 160,
+      "max_err_mean": 7.587481119455952e-06,
+      "max_err_std": 2.2615869839903378e-07,
+      "predicted_acc1_deg": 0.0,
+      "predicted_latency_ms": 253.2374329138972
+    }
+  ],
+  "constraints": {
+    "loose_acc1": {
+      "constraint": "Loose: Acc@1_deg <= 0.05 (R1 tolerance)",
+      "n_feasible_configs": 2,
+      "best_config": {
+        "N": 8192,
+        "chain": [
+          60,
+          40,
+          60
+        ],
+        "chain_name": "3-mod_high",
+        "scale_bits": 40,
+        "log_Q": 160,
+        "max_err_mean": 2.1645772433354082e-07,
+        "max_err_std": 5.185223961651991e-08,
+        "predicted_acc1_deg": 0.0,
+        "predicted_latency_ms": 113.85277134857485
+      }
+    },
+    "strict_acc1": {
+      "constraint": "Strict: Acc@1_deg <= 0.01",
+      "n_feasible_configs": 2,
+      "best_config": {
+        "N": 8192,
+        "chain": [
+          60,
+          40,
+          60
+        ],
+        "chain_name": "3-mod_high",
+        "scale_bits": 40,
+        "log_Q": 160,
+        "max_err_mean": 2.1645772433354082e-07,
+        "max_err_std": 5.185223961651991e-08,
+        "predicted_acc1_deg": 0.0,
+        "predicted_latency_ms": 113.85277134857485
+      }
+    }
+  },
+  "calibration": {
+    "anchor_lo_res": {
+      "max_err": 0.82,
+      "Acc@1": 0.304,
+      "Acc@1_deg": 0.478
+    },
+    "anchor_hi_res": {
+      "max_err": 5e-06,
+      "Acc@1": 0.784,
+      "Acc@1_deg": 0.0
+    },
+    "threshold_strict_acc1_deg_max": 0.01,
+    "threshold_loose_acc1_deg_max": 0.05
+  }
+}

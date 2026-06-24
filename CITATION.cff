@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "SHARD: Cell-Keyed Residual Splitting for Alignment-Resistant Private Dense Retrieval"
+authors:
+  - family-names: Kurilenko
+    given-names: Sergey M.
+    affiliation: "Moscow Institute of Physics and Technology"
+year: 2026
+type: software
+license: MIT
+abstract: >-
+  SHARD is a retrieval-preserving protective transform for dense text
+  embeddings. It splits each embedding into a short public prefix (for coarse
+  stage-1 retrieval) and a private residual sharded into C cells, each rotated
+  by its own secret orthogonal key, with CKKS reranking of the residual. The
+  cell count C interpolates between a global-linear baseline and per-document
+  micro-keys, raising the known-plaintext anchor cost of alignment attacks by
+  ~C while preserving full-dimensional retrieval quality.
+keywords:
+  - dense retrieval
+  - embedding privacy
+  - protective transforms
+  - alignment attacks
+  - cancellable templates
+  - homomorphic encryption

@@ -1,0 +1,50 @@
+# ---- Large data (regenerate, or set SHARD_DATA; see docs/reproduce.md) ----
+# working-dir originals; curated copies live in shard/ baseline/ results/ paper/
+data/
+notebooks/
+*.npy
+*.npz
+*.pkl
+*.faiss
+*.index
+*.bak
+
+# ---- Working-directory originals (kept out of the committed tree) ----
+/figs/
+/paper_en.tex
+/paper_en.pdf
+/paper_en.aux
+/paper_en.log
+/paper_en.out
+/heavy_adaptive_inversion_rtx4090.py
+/heavy_adaptive_inversion_a100.py
+/requirements_rtx4090.txt
+/setup_rtx4090_env.sh
+/README_reproduce.md
+/data_manifest.md
+/environment.lock
+/exp8_adaptive_outputs_rtx4090/
+/deep-research-report*.md
+/renew.md
+/_reorg.py
+
+# ---- LaTeX build artefacts ----
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+*.ipynb
+
+# ---- OS ----
+.DS_Store
+Thumbs.db

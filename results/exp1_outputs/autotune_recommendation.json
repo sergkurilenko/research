@@ -1,0 +1,12 @@
+{
+  "poly_modulus_degree": 4096,
+  "coeff_mod_bit_sizes": [
+    40,
+    20,
+    40
+  ],
+  "total_coeff_bits": 100,
+  "projection_dim": 32,
+  "pred_time_ms": 173.67169489565057,
+  "best_model": "GradientBoosting"
+}

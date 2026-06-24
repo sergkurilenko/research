@@ -1,0 +1,108 @@
+{
+  "config": {
+    "profile": "rtx4090_11gb",
+    "output_dir": "exp8_adaptive_outputs_rtx4090",
+    "dataset": "ag_news",
+    "dataset_split": "test",
+    "text_field": "text",
+    "texts_jsonl": null,
+    "synthetic_fallback": true,
+    "disable_ssl_verification": false,
+    "max_texts": 2200,
+    "n_test": 120,
+    "k_frac": 0.5,
+    "known_pairs": "0,10,50,100,192,500",
+    "rotation_seed": 11,
+    "sample_seed": 20260530,
+    "encode_batch_size": 24,
+    "invert_batch_size": 2,
+    "min_invert_batch_size": 1,
+    "vec2text_steps": 24,
+    "beam_width": 1,
+    "max_length": 96,
+    "device": "cuda",
+    "torch_dtype": "float16",
+    "skip_raw": false,
+    "skip_known_r": false,
+    "resume": true,
+    "save_every_case": true,
+    "finalize_only": true
+  },
+  "n": null,
+  "d": null,
+  "k": null,
+  "summary": [
+    {
+      "case": "fewshot_procrustes_m0",
+      "token_f1_mean": 0.12081414389573046,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.012852435708804807,
+      "seconds": 252.00406575202942
+    },
+    {
+      "case": "fewshot_procrustes_m10",
+      "token_f1_mean": 0.12430039129659463,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.012751908480038572,
+      "seconds": 252.1135983467102
+    },
+    {
+      "case": "fewshot_procrustes_m100",
+      "token_f1_mean": 0.14094270619098598,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.012719266845669132,
+      "seconds": 252.35408663749695
+    },
+    {
+      "case": "fewshot_procrustes_m192",
+      "token_f1_mean": 0.1335630259371493,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.013236391206785042,
+      "seconds": 252.018488407135
+    },
+    {
+      "case": "fewshot_procrustes_m50",
+      "token_f1_mean": 0.1261760306564282,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.01255641988871,
+      "seconds": 252.44320511817932
+    },
+    {
+      "case": "fewshot_procrustes_m500",
+      "token_f1_mean": 0.13511028310097062,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.013347263472121295,
+      "seconds": 255.03593039512634
+    },
+    {
+      "case": "known_R_oracle",
+      "token_f1_mean": 0.1378002433823516,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.013409496089983108,
+      "seconds": 251.9512276649475
+    },
+    {
+      "case": "raw",
+      "token_f1_mean": 0.13349196345641165,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.013258129804140806,
+      "seconds": 252.63367700576782
+    },
+    {
+      "case": "unknown_rotation_no_alignment",
+      "token_f1_mean": 0.12081414389573046,
+      "exact_match_rate": 0.0,
+      "pii_recall_mean": 0.0,
+      "bleu_mean": 0.012852435708804807,
+      "seconds": 251.88281798362732
+    }
+  ]
+}

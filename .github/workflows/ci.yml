@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install core deps
+        run: pip install --quiet numpy scipy scikit-learn
+      - name: SHARD correctness tests (synthetic, no embeddings needed)
+        run: python shard/test_shard.py
+      - name: Syntax-check all experiment scripts
+        run: python -m compileall -q shard baseline
