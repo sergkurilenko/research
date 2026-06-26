@@ -1,0 +1,28 @@
+{
+  "encoder": "e5-base",
+  "d": 768,
+  "d_pub": 192,
+  "kc": 200,
+  "n_q": 500,
+  "acc1": {
+    "raw": 0.83,
+    "svd": 0.832,
+    "shard": 0.826
+  },
+  "shard_vs_svd": {
+    "delta": -0.006,
+    "lo": -0.022,
+    "hi": 0.01,
+    "n_shard_only": 7,
+    "n_other_only": 10,
+    "p_mcnemar_exact": 0.629058837890625
+  },
+  "shard_vs_raw": {
+    "delta": -0.004,
+    "lo": -0.026,
+    "hi": 0.018,
+    "n_shard_only": 15,
+    "n_other_only": 17,
+    "p_mcnemar_exact": 0.860050065908581
+  }
+}

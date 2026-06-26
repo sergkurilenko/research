@@ -1,0 +1,37 @@
+{
+  "encoder": "e5-small",
+  "d": 384,
+  "d_pub": 96,
+  "d_priv": 288,
+  "n_gallery": 5000,
+  "n_target": 300,
+  "seeds": [
+    11,
+    23,
+    31
+  ],
+  "m_grid": [
+    72,
+    144,
+    288,
+    576,
+    1152,
+    2304
+  ],
+  "mean_curve": {
+    "72": 0.8922222222222222,
+    "144": 0.9988888888888888,
+    "288": 1.0,
+    "576": 1.0,
+    "1152": 1.0,
+    "2304": 1.0
+  },
+  "m50_per_seed": [
+    72,
+    72,
+    72
+  ],
+  "m50_mean": 72.0,
+  "utility_ip_corr_mean": 0.6070311397526756,
+  "note": "learned global nonlinear obfuscation; attacker trains an inverse MLP."
+}

@@ -1,0 +1,86 @@
+{
+  "encoder": "e5-small",
+  "d_priv": 288,
+  "m_budget": 6400,
+  "defenses": [
+    {
+      "name": "DP-noise sig=0.0",
+      "acc1": 0.722,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=0.1",
+      "acc1": 0.7193333333333333,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=0.2",
+      "acc1": 0.7206666666666667,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=0.35",
+      "acc1": 0.7206666666666667,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=0.5",
+      "acc1": 0.7186666666666666,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=0.75",
+      "acc1": 0.7146666666666667,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=1.0",
+      "acc1": 0.7113333333333333,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=1.5",
+      "acc1": 0.694,
+      "deanon_r1": 1.0,
+      "deanon_lo": 1.0,
+      "deanon_hi": 1.0
+    },
+    {
+      "name": "DP-noise sig=2.0",
+      "acc1": 0.666,
+      "deanon_r1": 0.996,
+      "deanon_lo": 0.9926666666666667,
+      "deanon_hi": 0.9986666666666667
+    },
+    {
+      "name": "SHARD C=64",
+      "acc1": 0.722,
+      "deanon_r1": 0.0,
+      "deanon_lo": 0.0,
+      "deanon_hi": 0.0
+    },
+    {
+      "name": "SHARD C=256",
+      "acc1": 0.722,
+      "deanon_r1": 0.0,
+      "deanon_lo": 0.0,
+      "deanon_hi": 0.0
+    }
+  ],
+  "keyed_utility": 0.722,
+  "note": "DP matches keyed utility only at sigma=0 (no noise), where de-anon ~1.0; any sigma>0 lowers utility below SHARD while only partially lowering de-anon."
+}

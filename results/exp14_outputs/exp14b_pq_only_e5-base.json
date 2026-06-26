@@ -1,0 +1,28 @@
+{
+  "encoder": "e5-base",
+  "d": 768,
+  "n_pool": 100000,
+  "n_probe": 1000,
+  "shard_prefix": {
+    "d_pub": 192,
+    "nn_overlap10": 0.7671000000000001,
+    "recon_cosine": 1.0,
+    "rerank": "exact (cell-keyed residual)"
+  },
+  "pq_only": [
+    {
+      "pq_m": 48,
+      "nbits": 8,
+      "bytes_per_vec": 48,
+      "recon_cosine": 0.673641562461853,
+      "nn_overlap10": 0.4102
+    },
+    {
+      "pq_m": 96,
+      "nbits": 8,
+      "bytes_per_vec": 96,
+      "recon_cosine": 0.8263737559318542,
+      "nn_overlap10": 0.6289
+    }
+  ]
+}
