@@ -1,3 +1,4 @@
+\pdfoutput=1  % force arXiv to use pdfLaTeX (figures are .pdf/.png)
 \documentclass[11pt,a4paper]{article}
 
 \usepackage[T1]{fontenc}
@@ -38,51 +39,39 @@ threat model}}
 
 \begin{abstract}
 \noindent
-Dense vector embeddings underpin modern semantic search and
-Retrieval-Augmented Generation (RAG), yet a growing body of work shows
-that an embedding can be inverted back into the text that produced it
-with alarming fidelity: once a vector database leaks, the documents
-behind it leak with it. The two textbook defences lie at opposite
-extremes---encrypting the entire search with fully homomorphic
-encryption is cryptographically sound but far too slow for corpora of
-millions of documents, whereas injecting privacy-preserving noise
-degrades ranking quality long before it provides meaningful protection.
+Dense embeddings power semantic search and Retrieval-Augmented
+Generation, yet a leaked vector database also leaks the text behind it,
+because embeddings can be inverted with high fidelity. The textbook
+defences are extreme---fully homomorphic search is sound but far too slow
+at million-document scale, while privacy noise degrades ranking before it
+protects. We study a middle path built on an asymmetry: the static
+document collection is protected \emph{geometrically}---each vector is
+SVD-truncated onto a lower-dimensional subspace and then rotated by a
+secret orthogonal transform held only by the data owner---while the
+dynamic query is protected \emph{cryptographically} under CKKS, so an
+honest-but-curious server never sees query values or similarity scores.
+The CKKS parameters are fixed by a small reproducible offline benchmark
+rather than by hand.
 
-We study a middle path built on an asymmetry between the static document
-collection and the dynamic user query. The collection is protected
-geometrically: every document vector is compressed onto a
-lower-dimensional subspace and then rotated by a secret orthogonal
-transformation held only by the data owner. The query is protected
-cryptographically: it is processed under homomorphic encryption so that
-the server---which honestly follows the protocol but may inspect
-everything it stores---never observes the query values or the similarity
-scores it computes. The encryption parameters are fixed by a small,
-reproducible offline benchmark over the discrete CKKS grid rather than by
-manual trial and error.
-
-Beyond the construction itself, we contribute mathematically proven
-theoretical results: we derive a tight lower bound on the reconstruction
-error of any attacker confined to the protected subspace, making precise
-how much information the geometric projection provably removes.
-Large-scale experiments on a one-million-document corpus and five
-contemporary text encoders corroborate the empirical side---the
-protection preserves retrieval quality and, on the strongest encoders,
-even slightly improves it by acting as a linear denoiser; query latency
-stays comfortably below one second; and an off-the-shelf
-text-reconstruction attack confined to the protected space collapses to
-the noise floor. We then deliberately step outside that comfortable
-regime and measure what happens against stronger adversaries: a
+We prove a tight lower bound on the reconstruction error of any decoder
+confined to the protected subspace. On a one-million-document corpus with
+five encoders the protection preserves---and on the strongest encoders
+slightly improves---retrieval quality, a linear-denoiser effect, at
+sub-second latency, while an off-the-shelf inversion attack collapses to
+the noise floor. Stepping outside that regime we quantify the boundary: a
 known-plaintext attacker recovers the secret rotation by orthogonal
-Procrustes from roughly as many leaked pairs as the retained dimension,
-the public product-quantization codes preserve most nearest-neighbour
-structure, and a calibrated-noise and random-projection baseline suite
-positions the trade-off against natural alternatives; a BEIR check shows
-the truncation is an encoder-dependent accuracy cost rather than a free
-denoiser on graded-relevance tasks. We therefore state the boundaries
-plainly: query confidentiality is cryptographic, but document protection
-rests on SVD truncation and a secret rotation that are an empirical
-obfuscation layer---not a cryptographic primitive---and we delimit
-precisely the threat model under which each claim holds.
+Procrustes from about as many leaked pairs as the retained dimension, and
+the public product-quantization codes leak most neighbour structure.
+
+The same asymmetric geometry doubles as a privacy-preserving semantic
+data-loss-prevention primitive for LLM firewalls: a server holding only
+the protected vectors detects whether a candidate matches a confidential
+reference corpus at near parity with a plaintext detector, degrading
+gracefully under text obfuscation. We state the limits plainly---query
+confidentiality is cryptographic, but document protection rests on SVD
+truncation and a secret rotation that form an empirical obfuscation
+layer, not a cryptographic primitive---and we delimit the threat model
+under which each claim holds.
 \end{abstract}
 
 \textbf{Keywords:}
@@ -134,7 +123,11 @@ truncation and an unknown secret rotation jointly reshape the
 privacy--accuracy--latency trade-off of semantic search at
 $10^6$-document scale? \textbf{(RQ3)} does data-driven SVD truncation
 behave as a destructive lossy step, or---as we find---as a linear
-\emph{denoiser} for retrieval-trained encoders? Accordingly, the secret
+\emph{denoiser} for retrieval-trained encoders? \textbf{(RQ4)} does the same
+asymmetric geometry support a privacy-preserving \emph{leak-detection}
+primitive---can a server flag when a candidate matches a protected
+reference corpus without storing readable embeddings of it, and at what
+fidelity relative to a plaintext detector? Accordingly, the secret
 rotation is studied as an empirical obfuscation phenomenon, not proposed
 as a cryptographic primitive, and the formal lemma is a projection
 bound, not an inversion-security theorem.
@@ -173,6 +166,16 @@ $\Delta = 2^{40}$) yields a $\approx 1.7\times$ speed-up over the TenSEAL
 stock setting $[60,40,40,60]$ at the same parameter-table security bound.
 This is a deterministic engineering choice over a published grid; we make no
 machine-learning claim.
+
+\item \emph{A semantic DLP primitive.} We observe that the same
+construction doubles as a leak-detection index for LLM firewalls and AI
+gateways: the protected static side becomes a confidential reference
+corpus of sensitive or regulated documents, and a candidate prompt, model
+output or retrieved fragment is matched against it under CKKS, so the
+firewall server holds only obfuscated geometry and never readable
+embeddings of the reference set. This reframes the document-side
+obfuscation as a feature: in the DLP setting the protected asset is
+precisely the firewall's own sensitive corpus.
 \end{itemize}
 
 \paragraph{Notation.} To avoid the overloading of the symbol $N$, we use
@@ -188,6 +191,16 @@ its empirical relation to the BLEU of an off-the-shelf
 \textsc{Vec2Text} attack is then formalised as Empirical
 Hypothesis~\ref{hyp:bleu} and tested on \textsc{GTR-base} embeddings.
 
+\paragraph{Relation to a preliminary version.} A short preliminary version
+of this hybrid design appeared in~\cite{ref_vkit}, where the static
+collection is protected by random projections. The present paper replaces
+random projection with data-driven SVD truncation plus a secret rotation,
+adds the projection lower-bound lemma (Lemma~\ref{lemma:proj-l2}) and the
+reproducible CKKS parameter selection, scales the evaluation to $10^6$
+documents and five encoders, and adds the stronger-attacker analysis
+(known-plaintext recovery of the rotation, PQ-code leakage, a baseline
+suite and a BEIR check) of Section~\ref{sec:stronger}.
+
 \paragraph{Roadmap.} Section~\ref{sec:related} reviews the related
 literature; Section~\ref{sec:threat} introduces the threat model,
 separating \emph{document}, \emph{query} and \emph{access-pattern}
@@ -195,9 +208,10 @@ privacy, and gives both a coverage table and a claims-vs-evidence table;
 Section~\ref{sec:method} describes the asymmetric architecture, including
 a cryptographic-reproducibility subsection;
 Section~\ref{sec:autotune} states the reproducible CKKS parameter selection;
-Section~\ref{sec:lemma} proves the projection-decoder lemma and
-delimits its scope; Section~\ref{sec:experiments} presents four
-experiments; Section~\ref{sec:discussion} discusses limitations,
+Section~\ref{sec:lemma} proves the projection-decoder lemma,
+delimits its scope and derives a detection-fidelity corollary
+(Corollary~\ref{cor:detect}); Section~\ref{sec:experiments} presents six
+experiments, the last two on protected-space leak detection; Section~\ref{sec:discussion} discusses limitations,
 required attack experiments and open work.
 
 % =====================================================================
@@ -267,6 +281,36 @@ takes care of the value side of the leakage, while access patterns
 remain a separate problem for which PIR/ORAM-like primitives are an
 appropriate composition.
 
+\paragraph{Data-loss prevention in LLM firewalls.} A fast-growing class
+of products---LLM firewalls and AI gateways---intercepts prompts and model
+outputs to prevent sensitive-data exposure (OWASP LLM02). Cloudflare's
+Firewall for AI, AWS Bedrock Guardrails, Lakera Guard, Protect~AI's
+LLM~Guard, NVIDIA NeMo~Guardrails and Meta's
+LlamaFirewall~\cite{ref_llamafirewall} detect sensitive content with
+regular expressions, named-entity recognition (commonly via Microsoft
+Presidio~\cite{ref_presidio}) or zero-shot classifiers; the few that match
+\emph{semantically} (nearest-neighbour search against a signature corpus)
+operate over \emph{plaintext} reference embeddings. The exposure is well
+quantified---enterprise telemetry reports that roughly a third of the data
+employees paste into AI tools is sensitive, and rising year over
+year~\cite{ref_cyberhaven}. To our knowledge no deployed system performs
+semantic matching against a \emph{geometrically protected} reference
+corpus, which is exactly the primitive the asymmetric construction of this
+paper provides: the server stores only the rotated, SVD-truncated geometry
+and the public PQ artefact, so a compromised gateway reveals neither the
+reference texts nor readable embeddings of them.
+
+\paragraph{Privacy of retrieval-augmented generation.} The retrieval layer
+of RAG is itself an attack surface: the knowledge base can be extracted
+through the model~\cite{ref_zeng_rag}, which has motivated
+distance-preserving, secret-shared and differentially private retrieval.
+Our construction is complementary---a protected-geometry index whose
+contents resist recovery from server state---and the modern alignment-based
+inverters discussed above (\textsc{ALGEN}~\cite{ref_algen},
+\textsc{vec2vec}~\cite{ref_vec2vec}, \textsc{Zero2Text}~\cite{ref_zero2text})
+are precisely the adversaries such a protected reference corpus must be
+evaluated against.
+
 % =====================================================================
 \section{Threat Model}\label{sec:threat}
 % =====================================================================
@@ -322,6 +366,19 @@ $E_{\mathrm{rot}}$. Whether neighbourhood, cluster or topic structure
 leaks from the public PQ codes alone is measured directly in
 Section~\ref{sec:stronger} (Table~\ref{tab:pq-leakage}): it does, and we
 treat the PQ artefact as an exposed channel accordingly.
+
+\paragraph{The DLP reading.} When the construction is deployed as a
+semantic data-loss-prevention index (Section~\ref{sec:related}), the roles
+are relabelled but the analysis is unchanged: the protected static side
+becomes the firewall's confidential \emph{reference corpus}, so the
+``document privacy'' above \emph{is} the confidentiality of that corpus,
+while ``query privacy'' protects the candidate being screened. Two notions
+specific to this reading are made precise later---\emph{detection
+fidelity}, how closely the protected detector tracks a plaintext one
+(Corollary~\ref{cor:detect}, Experiment~\ref{ssec:dlp}), and
+\emph{reference-corpus confidentiality and membership}, which inherit the
+known-plaintext bounds of Section~\ref{sec:stronger}
+(Experiment~\ref{ssec:dlp-evade}).
 
 Table~\ref{tab:threat} summarises the coverage and
 Table~\ref{tab:claims} maps each claim to the evidence that supports it.
@@ -444,14 +501,19 @@ centred: $X_{\mathrm{c}} = X - \mu$.
 $X_{\mathrm{c}} \approx U_k \Sigma_k V_k^\top$ produces the orthonormal
 matrix $V_k \in \mathbb{R}^{d \times k}$ that spans the dominant
 $k$-dimensional subspace. We use $k = d/2$ in the canonical operating
-point: this is the smallest $k$ at which the relative reconstruction
-error
+point. Since the relative reconstruction error
 \[
 \sigma_{rec}^{2}(E; V_k) =
 \frac{\|E - \pi_k(E)\|_F^2}{\|E\|_F^2} = 1 - \eta_k
 \]
-exceeds the proxy threshold $\sigma_{rec} \geq 0.10$ uniformly across
-all five tested encoders (Section~\ref{sec:experiments}).
+decreases monotonically in $k$ (more retained directions leave a smaller
+residual), the privacy proxy $\sigma_{rec} \geq 0.10$ is a \emph{lower}
+floor that holds under aggressive truncation and is relinquished as $k$
+grows. Hence $k = d/2$ is the \emph{largest} $k$---the gentlest
+truncation, and so the most retrieval accuracy---at which the floor still
+holds uniformly across all five tested encoders. The binding case is
+\textsc{e5-large}, whose $\sigma_{rec} = 0.101$ sits just on the $0.10$
+floor (Section~\ref{sec:experiments}).
 
 \paragraph{Secret rotation.} A Haar-uniform random orthogonal matrix
 $R \in O(k)$ is generated by QR-decomposing a Gaussian matrix and
@@ -621,13 +683,14 @@ reranking operation). All rows sit within the conservative \texttt{tc128}
 $N_{\mathrm{poly}}$.}
 \label{tab:ckks-configs}
 \small
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
 Configuration & $N_{\mathrm{poly}}$ & $\log_2 Q$ (bits) & Security & Time (ms) & Speed-up \\ \midrule
 Default (TenSEAL stock, $[60, 40, 40, 60]$) & 8192 & 200 & tc128 ($\geq 128$) & 419.4 & $1.0\times$ \\
 Min-latency (Acc@10), $[40, 20, 40]$, $\Delta = 2^{20}$ & 4096 & 100 & tc128 & 173.7 & $2.4\times$ \\
 \textbf{Selected (Acc@1), $[60, 40, 60]$, $\Delta = 2^{40}$} & 8192 & 160 & tc128 & 245.2 & $1.7\times$ \\ \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 % =====================================================================
@@ -707,17 +770,110 @@ Hypothesis~\ref{hyp:bleu} is validated numerically in
 Section~\ref{ssec:vec2text}; we deliberately separate the formal lemma
 from the empirical observation.
 
+\paragraph{A detection-fidelity bound for the semantic-DLP reading.}
+Under the DLP reading of Section~\ref{sec:related} the protected static
+side is a sensitive reference corpus $\mathcal{R}=\{r_1,\dots,r_M\}$, and
+a candidate $c$ (a prompt, a model output or a retrieved fragment) is
+flagged as a potential leak when its similarity to $\mathcal{R}$ crosses
+a threshold $\tau$. The projection geometry behind
+Lemma~\ref{lemma:proj-l2} then controls how far the protected detector
+can drift from a plaintext one. Work with $L_2$-normalised embeddings, so
+that $s(c,r)=\langle c,r\rangle$ is the cosine; the secret rotation
+$R\in O(k)$ is orthogonal and cancels in every inner product, so the
+score available to the server is
+$\hat s(c,r)=\cos\!\bigl(\pi_k(c),\pi_k(r)\bigr)$, the cosine of the two
+projections onto $\mathrm{span}(V_k)$.
+
+\begin{corollary}\label{cor:detect}
+Let $c,r\in\mathbb{R}^{d}$ be $L_2$-normalised, and write
+$\sigma_c=\sigma_{rec}(c;V_k)$, $\sigma_r=\sigma_{rec}(r;V_k)$,
+$\sigma=\max(\sigma_c,\sigma_r)$. Then
+\[
+\bigl|\hat s(c,r)-s(c,r)\bigr|
+\;\le\;
+\Bigl[\,1-\sqrt{(1-\sigma_c^{2})(1-\sigma_r^{2})}\,\Bigr]+\sigma_c\sigma_r
+\;\le\;2\sigma^{2}.
+\]
+Consequently, for the plaintext leak-detector
+$D_\tau(c)=\mathbf{1}\!\bigl[\max_{r\in\mathcal{R}}s(c,r)\ge\tau\bigr]$
+and the protected detector $\hat D_\tau$ obtained by replacing $s$ with
+$\hat s$, the two decisions coincide on every candidate whose plaintext
+margin $m(c)=\max_{r\in\mathcal{R}}s(c,r)$ obeys
+$|m(c)-\tau|\ge 2\sigma^{2}$, and can differ only for
+$m(c)\in(\tau-2\sigma^{2},\,\tau+2\sigma^{2})$.
+\end{corollary}
+
+\begin{proof}
+Write $c=\pi_k(c)+c_\perp$ and $r=\pi_k(r)+r_\perp$, with the projected
+parts in $\mathrm{span}(V_k)$ and the residuals in its orthogonal
+complement. Orthogonality removes the cross terms, so
+$s=\langle\pi_k(c),\pi_k(r)\rangle+\langle c_\perp,r_\perp\rangle$. For
+unit $c$ one has $\|\pi_k(c)\|^{2}=1-\sigma_c^{2}$ and
+$\|c_\perp\|^{2}=\sigma_c^{2}$ (and likewise for $r$), whence
+$\langle\pi_k(c),\pi_k(r)\rangle
+=\hat s\,\sqrt{(1-\sigma_c^{2})(1-\sigma_r^{2})}$ and, by
+Cauchy--Schwarz, $|\langle c_\perp,r_\perp\rangle|\le\sigma_c\sigma_r$.
+Hence
+$|s-\hat s|\le|\hat s|\bigl[1-\sqrt{(1-\sigma_c^{2})(1-\sigma_r^{2})}\bigr]
++\sigma_c\sigma_r$, and $|\hat s|\le1$ gives the first inequality while
+$\sigma_c,\sigma_r\le\sigma$ gives $2\sigma^{2}$. The detector claim
+follows because $x\mapsto\max_r x$ is $1$-Lipschitz, so
+$\bigl|\max_r\hat s-\max_r s\bigr|\le 2\sigma^{2}$, and a margin at
+distance $\ge 2\sigma^{2}$ from $\tau$ cannot change sign.
+\end{proof}
+
+\paragraph{Reading the bound.} Three consequences matter for the DLP use.
+\emph{(i) A tunable privacy--recall trade-off.} Recalibrating the
+protected threshold to $\hat\tau=\tau-2\sigma^{2}$ removes every false
+negative---all plaintext leaks with $m(c)\ge\tau$ are still flagged---at
+the price of admitting false positives only from the $2\sigma^{2}$ band,
+so the protected detector's (precision, recall) departs from the
+plaintext detector's by at most the score mass
+$\Pr[\,|m(c)-\tau|<2\sigma^{2}\,]$. As $k\to d$, $\sigma\to0$ and the two
+coincide; shrinking $k$ widens the band. This is the knob, and the regime
+in which one should report a band rather than a point estimate.
+\emph{(ii) A denoiser asymmetry.} The residual $c_\perp$ concentrates on
+the low-singular-value directions the truncation is meant to discard, so
+for a \emph{binary} leak/no-leak decision $\sigma$ stays small (the
+linear-denoiser effect) and the band is thin, whereas for \emph{graded}
+relevance, separating rank-$i$ from rank-$(i{+}1)$ can require resolving
+score gaps below $2\sigma^{2}$, which the same truncation may erase. The
+projection should thus help detection even where it hurts fine-grained
+ranking---an asymmetry the bound localises but does not settle; an
+empirical precision/recall/AUC comparison against a plaintext detector on
+the five encoders of Section~\ref{sec:experiments} is the natural test
+and is left to future work (Section~\ref{sec:limits}).
+\emph{(iii) Fidelity is not confidentiality.} The corollary bounds how
+faithfully an honest server \emph{detects} leaks; it says nothing about
+an adversary that probes the score function to \emph{recover}
+$\mathcal{R}$. That confidentiality rests, as in
+Section~\ref{sec:stronger}, on the secret rotation, which an attacker
+holding known plaintext--protected pairs recovers by orthogonal
+Procrustes from on the order of $k$ pairs---so the reference corpus is
+only as protected as $k$ is large and as plaintext-pair exposure is
+controlled.
+
+At the reconstruction levels measured here
+($\sigma_{rec}\in[0.10,0.24]$ across the five encoders,
+Section~\ref{sec:experiments}), the worst-case score distortion
+$2\sigma_{rec}^{2}$ lies between roughly $0.02$ and $0.11$---a few score
+points, small relative to a typical leak threshold, and consistent with
+(though not a substitute for) the empirical test above.
+
 % =====================================================================
 \section{Experiments}\label{sec:experiments}
 % =====================================================================
 
-We report four experiments:
+We report six experiments:
 (1) CKKS modes (ct-pt vs ct-ct);
 (2) off-the-shelf Vec2Text attack against SVD-truncated (and possibly
 rotated) embeddings;
 (3) the integral multi-encoder experiment over a $10^6$-document
 Russian-Wikipedia corpus;
 (4) end-to-end latency on a client-server PoC.
+(5) a semantic data-loss-prevention detection test in the
+protected space, validating Corollary~\ref{cor:detect}.
+(6) the robustness of that detector when the leaking text is obfuscated.
 
 \paragraph{Hardware and software.} All experiments run on a single
 workstation: Intel Core i5-14400F, 32~GB DDR5-4800, NVIDIA RTX~5060
@@ -737,9 +893,8 @@ backend build.
 
 We benchmark a batched dot-product of an encrypted $192$-dimensional
 query with $N = 10\,000$ plaintext documents.
-The CKKS parameters are $N = 8192$,
-$\mathrm{coeff\_mod\_bit\_sizes} = [60, 40, 40, 60]$,
-$\Delta = 2^{40}$ (security level $\geq 128$ bits).
+The CKKS parameters are $N = 8192$, a coefficient-modulus chain
+$[60, 40, 40, 60]$ and $\Delta = 2^{40}$ (security level $\geq 128$ bits).
 Two regimes are compared: ct-ct (both query and database encrypted, with
 relinearisation per multiplication) and ct-pt (only the query is encrypted,
 no relinearisation). Each is run for $50$ independent trials and
@@ -910,6 +1065,7 @@ delta of Acc@1 from the raw baseline.}
 \label{tab:integral}
 \small
 \setlength{\tabcolsep}{4pt}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}llrrrrr@{}}
 \toprule
 Encoder & Metric & Baseline (raw $d$) & Baseline\_proj (SVD $k$) & Proposed & $\Delta$ from raw & Server $p_{95}$ (ms) \\ \midrule
@@ -939,7 +1095,7 @@ Encoder & Metric & Baseline (raw $d$) & Baseline\_proj (SVD $k$) & Proposed & $\
 & MRR     & $0.848$ & $0.863$ & $0.863 \pm 0.000$ & $+0.015$ & \\
 & NDCG@10 & $0.862$ & $0.878$ & $0.878 \pm 0.000$ & $+0.016$ & \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \emph{The protective layer is essentially free in the projected space.}
@@ -1047,6 +1203,151 @@ the full end-to-end $p_{95} \approx 370$~ms (Table~\ref{tab:latency})
 stays well below the $1$~s SLA.}
 \label{fig:exp6-latency}
 \end{figure}
+
+% ----------------------------------------------------------------
+\subsection{Experiment 5: semantic-DLP detection in the protected space}
+\label{ssec:dlp}
+% ----------------------------------------------------------------
+
+The detection-fidelity Corollary~\ref{cor:detect} predicts that leak
+detection carried out in the protected, SVD-truncated space tracks a
+plaintext detector up to a score distortion of at most $2\sigma_{rec}^2$.
+We test this directly, on the same $10^6$-document Russian-Wikipedia
+corpus and the same five encoders as Experiment~\ref{ssec:integral}.
+
+\paragraph{Canary protocol.} We treat $250$ documents as a confidential
+reference set and embed them, together with $50{,}000$ unrelated
+background documents, into a protected index of size $M = 50{,}250$. The
+projection $V_k$ ($k = d/2$) is the top-$k$ right-singular subspace of the
+corpus---exactly the operating point whose $\sigma_{rec}$ is reported in
+Experiment~\ref{ssec:integral}. As candidates we use $500$ short
+canaries, each the leading sentence of a known source document and hence
+a genuine textual fragment of it. A canary is a true leak when its source
+document is one of the $250$ secrets ($250$ positives) and a non-leak
+otherwise ($250$ negatives); the detector flags a candidate $c$ whenever
+$\max_{r\in\mathcal{R}}\cos(c,r)\ge\tau$. Because the secret rotation
+cancels in the cosine, the protected score is the cosine of the two
+projections, so this experiment isolates the effect of the
+\emph{truncation} on detection---the confidentiality of the rotation is
+treated separately in Section~\ref{sec:stronger}.
+
+\paragraph{Results.} Table~\ref{tab:dlp} reports the detection AUC in the
+plaintext and protected spaces. Three observations follow. First, the
+measured $\sigma_{rec}$ reproduces the values of
+Experiment~\ref{ssec:integral} to $\pm0.001$, confirming an identical
+pipeline. Second, detection in the protected space is at \emph{near
+parity} with plaintext: the AUC gap stays within $[-0.013,+0.003]$ across
+all five encoders---well inside the $0.05$ margin below which one would
+have to report a tunable trade-off instead---and for the two
+higher-dimensional retrieval encoders (\textsc{e5-base},
+\textsc{e5-large}) the projection slightly \emph{improves} detection, the
+linear-denoiser effect anticipated after Corollary~\ref{cor:detect}.
+Third, the bound itself is never violated: across $1.5\times10^{6}$
+randomly sampled candidate--reference pairs ($300{,}000$ per encoder) the
+empirical distortion $|\hat s - s|$ falls below the per-pair bound
+$\varepsilon(\sigma_c,\sigma_r)$ in every case, the largest observed
+distortion being $0.107$ (\textsc{e5-small}, whose $\sigma_{rec}$ is
+largest).
+
+\begin{table}[tb]\centering
+\caption{Semantic-DLP detection in the protected (SVD-truncated, $k=d/2$)
+space versus plaintext, on a $250/250$ canary split against a reference
+corpus of $M = 50{,}250$ ($250$ secret documents plus $50{,}000$
+background). Detection AUC is at near parity (worst gap $-0.013$), and the
+Corollary~\ref{cor:detect} bound $|\hat s - s|\le
+\varepsilon(\sigma_c,\sigma_r)$ is never violated across
+$1.5\times10^{6}$ sampled pairs. The measured $\sigma_{rec}$ reproduces
+the values of Experiment~\ref{ssec:integral} to $\pm0.001$.}
+\label{tab:dlp}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+Encoder & $d$ & $\sigma_{rec}$ & AUC$_{\mathrm{plain}}$ & AUC$_{\mathrm{prot}}$ & $\Delta$AUC & $\max|\hat s-s|$ & viol./$1.5$M \\
+\midrule
+\textsc{e5-small} & $384$  & $0.238$ & $0.914$ & $0.901$ & $-0.013$ & $0.107$ & $0$ \\
+\textsc{e5-base}  & $768$  & $0.130$ & $0.936$ & $0.939$ & $+0.003$ & $0.070$ & $0$ \\
+\textsc{mpnet}    & $768$  & $0.108$ & $0.841$ & $0.841$ & $-0.001$ & $0.015$ & $0$ \\
+\textsc{e5-large} & $1024$ & $0.101$ & $0.923$ & $0.925$ & $+0.002$ & $0.042$ & $0$ \\
+\textsc{bge-m3}   & $1024$ & $0.129$ & $0.929$ & $0.929$ & $\phantom{-}0.000$ & $0.021$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Scope.} This is a detection-\emph{fidelity} result for an
+honest server, not a confidentiality guarantee: it shows that truncation
+preserves the ability to flag leaks, whereas the resistance of the
+reference set to reconstruction rests on the secret rotation and is
+quantified separately (Section~\ref{sec:stronger}). The canary is also a
+clean ``fragment-in-the-clear'' leak; robustness to deliberate paraphrase
+or obfuscation of the leaking text is a separate evaluation we leave to
+future work (Section~\ref{sec:limits}).
+
+% ----------------------------------------------------------------
+\subsection{Experiment 6: robustness of detection to leak obfuscation}
+\label{ssec:dlp-evade}
+% ----------------------------------------------------------------
+
+Experiment~\ref{ssec:dlp} detects a verbatim fragment. A motivated insider
+will instead paraphrase or truncate the leaking text, so we re-run the
+protected detector against three obfuscations of each secret's leading
+sentence---a word-order shuffle (V1), a $40\%$ random word deletion (V2),
+and substitution by a different (second) sentence of the same document
+(V3)---re-embedding every variant with each encoder; a sanity check
+confirms the re-embedding reproduces the cached vectors (mean cosine
+$1.000$). Table~\ref{tab:dlp-evade} reports the result. Word-order
+shuffling is a weak evasion: the AUC change is small (between $-0.06$ and
+$+0.04$), because the short-fragment embeddings are largely
+order-insensitive. Aggressive deletion is the most effective attack---AUC
+falls by $0.06$ to $0.17$, worst for \textsc{bge-m3}---yet detection stays
+well above chance ($0.73$ to $0.88$), and substituting an entirely
+different sentence of the same document is still detected at $0.78$ to
+$0.90$. Obfuscation therefore degrades but does not defeat protected-space
+detection; the residual gap under heavy deletion is the empirical
+motivation for a semantic-canary augmentation (Section~\ref{sec:limits}).
+
+\begin{table}[tb]\centering
+\caption{Robustness of protected-space DLP detection (AUC) when the
+leaking text is obfuscated: V0 verbatim leading sentence
+(Experiment~\ref{ssec:dlp}), V1 word-order shuffle, V2 a $40\%$ random
+word deletion, V3 a different (second) sentence of the same document.
+Negatives are benign non-member candidates; $250$ secret leaks ($195$ for
+V3, the secrets whose source document has a usable second sentence).}
+\label{tab:dlp-evade}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Encoder & $d$ & V0 verbatim & V1 shuffle & V2 delete-$40\%$ & V3 2nd-sent. \\
+\midrule
+\textsc{e5-small} & $384$  & $0.901$ & $0.919$ & $0.829$ & $0.837$ \\
+\textsc{e5-base}  & $768$  & $0.939$ & $0.941$ & $0.883$ & $0.891$ \\
+\textsc{mpnet}    & $768$  & $0.841$ & $0.881$ & $0.732$ & $0.780$ \\
+\textsc{e5-large} & $1024$ & $0.925$ & $0.914$ & $0.852$ & $0.901$ \\
+\textsc{bge-m3}   & $1024$ & $0.929$ & $0.867$ & $0.757$ & $0.892$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Reference-corpus confidentiality and membership.} Two further
+DLP-specific risks are already settled by the analyses elsewhere in this
+paper. First, a similarity-threshold detector is inevitably a
+\emph{membership oracle}: probing it with a member document returns the
+maximal score ($1.000$) in both the plaintext and the protected space,
+because truncation preserves self-identity ($\pi_k(r)$ still matches
+$\pi_k(r)$); a deployment must therefore rate-limit queries or withhold
+raw scores, a property inherent to any matching-based DLP rather than to
+this construction. Second, the confidentiality of the reference set
+against an attacker who can align the protected geometry to plaintext is
+exactly the known-plaintext analysis of Section~\ref{sec:stronger}: the
+rotation is recovered and the reference paragraphs re-identified once the
+attacker holds on the order of $k$ leaked pairs
+(Tables~\ref{tab:procrustes} and~\ref{tab:reference-attack}), so corpus
+confidentiality scales with $k$ and with limiting plaintext-pair
+exposure. The ciphertext-plaintext check that would gate inline
+enforcement adds only one masked dot product per short-list entry and
+stays within the sub-second budget of Experiment~\ref{ssec:latency}.
+Fully learned cross-space inverters (\textsc{vec2vec},
+\textsc{Zero2Text}) require training a translator we do not run here and
+remain, as in Section~\ref{sec:limits}, the main residual gap.
 
 % =====================================================================
 \section{Security Analysis Under Known-Plaintext and Stronger Attackers}
@@ -1442,6 +1743,24 @@ selection is a one-off offline cost and adds nothing at run time; porting to a
 different hardware platform only requires re-running the same small benchmark
 grid.
 
+\paragraph{The construction as a leak-detection primitive.} The same
+asymmetric geometry serves as a privacy-preserving semantic
+data-loss-prevention index for an LLM firewall: the protected static side
+becomes a confidential ``must-not-leak'' reference corpus, and a candidate
+prompt, output or retrieved passage is screened against it without the
+server holding readable embeddings. Two results make this concrete.
+Detection in the protected space tracks a plaintext detector to within
+$0.013$ AUC across all five encoders (Experiment~\ref{ssec:dlp}), the gap
+provably confined to a $2\sigma_{rec}^2$ score band
+(Corollary~\ref{cor:detect})---and, as in the retrieval setting, the
+truncation \emph{helps} the strongest encoders, the same linear-denoiser
+effect. The detector degrades but does not break under obfuscation of the
+leaking text (Experiment~\ref{ssec:dlp-evade}). The honest caveats carry
+over: this is detection \emph{fidelity}, not corpus confidentiality---the
+reference set inherits the same known-plaintext recovery limit as the
+document side (Section~\ref{sec:stronger})---and the detector is inherently
+a membership oracle, so a deployment must withhold raw scores.
+
 % =====================================================================
 \section{Limitations and Required Experiments}\label{sec:limits}
 % =====================================================================
@@ -1508,6 +1827,13 @@ cross-space translation (\textsc{vec2vec}~\cite{ref_vec2vec}) and online
 cross-domain inversion (\textsc{Zero2Text}~\cite{ref_zero2text})---with real
 text, and run the \emph{complete} CKKS reranking (not only the projection
 step measured in Table~\ref{tab:beir}) on BEIR, MIRACL and MS~MARCO.
+\item \emph{Hardening the DLP reading.} Experiments~\ref{ssec:dlp}
+and~\ref{ssec:dlp-evade} show protected-space detection at near parity and
+its graceful degradation under text obfuscation; the open work is a
+\emph{semantic-canary} augmentation that catches the paraphrased leaks the
+$40\%$-deletion attack still erodes, a membership-inference hardening that
+rate-limits or perturbs the returned scores, and a leakage study of the
+reference corpus under the learned cross-space inverters of item~3.
 \end{enumerate}
 
 % =====================================================================
@@ -1517,7 +1843,7 @@ step measured in Table~\ref{tab:beir}) on BEIR, MIRACL and MS~MARCO.
 This paper is a scientific study of how SVD truncation and an unknown
 secret rotation reshape the privacy--accuracy--latency trade-off of
 semantic search; it is not a systems-engineering report and does not
-claim a deployable system. Three findings answer the research questions.
+claim a deployable system. Four findings answer the research questions.
 \textbf{(RQ1)} A formal lower-$L_2$ bound (Lemma~\ref{lemma:proj-l2})
 characterises exactly what a projection-restricted decoder cannot
 recover; it is a projection bound, not an inversion-security theorem,
@@ -1536,6 +1862,15 @@ retrieval-trained encoders with $d \geq 768$, data-driven SVD truncation
 to $k = d/2$ acts as a linear \emph{denoiser}, improving the four
 ranking metrics over the raw baseline rather than degrading them---a
 finding of independent interest beyond the privacy setting.
+\textbf{(RQ4)} The same asymmetric geometry doubles as a
+privacy-preserving leak-detection primitive: a server storing only the
+truncated, rotated vectors flags whether a candidate matches a protected
+reference corpus at near parity with a plaintext detector
+(Experiment~\ref{ssec:dlp}; AUC gap within $0.013$), the gap provably
+confined to a $2\sigma_{rec}^2$ band (Corollary~\ref{cor:detect}) and
+degrading gracefully under obfuscation (Experiment~\ref{ssec:dlp-evade}),
+while the reference corpus inherits the document side's known-plaintext
+confidentiality limit.
 
 We do not claim the privacy problem is solved. This work delivers a
 measured privacy, accuracy and latency operating point and a characterised
@@ -1765,6 +2100,23 @@ Generation,'' \emph{arXiv:2401.15884}, 2024.
 \bibitem{ref_rag_survey} Y.\ Gao et al., ``Retrieval-Augmented
 Generation for Large Language Models: A Survey,'' \emph{arXiv:2312.10997},
 2024.
+
+\bibitem{ref_vkit} S.\ M.\ Kurilenko, ``Hybrid Method for
+Privacy-Preserving Semantic Search Based on Homomorphic Encryption and
+Random Projections,'' \emph{Vestnik Komp'yuternykh i Informatsionnykh
+Tekhnologiy}, no.\ 3, 2026, pp.\ 44--49.
+\href{https://doi.org/10.14489/vkit.2026.03.pp.044-049}{doi:10.14489/vkit.2026.03.pp.044-049}.
+
+\bibitem{ref_llamafirewall} Meta AI, ``LlamaFirewall: An Open-Source
+Guardrail System for Building Secure AI Agents,'' \emph{arXiv:2505.03574},
+2025.
+
+\bibitem{ref_presidio} Microsoft, ``Presidio: Context-aware, pluggable and
+customizable data protection and de-identification SDK,''
+\url{https://github.com/microsoft/presidio}, 2024.
+
+\bibitem{ref_cyberhaven} Cyberhaven, ``AI Adoption and Risk Report,''
+industry report, 2025.
 
 \end{thebibliography}
 

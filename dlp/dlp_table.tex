@@ -1,0 +1,14 @@
+\begin{table}[t]\centering
+\caption{Semantic-DLP detection in the protected (SVD-truncated, $k=d/2$) space versus plaintext, on a 250/250 canary split against a reference corpus of $M=50{,}250$ ($250$ secret documents $+$ $50{,}000$ background). \emph{Detection AUC is at near-parity} (worst gap $-0.013$), and the Corollary~\ref{cor:detect} bound $|\hat s-s|\le\varepsilon(\sigma_c,\sigma_r)$ is never violated across $1.5\times10^{6}$ sampled pairs. The measured $\sigma_{rec}$ reproduces the published values (Section~\ref{sec:experiments}) to $\pm0.001$.}\label{tab:dlp}
+\small\begin{tabular}{lccccccc}
+\toprule
+Encoder & $d$ & $\sigma_{rec}$ & AUC$_{\mathrm{plain}}$ & AUC$_{\mathrm{prot}}$ & $\Delta$AUC & $\max|\hat s-s|$ & viol.\ /$1.5$M \\
+\midrule
+e5-small & 384 & 0.238 & 0.914 & 0.901 & $-0.013$ & 0.107 & 0 \\
+e5-base & 768 & 0.130 & 0.936 & 0.939 & $+0.003$ & 0.070 & 0 \\
+mpnet & 768 & 0.108 & 0.841 & 0.841 & $-0.001$ & 0.015 & 0 \\
+e5-large & 1024 & 0.101 & 0.923 & 0.925 & $+0.002$ & 0.042 & 0 \\
+bge-m3 & 1024 & 0.129 & 0.929 & 0.929 & $-0.000$ & 0.021 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
