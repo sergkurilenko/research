@@ -1,0 +1,20 @@
+\begin{table}[tb]\centering
+\caption{Corollary~\ref{cor:detect} and DLP detection across additional corpora (English BEIR: \textsc{scifact}/\textsc{nfcorpus}/\textsc{arguana}; multilingual MIRACL: Bengali/Swahili), with \textsc{e5-small} (S) and \textsc{e5-base} (B). AUC$\pm$ is the $95\%$ bootstrap CI half-width ($10^3$ resamples); the canary is a query versus its relevant passage. Across every corpus the protected detector tracks plaintext within CI (\,$|\Delta|\le0.014$\,), and the bound is never violated. Detection difficulty itself varies by task (chance-level on \textsc{arguana} counter-argument retrieval, high on MIRACL), which is orthogonal to the parity claim.}\label{tab:dlp-multicorpus}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Corpus & Lang/domain & Enc & $\sigma_{rec}$ & AUC$_{\mathrm{plain}}$ & AUC$_{\mathrm{prot}}$ & $\Delta$AUC \\ \midrule
+\textsc{scifact} & en/science & S & 0.185 & $0.587{\pm}0.064$ & $0.589{\pm}0.065$ & $+0.002$ \\
+\textsc{nfcorpus} & en/medical & S & 0.173 & $0.555{\pm}0.060$ & $0.570{\pm}0.062$ & $+0.014$ \\
+\textsc{arguana} & en/argument & S & 0.201 & $0.511{\pm}0.030$ & $0.512{\pm}0.030$ & $+0.001$ \\
+\textsc{miracl-bn} & bn/wiki & S & 0.228 & $0.776{\pm}0.043$ & $0.778{\pm}0.042$ & $+0.001$ \\
+\textsc{miracl-sw} & sw/wiki & S & 0.218 & $0.651{\pm}0.048$ & $0.655{\pm}0.049$ & $+0.004$ \\
+\textsc{scifact} & en/science & B & 0.092 & $0.582{\pm}0.067$ & $0.581{\pm}0.067$ & $-0.001$ \\
+\textsc{nfcorpus} & en/medical & B & 0.086 & $0.557{\pm}0.061$ & $0.553{\pm}0.060$ & $-0.004$ \\
+\textsc{arguana} & en/argument & B & 0.106 & $0.496{\pm}0.030$ & $0.493{\pm}0.029$ & $-0.003$ \\
+\textsc{miracl-bn} & bn/wiki & B & 0.124 & $0.791{\pm}0.042$ & $0.788{\pm}0.043$ & $-0.003$ \\
+\textsc{miracl-sw} & sw/wiki & B & 0.115 & $0.672{\pm}0.044$ & $0.674{\pm}0.044$ & $+0.002$ \\
+\bottomrule
+\end{tabular}}
+\end{table}

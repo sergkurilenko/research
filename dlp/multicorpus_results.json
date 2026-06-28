@@ -1,0 +1,272 @@
+{
+  "scifact|multilingual-e5-small": {
+    "dataset": "scifact",
+    "lang": "en/science",
+    "encoder": "multilingual-e5-small",
+    "dim": 384,
+    "k": 192,
+    "n_docs": 5183,
+    "n_R": 5024,
+    "n_pos": 150,
+    "n_neg": 150,
+    "sigma_rec": 0.185,
+    "auc_plain": 0.587,
+    "auc_plain_ci": [
+      0.525,
+      0.653
+    ],
+    "auc_protected": 0.589,
+    "auc_protected_ci": [
+      0.527,
+      0.656
+    ],
+    "auc_gap": 0.002,
+    "cor_max_dev": 0.1071,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 0.8
+  },
+  "nfcorpus|multilingual-e5-small": {
+    "dataset": "nfcorpus",
+    "lang": "en/medical",
+    "encoder": "multilingual-e5-small",
+    "dim": 384,
+    "k": 192,
+    "n_docs": 3633,
+    "n_R": 1096,
+    "n_pos": 161,
+    "n_neg": 162,
+    "sigma_rec": 0.173,
+    "auc_plain": 0.555,
+    "auc_plain_ci": [
+      0.497,
+      0.618
+    ],
+    "auc_protected": 0.57,
+    "auc_protected_ci": [
+      0.507,
+      0.631
+    ],
+    "auc_gap": 0.014,
+    "cor_max_dev": 0.1028,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 0.5
+  },
+  "arguana|multilingual-e5-small": {
+    "dataset": "arguana",
+    "lang": "en/argument",
+    "encoder": "multilingual-e5-small",
+    "dim": 384,
+    "k": 192,
+    "n_docs": 8674,
+    "n_R": 7973,
+    "n_pos": 700,
+    "n_neg": 701,
+    "sigma_rec": 0.201,
+    "auc_plain": 0.511,
+    "auc_plain_ci": [
+      0.482,
+      0.542
+    ],
+    "auc_protected": 0.512,
+    "auc_protected_ci": [
+      0.483,
+      0.542
+    ],
+    "auc_gap": 0.001,
+    "cor_max_dev": 0.0734,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 0.8
+  },
+  "miracl-bn|multilingual-e5-small": {
+    "dataset": "miracl-bn",
+    "lang": "bn/wiki",
+    "encoder": "multilingual-e5-small",
+    "dim": 384,
+    "k": 192,
+    "n_docs": 297265,
+    "n_R": 60000,
+    "n_pos": 205,
+    "n_neg": 206,
+    "sigma_rec": 0.228,
+    "auc_plain": 0.776,
+    "auc_plain_ci": [
+      0.734,
+      0.82
+    ],
+    "auc_protected": 0.778,
+    "auc_protected_ci": [
+      0.736,
+      0.821
+    ],
+    "auc_gap": 0.001,
+    "cor_max_dev": 0.0867,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 4.9
+  },
+  "miracl-sw|multilingual-e5-small": {
+    "dataset": "miracl-sw",
+    "lang": "sw/wiki",
+    "encoder": "multilingual-e5-small",
+    "dim": 384,
+    "k": 192,
+    "n_docs": 131924,
+    "n_R": 60000,
+    "n_pos": 241,
+    "n_neg": 241,
+    "sigma_rec": 0.218,
+    "auc_plain": 0.651,
+    "auc_plain_ci": [
+      0.599,
+      0.695
+    ],
+    "auc_protected": 0.655,
+    "auc_protected_ci": [
+      0.603,
+      0.701
+    ],
+    "auc_gap": 0.004,
+    "cor_max_dev": 0.109,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 4.2
+  },
+  "scifact|multilingual-e5-base": {
+    "dataset": "scifact",
+    "lang": "en/science",
+    "encoder": "multilingual-e5-base",
+    "dim": 768,
+    "k": 384,
+    "n_docs": 5183,
+    "n_R": 5024,
+    "n_pos": 150,
+    "n_neg": 150,
+    "sigma_rec": 0.092,
+    "auc_plain": 0.582,
+    "auc_plain_ci": [
+      0.518,
+      0.651
+    ],
+    "auc_protected": 0.581,
+    "auc_protected_ci": [
+      0.517,
+      0.651
+    ],
+    "auc_gap": -0.001,
+    "cor_max_dev": 0.0411,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 2.4
+  },
+  "nfcorpus|multilingual-e5-base": {
+    "dataset": "nfcorpus",
+    "lang": "en/medical",
+    "encoder": "multilingual-e5-base",
+    "dim": 768,
+    "k": 384,
+    "n_docs": 3633,
+    "n_R": 1096,
+    "n_pos": 161,
+    "n_neg": 162,
+    "sigma_rec": 0.086,
+    "auc_plain": 0.557,
+    "auc_plain_ci": [
+      0.496,
+      0.618
+    ],
+    "auc_protected": 0.553,
+    "auc_protected_ci": [
+      0.49,
+      0.611
+    ],
+    "auc_gap": -0.004,
+    "cor_max_dev": 0.0511,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 2.1
+  },
+  "arguana|multilingual-e5-base": {
+    "dataset": "arguana",
+    "lang": "en/argument",
+    "encoder": "multilingual-e5-base",
+    "dim": 768,
+    "k": 384,
+    "n_docs": 8674,
+    "n_R": 7973,
+    "n_pos": 700,
+    "n_neg": 701,
+    "sigma_rec": 0.106,
+    "auc_plain": 0.496,
+    "auc_plain_ci": [
+      0.466,
+      0.527
+    ],
+    "auc_protected": 0.493,
+    "auc_protected_ci": [
+      0.465,
+      0.523
+    ],
+    "auc_gap": -0.003,
+    "cor_max_dev": 0.0422,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 2.9
+  },
+  "miracl-bn|multilingual-e5-base": {
+    "dataset": "miracl-bn",
+    "lang": "bn/wiki",
+    "encoder": "multilingual-e5-base",
+    "dim": 768,
+    "k": 384,
+    "n_docs": 297265,
+    "n_R": 60000,
+    "n_pos": 205,
+    "n_neg": 206,
+    "sigma_rec": 0.124,
+    "auc_plain": 0.791,
+    "auc_plain_ci": [
+      0.748,
+      0.832
+    ],
+    "auc_protected": 0.788,
+    "auc_protected_ci": [
+      0.745,
+      0.831
+    ],
+    "auc_gap": -0.003,
+    "cor_max_dev": 0.0508,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 9.0
+  },
+  "miracl-sw|multilingual-e5-base": {
+    "dataset": "miracl-sw",
+    "lang": "sw/wiki",
+    "encoder": "multilingual-e5-base",
+    "dim": 768,
+    "k": 384,
+    "n_docs": 131924,
+    "n_R": 60000,
+    "n_pos": 241,
+    "n_neg": 241,
+    "sigma_rec": 0.115,
+    "auc_plain": 0.672,
+    "auc_plain_ci": [
+      0.627,
+      0.716
+    ],
+    "auc_protected": 0.674,
+    "auc_protected_ci": [
+      0.629,
+      0.717
+    ],
+    "auc_gap": 0.002,
+    "cor_max_dev": 0.0628,
+    "cor_violations": 0,
+    "n_pairs": 200000,
+    "secs": 6.4
+  }
+}

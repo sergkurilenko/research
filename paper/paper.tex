@@ -1167,6 +1167,23 @@ sizes alongside $p_{95}$ is necessary because the dominant scaling
 pressure for larger $K_{\mathrm{cands}}$ or distributed deployments is
 the response payload, not CPU time.
 
+\paragraph{Scalability to large corpora.} The cryptographic cost is
+independent of the corpus size $N_{\mathrm{docs}}$. The server reranks only
+the $K_{\mathrm{cands}}$-document short-list returned by stage-1 PQ
+filtering, so the ciphertext-plaintext budget is
+$O(K_{\mathrm{cands}}\cdot k)$: the $283$~ms of Table~\ref{tab:latency} is
+the cost at $K_{\mathrm{cands}}=40$, $k=192$ and does \emph{not} grow with
+$N_{\mathrm{docs}}$. Only the local stage-1 PQ search is
+$O(N_{\mathrm{docs}})$, and at $10^6$ documents it already costs just
+$22.8$~ms on a single faiss index (and is trivially shardable). Storage is
+linear and modest---the public PQ artefact is $48$~MB at $10^6$ documents
+and $k=192$. The server stage is moreover embarrassingly parallel
+(independent ct-pt dot products across the short-list and across queries),
+so end-to-end throughput scales horizontally. The sub-second budget
+therefore holds at $10^6$ documents and is preserved as the corpus grows:
+the only quantity scaling with $N_{\mathrm{docs}}$ is the cheap plaintext
+PQ stage, not the CKKS reranking.
+
 \begin{table}[tb]
 \centering
 \caption{Latency decomposition at the canonical operating point
@@ -1273,6 +1290,47 @@ Encoder & $d$ & $\sigma_{rec}$ & AUC$_{\mathrm{plain}}$ & AUC$_{\mathrm{prot}}$ 
 \end{tabular}
 \end{table}
 
+\paragraph{Generality across corpora, domains and languages.} The $95\%$
+confidence intervals confirm the parity on the run above directly: every
+protected--plaintext gap in Table~\ref{tab:dlp} is far inside the AUC
+confidence interval (Hanley--McNeil half-widths $0.02$--$0.035$ at
+$n=250{+}250$), so the two detectors are statistically indistinguishable.
+To show this is not an artefact of a single corpus, we repeat the test on
+five further collections spanning three languages and several
+domains---English BEIR (\textsc{scifact}, \textsc{nfcorpus},
+\textsc{arguana}) and multilingual MIRACL (Bengali, Swahili)---taking each
+query and its relevant passage as the canary pair
+(Table~\ref{tab:dlp-multicorpus}). Across all ten corpus--encoder
+combinations the protected detector again stays within the $95\%$
+bootstrap CI of the plaintext one ($|\Delta\mathrm{AUC}|\le0.014$), and
+Corollary~\ref{cor:detect} is never violated: $0$ exceptions in a further
+$2.0\times10^{6}$ pairs, i.e.\ $0$ in $3.5\times10^{6}$ pairs over six
+corpora and a wide $\sigma_{rec}$ range ($0.09$--$0.23$). Absolute
+detection difficulty varies with the task---near chance on \textsc{arguana}
+counter-argument retrieval, high on MIRACL---which is orthogonal to, and
+does not affect, the protected-versus-plaintext parity.
+
+\begin{table}[tb]\centering
+\caption{Corollary~\ref{cor:detect} and DLP detection across additional corpora (English BEIR: \textsc{scifact}/\textsc{nfcorpus}/\textsc{arguana}; multilingual MIRACL: Bengali/Swahili), with \textsc{e5-small} (S) and \textsc{e5-base} (B). AUC$\pm$ is the $95\%$ bootstrap CI half-width ($10^3$ resamples); the canary is a query versus its relevant passage. Across every corpus the protected detector tracks plaintext within CI (\,$|\Delta|\le0.014$\,), and the bound is never violated. Detection difficulty itself varies by task (chance-level on \textsc{arguana} counter-argument retrieval, high on MIRACL), which is orthogonal to the parity claim.}\label{tab:dlp-multicorpus}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Corpus & Lang/domain & Enc & $\sigma_{rec}$ & AUC$_{\mathrm{plain}}$ & AUC$_{\mathrm{prot}}$ & $\Delta$AUC \\ \midrule
+\textsc{scifact} & en/science & S & 0.185 & $0.587{\pm}0.064$ & $0.589{\pm}0.065$ & $+0.002$ \\
+\textsc{nfcorpus} & en/medical & S & 0.173 & $0.555{\pm}0.060$ & $0.570{\pm}0.062$ & $+0.014$ \\
+\textsc{arguana} & en/argument & S & 0.201 & $0.511{\pm}0.030$ & $0.512{\pm}0.030$ & $+0.001$ \\
+\textsc{miracl-bn} & bn/wiki & S & 0.228 & $0.776{\pm}0.043$ & $0.778{\pm}0.042$ & $+0.001$ \\
+\textsc{miracl-sw} & sw/wiki & S & 0.218 & $0.651{\pm}0.048$ & $0.655{\pm}0.049$ & $+0.004$ \\
+\textsc{scifact} & en/science & B & 0.092 & $0.582{\pm}0.067$ & $0.581{\pm}0.067$ & $-0.001$ \\
+\textsc{nfcorpus} & en/medical & B & 0.086 & $0.557{\pm}0.061$ & $0.553{\pm}0.060$ & $-0.004$ \\
+\textsc{arguana} & en/argument & B & 0.106 & $0.496{\pm}0.030$ & $0.493{\pm}0.029$ & $-0.003$ \\
+\textsc{miracl-bn} & bn/wiki & B & 0.124 & $0.791{\pm}0.042$ & $0.788{\pm}0.043$ & $-0.003$ \\
+\textsc{miracl-sw} & sw/wiki & B & 0.115 & $0.672{\pm}0.044$ & $0.674{\pm}0.044$ & $+0.002$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
 \paragraph{Scope.} This is a detection-\emph{fidelity} result for an
 honest server, not a confidentiality guarantee: it shows that truncation
 preserves the ability to flag leaks, whereas the resistance of the
@@ -1301,7 +1359,7 @@ order-insensitive. Aggressive deletion is the most effective attack---AUC
 falls by $0.06$ to $0.17$, worst for \textsc{bge-m3}---yet detection stays
 well above chance ($0.73$ to $0.88$), and substituting an entirely
 different sentence of the same document is still detected at $0.78$ to
-$0.90$. Obfuscation therefore degrades but does not defeat protected-space
+$0.90$. The $95\%$ confidence intervals on these AUCs are $\pm0.02$ to $\pm0.035$ ($n=250$ leaks versus $250$ benign candidates), so the V2 and V3 reductions are significant whereas the V1 change sits within noise. Obfuscation therefore degrades but does not defeat protected-space
 detection; the residual gap under heavy deletion is the empirical
 motivation for a semantic-canary augmentation (Section~\ref{sec:limits}).
 
@@ -1812,7 +1870,7 @@ off-the-shelf corrector of Section~\ref{ssec:aligned} is too weak to
 \emph{certify} protection---its raw control is already at the BLEU floor.
 The decisive test is an inversion model \emph{trained} on rotated/SVD
 embeddings of part of the corpus and evaluated on a holdout; the current
-narrative explicitly does not claim robustness against it.
+narrative explicitly does not claim robustness against it. This trained-decoder evaluation against the rotated/SVD geometry---together with encoder-level adversarial defences that resist it---is the subject of dedicated follow-up work.
 \item \emph{Typed-PII, multi-encoder $\sigma_{rec}$ ablation.} Replace the
 single-encoder, BLEU-only calibration of the $\sigma_{rec}=0.10$ proxy with
 a multi-encoder ablation reporting BLEU, token overlap and typed-PII
@@ -1878,7 +1936,7 @@ denoising phenomenon under a clearly delimited threat model, together
 with a stronger-attacker analysis (Section~\ref{sec:stronger}) that
 quantifies where the document-side obfuscation fails---known-plaintext
 recovery of $R$, reference-corpus lookup and public-PQ-code leakage---and
-leaves an end-to-end learned decoder as the principal open question.
+leaves an end-to-end learned decoder as the principal open question, which we pursue in dedicated follow-up work.
 Composing the protocol with a PIR-style access-pattern hider---natural
 given the stateless server-side ct-pt operations---is the most attractive
 architectural extension.
