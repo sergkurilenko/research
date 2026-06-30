@@ -34,6 +34,7 @@
 \renewcommand{\floatpagefraction}{0.65}
 
 \graphicspath{{figs/}}
+\emergencystretch=3em  % absorb small overfull \hbox (long texttt model paths, URLs)
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{hypothesis}{Empirical Hypothesis}
@@ -213,7 +214,7 @@ BEIR-truncation loss, and the calibrated-noise diagnostic that
 $\sigma_{rec}$ is not a privacy metric) is retained in
 Section~\ref{sec:experiments} as the foil that motivates \textsc{Shard},
 together with the CKKS ct-pt speed-up and parameter selection
-(Sections~\ref{ssec:ckks-modes},~\ref{sec:autotune}) that both schemes
+(established in our earlier work~\cite{ref_vkit,ref_alpha}) that both schemes
 share. This global-linear stack is the lightweight hybrid of our earlier
 work~\cite{ref_vkit}; \textsc{Shard} is the attack-aware successor that
 removes its single weak axis.
@@ -225,10 +226,14 @@ CKKS reranking---together with the reproducible CKKS parameter selection are
 system~\cite{ref_vkit} and its companion preprint~\cite{ref_alpha}, which we
 reproduce only as the comparison setting. Relative to that prior work, this
 paper contributes exactly the following new elements:
-(i)~the \textsc{Shard} cell-keyed residual-splitting construction
+(i)~the \textsc{Shard} cell-keyed residual-splitting construction---the
+first \emph{cancellable-template} scheme (revocable, renewable and
+unlinkable at zero utility cost) for dense text retrieval
 (Section~\ref{sec:shard});
-(ii)~the $\approx\!C\times$ anchor-complexity scaling law with a semi-formal
-account (Proposition~\ref{prop:anchor}, Section~\ref{ssec:shard-align});
+(ii)~the $\approx\!C\times$ anchor-complexity scaling law and the resulting
+bandwidth-optimal cell count $C^\star$ against a budgeted adversary, with
+semi-formal accounts (Propositions~\ref{prop:anchor} and~\ref{prop:optC},
+Sections~\ref{ssec:shard-align},~\ref{ssec:shard-cost});
 (iii)~the learned/non-linear/unsupervised aligner study against the keyed
 residual and the learned-obfuscation and PQ-only defense baselines
 (Sections~\ref{ssec:shard-learned},~\ref{ssec:shard-leak});
@@ -276,7 +281,6 @@ Hypothesis~\ref{hyp:bleu}.
 literature; Section~\ref{sec:threat} states the threat model;
 Section~\ref{sec:method} describes the global-linear baseline (the foil)
 and the shared CKKS/ct-pt machinery;
-Section~\ref{sec:autotune} the CKKS parameter selection;
 Section~\ref{sec:lemma} an elementary projection bound;
 Section~\ref{sec:shard} introduces \textsc{Shard};
 Section~\ref{sec:experiments} reports the baseline characterisation and the
@@ -565,11 +569,11 @@ Table~\ref{tab:shard-claims}.}
 \toprule
 \textbf{Claim} & \textbf{Evidence / status} \\ \midrule
 CKKS hides query values and scores from the server &
-Cryptographic construction + parameters (Sec.~\ref{sec:autotune},
-\ref{ssec:crypto-detail}); query privacy is cryptographic. \\
+Cryptographic construction; parameters from~\cite{ref_alpha}
+(Sec.~\ref{ssec:crypto-detail}); query privacy is cryptographic. \\
 ct-pt is faster than ct-ct for the reranking &
-Section~\ref{ssec:ckks-modes} ($1.44\times$ on the micro-benchmark,
-$1.7\times$ at the auto-tuned configuration). \\
+Established in~\cite{ref_alpha} ($1.7\times$ at the auto-tuned
+configuration); reused unchanged. \\
 Secret rotation helps against \emph{off-the-shelf}, non-adaptive
 Vec2Text & Appendix~\ref{ssec:vec2text}; effect holds only for the
 tested weak-attacker configuration. \\
@@ -584,23 +588,23 @@ Public PQ codes are harmless metadata &
 \textbf{False}; Section~\ref{ssec:alignment-pq} shows substantial
 reconstruction and nearest-neighbour leakage. \\
 The protective wrapper preserves ranking in $\mathrm{span}(V_k)$ &
-Section~\ref{ssec:integral} (within the 5-seed CI). \\
+Metric-preserving, Pearson $>0.9999$~\cite{ref_alpha} (recap Sec.~\ref{ssec:projection-baselines}). \\
 SVD truncation improves \emph{Acc@1} (a ``denoiser'') &
-\textbf{Not significant}; Section~\ref{ssec:significance}: paired tests
-give $p\geq0.11$ for every encoder. \\
+\textbf{Not significant}~\cite{ref_alpha}: paired tests give
+$p\geq0.11$ for every encoder. \\
 SVD truncation significantly improves \emph{Acc@10} for $d{=}1024$
 retrieval-trained encoders &
-Section~\ref{ssec:significance} (e5-large $+0.042$, $p<10^{-6}$); it
+\textbf{True}~\cite{ref_alpha} (e5-large $+0.042$, $p<10^{-6}$); it
 significantly \emph{degrades} compact/paraphrase encoders. \\
 The denoiser generalises to real IR &
-\textbf{False}; Section~\ref{ssec:beir}: SVD significantly \emph{reduces}
+\textbf{False}~\cite{ref_alpha}: SVD significantly \emph{reduces}
 nDCG@10 on BEIR SciFact/NFCorpus for every encoder. \\
 $\sigma_{rec}$ alone measures document privacy &
 \textbf{Not claimed}; Appendix~\ref{app:noise} shows that
 matched-distortion noise can preserve substantially more raw neighbour
 structure. \\
 End-to-end query latency $<1$~s at $10^6$ docs &
-Section~\ref{ssec:latency} (loopback PoC). \\
+\textbf{True}~\cite{ref_alpha}; recap Sec.~\ref{ssec:latency} (loopback PoC). \\
 The system is secure against an \emph{adaptive} inversion attacker &
 \textbf{Not claimed}; learned/universal adaptive decoders remain a
 required experiment (Sec.~\ref{sec:limits}). \\
@@ -674,7 +678,7 @@ secret rotation, a public PQ index, and CKKS reranking. The construction is
 to the elements the \textsc{Shard} comparison needs; we claim no novelty for
 it here and refer the reader there for the full derivation. It is the foil
 against which the contribution is measured; \textsc{Shard} reuses its CKKS
-ct-pt machinery (Sections~\ref{ssec:online},~\ref{sec:autotune}) but
+ct-pt machinery (Section~\ref{ssec:online}) but
 discards its single global geometry. The baseline is illustrated in
 Figure~\ref{fig:architecture}: an offline data-preparation phase
 (Section~\ref{ssec:offline}) and the online query protocol
@@ -823,7 +827,9 @@ should be retuned for new encoders or larger corpora.
 For the auto-selected configuration
 ($N_{\mathrm{poly}} = 8192$, coefficient-modulus chain $[60,40,60]$ bits,
 $\log_2 Q = 160$, scale $\Delta = 2^{40}$, TenSEAL/Microsoft SEAL
-backend) we report the parameters needed to reproduce the cryptographic
+backend)---selected by the reproducible offline grid search of~\cite{ref_vkit,ref_alpha}
+($\approx 1.7\times$ faster than the TenSEAL stock $[60,40,40,60]$ chain at equal
+security), reused here unchanged---we report the parameters needed to reproduce the cryptographic
 budget rather than only the latency:
 
 A single rotated query $q' \in \mathbb{R}^{k}$ packs into one ciphertext over
@@ -852,53 +858,6 @@ HomomorphicEncryption.org tables \cite{ref_he_std} and cross-checked against
 the lattice-estimator methodology of Albrecht et al.\
 \cite{ref_lwe_estimator}; the standard documents are guidelines, so we name the
 concrete estimator and table used so the claim can be re-derived.
-
-% =====================================================================
-\section{CKKS Parameter Selection}\label{sec:autotune}
-% =====================================================================
-
-The reproducible CKKS parameter selection recapped here is carried over from
-our prior work~\cite{ref_vkit,ref_alpha} as part of the shared baseline
-machinery---not a new contribution of this paper; we keep only the result
-the ct-pt reranking needs. We are explicit about what does the work. The $\approx 1.7\times$ speed-up below is not a
-machine-learning result; it follows from the structural observation that
-ct-pt reranking consumes exactly one multiplicative level, so a
-three-prime modulus chain $[60,40,60]$ suffices where the stock setting
-uses four. The latency surrogate we fit is useful only for
-\emph{extrapolating} to configurations or hardware we did not benchmark;
-on the enumerated grid itself, one simply selects the measured fastest
-valid configuration, and no model is needed. We report the surrogate for
-completeness and as a porting aid, not as the source of the speed-up.
-
-The selected configuration is found by the offline grid search
-of~\cite{ref_alpha}, recapped briefly. Over a discrete grid
-($N_{\mathrm{poly}}\in\{2^{12},\dots,2^{14}\}$, security-valid modulus chains
-bounded by the HomomorphicEncryption.org tables~\cite{ref_he_std}
-cross-checked with the lattice estimator~\cite{ref_lwe_estimator}, and
-several scales $\log_2\Delta$), a GradientBoosting latency
-surrogate~\cite{ref_friedman} ($R^2{=}0.985$ on a held-out split of $198$
-benchmarked configurations) returns the minimum-latency valid configuration
-meeting an accuracy tolerance $|\Delta\mathrm{Acc@1}|\leq\tau$ against the
-SVD baseline. With $\tau{=}1$~p.p.\ it selects $N_{\mathrm{poly}}{=}8192$,
-$[60,40,60]$, $\Delta{=}2^{40}$ ($\log_2 Q{=}160$~bits, within the
-conservative \texttt{tc128} bound), $\approx 1.7\times$ faster than the
-TenSEAL stock $[60,40,40,60]$ ($\log_2 Q{=}200$) at the same security
-(Table~\ref{tab:ckks-configs}).
-
-\begin{table}[tbp]
-\centering
-\caption{Comparison of CKKS configurations on the test workload.}
-\label{tab:ckks-configs}
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lrrrrr@{}}
-\toprule
-Configuration & $N$ & $\log_2 Q$ (bits) & Security & Time (ms) & Speed-up \\ \midrule
-Default, $[60,40,40,60]$ & 8192 & 200 & tc128 & 419.4 & $1.0\times$ \\
-Opt.\ (Acc@10), $[40,20,40]$, $\Delta=2^{20}$ & 4096 & 100 & tc128 & 173.7 & $2.4\times$ \\
-\textbf{Opt.\ (Acc@1), $[60,40,60]$, $\Delta=2^{40}$} & 8192 & 160 & tc128 & 245.2 & $1.7\times$ \\ \bottomrule
-\end{tabular}
-\end{table}
 
 % =====================================================================
 \section{A Projection Bound for the Distortion Proxy}\label{sec:lemma}
@@ -1054,6 +1013,25 @@ same-cell identity applies the same equality to the shared key $H_{c}$ of two
 stored residuals.
 \end{proof}
 
+\paragraph{\textsc{Shard} as a cancellable template scheme.} The keyed
+residual shard $z_i=H_{c(i)}r_i$ is, in the language of biometric template
+protection~\cite{ref_cancellable}, a \emph{cancellable template} for a text
+embedding. It is \emph{(i)~non-invertible} without the cell key
+$H_{c(i)}$---an unknown element of $\mathrm{O}(d_{\mathrm{priv}})$ carrying
+$\binom{d_{\mathrm{priv}}}{2}$ secret angles; \emph{(ii)~revocable and
+renewable}---a compromised store is re-issued by drawing fresh keys
+$\{H_c'\}$, which re-randomises every shard while leaving the plaintext
+similarity, and hence retrieval quality, \emph{exactly} unchanged
+(Proposition~\ref{prop:exact}); and \emph{(iii)~unlinkable}---two stores of
+the same corpus under independent keys are unrelatable in the residual
+subspace without a key. To our knowledge this is the first transfer of the
+cancellable-biometrics design pattern to dense text retrieval, and it is
+what separates \textsc{Shard} from one-shot obfuscation: a leak is repaired
+by \emph{re-keying}, at zero utility cost, rather than being permanent.
+Because the keys are \emph{per cell}, the template is cancellable at the
+granularity of the cell partition---the parameter $C$ that the next sections
+turn into a security--bandwidth dial.
+
 \paragraph{Proved vs.\ measured, and what \textsc{Shard} does not promise.}
 What \textsc{Shard} \emph{proves} is precisely Proposition~\ref{prop:exact}:
 exact full-dimensional reranking, and the same-cell cancellation
@@ -1100,12 +1078,13 @@ touching the rest of the store.
 \section{Experiments}\label{sec:experiments}
 % =====================================================================
 
-The experiments come in two groups. Sections~\ref{ssec:ckks-modes}--\ref{ssec:latency}
-\emph{characterise the global-linear baseline}---the ct-pt speed-up and
-parameter selection that \textsc{Shard} reuses, the SVD-denoiser
-significance and its non-transfer to BEIR, and the three failure modes
-that motivate \textsc{Shard}: known-plaintext Procrustes alignment,
-public-PQ leakage, and exact reference-corpus lookup. The
+The experiments come in two groups. Sections~\ref{ssec:alignment-pq}--\ref{ssec:latency} characterise the
+global-linear baseline, opening with the failure modes that motivate
+\textsc{Shard}: known-plaintext Procrustes alignment recovers the rotation
+from $\approx k$ pairs, the public PQ codes leak neighbour structure, and an
+overlapping reference corpus turns alignment into exact lookup
+(Section~\ref{ssec:alignment-pq}); the baseline's utility and latency are
+then recapped from~\cite{ref_vkit,ref_alpha}. The
 inversion-versus-rotation analyses reproduced from the global-linear
 paper~\cite{ref_alpha}---off-the-shelf and aligned Vec2Text, the
 lightweight projection baselines, and the calibrated-noise diagnostic
@@ -1142,328 +1121,6 @@ aligned Vec2Text stress test in
 Appendix~\ref{ssec:adaptive-inversion} is the only non-local run: it uses
 the provided memory-capped RTX~4090 profile with roughly 11~GiB free
 VRAM, Python~3.12 and PyTorch~2.6.0+cu124.
-
-% ----------------------------------------------------------------
-\subsection{Ciphertext-plaintext speed-up}\label{ssec:ckks-modes}
-% ----------------------------------------------------------------
-
-We benchmark a batched dot-product of an encrypted $192$-dimensional
-query with $N = 10\,000$ plaintext documents. The CKKS parameters are
-$N_{\mathrm{poly}}=8192$, coefficient chain $[60,40,40,60]$ and
-$\Delta=2^{40}$ ($\log_2 Q = 200 < 218$, within the conservative
-\texttt{tc128} bound for $N_{\mathrm{poly}}=8192$;
-cf.\ Section~\ref{ssec:crypto-detail}).
-Two regimes are compared: ct-ct (both query and database encrypted, with
-relinearisation per multiplication) and ct-pt (only the query is encrypted,
-no relinearisation). Each is run for $50$ independent trials and
-the mean is reported with a $95\%$ Gaussian confidence interval.
-
-\begin{table}[tbp]
-\centering
-\caption{Ciphertext-plaintext vs.\ ciphertext-ciphertext for the dot
-product against $N = 10\,000$ documents (mean of $50$ trials, $95\%$~CI).}
-\label{tab:ckks-modes}
-\small
-\begin{tabular}{@{}llrrrr@{}}
-\toprule
-Mode & Operation & Relin.\ & Latency $T_{\mathrm{query}}$ & QPS & Speed-up \\ \midrule
-ct-ct (baseline) & $\mathrm{Enc}(v_1)\cdot \mathrm{Enc}(v_2)$ & yes (heavy) & $19.15 \pm 0.15$~s & $0.052$ & $1.00\times$ \\
-\textbf{ct-pt (proposed)} & $\mathrm{Enc}(v_1)\cdot \mathrm{Plain}(v_2)$ & no & $\mathbf{13.28 \pm 0.10}$~s & $0.075$ & $\mathbf{1.44\times}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=0.6\linewidth]{fig_exp2_ctpt_vs_ctct.png}
-\caption{ct-pt vs.\ ct-ct: distribution of per-batch latencies over
-$50$ trials. Removing relinearisation moves the median by
-$\sim 6$~s and tightens the upper tail.}
-\label{fig:exp2}
-\end{figure}
-
-% ----------------------------------------------------------------
-\subsection{Utility at $10^6$ scale: the denoiser effect and its transfer to BEIR}\label{ssec:projection-baselines}
-% ----------------------------------------------------------------
-
-We carry two utility properties of the global-linear baseline forward
-only as context for \textsc{Shard}; both are reproduced from our prior
-work~\cite{ref_alpha} and detailed, with their tables, in
-Appendix~\ref{app:baseline}. The first is that, measured against lightweight
-alternatives at $k=d/2$ (Gaussian and random-orthogonal
-projection~\cite{ref_jl}), the choice of projection is an encoder-dependent
-trade-off rather than a universal privacy primitive. The second is that a
-calibrated Gaussian-noise diagnostic exposes the reconstruction proxy
-$\sigma_{rec}$ as \emph{not} a privacy metric: matched-distortion noise can
-preserve substantially more raw-neighbour structure than SVD at the same
-$\sigma_{rec}$ (Appendix~\ref{app:noise}).
-The remainder of this section establishes, at $10^6$ scale, whether
-half-truncation acts as a denoiser, whether that effect is statistically
-real, and whether it transfers to BEIR---prerequisites for the
-\textsc{Shard} evaluation that follows.
-
-% ----------------------------------------------------------------
-\paragraph{Integral multi-encoder evaluation at $10^6$ scale.}\label{ssec:integral}
-% ----------------------------------------------------------------
-
-We run the full pipeline at the canonical operating point $k = d/2$ across
-five encoders---\texttt{intfloat/multilingual-e5-small} ($d = 384$),
-\texttt{intfloat/multilingual-e5-base} ($d = 768$),
-\texttt{sentence-transformers/paraphrase-multilingual-mpnet-base-v2}
-($d = 768$), \texttt{intfloat/multilingual-e5-large} ($d = 1024$) and
-\texttt{BAAI/bge-m3} ($d = 1024$). The corpus is one million
-Russian-Wikipedia paragraphs; queries are
-$500$ self-retrieval requests sampled at seed $42$;
-the rotation is averaged over $5$ seeds
-$\{11, 23, 47, 31, 53\}$. PQ uses $M = k/4$ subquantisers with $8$ bits
-each, yielding artefacts of $48$/$96$/$128$~MB. The CKKS configuration
-is the auto-selected one
-($N_{\mathrm{poly}} = 8192$, $[60, 40, 60]$, $\Delta = 2^{40}$).
-
-\paragraph{On the use of self-retrieval.} Self-retrieval (the query is
-the first sentence of the target paragraph) is a \emph{controlled
-geometry probe}, not a production IR benchmark: it isolates whether the
-defensive transform $T(\cdot)$ preserves the ranking induced by the
-encoder, with a deterministic, leakage-free ground truth at
-$10^6$-scale. It is sufficient for the paper's actual claim---that the
-PQ+CKKS wrapper is metric-preserving in $\mathrm{span}(V_k)$---but it
-does \emph{not} establish production retrieval quality, and as the BEIR
-experiment (Section~\ref{ssec:beir}) shows, conclusions about the
-\emph{SVD step} drawn from this probe do not necessarily transfer to real
-graded-relevance retrieval. The present numbers should therefore be read as
-a transform-fidelity measurement, not as a retrieval-quality benchmark.
-
-\begin{table}[tbp]
-\centering
-\caption{Integral experiment at $k = d/2$ on a $10^6$-document
-corpus across five encoders. Reported are the raw baseline (no
-defence), the SVD-projected baseline (FAISS-IP exact in
-$\mathrm{span}(V_k)$, no rotation, no CKKS), the baseline PQ+CKKS pipeline
-(mean $\pm 95\%$ t-CI half-width over 5 rotation seeds), and the
-delta of Acc@1 from the raw baseline.}
-\label{tab:integral}
-\scriptsize
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}llrrrrr@{}}
-\toprule
-Encoder & Metric & Raw & SVD & Proposed & $\Delta$ raw & Server $p_{95}$ (ms) \\ \midrule
-\multicolumn{7}{l}{\emph{multilingual-e5-small ($d=384$, $k=192$, $M=48$, $\sigma_{rec}=0.239$)}} \\
-& Acc@1   & $0.782$ & $0.702$ & $0.701 \pm 0.001$ & $-0.081$ & \multirow{4}{*}{$314$} \\
-& Acc@10  & $0.890$ & $0.834$ & $0.831 \pm 0.002$ & $-0.059$ & \\
-& MRR     & $0.817$ & $0.747$ & $0.746 \pm 0.001$ & $-0.071$ & \\
-& NDCG@10 & $0.834$ & $0.768$ & $0.767 \pm 0.001$ & $-0.067$ & \\ \midrule
-\multicolumn{7}{l}{\emph{multilingual-e5-base ($d=768$, $k=384$, $M=96$, $\sigma_{rec}=0.129$)}} \\
-& Acc@1   & $0.830$ & $0.834$ & $0.833 \pm 0.001$ & $+0.003$ & \multirow{4}{*}{$356$} \\
-& Acc@10  & $0.934$ & $0.924$ & $0.924 \pm 0.001$ & $-0.010$ & \\
-& MRR     & $0.862$ & $0.865$ & $0.864 \pm 0.001$ & $+0.002$ & \\
-& NDCG@10 & $0.880$ & $0.879$ & $0.879 \pm 0.000$ & $-0.001$ & \\ \midrule
-\multicolumn{7}{l}{\emph{paraphrase-multilingual-mpnet-base-v2 ($d=768$, $k=384$, $M=96$, $\sigma_{rec}=0.107$)}} \\
-& Acc@1   & $0.716$ & $0.650$ & $0.649 \pm 0.001$ & $-0.067$ & \multirow{4}{*}{$351$} \\
-& Acc@10  & $0.842$ & $0.796$ & $0.795 \pm 0.001$ & $-0.047$ & \\
-& MRR     & $0.762$ & $0.693$ & $0.692 \pm 0.001$ & $-0.070$ & \\
-& NDCG@10 & $0.782$ & $0.717$ & $0.717 \pm 0.000$ & $-0.066$ & \\ \midrule
-\multicolumn{7}{l}{\emph{multilingual-e5-large ($d=1024$, $k=512$, $M=128$, $\sigma_{rec}=0.101$)}} \\
-& Acc@1   & $0.796$ & $0.814$ & $0.814 \pm 0.000$ & $+0.018$ & \multirow{4}{*}{$219$} \\
-& Acc@10  & $0.880$ & $0.922$ & $0.920 \pm 0.000$ & $+0.040$ & \\
-& MRR     & $0.824$ & $0.848$ & $0.848 \pm 0.000$ & $+0.024$ & \\
-& NDCG@10 & $0.838$ & $0.866$ & $0.865 \pm 0.000$ & $+0.027$ & \\ \midrule
-\multicolumn{7}{l}{\emph{BAAI/bge-m3 ($d=1024$, $k=512$, $M=128$, $\sigma_{rec}=0.128$)}} \\
-& Acc@1   & $0.818$ & $0.832$ & $0.832 \pm 0.000$ & $+0.014$ & \multirow{4}{*}{$221$} \\
-& Acc@10  & $0.908$ & $0.926$ & $0.924 \pm 0.000$ & $+0.016$ & \\
-& MRR     & $0.848$ & $0.863$ & $0.863 \pm 0.000$ & $+0.015$ & \\
-& NDCG@10 & $0.862$ & $0.878$ & $0.878 \pm 0.000$ & $+0.016$ & \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\emph{The protective layer is essentially free in the projected space.}
-The difference (proposed) vs.\ (baseline\_proj) is within the $\pm 0.001$
-5-seed CI for every metric and every encoder. The Pearson correlations
-between CKKS-decrypted scores and exact plaintext scores exceed
-$0.9999$ in all cases. The proxy criterion $\sigma_{rec} \geq 0.10$
-holds uniformly.
-
-\emph{The actual quality cost is paid by SVD truncation, not by the
-protective wrapper.} The split
-$\Delta_{\mathrm{SVD}} = \mathrm{baseline\_proj} - \mathrm{baseline\_dense}$
-is $+0.004/+0.018/+0.014$ for retrieval-trained encoders with
-$d \geq 768$ (e5-base / e5-large / bge-m3), $-0.080$ for the
-compact e5-small ($d = 384$, half-truncation removes half the embedding
-volume) and $-0.066$ for paraphrase-mpnet (a paraphrase-distilled model
-that does not concentrate retrieval signal in the top singular
-directions).
-
-\emph{The end-to-end accuracy budget is met for retrieval-trained
-$d \geq 768$.} The end-to-end criterion
-$\Delta\mathrm{Acc@1} \geq -0.05$ relative to the raw baseline holds
-for e5-base ($+0.003$), e5-large ($+0.018$) and bge-m3 ($+0.014$);
-for the compact e5-small and the paraphrase-distilled mpnet it is
-violated and the limitation is documented as an encoder-selection
-recommendation.
-
-\paragraph{Linear-denoiser side effect (significance deferred).} On the two
-retrieval-trained encoders with $d = 1024$, half SVD truncation does not
-degrade---and at Acc@10 measurably improves---ranking over the raw
-baseline (e.g.\ $+0.042$ Acc@10 on e5-large). This is consistent with
-reading the $V_k$-projection as a linear denoiser: trailing singular
-directions, dominated by fp16 inference noise, are filtered out, so the
-ranking in $\mathrm{span}(V_k)$ can be cleaner than in raw
-$\mathbb{R}^d$. The point estimates above are tabulated across rotation
-seeds; because that CI does \emph{not} capture query-sampling
-uncertainty, we test the effect properly with paired per-query tests in
-Section~\ref{ssec:significance} (where the Acc@1 ``gains'' turn out
-\emph{not} to be significant, while the Acc@10 gains on the $d=1024$
-encoders are) and check its direction on real IR tasks in
-Section~\ref{ssec:beir}.
-
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=\linewidth]{fig_exp5_per_seed.png}
-\caption{Per-seed Acc@10 of the baseline PQ+CKKS pipeline relative to
-baseline\_proj on five rotation seeds; the spread is below the 5-seed
-CI of the baseline.}
-\label{fig:exp5-per-seed}
-\end{figure}
-
-% ----------------------------------------------------------------
-\paragraph{Paired significance of the denoiser effect.}\label{ssec:significance}
-% ----------------------------------------------------------------
-
-The integral experiment reports the SVD effect
-$\Delta_{\mathrm{SVD}} = \mathrm{baseline\_proj} - \mathrm{baseline\_dense}$
-with a 5-seed rotation CI. That CI measures the stability of the random
-rotation, \emph{not} the uncertainty of estimating accuracy from a finite
-query set: with $500$ queries the binomial standard error of an Acc@1 near
-$0.8$ is $\sqrt{0.8\cdot0.2/500}\approx 0.018$, i.e.\ as large as the
-reported $+0.018$ effect itself. We therefore test the effect directly.
-Raw ($\mathbb{R}^d$) and SVD ($\mathrm{span}(V_k)$, $k=d/2$) retrieval are
-evaluated on the \emph{same} $500$ self-retrieval queries, so the
-per-query hit indicators are paired. We report McNemar's exact test (a
-two-sided binomial test on the discordant pairs) for Acc@1 and Acc@10, and
-a paired bootstrap ($10^4$ resamples) $95\%$ CI for each delta. Neither
-rotation nor CKKS is involved---the denoiser is a property of $V_k$
-alone---so this is computed exactly from the cached embeddings, and the
-raw/SVD point estimates reproduce Table~\ref{tab:integral}.
-
-\begin{table}[tbp]
-\centering
-\caption{Paired significance of SVD truncation ($k=d/2$) relative to the
-raw space, on $500$ self-retrieval queries. $\Delta = \mathrm{SVD}-\mathrm{raw}$;
-brackets are paired-bootstrap $95\%$ CIs ($10^4$ resamples); $p$ is
-McNemar's exact two-sided test on the discordant pairs. Bold $p$ marks
-significance at $\alpha=0.05$.}
-\label{tab:significance}
-\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lrrcrrcr@{}}
-\toprule
-& & \multicolumn{3}{c}{Acc@1} & \multicolumn{3}{c}{Acc@10}\\
-\cmidrule(lr){3-5}\cmidrule(lr){6-8}
-Encoder & $\sigma_{rec}$ & $\Delta$ & 95\% CI & $p$ & $\Delta$ & 95\% CI & $p$\\
-\midrule
-e5-small & $0.239$ & $-0.082$ & $[-0.108,-0.056]$ & $\mathbf{2{\times}10^{-9}}$ & $-0.058$ & $[-0.084,-0.034]$ & $\mathbf{5{\times}10^{-6}}$\\
-e5-base  & $0.129$ & $+0.004$ & $[-0.018,+0.026]$ & $0.86$ & $-0.010$ & $[-0.024,+0.004]$ & $0.27$\\
-mpnet    & $0.107$ & $-0.064$ & $[-0.092,-0.038]$ & $\mathbf{3{\times}10^{-6}}$ & $-0.046$ & $[-0.068,-0.026]$ & $\mathbf{2{\times}10^{-5}}$\\
-e5-large & $0.101$ & $+0.018$ & $[-0.002,+0.038]$ & $0.11$ & $+0.042$ & $[+0.026,+0.060]$ & $\mathbf{1{\times}10^{-6}}$\\
-bge-m3   & $0.128$ & $+0.014$ & $[\,0.000,+0.030]$ & $0.12$ & $+0.016$ & $[+0.004,+0.030]$ & $\mathbf{0.039}$\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The result sharpens the SVD-denoiser picture considerably. The Acc@1
-``denoiser gains'' turn out not to be statistically significant for any
-encoder---e5-base at $p=0.86$, e5-large at $p=0.11$, bge-m3 at $p=0.12$, with
-all three bootstrap CIs straddling $0$---so the earlier reading that ``SVD
-improves the four ranking metrics'' merely over-interpreted Acc@1 point
-estimates. The effect that \emph{is} real and significant surfaces one cutoff
-later, at Acc@10, and only for the retrieval-trained $d=1024$ encoders:
-e5-large gains $+0.042$ ($p<10^{-6}$, and of the discordant queries $21$ are
-pulled into the top-10 by SVD while none are lost), and bge-m3 $+0.016$
-($p=0.04$). At the other end, for the compact e5-small and the
-paraphrase-distilled mpnet, truncation significantly \emph{degrades} retrieval
-at both cutoffs ($-0.082$ and $-0.064$ Acc@1, $p<10^{-5}$); and for e5-base the
-projected space is statistically indistinguishable from raw at either cutoff,
-so the wrapper is effectively free there. The corrected conclusion is thus
-narrower and more defensible than ``SVD is a denoiser'': half-SVD truncation
-is a mild, encoder-dependent denoiser that helps recall-style metrics for
-retrieval-trained high-dimensional encoders and hurts compact or
-paraphrase-distilled ones, but it does not reliably improve top-1 accuracy for
-any encoder we tested.
-
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=\linewidth]{fig_exp10_significance.png}
-\caption{Paired effect of SVD truncation ($k=d/2$) relative to the raw
-space, with bootstrap $95\%$ CIs, on $500$ self-retrieval queries. Green
-markers are significant improvements ($p<0.05$, McNemar), red significant
-degradations, grey not significant. No encoder shows a significant Acc@1
-gain; the significant Acc@10 gains are confined to the retrieval-trained
-$d{=}1024$ encoders.}
-\label{fig:exp10-significance}
-\end{figure}
-
-% ----------------------------------------------------------------
-\paragraph{Generality of the denoiser effect on BEIR.}\label{ssec:beir}
-% ----------------------------------------------------------------
-
-Self-retrieval is a controlled geometry probe. To check that the denoiser
-\emph{direction} is not an artefact of it, we repeat the raw-vs-SVD
-comparison on two standard BEIR~\cite{ref_beir} datasets with real graded
-relevance judgements: SciFact ($5{,}183$ documents, $300$ test queries)
-and NFCorpus ($3{,}633$ documents, $323$ test queries). Each corpus and
-query set is encoded with the e5 family (mean pooling, \texttt{query:}/
-\texttt{passage:} prefixes, $L_2$ normalisation); we fit the data-dependent
-$V_k$ basis on the corpus embeddings at $k=d/2$ and compare exact
-inner-product retrieval in $\mathbb{R}^d$ and in $\mathrm{span}(V_k)$. We
-report nDCG@10 and Recall@10 with a paired bootstrap $95\%$ CI for each
-delta and McNemar's test for the top-1 hit.
-
-\begin{table}[tbp]
-\centering
-\caption{SVD truncation ($k=d/2$) vs.\ the raw space on BEIR (max input
-length $128$, mean pooling). $\Delta = \mathrm{SVD}-\mathrm{raw}$; brackets
-are paired-bootstrap $95\%$ CIs ($10^4$ resamples). \textbf{Every} $\Delta$
-nDCG@10 CI excludes $0$: SVD truncation significantly \emph{reduces}
-nDCG@10 in all cells.}
-\label{tab:beir}
-\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}llrrrrr@{}}
-\toprule
-Encoder & Dataset & $\sigma_{rec}$ & raw nDCG@10 & SVD nDCG@10 & $\Delta$ nDCG@10 (95\% CI) & $\Delta$ R@10\\
-\midrule
-e5-large ($d{=}1024$) & SciFact  & $0.072$ & $0.643$ & $0.574$ & $-0.069\,[-0.091,-0.047]$ & $-0.053$\\
-e5-base ($d{=}768$)   & SciFact  & $0.090$ & $0.637$ & $0.586$ & $-0.051\,[-0.072,-0.032]$ & $-0.035$\\
-e5-small ($d{=}384$)  & SciFact  & $0.183$ & $0.598$ & $0.519$ & $-0.079\,[-0.103,-0.055]$ & $-0.080$\\
-e5-base ($d{=}768$)   & NFCorpus & $0.085$ & $0.327$ & $0.305$ & $-0.022\,[-0.032,-0.013]$ & $-0.016$\\
-e5-small ($d{=}384$)  & NFCorpus & $0.172$ & $0.302$ & $0.277$ & $-0.025\,[-0.035,-0.014]$ & $-0.016$\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Table~\ref{tab:beir} is an important corrective to the self-retrieval
-reading. On both real IR datasets and for every encoder, half SVD
-truncation \emph{significantly reduces} nDCG@10 and Recall@10---the
-bootstrap CIs exclude zero in all cells, with drops of $2$--$8$ nDCG
-points. Decisively, \textsc{e5-large}, the one encoder that \emph{gained}
-Acc@10 on the $10^6$-document self-retrieval probe ($+0.042$,
-Section~\ref{ssec:significance}), \emph{loses} $-0.069$ nDCG@10 on SciFact.
-The modest gains on the self-retrieval probe therefore do \emph{not}
-transfer to these smaller, graded-relevance tasks: on real IR the
-discarded bottom half of the spectrum still carries task-relevant signal.
-Two further points sharpen the message. First, the effect is consistent
-across $d\in\{384,768,1024\}$, so it is not a low-dimensionality artefact.
-Second, on these corpora $k=d/2$ already sits \emph{below} the
-$\sigma_{rec}\geq0.10$ floor for e5-base and e5-large
-($\sigma_{rec}\approx0.07$--$0.09$), yet truncation still costs nDCG---so
-the utility cost, like the privacy interpretation, is not predicted by
-$\sigma_{rec}$ alone. The practical implication matches the
-encoder-selection caution of Section~\ref{ssec:integral}: on a real
-workload one should treat $k$ as a tunable accuracy cost and run a
-$k$-sweep, not assume a free denoiser. (For resource transparency, the
-five reported cells were CPU-encoded; the sixth, e5-large/NFCorpus, did not
-finish within our CPU budget and is omitted; the script reproduces it on a
-GPU or with more time.)
 
 % ----------------------------------------------------------------
 \subsection{Attacks on the baseline: alignment, PQ leakage, and inversion}\label{ssec:alignment-pq}
@@ -1637,83 +1294,34 @@ Appendix~\ref{ssec:adaptive-inversion}; the result does not contradict
 the exact-lookup failure mode of Section~\ref{ssec:reference-attack}.
 
 % ----------------------------------------------------------------
-\subsection{End-to-end client-server latency}\label{ssec:latency}
+\subsection{Baseline utility (recap)}\label{ssec:projection-baselines}\label{ssec:integral}\label{ssec:significance}\label{ssec:beir}
+
+The utility of the global-linear baseline is established in our prior
+work~\cite{ref_vkit,ref_alpha} and is not reproduced here. In brief, at
+$k=d/2$ on the $10^6$-document corpus the PQ$+$CKKS wrapper is
+metric-preserving in $\mathrm{span}(V_k)$ (CKKS-decrypted versus exact
+scores correlate at Pearson $>0.9999$); the SVD step is a mild,
+encoder-dependent denoiser whose apparent Acc@1 gains are \emph{not}
+statistically significant and which \emph{significantly reduces} nDCG@10 on
+graded-relevance BEIR, so $k$ is a tunable accuracy cost rather than a free
+denoiser, met within the end-to-end accuracy budget only for
+retrieval-trained $d\geq768$ encoders. Because \textsc{Shard} reranks
+\emph{exactly} in the full space (Section~\ref{sec:shard}), it inherits
+this projected-baseline utility unchanged; its own retrieval quality is
+evaluated in Section~\ref{ssec:shard-utility}.
+
 % ----------------------------------------------------------------
+\subsection{Baseline latency (recap)}\label{ssec:latency}
 
-We package the pipeline as a FastAPI service, with the client and the
-server running as two independent processes on the same machine,
-communicating via HTTP/JSON over loopback.
-The setup measures the realistic HTTP framing,
-base64 serialisation of CKKS ciphertexts, FastAPI/uvicorn stack and JSON
-(de-)serialisation, but without physical network latency.
-The encoder is multilingual-e5-small ($d = 384$, $k = 192$,
-$M = 48$, $K_{\mathrm{cands}} = 40$, $N_{\mathrm{docs}} = 10^6$),
-measured over $500$ queries at a fixed rotation seed. The multi-encoder
-experiment above reports the server-side component over five rotation
-seeds; this subsection adds the HTTP/JSON framing overhead.
-
-\paragraph{On-wire payload sizes.} For the same configuration the
-measured HTTP payloads are: request body
-$\approx 0.29$~MB (one CKKS query ciphertext, base64-encoded JSON,
-inflated $\approx 1.37\times$ over the $0.21$~MB raw ciphertext);
-response body $\approx 11.4$~MB ($K_{\mathrm{cands}} = 40$ score
-ciphertexts, base64 JSON). One-off on-boarding transfers the public PQ
-artefact ($48$~MB at $k=192$) and the CKKS public/Galois keys
-($\approx 8$~MB); these are not part of the per-query budget. Reporting
-sizes alongside $p_{95}$ is necessary because the dominant scaling
-pressure for larger $K_{\mathrm{cands}}$ or distributed deployments is
-the response payload, not CPU time.
-
-\begin{table}[tbp]
-\centering
-\caption{Latency decomposition on a $10^6$-document corpus,
-client-server PoC over HTTP loopback. The dominant row combines
-FastAPI/JSON transport with server-side ct-pt reranking, as measured by
-the client. ``Encoder'' is independent of the defence layer.}
-\label{tab:latency}
-\small
-\begin{tabular}{@{}lrl@{}}
-\toprule
-Stage & $p_{95}$ (ms) & Notes \\ \midrule
-Encoder forward pass (client) & $\sim 200$ & rubert-style on CPU/GPU \\
-Projection (client) & $0.09$ & $T(q)=(E(q)-\mu)V_kR$ \\
-Local PQ search (client) & $22.8$ & $K_{\mathrm{cands}} = 40$ \\
-CKKS encryption (client) & $4.9$ & one rotated query \\
-\textbf{Server + HTTP/JSON} & $\mathbf{531.3}$ & includes server ct-pt rerank \\
-CKKS decrypt + sort (client) & $20.7$ & 40 ciphertexts \\ \midrule
-Total (excluding encoder) & $\mathbf{578.2}$~ms & $p_{95}$, full pipeline \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\paragraph{Reconciling the timing figures.} The CKKS numbers reported in
-different experiments measure different workloads and must not be compared
-directly. To avoid confusion we state the operation count behind each.
-\emph{(a)} The mode microbenchmark (Table~\ref{tab:ckks-modes},
-$13.28$~s) encrypts a query and scores it against \emph{all}
-$N{=}10\,000$ plaintext documents---$10\,000$ ct-pt multiplies---to
-isolate the ct-pt-vs-ct-ct ratio at the stock parameters $[60,40,40,60]$;
-it is \emph{not} what the pipeline does. \emph{(b)} The parameter-selection
-workload (Table~\ref{tab:ckks-configs}, $\approx 245$~ms) times one batch
-ct-pt operation at the auto-selected $[60,40,60]$. \emph{(c)} The pipeline
-(Tables~\ref{tab:integral} and~\ref{tab:latency}) reranks only the
-$K_{\mathrm{cands}}{=}40$ stage-1 candidates: $40$ ct-pt multiplies, $40$
-rescales and $40\times\lceil\log_2 k\rceil$ Galois rotations, giving a
-server-side $p_{95}$ of $219$--$356$~ms and an end-to-end $p_{95}$ of
-$578$~ms once HTTP/JSON framing is added. The sub-second figure is a
-consequence of reranking $40$ candidates, not $10^6$; the local PQ stage,
-not CKKS, is what reduces $10^6$ documents to $40$.
-
-\begin{figure}[tbp]
-\centering
-\includegraphics[width=0.49\linewidth]{fig_exp6_latency_decomposition.png}\hfill
-\includegraphics[width=0.49\linewidth]{fig_exp6_latency_cdf.png}
-\caption{Left: $p_{95}$ latency decomposition by stage in the HTTP
-prototype. Right: CDF of the per-query latency trace from the local
-pipeline benchmark. Both views remain below the $1$~s target; physical
-network latency is not included.}
-\label{fig:exp6-latency}
-\end{figure}
+End-to-end latency of the global-linear baseline is reported in full
+in~\cite{ref_alpha}; the point that matters for \textsc{Shard} is
+architectural. The pipeline reranks only the $K_{\mathrm{cands}}{=}40$
+stage-1 candidates, not $10^6$, giving a server-side $p_{95}$ of
+$219$--$356$~ms and $\approx578$~ms end-to-end once HTTP/JSON framing is
+added; the local PQ stage---not CKKS---reduces $10^6$ documents to $40$, so
+the cryptographic cost is independent of corpus size $N_{\mathrm{docs}}$.
+\textsc{Shard} adds a two-stage rescoring whose marginal online cost is
+measured in Section~\ref{ssec:shard-cost}.
 
 % ----------------------------------------------------------------
 \subsection{SHARD: utility and online cost}\label{ssec:shard-utility}
@@ -1887,6 +1495,37 @@ $200$ & $15.7 / 26$ & $30.1 / 48$ & $6.3$ & $30.1\times$\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\paragraph{Choosing $C$: a security--bandwidth game.}
+Proposition~\ref{prop:anchor} below and Table~\ref{tab:shard-cost} make the
+cell count a one-parameter optimisation against a budgeted adversary. Fix a
+threat model that grants the attacker at most $m_{\mathrm{adv}}$ known
+plaintext--shard pairs, and let $\beta(C)$ be the expected active cells per
+query (the upload cost, non-decreasing in $C$). The defender commits to $C$;
+the attacker then allocates its anchors.
+\begin{proposition}[Bandwidth-optimal cell count]\label{prop:optC}
+Against a \emph{diffuse} adversary, \textsc{Shard} resists known-plaintext
+alignment iff the anchor complexity exceeds the budget,
+$C\,d_{\mathrm{priv}}/(1+\delta)>m_{\mathrm{adv}}$
+(Proposition~\ref{prop:anchor}). Since $\beta$ is non-decreasing, the
+bandwidth-minimal secure choice is
+\[
+C^\star=\big\lceil (1+\delta)\,m_{\mathrm{adv}}/d_{\mathrm{priv}}\big\rceil ,
+\]
+deployable iff $\beta(C^\star)\leq B$ for a bandwidth budget $B$. No finite
+$C$ defends against a \emph{targeted} adversary, whose complexity
+$d_{\mathrm{priv}}$ is independent of $C$; there the only recourse is the
+micro-key limit $C{=}N$ with key rotation (Section~\ref{ssec:shard-micro}).
+\end{proposition}
+\noindent The frontier is favourable. Anchor complexity is \emph{linear} in
+$C$ (Proposition~\ref{prop:anchor}) while the cost $\beta(C)$ grows
+\emph{sub-linearly}---a query's neighbourhood spans only a bounded number of
+ever-finer cells---so on the measured grid quadrupling $C$ from $64$ to
+$256$ multiplies anchor complexity $4\times$ (e5-small $m_{50}:25.6\text{k}
+\to102.4\text{k}$, Table~\ref{tab:shard-align}) but upload only
+$\approx1.9\times$ ($15.7\to30.1$ active cells at $K_{\mathrm{cands}}{=}200$,
+Table~\ref{tab:shard-cost}). Security-per-unit-bandwidth therefore
+\emph{improves} with $C$, up to the micro-key endpoint.
 
 % ----------------------------------------------------------------
 \subsection{SHARD: alignment resistance scales with the cell count}\label{ssec:shard-align}
@@ -2564,214 +2203,27 @@ attack surface is measured rather than assumed.
 % =====================================================================
 \appendix
 % ----------------------------------------------------------------
-\section{Reproduced baseline analyses from the global-linear system}\label{app:baseline}
-% ----------------------------------------------------------------
+\section{Reproduced baseline analyses from the global-linear system}\label{app:baseline}\label{ssec:vec2text}\label{app:projbaselines}\label{app:noise}\label{ssec:adaptive-inversion}
 
-The analyses in this appendix characterise the \emph{global-linear
-baseline} (SVD truncation $+$ secret rotation $+$ CKKS reranking), not
-\textsc{Shard}. They are reproduced in condensed form from our prior
-work~\cite{ref_vkit,ref_alpha}, where the inversion-versus-rotation study
-is the primary contribution; we include the evidence tables here so this
-paper is self-contained, and refer the reader to~\cite{ref_alpha} for the
-full treatment. \textsc{Shard}'s own evaluation is in
-Section~\ref{sec:experiments}.
+The security analyses of the global-linear baseline are the primary
+contribution of our prior work and are reported there in
+full~\cite{ref_vkit,ref_alpha}; we do not reproduce them here and summarise
+only the conclusions the main text relies on. \emph{Off-the-shelf
+\textsc{Vec2Text}} against SVD-truncated and rotated embeddings: an unknown
+rotation drops inversion BLEU to the noise floor, but \emph{only} against a
+non-adaptive inverter---a known rotation, or the known-plaintext alignment
+of Section~\ref{ssec:alignment-pq}, removes the protection.
+\emph{Lightweight projection baselines} (Gaussian and random-orthogonal):
+the choice of projection is an encoder-dependent utility trade-off, not a
+universal privacy primitive. \emph{Calibrated Gaussian-noise diagnostic}:
+matched-distortion noise can preserve more raw-neighbour structure than SVD
+at the same $\sigma_{rec}$, so $\sigma_{rec}$ is not a privacy metric.
+\emph{Aligned \textsc{Vec2Text} stress test} (Procrustes alignment then a
+generative corrector): no exact text or typed PII is recovered---but neither
+is it from the raw control, so this test bounds rather than certifies
+resistance. These are exactly the global-key weaknesses that motivate
+\textsc{Shard}.
 
-\subsection{Off-the-shelf Vec2Text against truncation and rotation}\label{ssec:vec2text}
-We instantiate \textsc{Vec2Text}~\cite{ref_vec2text} on \textsc{GTR-base}
-embeddings ($d=768$) over a synthetic $100$-document PII corpus, under
-three threat models---no rotation; rotation with $R$ \emph{known};
-rotation with $R$ \emph{unknown}---at five values of $k/d$. The attacker
-budget is fixed and deliberately weak (greedy decoding, $10$ corrector
-iterations, no beam search), so the unprotected BLEU ($0.156$) is far
-below the $0.973$ of~\cite{ref_vec2text}; the experiment measures the
-\emph{relative} effect of truncation and rotation, not absolute inversion
-risk. This is the single most important caveat of the baseline's security
-narrative: an unknown $R$ drops BLEU to the noise floor ($\sim0.007$) for
-every $k/d$ (Table~\ref{tab:vec2text}), but only against this
-non-adaptive inverter---a known $R$ gives no protection beyond
-truncation, and the known-plaintext alignment of
-Section~\ref{ssec:alignment-pq} defeats the rotation outright. A linear
-fit of the no-rotation BLEU on $\eta_k=1-\sigma_{rec}^2$ gives
-$R^2\approx0.93$, consistent with Hypothesis~\ref{hyp:bleu}.
-
-\begin{table}[tbp]
-\centering
-\caption{Off-the-shelf Vec2Text on GTR-base embeddings under the three
-threat models. BLEU and Token Overlap with 95\% bootstrap CIs in
-brackets.}
-\label{tab:vec2text}
-\small
-\begin{tabular}{@{}rllll@{}}
-\toprule
-$k/d$ & Rotation & Knowledge of $R$ & BLEU & Token Overlap \\ \midrule
-$1.00$ & off & --- & $0.156\,[0.123;\,0.186]$ & $0.385\,[0.351;\,0.417]$ \\
-$1.00$ & on  & known & $0.156\,[0.127;\,0.187]$ & $0.385\,[0.351;\,0.416]$ \\
-$1.00$ & on  & \textbf{unknown} & $\mathbf{0.007\,[0.006;\,0.008]}$ & $\mathbf{0.053\,[0.046;\,0.060]}$ \\
-$0.75$ & off & --- & $0.077\,[0.063;\,0.093]$ & $0.325\,[0.304;\,0.345]$ \\
-$0.75$ & on  & unknown & $0.007\,[0.007;\,0.008]$ & $0.061\,[0.054;\,0.067]$ \\
-$0.50$ & off & --- & $0.057\,[0.046;\,0.069]$ & $0.285\,[0.270;\,0.300]$ \\
-$0.50$ & on  & unknown & $0.007\,[0.007;\,0.008]$ & $0.050\,[0.045;\,0.055]$ \\
-$0.25$ & off & --- & $0.024\,[0.020;\,0.028]$ & $0.196\,[0.181;\,0.208]$ \\
-$0.25$ & on  & unknown & $0.007\,[0.006;\,0.007]$ & $0.045\,[0.040;\,0.051]$ \\
-$0.10$ & off & --- & $0.010\,[0.009;\,0.011]$ & $0.113\,[0.104;\,0.123]$ \\
-$0.10$ & on  & unknown & $0.007\,[0.007;\,0.008]$ & $0.053\,[0.047;\,0.059]$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Lightweight projection baselines}\label{app:projbaselines}
-To avoid comparing the transform only against the raw system, we evaluate
-SVD against Gaussian and random-orthogonal projection~\cite{ref_jl} at
-$k=d/2$ (Table~\ref{tab:projection-baselines}). The result is
-deliberately mixed: SVD is strongest on the retrieval-trained $d\geq768$
-encoders---the operating region of the method---but random-orthogonal
-projection beats it on mpnet and e5-small. The choice of projection is an
-encoder-dependent utility trade-off, not a universal privacy primitive.
-
-\begin{table}[tbp]
-\centering
-\caption{Acc@1 under lightweight projection baselines at $k=d/2$.
-Random baselines are mean $\pm$ standard deviation over three seeds.}
-\label{tab:projection-baselines}
-\small
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-Encoder & Raw & SVD & Gaussian RP & Orthogonal RP \\ \midrule
-e5-small & $0.782$ & $0.702$ & $0.688 \pm 0.016$ & $0.737 \pm 0.010$ \\
-e5-base  & $0.830$ & $0.834$ & $0.781 \pm 0.011$ & $0.804 \pm 0.017$ \\
-mpnet    & $0.716$ & $0.650$ & $0.698 \pm 0.003$ & $0.705 \pm 0.008$ \\
-e5-large & $0.796$ & $0.814$ & $0.765 \pm 0.010$ & $0.769 \pm 0.009$ \\
-bge-m3   & $0.818$ & $0.832$ & $0.789 \pm 0.004$ & $0.810 \pm 0.002$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Calibrated Gaussian-noise diagnostic}\label{app:noise}
-On a $100\,000$-document gallery (PCA basis from an $80\,000$ sample) we
-sweep $k/d\in\{1/8,1/4,1/2,7/8\}$ and, for each $k$, add isotropic
-Gaussian noise calibrated by binary search to the SVD $\sigma_{rec}$,
-reporting self-retrieval Acc@1 and exact top-$10$ raw-vs-protected
-nearest-neighbour overlap (Table~\ref{tab:noise-sweep}). Two readings
-follow. First, $\sigma_{rec}$ is \emph{not} a privacy metric: e5-base at
-$k/d=0.875$ has low distortion yet preserves almost all raw neighbours
-under matched noise. Second, SVD changes geometry differently from
-independent noise---at $k/d=0.5$ it preserves far fewer raw neighbours
-($0.578$ vs.\ $0.829$ NN@10 on e5-base) without the ranking collapse of
-very aggressive truncation. The narrow claim is that SVD is an
-encoder-dependent utility/leakage trade-off, not that noise is simply
-worse.
-
-\begin{table}[tbp]
-\centering
-\caption{SVD truncation vs.\ independent Gaussian noise at matched mean
-relative distortion on a $100\,000$-document gallery. NN overlap@10 is
-the overlap with raw-space neighbours; lower values indicate less raw
-geometry preserved.}
-\label{tab:noise-sweep}
-\scriptsize
-\begin{tabular}{@{}lrrrrrr@{}}
-\toprule
-Encoder & $k/d$ & $\sigma_{rec}$ & SVD Acc@1 & SVD NN@10 & Noise Acc@1 & Noise NN@10 \\ \midrule
-e5-small & $0.125$ & $0.385$ & $0.318$ & $0.232$ & $0.750$ & $0.283$ \\
-e5-small & $0.250$ & $0.332$ & $0.600$ & $0.333$ & $0.788$ & $0.367$ \\
-e5-small & $0.500$ & $0.237$ & $0.814$ & $0.468$ & $0.828$ & $0.531$ \\
-e5-small & $0.875$ & $0.079$ & $0.880$ & $0.551$ & $0.872$ & $0.830$ \\
-e5-base  & $0.125$ & $0.354$ & $0.708$ & $0.370$ & $0.864$ & $0.503$ \\
-e5-base  & $0.250$ & $0.268$ & $0.872$ & $0.501$ & $0.886$ & $0.641$ \\
-e5-base  & $0.500$ & $0.129$ & $0.916$ & $0.578$ & $0.902$ & $0.829$ \\
-e5-base  & $0.875$ & $0.023$ & $0.920$ & $0.592$ & $0.910$ & $0.969$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Aligned Vec2Text inversion stress test}\label{ssec:adaptive-inversion}
-As a portable generative-inversion control we run the off-the-shelf
-\textsc{Vec2Text} corrector with a larger budget than above ($24$
-corrector iterations, max input length~$96$) against GTR-base embeddings
-($d=768$, $k=d/2$, secret rotation), given up to $m=500$ known
-plaintext/protected pairs for Procrustes alignment, on a deterministic
-offline synthetic-news$+$PII corpus ($2\,200$ texts, $120$ test, $13$
-with phone/card patterns). No exact document or typed PII is recovered in
-any case---including a known-$R$ oracle---but the \emph{raw} row is also
-at the floor (BLEU $0.013$, Table~\ref{tab:adaptive-inversion}), so this
-off-the-shelf corrector certifies nothing. It does not contradict the
-exact-lookup failure of Section~\ref{ssec:reference-attack}; the open
-risk is a learned, corpus-adapted decoder (Section~\ref{sec:limits}).
-
-\begin{table}[tbp]
-\centering
-\caption{Aligned off-the-shelf Vec2Text stress test on the RTX~4090
-profile. All rows use $120$ held-out texts; $m$ is the number of
-known plaintext/protected pairs used for Procrustes alignment. Exact
-match and typed-PII recall are zero in every case.}
-\label{tab:adaptive-inversion}
-\small
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-Case & Token F1 & BLEU & Exact & PII recall \\ \midrule
-Raw embedding & $0.133$ & $0.0133$ & $0.000$ & $0.000$ \\
-Known-$R$ oracle & $0.138$ & $0.0134$ & $0.000$ & $0.000$ \\
-Unknown $R$, no alignment ($=$ Procrustes $m{=}0$) & $0.121$ & $0.0129$ & $0.000$ & $0.000$ \\
-Procrustes, $m=10$ & $0.124$ & $0.0128$ & $0.000$ & $0.000$ \\
-Procrustes, $m=50$ & $0.126$ & $0.0126$ & $0.000$ & $0.000$ \\
-Procrustes, $m=100$ & $0.141$ & $0.0127$ & $0.000$ & $0.000$ \\
-Procrustes, $m=192$ & $0.134$ & $0.0132$ & $0.000$ & $0.000$ \\
-Procrustes, $m=500$ & $0.135$ & $0.0133$ & $0.000$ & $0.000$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section*{Reproducibility}
-% =====================================================================
-
-All code, configuration, and the JSON/CSV outputs of every experiment are
-released as a structured repository. It is organised into \path{shard/}
-(the contribution: \path{shard_lib.py} and the eleven \texttt{exp12}--%
-\texttt{exp22} scripts for utility, online cost, alignment resistance
-(diffuse, targeted and against learned/unsupervised attackers),
-public-index leakage, the micro-key variant, the DP-noise comparison and
-the reference-lookup limitation), \path{baseline/} (the global-linear foil:
-the integral $10^6$-document pipeline, the Procrustes/PQ leakage, the
-$\sigma_{rec}$ diagnostic, the denoiser-significance and BEIR experiments,
-and the GPU Vec2Text stress test), \path{results/} (one directory per
-experiment), \path{paper/}, and \path{docs/}. The \textsc{Shard} and
-lightweight-baseline experiments are \texttt{numpy}/\texttt{scikit-learn}
-only---the per-cell keys are orthogonal, so the residual reranking score is
-exact and is computed directly, needing no FHE library---except the BEIR
-encoding (CPU \texttt{torch}) and the optional GPU stress test. All runs are
-deterministic given their seeds (query/ground-truth seed $42$, rotation and
-master-key seeds $\{11,23,31,47,53\}$, bootstrap seed $2026$). The cached
-embeddings (one-million Russian-Wikipedia paragraphs for five encoders,
-reproducibly sliced from a public dump with the date and checksum in the
-data manifest; $\approx\!17$~GB) are not shipped with the repository and are
-located through a \texttt{SHARD\_DATA} path; the BEIR data is the public
-\texttt{BeIR/scifact} and \texttt{BeIR/nfcorpus} releases. The code,
-configuration and per-experiment outputs are released at
-\url{https://github.com/sergkurilenko/research/tree/article5}.
-
-% =====================================================================
-\section*{Declarations}
-% =====================================================================
-
-\paragraph{Ethics.} This study used public benchmark corpora (Wikipedia,
-BEIR) and synthetic privacy-stress examples only; no intervention involving
-human participants was conducted and no non-public personal data were
-collected. Institutional ethics review was therefore not required under our
-institution's policy.
-
-\paragraph{Publication overlap.} Part of the baseline description---the
-global-linear SVD$+$rotation$+$CKKS pipeline and the CKKS parameter
-selection---reproduces our previously published system~\cite{ref_vkit} and
-its companion preprint~\cite{ref_alpha}, and is included here only as the
-comparison setting against which \textsc{Shard} is measured. The new
-contributions of this paper do not overlap with that earlier work: the
-\textsc{Shard} cell-keyed construction; the additional attacker families
-(learned/non-linear/unsupervised aligners, targeted-cell, reference-corpus);
-the anchor-complexity, public-prefix-leakage and micro-key measurements; and
-the evaluation beyond the prior paper. This manuscript is not under
-consideration elsewhere.
-
-% =====================================================================
 \begin{thebibliography}{99}\small
 % =====================================================================
 
