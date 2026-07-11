@@ -1,0 +1,140 @@
+{
+  "created_utc": "2026-07-11T09:15:15.626755+00:00",
+  "estimator": {
+    "command": [
+      "wsl",
+      "-d",
+      "CodexSageEstimatorUbuntu",
+      "-u",
+      "root",
+      "--cd",
+      "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+      "--",
+      "env",
+      "PYTHONUNBUFFERED=1",
+      "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+      "sage",
+      "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/lwe_estimator_rough.sage"
+    ],
+    "commit": "3e48ef421ec256afddb3e7d2249a77eab6e9ba12",
+    "elapsed_seconds": 3600.0681700001005,
+    "exit_code": 124,
+    "parsed_costs": {
+      "seal_exact_cbd21": {
+        "minimum_rop_log2": null,
+        "rop_log2_by_attack": {}
+      }
+    },
+    "profile": "rough",
+    "repository": "https://github.com/malb/lattice-estimator",
+    "runtime": {
+      "distribution": "CodexSageEstimatorUbuntu",
+      "kind": "wsl",
+      "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy",
+      "python": "Python 3.10.12",
+      "sage_version": "SageMath version 9.5, Release Date: 2022-01-30",
+      "sagemath_package": "python3-sage\t9.5-4\nsagemath\t9.5-4",
+      "wsl_version": "Версия WSL: 2.6.1.0\r\nВерсия ядра: 6.6.87.2-1\r\nВерсия WSLg: 1.0.66\r\nВерсия MSRDC: 1.2.6353\r\nВерсия Direct3D: 1.611.1-81528511\r\nВерсия DXCore: 10.0.26100.1-240331-1435.ge-release\r\nВерсия Windows: 10.0.26200.8655"
+    },
+    "sage_input": "lwe_estimator_rough.sage",
+    "sage_input_sha256": "4d662af721ba7f0a0cd35e16968970d2cc3e4072deb167e6900bdfb9e4f3ec90",
+    "status": "timed_out_partial_output_archived",
+    "stderr": "lwe_estimator_rough_stderr.txt",
+    "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+    "stdout": "lwe_estimator_rough_stdout.txt",
+    "stdout_sha256": "dfa27318aa31994b37befc1a913916ac4d0fc7552279099ef79757decd3632cc",
+    "timeout_seconds": 3600.0
+  },
+  "implementation": {
+    "microsoft_seal_source_commit": "206648d0e4634e5c61dcf9370676630268290b59",
+    "microsoft_seal_version": "4.1.1",
+    "parameter_extraction_api": "tenseal.sealapi.CoeffModulus.Create",
+    "tenseal_binary": "C:\\Users\\zerg\\anaconda3\\envs\\torchgpu\\Lib\\site-packages\\_tenseal_cpp.cp311-win_amd64.pyd",
+    "tenseal_binary_sha256": "7d17b5864a9929c23c78e9626271f55b7a52e4deda51cfe096f474e7a40a1716",
+    "tenseal_version": "0.3.16"
+  },
+  "parameters": {
+    "coeff_mod_bit_sizes_observed": [
+      60,
+      40,
+      60
+    ],
+    "coeff_mod_bit_sizes_requested": [
+      60,
+      40,
+      60
+    ],
+    "coeff_modulus_primes": [
+      1152921504606748673,
+      1099511480321,
+      1152921504606830593
+    ],
+    "coeff_modulus_product_q": "1461501441329443417981674104123436284398337261569",
+    "error_distribution": {
+      "estimator_primary": "ND.CenteredBinomial(21, n)",
+      "exact_standard_deviation": 3.24037034920393,
+      "implementation": "difference of two Hamming weights, 21 independent bits per side",
+      "seal_nominal_standard_deviation": 3.2,
+      "sensitivity_model": "ND.DiscreteGaussian(3.2, n)",
+      "source": "Microsoft SEAL 4.1.1 util/rlwe.cpp sample_poly_cbd",
+      "support": [
+        -21,
+        21
+      ]
+    },
+    "evaluation_keys": {
+      "assumption": "standard key-switching/circular (KDM) security assumption for encryptions of automorphisms of the secret key",
+      "estimator_limitation": "malb/lattice-estimator estimates LWE attacks but does not prove the circular/KDM assumption or circuit privacy",
+      "prototype": "public key plus limited Galois keys; no relinearization keys",
+      "rotation_steps_for_d672": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+        256,
+        512
+      ]
+    },
+    "first_data_level_bits": 100,
+    "global_scale": "1099511627776",
+    "last_data_level_bits": 60,
+    "log2_q": 159.99999980652066,
+    "poly_modulus_degree": 8192,
+    "sample_model": {
+      "m": "infinity",
+      "rationale": "unbounded-sample LWE sensitivity bound; conservative numerical model for public/evaluation material"
+    },
+    "scale_bits": 40,
+    "scheme": "CKKS",
+    "seal_tc128_headroom_bits": 58,
+    "seal_tc128_max_coeff_modulus_bits": 218,
+    "secret_distribution": {
+      "estimator": "ND.Uniform(-1, 1, n)",
+      "implementation": "independent uniform ternary coefficients {-1,0,1}",
+      "source": "Microsoft SEAL 4.1.1 util/rlwe.cpp sample_poly_ternary"
+    },
+    "slot_count": 4096,
+    "total_coeff_modulus_bits": 160
+  },
+  "schema": "ckks_lwe_security_transcript.v1",
+  "scope": {
+    "established": [
+      "exact key-context modulus extracted through the implementation API",
+      "pinned reproducible estimator input for the stated LWE models"
+    ],
+    "not_established": [
+      "formal reduction from the full CKKS implementation to plain LWE",
+      "circular/KDM security of Galois evaluation keys",
+      "circuit privacy or q-IND-CPA-D security",
+      "malicious-client security"
+    ]
+  },
+  "software": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15"
+  }
+}

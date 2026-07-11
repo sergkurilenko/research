@@ -1,0 +1,21 @@
+TRANSCRIPT_SCHEMA ckks_lwe_extended_individual.raw.v1
+ESTIMATOR_COMMIT 3e48ef421ec256afddb3e7d2249a77eab6e9ba12
+COST_MODEL MATZOV
+SHAPE_MODEL GSA
+MODEL_BEGIN seal_exact_cbd21
+PARAMETERS LWEParameters(n=8192, q=1461501441329443417981674104123436284398337261569, Xs=D(σ=0.82), Xe=D(σ=3.24), m=+Infinity, tag='SEAL CKKS N8192 q[60,40,60] seal_exact_cbd21')
+ATTACK_BEGIN bdd_hybrid
+ATTACK bdd_hybrid ::          rop: ≈2^175.8
+         red: ≈2^175.8
+         svp: ≈2^171.0
+           β:      504
+           η:      536
+           ζ:        0
+         |S|:        1
+           d:    16296
+        prob:      1.0
+           ↻:        1
+         tag:   hybrid
+ATTACK_STATUS completed
+ATTACK_ELAPSED_SECONDS 77.86475343792699
+MODEL_END seal_exact_cbd21

@@ -1,0 +1,226 @@
+\begin{thebibliography}{37}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+\providecommand{\eprint}[2][]{\url{#2}}
+ \bibcommenthead
+
+\bibitem[{Albrecht et~al.(2018)Albrecht, Chase, Chen, Ding, Goldwasser,
+  Gorbunov, Halevi, Hoffstein, Laine, Lauter, Lokam, Micciancio, Moody,
+  Morrison, Sahai, and Vaikuntanathan}]{Albrecht2018HEStandard}
+Albrecht M, Chase M, Chen H, et~al (2018) Homomorphic encryption security
+  standard. Tech. rep., HomomorphicEncryption.org, Toronto, Canada
+
+\bibitem[{Albrecht et~al.(2015)Albrecht, Player, and
+  Scott}]{Albrecht2015LWEHardness}
+Albrecht MR, Player R, Scott S (2015) On the concrete hardness of learning with
+  errors. Journal of Mathematical Cryptology 9(3):169--203.
+  \doi{10.1515/jmc-2015-0016}
+
+\bibitem[{Angel et~al.(2018)Angel, Chen, Laine, and Setty}]{Angel2018SealPIR}
+Angel S, Chen H, Laine K, et~al (2018) {PIR} with compressed queries and
+  amortized query processing. In: 2018 IEEE Symposium on Security and Privacy
+  (SP). IEEE, pp 962--979, \doi{10.1109/SP.2018.00062}
+
+\bibitem[{Chen et~al.(2020)Chen, Chillotti, Dong, Poburinnaya, Razenshteyn, and
+  Riazi}]{Chen2020SANNS}
+Chen H, Chillotti I, Dong Y, et~al (2020) {SANNS}: Scaling up secure
+  approximate {$k$}-nearest neighbors search. In: 29th USENIX Security
+  Symposium (USENIX Security 20). USENIX Association, pp 2111--2128
+
+\bibitem[{Cheon et~al.(2017)Cheon, Kim, Kim, and Song}]{Cheon2017CKKS}
+Cheon JH, Kim A, Kim M, et~al (2017) Homomorphic encryption for arithmetic of
+  approximate numbers. In: Advances in Cryptology -- ASIACRYPT 2017, Lecture
+  Notes in Computer Science, vol 10624. Springer, pp 409--437,
+  \doi{10.1007/978-3-319-70694-8_15}
+
+\bibitem[{Dathathri et~al.(2019)Dathathri, Saarikivi, Chen, Laine, Lauter,
+  Maleki, Musuvathi, and Mytkowicz}]{Dathathri2019CHET}
+Dathathri R, Saarikivi O, Chen H, et~al (2019) {CHET}: An optimizing compiler
+  for fully-homomorphic neural-network inferencing. In: Proceedings of the 40th
+  ACM SIGPLAN Conference on Programming Language Design and Implementation.
+  ACM, pp 142--156, \doi{10.1145/3314221.3314628}
+
+\bibitem[{Dathathri et~al.(2020)Dathathri, Kostova, Saarikivi, Dai, Laine, and
+  Musuvathi}]{Dathathri2020EVA}
+Dathathri R, Kostova B, Saarikivi O, et~al (2020) {EVA}: An encrypted vector
+  arithmetic language and compiler for efficient homomorphic computation. In:
+  Proceedings of the 41st ACM SIGPLAN Conference on Programming Language Design
+  and Implementation. ACM, pp 546--561, \doi{10.1145/3385412.3386023}
+
+\bibitem[{Espinoza et~al.(2026)Espinoza, Molina, Quezada-Gaibor, Catal{\'{a}}n,
+  and Dolz}]{Espinoza2026HEMatMul}
+Espinoza F, Molina J, Quezada-Gaibor D, et~al (2026) Cross-platform
+  characterisation and performance analysis of homomorphic matrix
+  multiplication. The Journal of Supercomputing 82:341.
+  \doi{10.1007/s11227-026-08464-y}, article 341
+
+\bibitem[{Halevi and Shoup(2014)}]{Halevi2014HElib}
+Halevi S, Shoup V (2014) Algorithms in {HElib}. In: Advances in Cryptology --
+  CRYPTO 2014, Lecture Notes in Computer Science, vol 8616. Springer, pp
+  554--571, \doi{10.1007/978-3-662-44371-2_31}
+
+\bibitem[{Henzinger et~al.(2023{\natexlab{a}})Henzinger, Dauterman,
+  Corrigan-Gibbs, and Zeldovich}]{Henzinger2023Tiptoe}
+Henzinger A, Dauterman E, Corrigan-Gibbs H, et~al (2023{\natexlab{a}}) Private
+  web search with {Tiptoe}. In: Proceedings of the 29th Symposium on Operating
+  Systems Principles. ACM, pp 396--416, \doi{10.1145/3600006.3613134}
+
+\bibitem[{Henzinger et~al.(2023{\natexlab{b}})Henzinger, Hong, Corrigan-Gibbs,
+  Meiklejohn, and Vaikuntanathan}]{Henzinger2023SimplePIR}
+Henzinger A, Hong MM, Corrigan-Gibbs H, et~al (2023{\natexlab{b}}) One server
+  for the price of two: Simple and fast single-server private information
+  retrieval. In: 32nd USENIX Security Symposium (USENIX Security 23). USENIX
+  Association, pp 3889--3905
+
+\bibitem[{J{\'{e}}gou et~al.(2011)J{\'{e}}gou, Douze, and Schmid}]{Jegou2011PQ}
+J{\'{e}}gou H, Douze M, Schmid C (2011) Product quantization for nearest
+  neighbor search. IEEE Transactions on Pattern Analysis and Machine
+  Intelligence 33(1):117--128. \doi{10.1109/TPAMI.2010.57}
+
+\bibitem[{Johnson et~al.(2019)Johnson, Douze, and
+  J{\'{e}}gou}]{Johnson2019Faiss}
+Johnson J, Douze M, J{\'{e}}gou H (2019) Billion-scale similarity search with
+  {GPUs}. IEEE Transactions on Big Data 7(3):535--547.
+  \doi{10.1109/TBDATA.2019.2921572}, early access in 2019; issue publication in
+  2021
+
+\bibitem[{Juvekar et~al.(2018)Juvekar, Vaikuntanathan, and
+  Chandrakasan}]{Juvekar2018Gazelle}
+Juvekar C, Vaikuntanathan V, Chandrakasan A (2018) {GAZELLE}: A low latency
+  framework for secure neural network inference. In: 27th USENIX Security
+  Symposium (USENIX Security 18). USENIX Association, pp 1651--1669
+
+\bibitem[{Karpukhin et~al.(2020)Karpukhin, Oguz, Min, Lewis, Wu, Edunov, Chen,
+  and Yih}]{Karpukhin2020DPR}
+Karpukhin V, Oguz B, Min S, et~al (2020) Dense passage retrieval for
+  open-domain question answering. In: Proceedings of the 2020 Conference on
+  Empirical Methods in Natural Language Processing (EMNLP). Association for
+  Computational Linguistics, pp 6769--6781,
+  \doi{10.18653/v1/2020.emnlp-main.550}
+
+\bibitem[{Kim et~al.(2022)Kim, Lee, Kim, and Chang}]{Kim2022PrivateKNN}
+Kim HJ, Lee H, Kim YK, et~al (2022) Privacy-preserving {kNN} query processing
+  algorithms via secure two-party computation over encrypted database in cloud
+  computing. The Journal of Supercomputing 78:9245--9284.
+  \doi{10.1007/s11227-021-04286-2}
+
+\bibitem[{Kluczniak and Santato(2023)}]{Kluczniak2023CircuitPrivacy}
+Kluczniak K, Santato G (2023) On circuit private, multikey and threshold
+  approximate homomorphic encryption. Cryptology ePrint Archive, Paper 2023/301
+
+\bibitem[{Kurilenko(2026{\natexlab{a}})}]{Kurilenko2026Preliminary}
+Kurilenko S (2026{\natexlab{a}}) Hybrid method for privacy-preserving semantic
+  search based on homomorphic encryption and random projections. Vestnik
+  Komp'yuternykh i Informatsionnykh Tekhnologiy, no. 3, pp. 44--49
+
+\bibitem[{Kurilenko(2026{\natexlab{b}})}]{Kurilenko2026Arxiv}
+Kurilenko S (2026{\natexlab{b}}) Hybrid privacy-aware semantic search:
+  {SVD}-truncated document geometry and {CKKS}-encrypted query reranking under
+  a restricted threat model. \doi{10.48550/arXiv.2606.26373}, arXiv preprint
+  2606.26373
+
+\bibitem[{Li and Micciancio(2021)}]{Li2021ApproximateSecurity}
+Li B, Micciancio D (2021) On the security of homomorphic encryption on
+  approximate numbers. In: Advances in Cryptology -- EUROCRYPT 2021, Lecture
+  Notes in Computer Science, vol 12696. Springer, pp 648--677,
+  \doi{10.1007/978-3-030-77870-5_23}
+
+\bibitem[{Li et~al.(2023)Li, Xu, and Song}]{Li2023GEIA}
+Li H, Xu M, Song Y (2023) Sentence embedding leaks more information than you
+  expect: Generative embedding inversion attack to recover the whole sentence.
+  In: Findings of the Association for Computational Linguistics: ACL 2023.
+  Association for Computational Linguistics, pp 14022--14040,
+  \doi{10.18653/v1/2023.findings-acl.881}
+
+\bibitem[{Li et~al.(2025)Li, Huang, Zhang, Hong, Liu, Wei, and
+  Chen}]{Li2025Panther}
+Li J, Huang Z, Zhang M, et~al (2025) {PANTHER}: Private approximate nearest
+  neighbor search in the single server setting. In: Proceedings of the 2025 ACM
+  SIGSAC Conference on Computer and Communications Security. ACM, pp 365--379,
+  \doi{10.1145/3719027.3765190}
+
+\bibitem[{{Microsoft Research}(2023)}]{Microsoft2023SEAL}
+{Microsoft Research} (2023) {Microsoft SEAL} (release 4.1). Software release
+
+\bibitem[{Morris et~al.(2023)Morris, Kuleshov, Shmatikov, and
+  Rush}]{Morris2023Vec2Text}
+Morris J, Kuleshov V, Shmatikov V, et~al (2023) Text embeddings reveal (almost)
+  as much as text. In: Proceedings of the 2023 Conference on Empirical Methods
+  in Natural Language Processing. Association for Computational Linguistics, pp
+  12448--12460, \doi{10.18653/v1/2023.emnlp-main.765}
+
+\bibitem[{Mughees et~al.(2021)Mughees, Chen, and Ren}]{Mughees2021OnionPIR}
+Mughees MH, Chen H, Ren L (2021) {OnionPIR}: Response efficient single-server
+  {PIR}. In: Proceedings of the 2021 ACM SIGSAC Conference on Computer and
+  Communications Security. ACM, pp 2292--2306, \doi{10.1145/3460120.3485381}
+
+\bibitem[{Servan-Schreiber et~al.(2022)Servan-Schreiber, Langowski, and
+  Devadas}]{ServanSchreiber2022PrivateANN}
+Servan-Schreiber S, Langowski S, Devadas S (2022) Private approximate nearest
+  neighbor search with sublinear communication. In: 2022 IEEE Symposium on
+  Security and Privacy (SP). IEEE, pp 911--929,
+  \doi{10.1109/SP46214.2022.9833702}
+
+\bibitem[{Smart and Vercauteren(2014)}]{Smart2014SIMD}
+Smart NP, Vercauteren F (2014) Fully homomorphic {SIMD} operations. Designs,
+  Codes and Cryptography 71(1):57--81. \doi{10.1007/s10623-012-9720-4}, first
+  published online in 2012
+
+\bibitem[{Song and Raghunathan(2020)}]{Song2020EmbeddingLeakage}
+Song C, Raghunathan A (2020) Information leakage in embedding models. In:
+  Proceedings of the 2020 ACM SIGSAC Conference on Computer and Communications
+  Security. ACM, pp 377--390, \doi{10.1145/3372297.3417270}
+
+\bibitem[{Souror et~al.(2024)Souror, Badawy, and
+  El-Fishawy}]{Souror2024SmartGridSSE}
+Souror S, Badawy M, El-Fishawy N (2024) Secure query processing for smart grid
+  data using searchable symmetric encryption. The Journal of Supercomputing
+  80:24173--24211. \doi{10.1007/s11227-024-06326-z}
+
+\bibitem[{Thakur et~al.(2021)Thakur, Reimers, R{\"{u}}ckl{\'{e}}, Srivastava,
+  and Gurevych}]{Thakur2021BEIR}
+Thakur N, Reimers N, R{\"{u}}ckl{\'{e}} A, et~al (2021) {BEIR}: A heterogeneous
+  benchmark for zero-shot evaluation of information retrieval models. In:
+  Advances in Neural Information Processing Systems 34: Datasets and Benchmarks
+  Track. Curran Associates, Inc.
+
+\bibitem[{Wang et~al.(2022)Wang, Yang, Huang, Jiao, Yang, Jiang, Majumder, and
+  Wei}]{Wang2022E5}
+Wang L, Yang N, Huang X, et~al (2022) Text embeddings by weakly-supervised
+  contrastive pre-training. \doi{10.48550/arXiv.2212.03533}, arXiv preprint
+  2212.03533, version 2 revised in 2024
+
+\bibitem[{Wang et~al.(2024)Wang, Yang, Huang, Yang, Majumder, and
+  Wei}]{Wang2024MultilingualE5}
+Wang L, Yang N, Huang X, et~al (2024) Multilingual {E5} text embeddings: A
+  technical report. arXiv preprint 2402.05672
+
+\bibitem[{Wang et~al.(2025)Wang, Zhang, Zhang, Wu, and
+  Yang}]{Wang2025EncryptedSemanticIoV}
+Wang R, Zhang Z, Zhang P, et~al (2025) Efficient encrypted semantic search
+  method toward internet of vehicles. The Journal of Supercomputing 81:538.
+  \doi{10.1007/s11227-025-06981-w}, article 538
+
+\bibitem[{Wong et~al.(2009)Wong, Cheung, Kao, and Mamoulis}]{Wong2009SecureKNN}
+Wong WK, Cheung DWL, Kao B, et~al (2009) Secure {kNN} computation on encrypted
+  databases. In: Proceedings of the 2009 ACM SIGMOD International Conference on
+  Management of Data. ACM, pp 139--152, \doi{10.1145/1559845.1559862}
+
+\bibitem[{Zhang et~al.(2021)Zhang, Xin, and Wu}]{Zhang2021GALA}
+Zhang Q, Xin C, Wu H (2021) {GALA}: Greedy computation for linear algebra in
+  privacy-preserved neural networks. In: Network and Distributed System
+  Security Symposium (NDSS 2021). Internet Society
+
+\bibitem[{Zhou et~al.(2025)Zhou, Shi, and Fanti}]{Zhou2025Pacmann}
+Zhou M, Shi E, Fanti G (2025) Pacmann: Efficient private approximate nearest
+  neighbor search. In: International Conference on Learning Representations
+  (ICLR)
+
+\bibitem[{Zhu et~al.(2025)Zhu, Patel, Zaharia, and Popa}]{Zhu2025Compass}
+Zhu J, Patel L, Zaharia M, et~al (2025) Compass: Encrypted semantic search with
+  high accuracy. In: 19th USENIX Symposium on Operating Systems Design and
+  Implementation (OSDI 25). USENIX Association, pp 915--938
+
+\end{thebibliography}

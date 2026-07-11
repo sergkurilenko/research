@@ -1,36 +1,62 @@
-# Environment lock used for the revised manuscript build
+# Measured environment lock for the journal revision
 
-Date: 2026-05-30
-OS: Windows 11
-GPU: NVIDIA GeForce RTX 5060, 8 GB VRAM
-Driver/CUDA reported by nvidia-smi: 591.86 / CUDA 13.1
+Capture date: 2026-07-10/11 UTC
 
-Python used for local revision scripts:
-`C:\Users\zerg\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
+Primary host:
 
-Observed package versions for local revision scripts:
+- Windows 11 build 26200, x86-64
+- Intel Core i5-14400F, 10 physical cores / 16 logical processors
+- 32 GB RAM
+- NVIDIA GeForce RTX 5060, 8,151 MiB reported by `nvidia-smi`
+- NVIDIA driver 591.86
+- CKKS evaluation: CPU only
+- E5 encoding and exact-reference retrieval: RTX 5060 / CUDA
 
-- Python 3.12.13
-- numpy 2.3.5
-- pandas available in bundled runtime
-- matplotlib 3.10.9
-- scipy 1.17.1
-- scikit-learn 1.8.0
+Primary interpreter:
 
-Original notebook environment reported by the experiment README:
+```text
+$CONDA_PREFIX\python.exe
+Python 3.11.15 (Anaconda, MSC v.1942, 64 bit)
+```
 
-- Python 3.10-3.11
-- TenSEAL 0.3.16
-- transformers / datasets / sentence-transformers
-- faiss-cpu
-- vec2text
-- PyTorch nightly with CUDA 12.8 for RTX 5060 Blackwell support
+Pinned direct packages:
 
-The adaptive inversion stress test has separate dependency files:
-`notebooks/requirements_rtx4090.txt` for the memory-capped RTX 4090 profile
-and `notebooks/requirements_a100.txt` for the retained larger profile. A
-root-level copies, `heavy_adaptive_inversion_rtx4090.py` and
-`requirements_rtx4090.txt`, plus `setup_rtx4090_env.sh` are included for
-standalone remote directories such as `~/train2`. The RTX 4090 files pin
-Python 3.12 Linux directly to the PyTorch 2.6.0 CUDA 12.4 wheel so that
-driver 550.x hosts do not accidentally install CUDA 13 wheels from PyPI.
+```text
+numpy 2.4.3
+scipy 1.17.1
+scikit-learn 1.8.0
+matplotlib 3.10.9
+pandas 3.0.2
+faiss-cpu 1.13.2
+tenseal 0.3.16 (Microsoft SEAL 4.1.1 backend)
+torch 2.10.0+cu128
+transformers 4.57.6
+datasets 4.8.5
+sentence-transformers 5.4.1
+psutil 7.2.2
+threadpoolctl 3.6.0
+pytest 8.4.2
+cryptography 49.0.0 (release-time disposable loopback TLS fixture generation)
+```
+
+The complete machine-readable capture is
+`results/system_revision/environment.json`. Systems-saturation records add
+per-run CPU affinity, process priority, thread-pool inspection, memory, and
+driver fields; no affinity or priority modification is performed.
+
+Independent security-estimator runtime:
+
+- isolated WSL2 distribution `CodexSageEstimatorUbuntu`
+- Ubuntu 22.04.5 LTS (Jammy)
+- Python 3.10.12
+- SageMath 9.5 (`sagemath`/`python3-sage` package 9.5-4)
+- malb/lattice-estimator commit
+  `3e48ef421ec256afddb3e7d2249a77eab6e9ba12`
+- Microsoft SEAL source-inspection commit
+  `206648d0e4634e5c61dcf9370676630268290b59`
+
+The WSL distribution is an execution environment, not part of the online
+resource. Generated Sage inputs, raw stdout/stderr, runtime metadata, file
+hashes, and parsed attack costs are archived instead. The same-CPU WSL
+TenSEAL point is a portability diagnostic and is labeled separately from the
+primary Windows measurements.

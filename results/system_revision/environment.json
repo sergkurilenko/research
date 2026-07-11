@@ -1,0 +1,58 @@
+{
+  "captured_at_utc": "2026-07-10T20:18:23.923069+00:00",
+  "python": {
+    "version": "3.11.15 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:12:15) [MSC v.1942 64 bit (AMD64)]",
+    "executable": "C:\\Users\\zerg\\anaconda3\\envs\\torchgpu\\python.exe",
+    "prefix": "C:\\Users\\zerg\\anaconda3\\envs\\torchgpu"
+  },
+  "platform": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+    "node": "ZergPC",
+    "logical_cpu_count": 16
+  },
+  "packages": {
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0",
+    "pandas": "3.0.2",
+    "faiss-cpu": "1.13.2",
+    "tenseal": "0.3.16",
+    "torch": "2.10.0+cu128",
+    "transformers": "4.57.6",
+    "datasets": "4.8.5",
+    "sentence-transformers": "5.4.1",
+    "fastapi": "0.136.1",
+    "uvicorn": "0.46.0",
+    "httpx": "0.28.1",
+    "psutil": "7.2.2"
+  },
+  "torch_hardware": {
+    "available": true,
+    "torch_version": "2.10.0+cu128",
+    "cuda_available": true,
+    "torch_cuda_version": "12.8",
+    "device_name": "NVIDIA GeForce RTX 5060",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "total_memory_bytes": 8546484224,
+    "multiprocessor_count": 30
+  },
+  "nvidia_smi": "NVIDIA GeForce RTX 5060, 591.86, 8151, 145.00",
+  "git": {
+    "commit": "1564cd96ee788fdfb58c197142435ec398991a7c",
+    "branch": "article1",
+    "status_porcelain": "?? docs/related_work_matrix.md\n?? docs/reproduce_system_revision.md\n?? docs/results_manifest.md\n?? docs/system_paper_blueprint.md\n?? paper/revised_refs.bib\n?? paper_revised/\n?? results/smoke_retrieval_root.json\n?? results/smoke_retrieval_root.jsonl\n?? results/system_revision/\n?? system/\n?? tests/\n?? tmp/"
+  },
+  "environment": {
+    "CUDA_VISIBLE_DEVICES": null,
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null,
+    "HF_HOME": null,
+    "TRANSFORMERS_CACHE": null,
+    "SHARD_DATA": null
+  }
+}

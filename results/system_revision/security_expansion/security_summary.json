@@ -1,0 +1,304 @@
+{
+  "candidate_id_leakage": {
+    "beir_confirmatory_query_count": 3230,
+    "beir_k20_log_rank_ranges": {
+      "direction_cosine_mean": [
+        0.28134500454721256,
+        0.33969500334562375
+      ],
+      "exact_top10_overlap_mean": [
+        0.4015432098765432,
+        0.5984807864164433
+      ],
+      "linkability_auc": [
+        0.9910005846888209,
+        0.9993125
+      ]
+    },
+    "million_k100": {
+      "centroid": {
+        "direction_cosine_mean": 0.38968147972374795,
+        "exact_top10_overlap_mean": 0.21300000000000005,
+        "linkability_auc": 0.999996875
+      },
+      "log_rank": {
+        "direction_cosine_mean": 0.4001309831800762,
+        "exact_top10_overlap_mean": 0.2755,
+        "linkability_auc": 0.99999625
+      },
+      "ridge_rank_ls": {
+        "direction_cosine_mean": 0.17964680662350033,
+        "exact_top10_overlap_mean": 0.275,
+        "linkability_auc": 0.836435
+      }
+    },
+    "million_query_count": 400
+  },
+  "circuit_privacy_boundary": {
+    "explicit_output_sanitisation_present": false,
+    "fixed_request_unique_response_hashes": 1,
+    "formal_circuit_privacy_established": false,
+    "fresh_encryption_unique_response_hashes": 20,
+    "maximum_observed_abs_error": 2.969156584309296e-05
+  },
+  "ckks_parameters": {
+    "coeff_mod_bit_sizes": [
+      60,
+      40,
+      60
+    ],
+    "coeff_modulus_primes": [
+      1152921504606748673,
+      1099511480321,
+      1152921504606830593
+    ],
+    "error_distribution": {
+      "estimator_primary": "ND.CenteredBinomial(21, n)",
+      "exact_standard_deviation": 3.24037034920393,
+      "implementation": "difference of two Hamming weights, 21 independent bits per side",
+      "seal_nominal_standard_deviation": 3.2,
+      "sensitivity_model": "ND.DiscreteGaussian(3.2, n)",
+      "source": "Microsoft SEAL 4.1.1 util/rlwe.cpp sample_poly_cbd",
+      "support": [
+        -21,
+        21
+      ]
+    },
+    "log2_q": 159.99999980652066,
+    "poly_modulus_degree": 8192,
+    "scale_bits": 40,
+    "seal_tc128_headroom_bits": 58,
+    "seal_tc128_max_coeff_modulus_bits": 218,
+    "secret_distribution": {
+      "estimator": "ND.Uniform(-1, 1, n)",
+      "implementation": "independent uniform ternary coefficients {-1,0,1}",
+      "source": "Microsoft SEAL 4.1.1 util/rlwe.cpp sample_poly_ternary"
+    }
+  },
+  "claim_boundary": {
+    "not_supported": [
+      "an exhaustive all-attack estimator minimum (Arora-GB/BKW timed out)",
+      "circular/KDM security of Galois keys",
+      "circuit privacy or q-IND-CPA-D security",
+      "document, database, or access-pattern privacy"
+    ],
+    "supported": [
+      "the exact parameter set passes Microsoft SEAL's tc128 modulus guard",
+      "completed lattice-estimator core attacks exceed 128 bits under both stated cost models",
+      "candidate identifiers retain substantial semantic/linkability information"
+    ]
+  },
+  "created_utc": "2026-07-11T13:58:33.943698+00:00",
+  "evidence_files": {
+    "candidate_beir": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\security_expansion\\candidate_id_beir_confirmatory.json",
+      "sha256": "2c2a38ac5dfac236c1381855e0f15f78f52c575418ab5a9ff4977cb5f226a624"
+    },
+    "candidate_million": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\security_expansion\\candidate_id_million.json",
+      "sha256": "9fce9718abef845676ab9dc050e1f81ba353574917f4ae3721f8d6eaf26681dc"
+    },
+    "circuit_privacy": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\security_expansion\\circuit_privacy_boundary.json",
+      "sha256": "62db14b2d0a97c4b555e62acc24efd341eecde92b2883bba8b3d4207ea34b6cb"
+    },
+    "extended_individual": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\security_expansion\\lwe_security\\extended_security_estimates.json",
+      "sha256": "0b5e5041e1f89ece916217176f22c1ca8b47737caf3a4e198af98113967e21c3"
+    },
+    "rough_individual": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\security_expansion\\lwe_security\\individual_security_estimates.json",
+      "sha256": "66826519480930cf4a6aa83ba9f9da3be1b6206ee3c46424aa39861a0eb85f5c"
+    },
+    "security_parameters": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\security_expansion\\lwe_security\\security_parameters.json",
+      "sha256": "bb2733876811366593f70bc94bb1a658c8bb1a177944cdb5e81cb0e6162a424d"
+    }
+  },
+  "extended_individual": {
+    "cost_model": "MATZOV (estimator default)",
+    "interpretation": "Do not numerically combine these exponents with ADPS16 rough exponents. Both BKW points timed out and remain incomplete.",
+    "models": {
+      "seal_exact_cbd21": {
+        "all_requested_attacks_completed": false,
+        "bdd": {
+          "elapsed_seconds": 6.294249499915168,
+          "rop_log2": 175.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "ff2cb9df3be86882bf369cb81114c9394f7225f68384f67eca5745a87612a9a7"
+        },
+        "bdd_hybrid": {
+          "elapsed_seconds": 86.87037599994801,
+          "rop_log2": 175.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "401c18addd37f04b105a56da808a4f8d60102c5de231731f054cbdc28b919d02"
+        },
+        "bdd_mitm_hybrid": {
+          "elapsed_seconds": 173.82729899999686,
+          "rop_log2": 247.6,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "41ecdf0e3fb6107d7a3cc34985aaeb79dfbab82ea7c40eadec7742bb04edb56a"
+        },
+        "bkw": {
+          "elapsed_seconds": 900.0576609999407,
+          "rop_log2": null,
+          "status": "timed_out_partial_output_archived",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "23436dffd3d4bb34b640cf9306a286ce5f6ce2a9e65db0044773ed7a1448a8ae"
+        },
+        "dual": {
+          "elapsed_seconds": 1.8421600998844951,
+          "rop_log2": 177.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "c770116e7fa747ed6d69829862e30ec05ca233e972a43bf6ab6509f1384f40bd"
+        },
+        "dual_hybrid": {
+          "elapsed_seconds": 9.559538700152189,
+          "rop_log2": 176.3,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "6902f8bccd376aeb8c3bcfbd7174532012563d180aa5a6aaaacf5fe5be5cb08a"
+        },
+        "minimum_completed_rop_log2": 175.8,
+        "usvp": {
+          "elapsed_seconds": 7.468999700155109,
+          "rop_log2": 176.3,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "c2fba7ea703a5ccbf037ee25ef4612de44be01790e0fee1ba4da0f96e3bc5628"
+        }
+      },
+      "sigma_3_2_sensitivity": {
+        "all_requested_attacks_completed": false,
+        "bdd": {
+          "elapsed_seconds": 5.912583300145343,
+          "rop_log2": 175.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "f28b79bc6254a09baa68e43c4286ee558dd0112f40dd5ed946e6a77332d63790"
+        },
+        "bdd_hybrid": {
+          "elapsed_seconds": 86.78525660000741,
+          "rop_log2": 175.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "a02ae5e609f2bb7985fef8b90afa15857eeae3d7cbc70bea8f237f040f37ac51"
+        },
+        "bdd_mitm_hybrid": {
+          "elapsed_seconds": 166.52429470000789,
+          "rop_log2": 247.0,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "e72b87e21ff93dca791e1d1a38cc9ff42e621aec4fa8bb72b19b90cba378dec1"
+        },
+        "bkw": {
+          "elapsed_seconds": 900.0571723000612,
+          "rop_log2": null,
+          "status": "timed_out_partial_output_archived",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "d6015c5933019872ece1c4b5221f1c9d2b13add6848324bfc3efceb26ba26b5a"
+        },
+        "dual": {
+          "elapsed_seconds": 1.7387940001208335,
+          "rop_log2": 177.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "c867069fda7d8c99c669c972eccc0fe1c2ed089772b7ac0b1e808426b693a3b9"
+        },
+        "dual_hybrid": {
+          "elapsed_seconds": 8.913385799853131,
+          "rop_log2": 176.3,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "badd3d9ed2ccbd3ce01568a8fedbdce22a420b3cc3c4aa320fe294d79f66cb4a"
+        },
+        "minimum_completed_rop_log2": 175.8,
+        "usvp": {
+          "elapsed_seconds": 2.4752418000716716,
+          "rop_log2": 176.3,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "e13b5661bc13f3308ae97bb552659322a32ad35a032068046260e707eda217e6"
+        }
+      }
+    },
+    "shape_model": "GSA (estimator default)"
+  },
+  "rough_individual": {
+    "cost_model": "ADPS16",
+    "interpretation": "Completed uSVP/dual/dual-hybrid costs are heuristic rough-model estimates. Exact-CBD Arora-GB timed out and remains incomplete.",
+    "models": {
+      "seal_exact_cbd21": {
+        "all_requested_attacks_completed": false,
+        "arora_gb": {
+          "elapsed_seconds": 1800.0599750999827,
+          "rop_log2": null,
+          "status": "timed_out_partial_output_archived",
+          "stderr_sha256": "d69a06bbdd6e1f6c839020ab1a824449c4ce4e0a43d0b56b21de3e71b9c76a56",
+          "stdout_sha256": "7f407595bd939f7cb527443271b5cdc89196bd6de88d73a81416440347a4c47e"
+        },
+        "dual": {
+          "elapsed_seconds": 7.243344300193712,
+          "rop_log2": 148.3,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "23594b6032246a51c1dad93d2375c7ca107b207e78cdfc6a517543da84584ce3"
+        },
+        "dual_hybrid": {
+          "elapsed_seconds": 6.84378940006718,
+          "rop_log2": 146.9,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "7f9fe47c0e17b9c523ea76bf8aa8d080affeaf096a97dde77029125b1a1cd3fe"
+        },
+        "minimum_completed_rop_log2": 146.9,
+        "usvp": {
+          "elapsed_seconds": 6.8931998000480235,
+          "rop_log2": 147.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "35d2fdb249b041420f3a107a505c909043448be01fdced29fe6e03a79c309c1e"
+        }
+      },
+      "sigma_3_2_sensitivity": {
+        "all_requested_attacks_completed": true,
+        "dual": {
+          "elapsed_seconds": 2.214491100050509,
+          "rop_log2": 148.3,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "832c67b9b8f4d795191028fa038ed2db5c4e5e580cdefd4453faa593b76cd159"
+        },
+        "dual_hybrid": {
+          "elapsed_seconds": 6.759595399955288,
+          "rop_log2": 146.9,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "9cd44e728d8b97cf0e96699297611d63abb28ea5dc9ca40d8540221f1ec5b0aa"
+        },
+        "minimum_completed_rop_log2": 146.9,
+        "usvp": {
+          "elapsed_seconds": 2.518612700048834,
+          "rop_log2": 147.8,
+          "status": "completed",
+          "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+          "stdout_sha256": "c9fccdd2c62c374293340d319ebb1f39eb38a98437849de38b9227302eda7cd4"
+        }
+      }
+    },
+    "shape_model": "GSA"
+  },
+  "schema": "security_expansion_summary.v1",
+  "standard_rough_batch": {
+    "elapsed_seconds": 3600.0681700001005,
+    "interpretation": "The upstream buffered batch timed out in bounded-CBD Arora-GB; it is retained and is not presented as a completed estimate.",
+    "numerical_estimate_available": false,
+    "status": "timed_out_partial_output_archived",
+    "stdout_sha256": "dfa27318aa31994b37befc1a913916ac4d0fc7552279099ef79757decd3632cc",
+    "timeout_seconds": 3600.0
+  }
+}

@@ -1,0 +1,3406 @@
+{
+  "check_count": 614,
+  "checks": [
+    {
+      "detail": null,
+      "name": "Pareto has exactly six datasets",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "PQ has exactly six datasets",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Pareto completion timestamp exists",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "PQ completion timestamp exists",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "control completion timestamp exists",
+      "passed": true
+    },
+    {
+      "detail": [],
+      "name": "all JSON numbers are finite",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana: validation and confirmatory IDs are disjoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana: validation ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana: confirmatory ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana: complete dimension grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=192: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=256: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=384: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=512: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=672: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=768: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=384 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=384 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=672 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana d=672 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana: complete M/seed grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.75177304964539,
+        0.8581560283687943,
+        0.9184397163120568,
+        0.950354609929078
+      ],
+      "name": "arguana M96_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.7357651245551602,
+        0.8469750889679716,
+        0.9048042704626335,
+        0.947508896797153
+      ],
+      "name": "arguana M96_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M96_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.7446808510638298,
+        0.8546099290780141,
+        0.8900709219858156,
+        0.950354609929078
+      ],
+      "name": "arguana M84_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.7206405693950177,
+        0.8247330960854092,
+        0.905693950177936,
+        0.9466192170818505
+      ],
+      "name": "arguana M84_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M84_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.6170212765957447,
+        0.7553191489361702,
+        0.8226950354609929,
+        0.8865248226950354
+      ],
+      "name": "arguana M32_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.6396797153024911,
+        0.7669039145907474,
+        0.8416370106761566,
+        0.8941281138790036
+      ],
+      "name": "arguana M32_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M32_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.6843971631205674,
+        0.7943262411347518,
+        0.8652482269503546,
+        0.9148936170212766
+      ],
+      "name": "arguana M48_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.6725978647686833,
+        0.8113879003558719,
+        0.8665480427046264,
+        0.9145907473309609
+      ],
+      "name": "arguana M48_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana M48_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana validation: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "arguana strict_confirmatory: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa: validation and confirmatory IDs are disjoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa: validation ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa: confirmatory ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa: complete dimension grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=192: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=256: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=384: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=512: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=672: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=768: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=384 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=384 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=672 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa d=672 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa: complete M/seed grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.39119884004884004,
+        0.4957533078033078,
+        0.5611293761793761,
+        0.6435069819069819
+      ],
+      "name": "fiqa M84_seed2026 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.4040181140875585,
+        0.4940196677465196,
+        0.5634689727282319,
+        0.6426911779921038
+      ],
+      "name": "fiqa M84_seed2026 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed2026 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.3842551892551893,
+        0.4979050172050172,
+        0.5778112443112443,
+        0.6664565545565545
+      ],
+      "name": "fiqa M84_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.38735089070737216,
+        0.49025652416856114,
+        0.5616421344430603,
+        0.6413231658602029
+      ],
+      "name": "fiqa M84_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.41679725274725277,
+        0.5232018426018425,
+        0.609489022089022,
+        0.6794025363525363
+      ],
+      "name": "fiqa M96_seed2026 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.41411021677225385,
+        0.5277735210605581,
+        0.5950808536456684,
+        0.6601735969791526
+      ],
+      "name": "fiqa M96_seed2026 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed2026 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.4134028083028083,
+        0.5286107670107669,
+        0.5961669941169941,
+        0.6710364690864691
+      ],
+      "name": "fiqa M96_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.4175003237503238,
+        0.509341575776761,
+        0.5896129633398152,
+        0.6737784335006557
+      ],
+      "name": "fiqa M96_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.40650062160062156,
+        0.5088806582306582,
+        0.5890305361305361,
+        0.6700113164613165
+      ],
+      "name": "fiqa M96_seed17 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.41571646374887117,
+        0.5075085751011676,
+        0.5833138226656744,
+        0.6738455131973651
+      ],
+      "name": "fiqa M96_seed17 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M96_seed17 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.41189891219891217,
+        0.5009472027972027,
+        0.5785534299034298,
+        0.6539142468642469
+      ],
+      "name": "fiqa M84_seed17 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.38903906878443917,
+        0.5015488840720321,
+        0.5835992496872127,
+        0.6542720439711179
+      ],
+      "name": "fiqa M84_seed17 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M84_seed17 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.24337046287046285,
+        0.31614335664335663,
+        0.4129075202575202,
+        0.5029263958263959
+      ],
+      "name": "fiqa M32_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.186856010930085,
+        0.2764276875387987,
+        0.37900757078997815,
+        0.4929703312805165
+      ],
+      "name": "fiqa M32_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M32_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.31014109779109783,
+        0.40640208680208684,
+        0.47782803307803307,
+        0.5545376512376513
+      ],
+      "name": "fiqa M48_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.29013085679752343,
+        0.3842766801100135,
+        0.46675309858180225,
+        0.5404534851294109
+      ],
+      "name": "fiqa M48_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa M48_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa validation: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "fiqa strict_confirmatory: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus: validation and confirmatory IDs are disjoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus: validation ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus: confirmatory ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus: complete dimension grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=192: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=256: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=384: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=512: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=672: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=768: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=384 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=384 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=672 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus d=672 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus: complete M/seed grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.1594354478990363,
+        0.21952287402154094,
+        0.26436038164433145,
+        0.3302577110191441
+      ],
+      "name": "nfcorpus M96_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.17183365670370043,
+        0.21768279708722038,
+        0.26466784483174677,
+        0.3251475515246245
+      ],
+      "name": "nfcorpus M96_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M96_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.15383923780643682,
+        0.2110881652091778,
+        0.2607794589220506,
+        0.3287967172292102
+      ],
+      "name": "nfcorpus M84_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.1742607161607014,
+        0.2139133032134769,
+        0.26048352388627893,
+        0.3333620259259386
+      ],
+      "name": "nfcorpus M84_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M84_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.1212351079833992,
+        0.17799641200754904,
+        0.23871787817092285,
+        0.3100855385874632
+      ],
+      "name": "nfcorpus M32_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.13249025641597248,
+        0.18759759126955192,
+        0.2449591597908943,
+        0.3016848448911477
+      ],
+      "name": "nfcorpus M32_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M32_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.13276063944496752,
+        0.19948419078347188,
+        0.25480306925457585,
+        0.3179960577474432
+      ],
+      "name": "nfcorpus M48_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.14773283205594512,
+        0.19328318552937254,
+        0.2393829967164884,
+        0.3124206715034596
+      ],
+      "name": "nfcorpus M48_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus M48_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus validation: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "nfcorpus strict_confirmatory: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs: validation and confirmatory IDs are disjoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs: validation ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs: confirmatory ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs: complete dimension grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=192: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=256: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=384: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=512: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=672: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=768: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=384 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=384 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=672 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs d=672 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs: complete M/seed grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.21841666666666668,
+        0.3206666666666667,
+        0.38866666666666666,
+        0.45616666666666666
+      ],
+      "name": "scidocs M96_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.18995833333333334,
+        0.26575000000000004,
+        0.3250416666666667,
+        0.4056041666666667
+      ],
+      "name": "scidocs M96_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M96_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.2059166666666667,
+        0.30866666666666664,
+        0.3771666666666667,
+        0.4598333333333333
+      ],
+      "name": "scidocs M84_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.17856249999999999,
+        0.2512916666666667,
+        0.32304166666666667,
+        0.4041041666666667
+      ],
+      "name": "scidocs M84_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M84_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.1275,
+        0.20766666666666667,
+        0.2814166666666667,
+        0.3652500000000001
+      ],
+      "name": "scidocs M32_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.125625,
+        0.19504166666666667,
+        0.2577708333333334,
+        0.3397916666666667
+      ],
+      "name": "scidocs M32_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M32_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.16574999999999998,
+        0.23975000000000002,
+        0.3044166666666667,
+        0.3928333333333333
+      ],
+      "name": "scidocs M48_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.1479375,
+        0.21310416666666668,
+        0.28150000000000003,
+        0.3536666666666667
+      ],
+      "name": "scidocs M48_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs M48_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs validation: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scidocs strict_confirmatory: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact: validation and confirmatory IDs are disjoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact: validation ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact: confirmatory ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact: complete dimension grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=192: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=256: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=384: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=512: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=672: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=768: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=384 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=384 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=672 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact d=672 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact: complete M/seed grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.8174701277297074,
+        0.8832921302018953,
+        0.9145035022661723,
+        0.9470539761021839
+      ],
+      "name": "scifact M96_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.8372222222222223,
+        0.8929999999999999,
+        0.912,
+        0.9393333333333334
+      ],
+      "name": "scifact M96_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M96_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.8094973217964564,
+        0.8796868562010712,
+        0.9126493613514626,
+        0.9390193654717758
+      ],
+      "name": "scifact M84_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.8458888888888888,
+        0.891,
+        0.9233333333333333,
+        0.9543333333333334
+      ],
+      "name": "scifact M84_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M84_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.7167284713638236,
+        0.819118252987227,
+        0.8757725587144622,
+        0.9103831891223733
+      ],
+      "name": "scifact M32_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.6930000000000001,
+        0.7868888888888889,
+        0.8448888888888888,
+        0.9058888888888889
+      ],
+      "name": "scifact M32_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M32_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.7821384425216317,
+        0.8471363823650596,
+        0.8895756077461887,
+        0.9173877214668316
+      ],
+      "name": "scifact M48_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.7826666666666667,
+        0.8662222222222222,
+        0.9008888888888889,
+        0.917
+      ],
+      "name": "scifact M48_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact M48_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact validation: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "scifact strict_confirmatory: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid: validation and confirmatory IDs are disjoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid: validation ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid: confirmatory ID count matches manifest",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid: complete dimension grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=192: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=256: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=384: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=512: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=672: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=768: both split branches",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=384 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=384 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=672 validation: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid d=672 strict_confirmatory: control SVD equals Pareto SVD",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid: complete M/seed grid",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.033142995002691106,
+        0.06297660266620643,
+        0.10266137525807624,
+        0.1453937458289474
+      ],
+      "name": "trec-covid M84_seed2026 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.02529019824468179,
+        0.05383713364265712,
+        0.09190752815471359,
+        0.14549477581325093
+      ],
+      "name": "trec-covid M84_seed2026 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed2026 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.030335664719135548,
+        0.05934556629594161,
+        0.08903000379058526,
+        0.13617998952259427
+      ],
+      "name": "trec-covid M84_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.025469892695617523,
+        0.05370511707431065,
+        0.09345318791872982,
+        0.15309400980699603
+      ],
+      "name": "trec-covid M84_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.035136286611259324,
+        0.06448115625892711,
+        0.09768967331311636,
+        0.15235201184028918
+      ],
+      "name": "trec-covid M96_seed2026 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.02646150088791659,
+        0.056069965638380403,
+        0.09526119695496368,
+        0.1514835767748533
+      ],
+      "name": "trec-covid M96_seed2026 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed2026 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.03026936627964256,
+        0.06195824131857018,
+        0.09895313807493289,
+        0.14977143555362432
+      ],
+      "name": "trec-covid M96_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.02519236517693658,
+        0.05305574301881446,
+        0.09287646260494964,
+        0.14974535985113402
+      ],
+      "name": "trec-covid M96_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.032279877886539673,
+        0.057997473309003164,
+        0.09408802183529148,
+        0.14475331867254856
+      ],
+      "name": "trec-covid M96_seed17 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.024777424928598933,
+        0.05402583342948262,
+        0.09230542935045075,
+        0.15158910795927008
+      ],
+      "name": "trec-covid M96_seed17 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M96_seed17 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.030990476793764654,
+        0.05656989013284567,
+        0.08800539515738788,
+        0.1414257755385447
+      ],
+      "name": "trec-covid M84_seed17 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.023771883330997085,
+        0.051617103902209326,
+        0.09090736638913072,
+        0.14781442297388656
+      ],
+      "name": "trec-covid M84_seed17 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M84_seed17 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.02013073839529949,
+        0.03423320724728348,
+        0.058340528904269516,
+        0.08763438852488216
+      ],
+      "name": "trec-covid M32_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.018253807279903955,
+        0.04057910152698893,
+        0.0700001506870797,
+        0.11319843807590728
+      ],
+      "name": "trec-covid M32_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M32_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 validation: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.022691865321022624,
+        0.045389763675455864,
+        0.0674749078733695,
+        0.1035949889296246
+      ],
+      "name": "trec-covid M48_seed42 validation: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 validation K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 validation K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 validation K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 strict_confirmatory: complete K grid",
+      "passed": true
+    },
+    {
+      "detail": [
+        0.021425837474437263,
+        0.0457504690620492,
+        0.07834609036274351,
+        0.12852401788261805
+      ],
+      "name": "trec-covid M48_seed42 strict_confirmatory: candidate recall monotone in K",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 strict_confirmatory K=20: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 strict_confirmatory K=50: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid M48_seed42 strict_confirmatory K=100: full shortlist Recall@100 invariant",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid validation: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "trec-covid strict_confirmatory: shared d672/M84 metrics agree",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\4a6acaa568661330\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\fd886d958bc159a6\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\f4c17c5d79be62f9\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\e1ee62f37353172f\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\dca11c8954b13e0f\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\aab67279f31d7e30\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\47bfef9403ec253f\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\arguana\\fd7f993db7164d84\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\pq\\arguana\\f10353daebaebcde\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\41f8eac29dbcd505\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\90a848ebc4353f0e\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\023fe5c5945a9c90\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\2cd6f55f5ea4713a\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\ddc040c6c31327a4\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\e29ba27d464eeea1\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\c4c36a8a8b3e1a7c\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\a6269321c2f1c460\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\db50aae37ded5ee9\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\9523e64010be8e79\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\57323eaa876fe2fa\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\fiqa\\bd31bff757e95fa4\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\pq\\fiqa\\642a289f277cc4aa\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\02546da2680c6732\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\b4e4a04a070f2ab4\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\f12bad1a481885f0\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\598b869a379988fe\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\b09d73ca67f6f424\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\48ce9933ea064a46\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\5b1698e98dbe6423\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\nfcorpus\\a51d2cc98ecdf80d\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\pq\\nfcorpus\\0cb1581153891c12\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\e2209603bcc31b40\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\cf6975e506cbe7be\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\019a2ef34d53a383\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\1e297f272da24a2a\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\6408ce4b8e584ed3\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\5e0b9e07c1aa050a\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\bc0d1184eeddbc82\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scidocs\\792e7d11fc8c1a85\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\pq\\scidocs\\e88c283f58696204\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\5da067965148a6fe\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\df1cc13abbf7ede5\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\b469fffdf9933c10\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\ce72125255a603e2\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\e0b77edfebb99058\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\71c0720e40275e5c\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\0e0480ba665884dc\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\scifact\\54c55dca1d78059c\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\pq\\scifact\\34374a000a209d84\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\0445d30b986bb04e\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\d594770cf04357b0\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\504f71b4998a4710\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\48dc0d03a86d30ab\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\057a9eb0f2f6df3e\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\235f7fa31ba3579a\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\75689ea3d9e6171b\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\818d1bbabd881fc7\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\8c6192cc68211c54\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\b73486e12fc58599\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\e2798fc42588cb3d\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\ir_expansion\\pq\\trec-covid\\0e01bea700a73786\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": "D:\\PHD\\graded_ir_cache\\pq\\trec-covid\\446970f27c24a2c8\\index.faiss",
+      "name": "index exists: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index byte count matches: index.faiss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "index hash matches: index.faiss",
+      "passed": true
+    }
+  ],
+  "created_utc": "2026-07-11T15:03:18.253788+00:00",
+  "input_sha256": {
+    "controls": "3848ccec7338f5f5799bc67efe9667cb8b4fbd84450a7e72b5788dd3bf2cd09d",
+    "pareto": "c28b8c392f652e9b8d9a849cf30ce27769b50ca17627f3d27bd84cedf497c164",
+    "pq": "1b83fadcdc8e1624b8b94317e64f55201a80c928d72f9e3c4b50e06d62569137",
+    "splits": "b6e3a425c6178e2badfe9d5692d4a4bbb7702e10636dfd2ecc05d8e2bf74eef5"
+  },
+  "schema": "ir_expansion.validation.v1",
+  "status": "passed",
+  "unique_index_bytes": 260020064,
+  "unique_index_count": 62
+}

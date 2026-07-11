@@ -1,0 +1,17 @@
+{
+  "command": [
+    "system\\ir_expansion.py",
+    "pq",
+    "--force-pq-eval"
+  ],
+  "created_utc": "2026-07-11T14:18:10.977603+00:00",
+  "host": "ZergPC",
+  "packages": {
+    "faiss": "1.13.2",
+    "numpy": "2.4.3",
+    "sklearn": "1.8.0",
+    "torch": "2.10.0+cu128"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.15 | packaged by Anaconda, Inc. | (main, Mar 11 2026, 17:12:15) [MSC v.1942 64 bit (AMD64)]"
+}

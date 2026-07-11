@@ -1,0 +1,18 @@
+TRANSCRIPT_SCHEMA ckks_lwe_individual_attack.raw.v1
+ESTIMATOR_COMMIT 3e48ef421ec256afddb3e7d2249a77eab6e9ba12
+MODEL_BEGIN sigma_3_2_sensitivity
+PARAMETERS LWEParameters(n=8192, q=1461501441329443417981674104123436284398337261569, Xs=D(σ=0.82), Xe=D(σ=3.20), m=+Infinity, tag='SEAL CKKS N8192 q[60,40,60] sigma_3_2_sensitivity')
+ATTACK_BEGIN dual_hybrid
+ATTACK dual_hybrid ::          rop: ≈2^146.9
+         red: ≈2^146.9
+       guess: ≈2^134.2
+           β:      503
+           p:        3
+           ζ:       10
+           t:       60
+          β':      503
+           N: ≈2^101.4
+           m: ≈2^13.0
+ATTACK_STATUS completed
+ATTACK_ELAPSED_SECONDS 4.570746656041592
+MODEL_END sigma_3_2_sensitivity

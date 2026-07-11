@@ -1,0 +1,63 @@
+{
+  "schema": "systems_expansion_manifest.v1",
+  "created_utc": "2026-07-11T10:28:00+00:00",
+  "primary_results": [
+    {
+      "path": "windows_full.json",
+      "bytes": 589485,
+      "sha256": "640b9098d310792c3b6ba52a4cd9f641614663bb55babebfc34e318563d249f9"
+    },
+    {
+      "path": "windows_full_validation.json",
+      "bytes": 718,
+      "sha256": "75a6cc854aa4991993826950e65679b11295bd0606eae6dd9adbcaac401fbb4d"
+    },
+    {
+      "path": "windows_scaling_summary.csv",
+      "bytes": 1083,
+      "sha256": "236fc7de2ad09d804e55ce9eeb66a63b15bd4a08e4b8dc2887764734b2a7d73b"
+    },
+    {
+      "path": "windows_pair_ckks_micro.json",
+      "bytes": 30252,
+      "sha256": "9b63ddf7d1e703c92420b4e16f23e5526ba9f973264c890e27bffb9b823b27ca"
+    },
+    {
+      "path": "wsl_linux_ckks_micro.json",
+      "bytes": 29415,
+      "sha256": "2fe3ef47560238d6e7e8c92a1f0b59e8e34715e784a59edecbc1852bae18cba6"
+    },
+    {
+      "path": "windows_wsl_runtime_pair.json",
+      "bytes": 10944,
+      "sha256": "b0105e6b11fcbb22c6de70271ef45d3eac4000d39a8fbd2a96f698a199e673ce"
+    },
+    {
+      "path": "windows_wsl_runtime_pair.csv",
+      "bytes": 931,
+      "sha256": "8d25ade9efeebaf2f2852a7c1ee71743a969d4cc0aee8ac22a63d6b652936b60"
+    },
+    {
+      "path": "linux_point_status.json",
+      "bytes": 1595,
+      "sha256": "1f2c63ea06bcf2d981e000bbea4b39a71978bc8baec6fdd91180c8d3815ae3db"
+    }
+  ],
+  "wsl_binary_wheels_not_redistributed": [
+    {
+      "filename": "numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "bytes": 16801050,
+      "sha256": "fc7b73d02efb0e18c000e9ad8b83480dfcd5dfd11065997ed4c6747470ae8915"
+    },
+    {
+      "filename": "tenseal-0.3.16-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "bytes": 4785821,
+      "sha256": "7add306c52ba1a2c7cd8307601fb8e1d04c520c9caec998a34d5bb6d4c5e1bcf"
+    }
+  ],
+  "notes": [
+    "Log files retain console diagnostics but are not primary numerical artifacts.",
+    "The Docker attempt produced no measurement; the successful Linux point used an isolated binary-only pip target in Ubuntu WSL2.",
+    "The WSL package target and downloaded wheels live under tmp and may be regenerated from the recorded tags and hashes."
+  ]
+}

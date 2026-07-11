@@ -1,0 +1,40 @@
+{
+  "created_utc": "2026-07-10T17:41:25.906417+00:00",
+  "input": {
+    "path": "D:\\PHD\\research\\RES1\\notebooks\\_corpus_cache\\E_docs_e5base_1000000.npy",
+    "shape": [
+      1000000,
+      768
+    ],
+    "dtype": "float32",
+    "size_bytes": 3072000128
+  },
+  "basis": {
+    "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\cache\\e5base_k672_basis.npz",
+    "vectors_shape": [
+      768,
+      672
+    ],
+    "mean_sha256": "59fc454e4b8c683364d79cad595745c320e2f13272268ea27cfbc8b4ac4dab21",
+    "vectors_sha256": "b00ad0908d7f14689d575efddffcac896b03ece5ec505614c92944100bdc795f"
+  },
+  "output": {
+    "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\cache\\E_docs_e5base_proj672_1000000.npy",
+    "shape": [
+      1000000,
+      672
+    ],
+    "dtype": "float32",
+    "size_bytes": 2688000128
+  },
+  "backend": "cuda",
+  "chunk_size": 8192,
+  "elapsed_seconds": 12.25659150001593,
+  "chunk_latency_ms": {
+    "mean": 70.40791708324862,
+    "p50": 66.50240020826459,
+    "p95": 88.79710990004241,
+    "count": 123
+  },
+  "platform": "Windows-10-10.0.26200-SP0"
+}

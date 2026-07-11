@@ -1,0 +1,331 @@
+{
+  "application_payload_bytes": {
+    "online_bidirectional_total": 739615236,
+    "online_request_total": 474755172,
+    "online_response_total": 264860064,
+    "public_context_setup_excluded": 7693424,
+    "request": {
+      "count": 2016,
+      "max": 235641,
+      "mean": 235493.6369047619,
+      "min": 235121,
+      "p50": 235493.0,
+      "p95": 235565.0,
+      "p99": 235595.0,
+      "sum": 474755172
+    },
+    "response": {
+      "count": 2016,
+      "max": 131379,
+      "mean": 131379.0,
+      "min": 131379,
+      "p50": 131379.0,
+      "p95": 131379.0,
+      "p99": 131379.0,
+      "sum": 264860064
+    },
+    "total": {
+      "count": 2016,
+      "max": 367020,
+      "mean": 366872.6369047619,
+      "min": 366500,
+      "p50": 366872.0,
+      "p95": 366944.0,
+      "p99": 366974.0,
+      "sum": 739615236
+    }
+  },
+  "ckks": {
+    "coeff_mod_bit_sizes": [
+      60,
+      40,
+      60
+    ],
+    "global_scale": 1099511627776.0,
+    "poly_modulus_degree": 8192,
+    "scale_bits": 40,
+    "slot_count": 4096
+  },
+  "created_utc": "2026-07-10T18:28:12.125864+00:00",
+  "documents": [
+    {
+      "candidate_id": 42,
+      "metrics": {
+        "cosine_similarity": 0.9999999985457367,
+        "exact_l2_norm": 0.5338427445768473,
+        "max_absolute_error": 1.1426720089191544e-05,
+        "mean_absolute_error": 1.5789548168889264e-06,
+        "reconstructed_l2_norm": 0.5338874278097279,
+        "relative_l2_error": 9.9572321353705e-05,
+        "rmse": 2.050535725353456e-06
+      },
+      "queries": 672,
+      "wall_ms": 30774.1517
+    },
+    {
+      "candidate_id": 424242,
+      "metrics": {
+        "cosine_similarity": 0.9999999984863802,
+        "exact_l2_norm": 0.5190855282913861,
+        "max_absolute_error": 1.4009315680435508e-05,
+        "mean_absolute_error": 1.5407700238524386e-06,
+        "reconstructed_l2_norm": 0.51912764616551,
+        "relative_l2_error": 9.803549241282092e-05,
+        "rmse": 1.9630782860559945e-06
+      },
+      "queries": 672,
+      "wall_ms": 30262.7304
+    },
+    {
+      "candidate_id": 999999,
+      "metrics": {
+        "cosine_similarity": 0.9999999984746911,
+        "exact_l2_norm": 0.5176286938274635,
+        "max_absolute_error": 1.036584828062459e-05,
+        "mean_absolute_error": 1.539649918864868e-06,
+        "reconstructed_l2_norm": 0.517670496364146,
+        "relative_l2_error": 9.784007747672261e-05,
+        "rmse": 1.9536667899973145e-06
+      },
+      "queries": 672,
+      "wall_ms": 31837.1953
+    }
+  ],
+  "environment": {
+    "client_pid": 40768,
+    "logical_cpus": 16,
+    "numpy": "2.4.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15"
+  },
+  "experiment": {
+    "actual_online_query_count": 2016,
+    "candidate_ids": [
+      42,
+      424242,
+      999999
+    ],
+    "construction": "for each target candidate x and coordinate j, submit encrypted e_j with K=1 and set reconstructed[j] = decrypt(<x,e_j>)",
+    "disclaimer": "This adaptive chosen-query attack is outside the prescribed-client model. It shows that the protocol provides neither cryptographic database privacy nor document-vector privacy: a client that knows a candidate identifier can recover its projected vector through d basis-vector score queries. Rate limiting, admission control, and anomaly detection can raise extraction cost but are operational mitigations only; they do not establish document privacy.",
+    "method": "segmented_score_packed",
+    "name": "adaptive standard-basis score-oracle extraction",
+    "queries_per_document": 672,
+    "reconstructed_dimension": 672,
+    "security_conclusion": {
+      "database_privacy_provided": false,
+      "document_privacy_provided": false,
+      "provider_exact_index_non_disclosure_alone_prevents_extraction": false,
+      "query_confidentiality_refuted": false,
+      "rate_limiting_is_cryptographic_mitigation": false
+    },
+    "stored_dimension": 672,
+    "warmup_queries_excluded": 1
+  },
+  "input": {
+    "mtime_ns": 1783705273327352300,
+    "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\cache\\E_docs_e5base_proj672_1000000.npy",
+    "size_bytes": 2688000128
+  },
+  "phase_latency_ms": {
+    "client_construct_basis_query": {
+      "count": 2016,
+      "max": 0.0319,
+      "mean": 0.003234325396825397,
+      "min": 0.002,
+      "p50": 0.003,
+      "p95": 0.0045249999999999995,
+      "p99": 0.0081,
+      "sum": 6.5204
+    },
+    "client_decrypt_decode": {
+      "count": 2016,
+      "max": 203.437,
+      "mean": 8.422879216269841,
+      "min": 5.8247,
+      "p50": 7.62625,
+      "p95": 11.159225,
+      "p99": 23.718944999999955,
+      "sum": 16980.5245
+    },
+    "client_encrypt_serialize": {
+      "count": 2016,
+      "max": 178.1797,
+      "mean": 11.660534275793651,
+      "min": 8.6071,
+      "p50": 10.9779,
+      "p95": 15.60675,
+      "p99": 21.681814999999943,
+      "sum": 23507.6371
+    },
+    "client_response_frame_parse": {
+      "count": 2016,
+      "max": 0.2592,
+      "mean": 0.05678511904761905,
+      "min": 0.0383,
+      "p50": 0.0525,
+      "p95": 0.086,
+      "p99": 0.1248499999999999,
+      "sum": 114.4788
+    },
+    "ipc_roundtrip": {
+      "count": 2016,
+      "max": 220.8677,
+      "mean": 25.836783333333333,
+      "min": 18.6679,
+      "p50": 24.3285,
+      "p95": 33.41565,
+      "p99": 46.53905999999996,
+      "sum": 52086.9552
+    },
+    "online_end_to_end": {
+      "count": 2016,
+      "max": 438.035,
+      "mean": 46.06592986111111,
+      "min": 33.6959,
+      "p50": 43.889700000000005,
+      "p95": 58.030300000000004,
+      "p99": 84.68807999999996,
+      "sum": 92868.91459999999
+    },
+    "server_ciphertext_serialize": {
+      "count": 2016,
+      "max": 199.8147,
+      "mean": 9.617015476190476,
+      "min": 5.9539,
+      "p50": 8.20825,
+      "p95": 15.34305,
+      "p99": 26.050659999999993,
+      "sum": 19387.9032
+    },
+    "server_gather": {
+      "count": 2016,
+      "max": 0.9704,
+      "mean": 0.02878948412698413,
+      "min": 0.02,
+      "p50": 0.0254,
+      "p95": 0.04065,
+      "p99": 0.06387999999999992,
+      "sum": 58.0396
+    },
+    "server_he_evaluate": {
+      "count": 2016,
+      "max": 11.6664,
+      "mean": 6.051184474206349,
+      "min": 4.8949,
+      "p50": 5.7133,
+      "p95": 8.294575,
+      "p99": 9.856799999999998,
+      "sum": 12199.187899999999
+    },
+    "server_kernel_total": {
+      "count": 2016,
+      "max": 220.1033,
+      "mean": 25.24617316468254,
+      "min": 18.0998,
+      "p50": 23.7483,
+      "p95": 32.8403,
+      "p99": 45.94638999999996,
+      "sum": 50896.2851
+    },
+    "server_plaintext_encode": {
+      "count": 2016,
+      "max": 1.262,
+      "mean": 0.5965435515873015,
+      "min": 0.4753,
+      "p50": 0.5680499999999999,
+      "p95": 0.812125,
+      "p99": 0.9567449999999987,
+      "sum": 1202.6317999999999
+    },
+    "server_request_deserialize": {
+      "count": 2016,
+      "max": 188.1989,
+      "mean": 8.36708070436508,
+      "min": 6.0597,
+      "p50": 7.846550000000001,
+      "p95": 11.058425,
+      "p99": 17.43406499999997,
+      "sum": 16868.0347
+    },
+    "server_response_frame_serialize": {
+      "count": 2016,
+      "max": 0.2473,
+      "mean": 0.04638065476190476,
+      "min": 0.0318,
+      "p50": 0.0423,
+      "p95": 0.06995,
+      "p99": 0.10366499999999992,
+      "sum": 93.5034
+    },
+    "server_score_pack": {
+      "count": 2016,
+      "max": 2.0398,
+      "mean": 0.47342385912698415,
+      "min": 0.3622,
+      "p50": 0.44835,
+      "p95": 0.66845,
+      "p99": 0.8465349999999999,
+      "sum": 954.4225
+    },
+    "server_total": {
+      "count": 2016,
+      "max": 220.3594,
+      "mean": 25.392614682539683,
+      "min": 18.2012,
+      "p50": 23.8874,
+      "p95": 32.971424999999996,
+      "p99": 46.09635499999995,
+      "sum": 51191.5112
+    }
+  },
+  "protocol": {
+    "exact_rows_loaded_only_for_post_protocol_audit": true,
+    "online_client_has_exact_projected_rows": false,
+    "payload_scope": "application bytes; Pipe/pickle/OS framing excluded",
+    "request": "one encrypted basis query + one uint64 candidate ID",
+    "response": "one encrypted dot score",
+    "server_process_arguments": [
+      "Pipe endpoint only"
+    ],
+    "server_process_boundary": "Windows-compatible spawn + Pipe"
+  },
+  "schema": "score_oracle_extraction.v1",
+  "seal_ciphertext_count": {
+    "count": 2016,
+    "max": 1,
+    "mean": 1.0,
+    "min": 1,
+    "p50": 1.0,
+    "p95": 1.0,
+    "p99": 1.0,
+    "sum": 2016
+  },
+  "server_attestation": {
+    "context_class": "ServerCKKSContext",
+    "context_is_public": true,
+    "has_decryptor_attribute": false,
+    "has_secret_key": false,
+    "has_secret_key_attribute": false,
+    "pid": 25624,
+    "process_name": "public-ckks-rerank-server",
+    "projected_docs_dtype": "float32",
+    "projected_docs_read_only": true,
+    "projected_docs_shape": [
+      1000000,
+      672
+    ],
+    "received_public_context_bytes": 7693424,
+    "start_method": "spawn",
+    "startup_ms": 124.9088
+  },
+  "setup_ms_excluded": {
+    "client_context_and_keys": 290.9346,
+    "serialized_public_context_bytes": 7693424,
+    "spawn_and_public_server_initialization": 377.7194
+  },
+  "wall_latency_ms": {
+    "attack_online_total": 92874.0835,
+    "mean_per_document": 30958.025800000003,
+    "mean_per_query": 46.06849379960317
+  }
+}

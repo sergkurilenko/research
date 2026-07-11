@@ -1,0 +1,17 @@
+FROM python:3.11.15-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    OMP_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1 \
+    OPENBLAS_NUM_THREADS=1 \
+    NUMEXPR_NUM_THREADS=1 \
+    VECLIB_MAXIMUM_THREADS=1 \
+    BLIS_NUM_THREADS=1
+
+RUN python -m pip install --no-cache-dir \
+    numpy==2.4.3 \
+    tenseal==0.3.16
+
+WORKDIR /work
+ENTRYPOINT ["python"]

@@ -1,0 +1,21 @@
+TRANSCRIPT_SCHEMA ckks_lwe_extended_individual.raw.v1
+ESTIMATOR_COMMIT 3e48ef421ec256afddb3e7d2249a77eab6e9ba12
+COST_MODEL MATZOV
+SHAPE_MODEL GSA
+MODEL_BEGIN sigma_3_2_sensitivity
+PARAMETERS LWEParameters(n=8192, q=1461501441329443417981674104123436284398337261569, Xs=D(σ=0.82), Xe=D(σ=3.20), m=+Infinity, tag='SEAL CKKS N8192 q[60,40,60] sigma_3_2_sensitivity')
+ATTACK_BEGIN bdd_mitm_hybrid
+ATTACK bdd_mitm_hybrid ::          rop: ≈2^247.0
+         red: ≈2^244.7
+         svp: ≈2^246.7
+           β:      507
+           η:        2
+           ζ:      190
+         |S|: ≈2^301.1
+           d:    16140
+        prob: ≈2^-65.9
+           ↻: ≈2^68.1
+         tag:   hybrid
+ATTACK_STATUS completed
+ATTACK_ELAPSED_SECONDS 149.72543440107256
+MODEL_END sigma_3_2_sensitivity

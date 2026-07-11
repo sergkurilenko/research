@@ -1,0 +1,34 @@
+{
+  "schema": "systems_expansion.linux_point_status.v1",
+  "created_utc": "2026-07-11T08:35:00+00:00",
+  "updated_utc": "2026-07-11T10:24:00+00:00",
+  "docker_attempt": {
+    "status": "unavailable",
+    "measurement_produced": false,
+    "reason": "Docker daemon remained unresponsive after an unrelated interrupted Sage image-layer pull; the TenSEAL build produced no output and was terminated without a retry.",
+    "systems_build_client_started_local": "2026-07-11T11:30:54+03:00",
+    "systems_clients_terminated": [10932, 43496, 25672],
+    "containers_modified": false,
+    "docker_desktop_restart_observed": false,
+    "interpretation": "No Linux timing can be inferred from this failed infrastructure attempt. The Windows results remain the primary measured evidence."
+  },
+  "wsl_attempt": {
+    "status": "complete",
+    "measurement_produced": true,
+    "scope": "same physical i5-14400F, Ubuntu 22.04 under WSL2; different OS/Python/NumPy/filesystem runtime, not an independent hardware replication",
+    "base_system_modified": false,
+    "installation_isolation": "binary-only pip --target under revision_workspace/tmp on D; no apt, user-site, or Sage changes",
+    "software": {
+      "python": "3.10.12",
+      "numpy": "2.2.6",
+      "tenseal": "0.3.16",
+      "platform": "Linux 6.6.87.2-microsoft-standard-WSL2, Ubuntu 22.04.5 LTS"
+    },
+    "artifacts": {
+      "windows": "windows_pair_ckks_micro.json",
+      "wsl_linux": "wsl_linux_ckks_micro.json",
+      "comparison": "windows_wsl_runtime_pair.json",
+      "comparison_csv": "windows_wsl_runtime_pair.csv"
+    }
+  }
+}

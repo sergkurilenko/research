@@ -1,0 +1,1275 @@
+{
+  "collections": {
+    "million_vector_heldout": {
+      "candidate_ks": [
+        20,
+        50,
+        100,
+        200
+      ],
+      "candidate_search_total_ms": 10548.526699887589,
+      "collection": "million_vector_heldout",
+      "dimension": 672,
+      "document_count": 1000000,
+      "exact_search_backend": "cuda",
+      "exact_search_total_ms": 50263.37089994922,
+      "methods": {
+        "K100:centroid": {
+          "description": "unweighted centroid of the exposed candidate-ID set",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.4794849914337307,
+            "mean": 0.38968147972374795,
+            "min": 0.19952059487393234,
+            "p05": 0.3233425782898121,
+            "p50": 0.3936973926361974,
+            "p95": 0.4413673585752503,
+            "std": 0.038143442409733365
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.72,
+            "mean": 0.27305,
+            "min": 0.01,
+            "p05": 0.1,
+            "p50": 0.27,
+            "p95": 0.47,
+            "std": 0.1162011079981598
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.8,
+            "mean": 0.21300000000000005,
+            "min": 0.0,
+            "p05": 0.0,
+            "p50": 0.2,
+            "p95": 0.5,
+            "std": 0.16787197502859136
+          },
+          "k": 100,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.8657650955285972,
+              "mean": 0.16977229676335912,
+              "min": -0.29753679272339173,
+              "p05": -0.12430806306052872,
+              "p50": 0.14871692688688004,
+              "p95": 0.5357204470939527,
+              "std": 0.20529920584051736
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9939578632263759,
+              "mean": 0.9328173784458197,
+              "min": 0.827899230769425,
+              "p05": 0.8828509133309478,
+              "p50": 0.935556106951449,
+              "p95": 0.9692440117564657,
+              "std": 0.026022951297283006
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.999996875,
+            "threshold": 0.827899230769425,
+            "tpr_at_fpr_le_0_01": 1.0
+          },
+          "method": "centroid",
+          "observation": "set_only",
+          "reconstruction_mean_ms": 0.28196149971336126,
+          "reconstruction_total_ms": 112.7845998853445,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.3625,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.0,
+              "p95": 1.0,
+              "std": 0.4807221130757352
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.525,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4993746088859544
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.25206036236474694,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.014815627743634766,
+              "p95": 1.0,
+              "std": 0.39160411872775874
+            }
+          },
+          "uses_candidate_order": false
+        },
+        "K100:log_rank": {
+          "description": "log-discounted centroid of the ordered candidate list",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.4864414409008897,
+            "mean": 0.4001309831800762,
+            "min": 0.20725026267583585,
+            "p05": 0.33069720519765566,
+            "p50": 0.40638331716134496,
+            "p95": 0.4513551203239269,
+            "std": 0.038594114674707206
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.74,
+            "mean": 0.293175,
+            "min": 0.02,
+            "p05": 0.12,
+            "p50": 0.29,
+            "p95": 0.48,
+            "std": 0.11330785222128253
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.8,
+            "mean": 0.2755,
+            "min": 0.0,
+            "p05": 0.0,
+            "p50": 0.2,
+            "p95": 0.6,
+            "std": 0.17320435906754772
+          },
+          "k": 100,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.8413562660375377,
+              "mean": 0.15401402096478828,
+              "min": -0.2932686465964042,
+              "p05": -0.1238936424090651,
+              "p50": 0.13234470690611994,
+              "p95": 0.5084180446489909,
+              "std": 0.19595212676750903
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9953791754224831,
+              "mean": 0.9252558877097434,
+              "min": 0.8292184846609375,
+              "p05": 0.8734539400784302,
+              "p50": 0.9279191408944912,
+              "p95": 0.9664161825437025,
+              "std": 0.02897603022415448
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.99999625,
+            "threshold": 0.8292184846609375,
+            "tpr_at_fpr_le_0_01": 1.0
+          },
+          "method": "log_rank",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 0.2501797501463443,
+          "reconstruction_total_ms": 100.07190005853772,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.52,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.49959983987187184
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.6725,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4693013424229681
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.4069406850857463,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.125,
+              "p95": 1.0,
+              "std": 0.4509357983505002
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K100:ridge_rank_ls": {
+          "description": "regularised least-squares fit to fixed rank targets",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.2822829945768733,
+            "mean": 0.17964680662350033,
+            "min": 0.06103255853078699,
+            "p05": 0.11586115327951597,
+            "p50": 0.1807479869760182,
+            "p95": 0.23443803448796907,
+            "std": 0.03549301932081308
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.54,
+            "mean": 0.10955000000000002,
+            "min": 0.01,
+            "p05": 0.02,
+            "p50": 0.09,
+            "p95": 0.26,
+            "std": 0.07932715487145621
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.9,
+            "mean": 0.275,
+            "min": 0.0,
+            "p05": 0.1,
+            "p50": 0.2,
+            "p95": 0.6,
+            "std": 0.1628649747490233
+          },
+          "k": 100,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.21082701465669892,
+              "mean": 0.010005893310188838,
+              "min": -0.21342990345981205,
+              "p05": -0.07865346199854284,
+              "p50": 0.00998587073231261,
+              "p95": 0.09740274801233753,
+              "std": 0.05321258340986512
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.4015248725423688,
+              "mean": 0.0986694816441579,
+              "min": -0.09752174866705966,
+              "p05": -0.010680773385156071,
+              "p50": 0.09288813763807696,
+              "p95": 0.23105401950337107,
+              "std": 0.07403841098736323
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.836435,
+            "threshold": 0.13241204331348808,
+            "tpr_at_fpr_le_0_01": 0.315
+          },
+          "method": "ridge_rank_ls",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 4.9565532500855625,
+          "reconstruction_total_ms": 1982.621300034225,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.8325,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3734216785351381
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.865,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.34172357249683555
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.759433696551973,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3959399984944547
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K200:centroid": {
+          "description": "unweighted centroid of the exposed candidate-ID set",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.47783083755099465,
+            "mean": 0.38848760790491044,
+            "min": 0.18260897265093393,
+            "p05": 0.3208458373108745,
+            "p50": 0.393666962291112,
+            "p95": 0.43964094961909284,
+            "std": 0.038699210661418404
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.67,
+            "mean": 0.252925,
+            "min": 0.01,
+            "p05": 0.09,
+            "p50": 0.24,
+            "p95": 0.44,
+            "std": 0.11354820286997061
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.8,
+            "mean": 0.18600000000000003,
+            "min": 0.0,
+            "p05": 0.0,
+            "p50": 0.2,
+            "p95": 0.5,
+            "std": 0.16203086125797145
+          },
+          "k": 200,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.869626008327167,
+              "mean": 0.19160983481081315,
+              "min": -0.3269806696189386,
+              "p05": -0.12392679382585245,
+              "p50": 0.16628232318524808,
+              "p95": 0.5851730487791977,
+              "std": 0.2216338674000685
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9965783798438396,
+              "mean": 0.9612245808942226,
+              "min": 0.9130959555076277,
+              "p05": 0.9357678601059398,
+              "p50": 0.963190257330759,
+              "p95": 0.9827067608039715,
+              "std": 0.014523190196327355
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 1.0,
+            "threshold": 0.9130959555076277,
+            "tpr_at_fpr_le_0_01": 1.0
+          },
+          "method": "centroid",
+          "observation": "set_only",
+          "reconstruction_mean_ms": 1.3467807503184304,
+          "reconstruction_total_ms": 538.7123001273721,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.33,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.0,
+              "p95": 1.0,
+              "std": 0.47021271782034996
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.505,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4999749993749687
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.21052815141980688,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.010101010101010102,
+              "p95": 1.0,
+              "std": 0.36347133426044936
+            }
+          },
+          "uses_candidate_order": false
+        },
+        "K200:log_rank": {
+          "description": "log-discounted centroid of the ordered candidate list",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.48403295609466696,
+            "mean": 0.3967537013472342,
+            "min": 0.19138910561815156,
+            "p05": 0.32874925033289476,
+            "p50": 0.40296384852669753,
+            "p95": 0.4468163874187144,
+            "std": 0.03881888665381123
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.69,
+            "mean": 0.272625,
+            "min": 0.02,
+            "p05": 0.1,
+            "p50": 0.26,
+            "p95": 0.46,
+            "std": 0.11432129886858354
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.8,
+            "mean": 0.22425000000000003,
+            "min": 0.0,
+            "p05": 0.0,
+            "p50": 0.2,
+            "p95": 0.5,
+            "std": 0.17186313595416555
+          },
+          "k": 200,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.8567258234656754,
+              "mean": 0.17843240066982974,
+              "min": -0.3277303042053426,
+              "p05": -0.1290248594511758,
+              "p50": 0.15164474069629902,
+              "p95": 0.5593555688166351,
+              "std": 0.21400695926374533
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9968192905938732,
+              "mean": 0.9568787015712179,
+              "min": 0.8965421116826106,
+              "p05": 0.9281732115674695,
+              "p50": 0.9585085920778389,
+              "p95": 0.9808529444895597,
+              "std": 0.016374295113765428
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 1.0,
+            "threshold": 0.8965421116826106,
+            "tpr_at_fpr_le_0_01": 1.0
+          },
+          "method": "log_rank",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 1.486425250186585,
+          "reconstruction_total_ms": 594.570100074634,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.425,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.0,
+              "p95": 1.0,
+              "std": 0.49434299833212975
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.6025,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.48938098655342144
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.3287688464158867,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.041666666666666664,
+              "p95": 1.0,
+              "std": 0.4311967157604158
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K200:ridge_rank_ls": {
+          "description": "regularised least-squares fit to fixed rank targets",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.28344406900173297,
+            "mean": 0.18574975206188973,
+            "min": 0.09903680840232766,
+            "p05": 0.13439750220285304,
+            "p50": 0.18520381813550613,
+            "p95": 0.24235629419091584,
+            "std": 0.03275476957445835
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.62,
+            "mean": 0.09352500000000001,
+            "min": 0.0,
+            "p05": 0.01,
+            "p50": 0.07,
+            "p95": 0.2804999999999996,
+            "std": 0.08898777654824286
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.9,
+            "mean": 0.20700000000000002,
+            "min": 0.0,
+            "p05": 0.0,
+            "p50": 0.2,
+            "p95": 0.5049999999999955,
+            "std": 0.16155803910669378
+          },
+          "k": 200,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.20108172288919748,
+              "mean": 0.013494088840821192,
+              "min": -0.1668042229595872,
+              "p05": -0.06671701683676558,
+              "p50": 0.014519530468232714,
+              "p95": 0.09178735098228015,
+              "std": 0.047982496610345635
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.34698321365356966,
+              "mean": 0.10410956522966144,
+              "min": -0.04019275034165504,
+              "p05": 0.012192441527835446,
+              "p50": 0.09951146492498494,
+              "p95": 0.2053639798819463,
+              "std": 0.060843130646919714
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.886015,
+            "threshold": 0.1239163285542344,
+            "tpr_at_fpr_le_0_01": 0.3525
+          },
+          "method": "ridge_rank_ls",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 23.310557499644347,
+          "reconstruction_total_ms": 9324.222999857739,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.785,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.41082234603292944
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.8675,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3390335529118025
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.6355069049414505,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.42260795262018985
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K20:centroid": {
+          "description": "unweighted centroid of the exposed candidate-ID set",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.4752310647950554,
+            "mean": 0.3863224486431804,
+            "min": 0.21421089241880656,
+            "p05": 0.3221159790636019,
+            "p50": 0.3884119257116382,
+            "p95": 0.4375153967893412,
+            "std": 0.036939787684430986
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.77,
+            "mean": 0.30295,
+            "min": 0.03,
+            "p05": 0.13,
+            "p50": 0.3,
+            "p95": 0.49,
+            "std": 0.10890499299848469
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.9,
+            "mean": 0.32625,
+            "min": 0.0,
+            "p05": 0.09500000000000029,
+            "p50": 0.3,
+            "p95": 0.6,
+            "std": 0.18023855719573434
+          },
+          "k": 20,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.7672193243601039,
+              "mean": 0.1235080630807694,
+              "min": -0.30118421826416214,
+              "p05": -0.11695221689126813,
+              "p50": 0.10070170554582725,
+              "p95": 0.4399816659511986,
+              "std": 0.17003618788783872
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.992869399362202,
+              "mean": 0.7873213925207788,
+              "min": 0.5089409154178268,
+              "p05": 0.656509301600676,
+              "p50": 0.7919710876033628,
+              "p95": 0.9038750278096329,
+              "std": 0.07456665245013774
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.999434375,
+            "threshold": 0.5857354685151123,
+            "tpr_at_fpr_le_0_01": 0.9875
+          },
+          "method": "centroid",
+          "observation": "set_only",
+          "reconstruction_mean_ms": 0.09292825008742511,
+          "reconstruction_total_ms": 37.171300034970045,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.535,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.49877349568717055
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.685,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4645158770160607
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.3838645457977988,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.11805555555555555,
+              "p95": 1.0,
+              "std": 0.43551397357863136
+            }
+          },
+          "uses_candidate_order": false
+        },
+        "K20:log_rank": {
+          "description": "log-discounted centroid of the ordered candidate list",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.4966144569740339,
+            "mean": 0.4012126469013597,
+            "min": 0.22573715588390197,
+            "p05": 0.33407155532897853,
+            "p50": 0.40640886305432344,
+            "p95": 0.4527343418288265,
+            "std": 0.038890330082608504
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.77,
+            "mean": 0.31987499999999996,
+            "min": 0.03,
+            "p05": 0.15950000000000003,
+            "p50": 0.32,
+            "p95": 0.5,
+            "std": 0.10764169440788268
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.9,
+            "mean": 0.3925,
+            "min": 0.0,
+            "p05": 0.1,
+            "p50": 0.4,
+            "p95": 0.7,
+            "std": 0.17100804074662687
+          },
+          "k": 20,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.7111838125494222,
+              "mean": 0.10432032291616934,
+              "min": -0.2869404637311995,
+              "p05": -0.11831218554948608,
+              "p50": 0.0851390234717698,
+              "p95": 0.40479049446337795,
+              "std": 0.1589066291426532
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9902547389438722,
+              "mean": 0.7735628882945085,
+              "min": 0.5147322591713165,
+              "p05": 0.6339956703436415,
+              "p50": 0.7788220801290736,
+              "p95": 0.8965577878187342,
+              "std": 0.0809250647761723
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.999536875,
+            "threshold": 0.546750587228382,
+            "tpr_at_fpr_le_0_01": 0.9925
+          },
+          "method": "log_rank",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 0.07013775000814348,
+          "reconstruction_total_ms": 28.055100003257394,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.7175,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4502152263084846
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.8125,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3903123748998999
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.6265014305086567,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4504833179143019
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K20:ridge_rank_ls": {
+          "description": "regularised least-squares fit to fixed rank targets",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.34471843162441473,
+            "mean": 0.19263176185857148,
+            "min": 0.044737722085361,
+            "p05": 0.10217104433841027,
+            "p50": 0.1935641357249045,
+            "p95": 0.2774068894896986,
+            "std": 0.05435807870128624
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.41,
+            "mean": 0.09380000000000001,
+            "min": 0.01,
+            "p05": 0.03,
+            "p50": 0.08,
+            "p95": 0.21,
+            "std": 0.058133983176796
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.9,
+            "mean": 0.26325000000000004,
+            "min": 0.0,
+            "p05": 0.1,
+            "p50": 0.2,
+            "p95": 0.5,
+            "std": 0.13774773137877808
+          },
+          "k": 20,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.3991203709849844,
+              "mean": 0.004446774379703424,
+              "min": -0.22427417067864802,
+              "p05": -0.09972637330799476,
+              "p50": 0.0039890173196136655,
+              "p95": 0.10913952514626907,
+              "std": 0.06441654322317217
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.7040743575539301,
+              "mean": 0.1366915528678376,
+              "min": -0.11842720496887818,
+              "p05": -0.03602104271723601,
+              "p50": 0.12106172685560176,
+              "p95": 0.35507828036986083,
+              "std": 0.12288390644573492
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.838795625,
+            "threshold": 0.16921541568759202,
+            "tpr_at_fpr_le_0_01": 0.3675
+          },
+          "method": "ridge_rank_ls",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 0.1682380004785955,
+          "reconstruction_total_ms": 67.2952001914382,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.825,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.37996710383926663
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.8425,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3642715333374268
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.784233387517852,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.39131476347417826
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K50:centroid": {
+          "description": "unweighted centroid of the exposed candidate-ID set",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.4740331333036485,
+            "mean": 0.3898612071640794,
+            "min": 0.20529469211591433,
+            "p05": 0.3234708485411417,
+            "p50": 0.39561984020251545,
+            "p95": 0.44028741962163775,
+            "std": 0.037985411360246045
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.77,
+            "mean": 0.287725,
+            "min": 0.01,
+            "p05": 0.11,
+            "p50": 0.28,
+            "p95": 0.48,
+            "std": 0.11534762405442081
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.8,
+            "mean": 0.25625000000000003,
+            "min": 0.0,
+            "p05": 0.0,
+            "p50": 0.2,
+            "p95": 0.6,
+            "std": 0.17765398250531847
+          },
+          "k": 50,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.7767111874676426,
+              "mean": 0.15897730731341436,
+              "min": -0.2806413976239032,
+              "p05": -0.11790019885311938,
+              "p50": 0.13626196532233278,
+              "p95": 0.5154425047554795,
+              "std": 0.1946728507697857
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9944296404967365,
+              "mean": 0.8876337944778493,
+              "min": 0.7439030257725273,
+              "p05": 0.8137586796849037,
+              "p50": 0.8925808127410866,
+              "p95": 0.9447091606317136,
+              "std": 0.04197787133264464
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.9999975,
+            "threshold": 0.7439030257725273,
+            "tpr_at_fpr_le_0_01": 1.0
+          },
+          "method": "centroid",
+          "observation": "set_only",
+          "reconstruction_mean_ms": 0.1396569999633357,
+          "reconstruction_total_ms": 55.86279998533428,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.4225,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.0,
+              "p95": 1.0,
+              "std": 0.49395723499104655
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.595,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4908920451586072
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.3074517476836156,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.035098522167487683,
+              "p95": 1.0,
+              "std": 0.4187559139126008
+            }
+          },
+          "uses_candidate_order": false
+        },
+        "K50:log_rank": {
+          "description": "log-discounted centroid of the ordered candidate list",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.4860517381406497,
+            "mean": 0.4024499683638934,
+            "min": 0.21916145719675587,
+            "p05": 0.3336244925821984,
+            "p50": 0.40858061361841475,
+            "p95": 0.4526497073406373,
+            "std": 0.03887913478563067
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.77,
+            "mean": 0.3119,
+            "min": 0.03,
+            "p05": 0.13900000000000007,
+            "p50": 0.31,
+            "p95": 0.5004999999999995,
+            "std": 0.11283567698206096
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.8,
+            "mean": 0.32475000000000004,
+            "min": 0.0,
+            "p05": 0.1,
+            "p50": 0.3,
+            "p95": 0.6,
+            "std": 0.17695320709159243
+          },
+          "k": 50,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.7757510494106382,
+              "mean": 0.1400150531018968,
+              "min": -0.28237952795454824,
+              "p05": -0.12351757893602673,
+              "p50": 0.1191414025645742,
+              "p95": 0.47720692859402625,
+              "std": 0.1842007630364812
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.9940606155231839,
+              "mean": 0.8757358459173082,
+              "min": 0.7029968167686008,
+              "p05": 0.7916751286629778,
+              "p50": 0.8792861569188027,
+              "p95": 0.9428875291059057,
+              "std": 0.04706918197831025
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.999985,
+            "threshold": 0.7029968167686008,
+            "tpr_at_fpr_le_0_01": 1.0
+          },
+          "method": "log_rank",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 0.13143125048372895,
+          "reconstruction_total_ms": 52.57250019349158,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.6125,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.4871793817476269
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.745,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.43586121644395015
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.49901109448919256,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 0.3333333333333333,
+              "p95": 1.0,
+              "std": 0.46003321045233697
+            }
+          },
+          "uses_candidate_order": true
+        },
+        "K50:ridge_rank_ls": {
+          "description": "regularised least-squares fit to fixed rank targets",
+          "direction_cosine": {
+            "count": 400,
+            "max": 0.27553342072828324,
+            "mean": 0.17743755825905172,
+            "min": 0.06356106754699592,
+            "p05": 0.10571316646937606,
+            "p50": 0.18071700632202212,
+            "p95": 0.24337810733226728,
+            "std": 0.041568024576883286
+          },
+          "exact_top100_overlap_fraction": {
+            "count": 400,
+            "max": 0.42,
+            "mean": 0.09725000000000002,
+            "min": 0.01,
+            "p05": 0.03,
+            "p50": 0.09,
+            "p95": 0.22,
+            "std": 0.061562468274103506
+          },
+          "exact_top10_overlap_fraction": {
+            "count": 400,
+            "max": 0.9,
+            "mean": 0.28775,
+            "min": 0.0,
+            "p05": 0.1,
+            "p50": 0.3,
+            "p95": 0.6,
+            "std": 0.15516100508826305
+          },
+          "k": 50,
+          "linkability": {
+            "negative_cosine": {
+              "count": 4000,
+              "max": 0.26555400570152576,
+              "mean": 0.0078613642783519,
+              "min": -0.19316536913712867,
+              "p05": -0.08613018198492715,
+              "p50": 0.007130674865090839,
+              "p95": 0.10350406721008756,
+              "std": 0.05829441796188463
+            },
+            "negative_count": 4000,
+            "positive_cosine": {
+              "count": 400,
+              "max": 0.6747480354465804,
+              "mean": 0.10443668745782339,
+              "min": -0.1415751780526983,
+              "p05": -0.0313992564000905,
+              "p50": 0.09817525696645167,
+              "p95": 0.25033681652495127,
+              "std": 0.08817093664019188
+            },
+            "positive_count": 400,
+            "protocol": "positive=alternating, non-overlapping candidate-ID views of the same query; negative=view B cyclically reassigned to another query",
+            "roc_auc": 0.8304218749999999,
+            "threshold": 0.14909748021591232,
+            "tpr_at_fpr_le_0_01": 0.285
+          },
+          "method": "ridge_rank_ls",
+          "observation": "order_aware",
+          "reconstruction_mean_ms": 0.5284172500250861,
+          "reconstruction_total_ms": 211.36690001003444,
+          "relevance_proxy": {
+            "hit_at_10": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.8325,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3734216785351381
+            },
+            "hit_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.86,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.34698703145794946
+            },
+            "reciprocal_rank_at_100": {
+              "count": 400,
+              "max": 1.0,
+              "mean": 0.7783149281597787,
+              "min": 0.0,
+              "p05": 0.0,
+              "p50": 1.0,
+              "p95": 1.0,
+              "std": 0.3877216594305371
+            }
+          },
+          "uses_candidate_order": true
+        }
+      },
+      "query_count": 400,
+      "selected_query_rows_sha256": "f9bf867f7a7615cdf8d808d689e45efb1a8e3dff70db6f37b3b18562103f5b6d",
+      "split": {
+        "name": "test",
+        "qrel_seed": 42,
+        "seed": 2026,
+        "validation_size": 100
+      },
+      "threat_observation": "ordered candidate identifiers and provider-owned exact candidate vectors only; no PQ distances, CKKS ciphertexts, plaintext scores, secret key, or decryptor are accessed",
+      "true_query_relevance_proxy": {
+        "hit_at_10": {
+          "count": 400,
+          "max": 1.0,
+          "mean": 0.9275,
+          "min": 0.0,
+          "p05": 0.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "std": 0.259313998850814
+        },
+        "hit_at_100": {
+          "count": 400,
+          "max": 1.0,
+          "mean": 0.97,
+          "min": 0.0,
+          "p05": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "std": 0.1705872210923198
+        },
+        "reciprocal_rank_at_100": {
+          "count": 400,
+          "max": 1.0,
+          "mean": 0.8565463316294284,
+          "min": 0.0,
+          "p05": 0.03531746031746034,
+          "p50": 1.0,
+          "p95": 1.0,
+          "std": 0.316503575382544
+        }
+      }
+    }
+  },
+  "created_utc": "2026-07-11T08:14:19.886000+00:00",
+  "elapsed_seconds": 83.20395529991947,
+  "methods": {
+    "centroid": {
+      "description": "unweighted centroid of the exposed candidate-ID set",
+      "observation": "set_only",
+      "uses_candidate_order": false
+    },
+    "log_rank": {
+      "description": "log-discounted centroid of the ordered candidate list",
+      "observation": "order_aware",
+      "uses_candidate_order": true
+    },
+    "ridge_rank_ls": {
+      "description": "regularised least-squares fit to fixed rank targets",
+      "observation": "order_aware",
+      "uses_candidate_order": true
+    }
+  },
+  "mode": "million",
+  "schema": "candidate_id_semantic_leakage.v1",
+  "software": {
+    "numpy": "2.4.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15"
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "config": {
+    "candidate_count": 100,
+    "ckks": {
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        60
+      ],
+      "global_scale": 1099511627776.0,
+      "poly_modulus_degree": 8192,
+      "scale_bits": 40,
+      "slot_count": 4096
+    },
+    "dimension": 672,
+    "effective_block_size": 4,
+    "final_score_mask_scale_bits": 19,
+    "galois_key_count": 10,
+    "normalized_inputs": true,
+    "packed_response_ciphertexts_expected": 25,
+    "padded_dimension": 1024,
+    "repeats": 20,
+    "requested_block_size": null,
+    "rotation_steps": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "scores_per_ciphertext_capacity": 4,
+    "seed": 20260710,
+    "warmups": 2
+  },
+  "created_utc": "2026-07-11T10:25:08.725848+00:00",
+  "errors": [],
+  "ratios": {
+    "block_packed": {
+      "wsl_over_windows_client_decrypt_median": 0.05538913050577813,
+      "wsl_over_windows_server_median": 0.3491938160512505,
+      "wsl_over_windows_server_p95": 0.3317158691584163
+    },
+    "naive_per_candidate": {
+      "wsl_over_windows_client_decrypt_median": 0.05411452673523786,
+      "wsl_over_windows_server_median": 0.35474277710790275,
+      "wsl_over_windows_server_p95": 0.3542087140110678
+    },
+    "segmented_score_packed": {
+      "wsl_over_windows_client_decrypt_median": 0.11442723169760416,
+      "wsl_over_windows_server_median": 0.8708387725834128,
+      "wsl_over_windows_server_p95": 0.8478308393965236
+    }
+  },
+  "runtimes": {
+    "windows": {
+      "artifact": {
+        "bytes": 30252,
+        "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\systems_expansion\\windows_pair_ckks_micro.json",
+        "sha256": "9b63ddf7d1e703c92420b4e16f23e5526ba9f973264c890e27bffb9b823b27ca"
+      },
+      "implementation": {
+        "algorithm": "power_of_two_segmented_reduction",
+        "client_has_secret_key": true,
+        "client_timing_scope": "response parse + ciphertext load + decrypt",
+        "decryption_location": "client_only",
+        "public_api_note": "TenSEAL 0.3.16 CKKSVector has no public rotate/rotate_ method. The segmented kernel uses the distributed tenseal.sealapi API (Evaluator.rotate_vector), not private _cpp bindings. Built-in CKKSVector.mm is a functional packed-score fallback but was slower in local measurement.",
+        "server_has_secret_key": false,
+        "server_is_public": true,
+        "server_timing_scope": "query parse/load + plaintext encode + HE evaluate + ciphertext serialize + response framing"
+      },
+      "methods": {
+        "block_packed": {
+          "client_decrypt_ms": {
+            "count": 20,
+            "max": 325.6138,
+            "median": 267.92875,
+            "min": 226.4493,
+            "p95": 311.775435,
+            "p99": 322.846127
+          },
+          "max_abs_error": 2.237662236968807e-06,
+          "mean_abs_error": 5.925844735504208e-07,
+          "passes_reported_tolerance": true,
+          "rmse": 9.852291272167439e-07,
+          "seal_ciphertext_count": 25,
+          "server_ms": {
+            "count": 20,
+            "max": 487.3564,
+            "median": 427.5941,
+            "min": 385.7198,
+            "p95": 484.333025,
+            "p99": 486.751725
+          },
+          "wire_bytes": 3280904
+        },
+        "naive_per_candidate": {
+          "client_decrypt_ms": {
+            "count": 20,
+            "max": 1218.7337,
+            "median": 1116.65455,
+            "min": 947.5608,
+            "p95": 1172.8359699999999,
+            "p99": 1209.554154
+          },
+          "max_abs_error": 2.2976376165134704e-06,
+          "mean_abs_error": 1.9555039329981453e-06,
+          "passes_reported_tolerance": true,
+          "rmse": 1.9623265084295874e-06,
+          "seal_ciphertext_count": 100,
+          "server_ms": {
+            "count": 20,
+            "max": 1856.4475,
+            "median": 1712.71595,
+            "min": 1606.4987,
+            "p95": 1793.794715,
+            "p99": 1843.9169429999997
+          },
+          "wire_bytes": 13121661
+        },
+        "segmented_score_packed": {
+          "client_decrypt_ms": {
+            "count": 20,
+            "max": 19.1493,
+            "median": 6.96835,
+            "min": 6.1607,
+            "p95": 16.907015000000005,
+            "p99": 18.700843
+          },
+          "max_abs_error": 1.5008633360180657e-05,
+          "mean_abs_error": 3.4239628456579997e-06,
+          "passes_reported_tolerance": true,
+          "rmse": 4.410957889924594e-06,
+          "seal_ciphertext_count": 1,
+          "server_ms": {
+            "count": 20,
+            "max": 239.3079,
+            "median": 195.17090000000002,
+            "min": 187.2088,
+            "p95": 203.92591000000004,
+            "p99": 232.23150199999992
+          },
+          "wire_bytes": 131876
+        }
+      },
+      "packed_speedup_naive_over_one_response_server_median": 8.775467807957027,
+      "setup": {
+        "context_and_key_generation_ms": 303.3629,
+        "query_encrypt_serialize_ms": 40.4261,
+        "serialized_public_server_context_bytes": 7695289,
+        "serialized_query_bytes": 235415
+      },
+      "software": {
+        "he_backend": "Microsoft SEAL via tenseal.sealapi (CPU-only)",
+        "numpy": "2.4.3",
+        "platform": "Windows-10-10.0.26200-SP0",
+        "processor": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+        "python": "3.11.15",
+        "tenseal": "0.3.16",
+        "tenseal_validated_version": "0.3.16"
+      }
+    },
+    "wsl_linux": {
+      "artifact": {
+        "bytes": 29415,
+        "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\systems_expansion\\wsl_linux_ckks_micro.json",
+        "sha256": "2fe3ef47560238d6e7e8c92a1f0b59e8e34715e784a59edecbc1852bae18cba6"
+      },
+      "implementation": {
+        "algorithm": "power_of_two_segmented_reduction",
+        "client_has_secret_key": true,
+        "client_timing_scope": "response parse + ciphertext load + decrypt",
+        "decryption_location": "client_only",
+        "public_api_note": "TenSEAL 0.3.16 CKKSVector has no public rotate/rotate_ method. The segmented kernel uses the distributed tenseal.sealapi API (Evaluator.rotate_vector), not private _cpp bindings. Built-in CKKSVector.mm is a functional packed-score fallback but was slower in local measurement.",
+        "server_has_secret_key": false,
+        "server_is_public": true,
+        "server_timing_scope": "query parse/load + plaintext encode + HE evaluate + ciphertext serialize + response framing"
+      },
+      "methods": {
+        "block_packed": {
+          "client_decrypt_ms": {
+            "count": 20,
+            "max": 18.069384,
+            "median": 14.8403405,
+            "min": 14.173449,
+            "p95": 16.86717135,
+            "p99": 17.828941469999997
+          },
+          "max_abs_error": 1.014406427551906e-06,
+          "mean_abs_error": 2.6834427378009603e-07,
+          "passes_reported_tolerance": true,
+          "rmse": 3.629693128032341e-07,
+          "seal_ciphertext_count": 25,
+          "server_ms": {
+            "count": 20,
+            "max": 167.856827,
+            "median": 149.3132155,
+            "min": 146.630941,
+            "p95": 160.66095034999998,
+            "p99": 166.41765167
+          },
+          "wire_bytes": 3280904
+        },
+        "naive_per_candidate": {
+          "client_decrypt_ms": {
+            "count": 20,
+            "max": 71.372824,
+            "median": 60.4272325,
+            "min": 57.96368,
+            "p95": 66.7088142,
+            "p99": 70.44002203999999
+          },
+          "max_abs_error": 1.0011319375273497e-06,
+          "mean_abs_error": 5.832610787247119e-07,
+          "passes_reported_tolerance": true,
+          "rmse": 6.003300417272915e-07,
+          "seal_ciphertext_count": 100,
+          "server_ms": {
+            "count": 20,
+            "max": 638.022333,
+            "median": 607.5736125,
+            "min": 596.061879,
+            "p95": 635.3777191999999,
+            "p99": 637.49341024
+          },
+          "wire_bytes": 13121661
+        },
+        "segmented_score_packed": {
+          "client_decrypt_ms": {
+            "count": 20,
+            "max": 1.007181,
+            "median": 0.797369,
+            "min": 0.751848,
+            "p95": 0.8764838,
+            "p99": 0.98104156
+          },
+          "max_abs_error": 1.4714727172092379e-05,
+          "mean_abs_error": 3.2940280659362295e-06,
+          "passes_reported_tolerance": true,
+          "rmse": 4.267856522627082e-06,
+          "seal_ciphertext_count": 1,
+          "server_ms": {
+            "count": 20,
+            "max": 173.251295,
+            "median": 169.962387,
+            "min": 168.208125,
+            "p95": 172.89467544999997,
+            "p99": 173.17997108999998
+          },
+          "wire_bytes": 131876
+        }
+      },
+      "packed_speedup_naive_over_one_response_server_median": 3.5747533511635132,
+      "setup": {
+        "context_and_key_generation_ms": 114.121671,
+        "query_encrypt_serialize_ms": 3.670563,
+        "serialized_public_server_context_bytes": 7695187,
+        "serialized_query_bytes": 235512
+      },
+      "software": {
+        "he_backend": "Microsoft SEAL via tenseal.sealapi (CPU-only)",
+        "numpy": "2.2.6",
+        "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+        "processor": "x86_64",
+        "python": "3.10.12",
+        "tenseal": "0.3.16",
+        "tenseal_validated_version": "0.3.16"
+      }
+    }
+  },
+  "schema": "ckks_runtime_pair.v1",
+  "scope": {
+    "comparison": "Windows native versus Ubuntu 22.04 under WSL2; same TenSEAL 0.3.16, source, seed, CKKS parameters, d=672, K=100, and repeats",
+    "gpu_used": false,
+    "hardware": "same physical Intel Core i5-14400F host",
+    "important_runtime_difference": "Windows Python 3.11/NumPy 2.4 and WSL Python 3.10/NumPy 2.2; SEAL serialization uses runtime-local temporary files, so filesystem and binding overhead differ substantially",
+    "not_exact_python_numpy_parity": true,
+    "not_independent_hardware_replication": true
+  },
+  "valid": true,
+  "wsl_binary_wheels": [
+    {
+      "bytes": 16801050,
+      "filename": "numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "sha256": "fc7b73d02efb0e18c000e9ad8b83480dfcd5dfd11065997ed4c6747470ae8915"
+    },
+    {
+      "bytes": 4785821,
+      "filename": "tenseal-0.3.16-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "7add306c52ba1a2c7cd8307601fb8e1d04c520c9caec998a34d5bb6d4c5e1bcf"
+    }
+  ]
+}

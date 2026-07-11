@@ -1,0 +1,11 @@
+Substantially revised journal-oriented version under the unchanged title. The
+threat model is narrowed: SVD and PQ are public compression, candidate IDs and
+the access pattern are disclosed, and no document, circuit, unlinkability, or
+access-pattern privacy is claimed. The earlier secret-rotation argument has
+been removed. The revision adds block-SIMD one-response CKKS, a public-only
+provider process, actual encrypted BEIR replay, a frozen post-exploratory
+revision analysis disjoint from validation, projection and PQ controls,
+concurrency and TCP/TLS measurements, candidate-ID linkability and
+neighbourhood-reproduction audits, an adaptive score-oracle audit, and a
+pinned independently executable parameter-security transcript. The author is
+Sergey Kurilenko.

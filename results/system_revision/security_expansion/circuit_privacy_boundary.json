@@ -1,0 +1,159 @@
+{
+  "config": {
+    "candidate_count": 8,
+    "ckks": {
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        60
+      ],
+      "global_scale": 1099511627776.0,
+      "poly_modulus_degree": 8192,
+      "scale_bits": 40,
+      "slot_count": 4096
+    },
+    "dimension": 32,
+    "repeats": 20,
+    "seed": 2026
+  },
+  "created_utc": "2026-07-11T08:12:29.535949+00:00",
+  "disclaimer": "This diagnostic is not a circuit-privacy proof and is not a key-recovery experiment. Standard CKKS IND-CPA query confidentiality does not by itself guarantee that an evaluated ciphertext hides the server circuit/plaintext operands from the decrypting client. The prototype claims no circuit privacy, q-IND-CPA-D/IND-CPA-D security, malicious-client security, or output sanitisation.",
+  "fresh_client_encryption": {
+    "all_serialized_responses_unique": true,
+    "max_abs_decryption_error": [
+      2.963586289372877e-05,
+      2.9615130823668068e-05,
+      2.9643314389704578e-05,
+      2.9586986330376597e-05,
+      2.957533726716255e-05,
+      2.9603176105508222e-05,
+      2.966633801659846e-05,
+      2.9639177148876872e-05,
+      2.961158651759721e-05,
+      2.96016274147215e-05,
+      2.9592315692605897e-05,
+      2.9593478523493033e-05,
+      2.9665907651188483e-05,
+      2.9646077114864333e-05,
+      2.9604824658191475e-05,
+      2.963635917840879e-05,
+      2.961376734300636e-05,
+      2.964392813342709e-05,
+      2.9575350042110315e-05,
+      2.9670966493144935e-05
+    ],
+    "response_sha256": [
+      "fdbb823cb38cc0c70bb02d64a5ab81315e376bdd91fcf6da73450bf9fa8bc2d2",
+      "f088c4f692a4b6dd92403467a9e8744d891a0558e05156177b8d5b16b497eb01",
+      "6f6ed5f4a9cd0344a755d92a69b298d32a17fa4084581e902619ee76ae33345f",
+      "ecff34f7b1ff6effe577d60d7734d2c18419cc078ef71a55f5591103e574d288",
+      "4c57669d183bc6e3fa192b7a9f75535db4f16be8c1d0722d2b33caae2961b4ce",
+      "42b6f4419e22ea98068051f9ff11bd2b3707be3893c650e59a91c137ca27faf2",
+      "d69dec6d53459d22c31555c073a94fc9977f9fd2be1447141a7bce81db6c488f",
+      "7652b876a85636077e411ebafd36dc433d8945f8465cb4be4f0c74c68a5bac7a",
+      "5d3484130bc57610b1ef3d3d624f4134b6d36e0397155e22f7d573a84ebadbbe",
+      "e2285097ff41b0778de353dc4efe3fe15877aa98a8db8804e94b8b4094950d00",
+      "b96470da0235e3755ad66c468da351faf09715d3c92909c0954144d0287aeb52",
+      "d125c87415e401060200621a878b288842b97522091a13e41a522851808dfbaf",
+      "ac6b521dfa5d6c9b5e1eea180c3892cdc31da25f7c226abc25b755547ad361c6",
+      "14116f004e3ba97c376e8f6cf474b5cc1e0114e07bf6d64164183740327babc9",
+      "48c5da014be5170621c43dfc6d4b7c9afd7cc3204d0787a28c6a2b1ede494ee0",
+      "ba5ad4dc33aff7525620970fea0561663e04d9b8c9d7741f446266105ba5637e",
+      "bf3d7e76a8d6886bbd7351802b96527ee962bc2634e8abcac80ae301460f9119",
+      "77611b18e649dd0ae7a169cd9ba3df4f9167c4e5a2b3e18af80e2eee83cc6def",
+      "4f3b0bd726a6179c0a4f8d77e1daf40765393dbab5ffa132e0f808608410614b",
+      "4ab716dd832cc29c0b28c8bebba84f1261951388fda6e3fd822fe53ca1dfe0b6"
+    ],
+    "unique_response_hashes": 20
+  },
+  "identical_encrypted_request_replay": {
+    "all_serialized_responses_identical": true,
+    "max_abs_decryption_error": [
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05,
+      2.969156584309296e-05
+    ],
+    "response_sha256": [
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32",
+      "d8526a18904a13b1f350898df7ecf7908756b3e097ac277f8cfb72d52bd59f32"
+    ],
+    "unique_response_hashes": 1
+  },
+  "implementation_trace": {
+    "explicit_output_sanitisation_present": false,
+    "operation_presence": {
+      "ciphertext_addition": true,
+      "fresh_encrypt_zero": false,
+      "multiply_plain": true,
+      "noise_flooding_named": false,
+      "rerandomization_named": false,
+      "rescale": true,
+      "rotation": true
+    },
+    "server_score_source_sha256": "78ad44bbdbbf4cee0301beac87f7ee7c3eee71a12d753a73dc463150b1a0c380"
+  },
+  "interpretation": {
+    "not_established": "Fresh-input ciphertext diversity and small numerical error do not establish circuit privacy or decryption-oracle security.",
+    "observed": "The evaluator is deterministic for a fixed input ciphertext and contains no explicit output sanitisation/noise-flooding operation.",
+    "safe_protocol_boundary": "Keep the restricted honest-client model; do not claim provider operand/circuit privacy. A formally analysed sanitisation protocol would require a separate parameter/noise/correctness study and is not retrofitted here."
+  },
+  "primary_references": [
+    {
+      "scope": "CKKS decryption-oracle/approximate-output security boundary",
+      "title": "On the Security of Homomorphic Encryption on Approximate Numbers",
+      "url": "https://eprint.iacr.org/2020/1533"
+    },
+    {
+      "scope": "circuit-privacy definition and sanitisation/noise-flooding discussion",
+      "title": "Circuit Privacy for FHEW/TFHE-Style FHE in Practice",
+      "url": "https://eprint.iacr.org/2022/1459"
+    },
+    {
+      "scope": "formal circuit-privacy distinction from ordinary FHE input privacy",
+      "title": "Maliciously Circuit-Private FHE from Information-Theoretic Principles",
+      "url": "https://eprint.iacr.org/2022/495"
+    }
+  ],
+  "schema": "ckks_circuit_privacy_boundary.v1",
+  "software": {
+    "backend": "Microsoft SEAL through tenseal.sealapi",
+    "numpy": "2.4.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15"
+  }
+}

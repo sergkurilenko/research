@@ -1,0 +1,631 @@
+{
+  "arora_gb_policy": "excluded; authoritative exact-CBD individual timeout is stored in individual_security_estimates.json",
+  "attacks": [
+    {
+      "attack": "usvp",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_usvp.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 7.468999700155109,
+      "exit_code": 0,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": 176.3,
+          "rop_log2_by_attack": {
+            "usvp": 176.3
+          }
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_usvp.sage",
+      "sage_input_sha256": "a3cab0383bf268d71082f0a448a372dbea4d00b7d37766b8a5cacb19f6a18e5e",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_seal_exact_cbd21_usvp_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_usvp_stdout.txt",
+      "stdout_sha256": "c2fba7ea703a5ccbf037ee25ef4612de44be01790e0fee1ba4da0f96e3bc5628",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "usvp",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_usvp.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 2.4752418000716716,
+      "exit_code": 0,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": 176.3,
+          "rop_log2_by_attack": {
+            "usvp": 176.3
+          }
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_usvp.sage",
+      "sage_input_sha256": "3e84f0ebbdb3f0ff776f7a495f74774542656f795535e82bb30617733f3b4311",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_sigma_3_2_sensitivity_usvp_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_usvp_stdout.txt",
+      "stdout_sha256": "e13b5661bc13f3308ae97bb552659322a32ad35a032068046260e707eda217e6",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "dual",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_dual.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 1.8421600998844951,
+      "exit_code": 0,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": 177.8,
+          "rop_log2_by_attack": {
+            "dual": 177.8
+          }
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_dual.sage",
+      "sage_input_sha256": "e7e6d965e0c7dbbba9762b55174e91d682f31a7c01227f739b947e6355093bd5",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_seal_exact_cbd21_dual_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_dual_stdout.txt",
+      "stdout_sha256": "c770116e7fa747ed6d69829862e30ec05ca233e972a43bf6ab6509f1384f40bd",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "dual",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_dual.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 1.7387940001208335,
+      "exit_code": 0,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": 177.8,
+          "rop_log2_by_attack": {
+            "dual": 177.8
+          }
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_dual.sage",
+      "sage_input_sha256": "d3a23e23cf4e2cf51962aa4cbcbc056e2a3af26e80e384867587f30d124d43ca",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_sigma_3_2_sensitivity_dual_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_dual_stdout.txt",
+      "stdout_sha256": "c867069fda7d8c99c669c972eccc0fe1c2ed089772b7ac0b1e808426b693a3b9",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "dual_hybrid",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_dual_hybrid.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 9.559538700152189,
+      "exit_code": 0,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": 176.3,
+          "rop_log2_by_attack": {
+            "dual_hybrid": 176.3
+          }
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_dual_hybrid.sage",
+      "sage_input_sha256": "2fdca0e2a02f0fd3b8c05bc4ef7316f83c31e475df68e28a43d4321fc99f8720",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_seal_exact_cbd21_dual_hybrid_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_dual_hybrid_stdout.txt",
+      "stdout_sha256": "6902f8bccd376aeb8c3bcfbd7174532012563d180aa5a6aaaacf5fe5be5cb08a",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "dual_hybrid",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_dual_hybrid.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 8.913385799853131,
+      "exit_code": 0,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": 176.3,
+          "rop_log2_by_attack": {
+            "dual_hybrid": 176.3
+          }
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_dual_hybrid.sage",
+      "sage_input_sha256": "1c6c178d9063947e563f1760942c2c9982af81603ef5bf23a7c592a52741251f",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_sigma_3_2_sensitivity_dual_hybrid_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_dual_hybrid_stdout.txt",
+      "stdout_sha256": "badd3d9ed2ccbd3ce01568a8fedbdce22a420b3cc3c4aa320fe294d79f66cb4a",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bdd",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_bdd.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 6.294249499915168,
+      "exit_code": 0,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": 175.8,
+          "rop_log2_by_attack": {
+            "bdd": 175.8
+          }
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_bdd.sage",
+      "sage_input_sha256": "6a5ffa68d6befe8e5296a7a97982c7f921dca3a16302f40efa366aa62f445691",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_seal_exact_cbd21_bdd_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_bdd_stdout.txt",
+      "stdout_sha256": "ff2cb9df3be86882bf369cb81114c9394f7225f68384f67eca5745a87612a9a7",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bdd",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_bdd.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 5.912583300145343,
+      "exit_code": 0,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": 175.8,
+          "rop_log2_by_attack": {
+            "bdd": 175.8
+          }
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_bdd.sage",
+      "sage_input_sha256": "623d83f30ca0f6292b43798d2b561595d8919412d09910131924da06d1e9f726",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_sigma_3_2_sensitivity_bdd_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_bdd_stdout.txt",
+      "stdout_sha256": "f28b79bc6254a09baa68e43c4286ee558dd0112f40dd5ed946e6a77332d63790",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bdd_hybrid",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_bdd_hybrid.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 86.87037599994801,
+      "exit_code": 0,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": 175.8,
+          "rop_log2_by_attack": {
+            "bdd_hybrid": 175.8
+          }
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_bdd_hybrid.sage",
+      "sage_input_sha256": "ed71902bfaf58f66ef768b56ea3509f4eb44d01fd4b22c75c2bd909b3011bad8",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_seal_exact_cbd21_bdd_hybrid_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_bdd_hybrid_stdout.txt",
+      "stdout_sha256": "401c18addd37f04b105a56da808a4f8d60102c5de231731f054cbdc28b919d02",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bdd_hybrid",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_bdd_hybrid.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 86.78525660000741,
+      "exit_code": 0,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": 175.8,
+          "rop_log2_by_attack": {
+            "bdd_hybrid": 175.8
+          }
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_bdd_hybrid.sage",
+      "sage_input_sha256": "d14aff6e048e9132e5986656230b4836662469ad9ea3e4960baa801d085a657e",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_sigma_3_2_sensitivity_bdd_hybrid_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_bdd_hybrid_stdout.txt",
+      "stdout_sha256": "a02ae5e609f2bb7985fef8b90afa15857eeae3d7cbc70bea8f237f040f37ac51",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bdd_mitm_hybrid",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_bdd_mitm_hybrid.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 173.82729899999686,
+      "exit_code": 0,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": 247.6,
+          "rop_log2_by_attack": {
+            "bdd_mitm_hybrid": 247.6
+          }
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_bdd_mitm_hybrid.sage",
+      "sage_input_sha256": "95367c65de60359bdf1b2d3032e3c3c0a1d17053fc279f81a9b1e2a111aed3fd",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_seal_exact_cbd21_bdd_mitm_hybrid_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_bdd_mitm_hybrid_stdout.txt",
+      "stdout_sha256": "41ecdf0e3fb6107d7a3cc34985aaeb79dfbab82ea7c40eadec7742bb04edb56a",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bdd_mitm_hybrid",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_bdd_mitm_hybrid.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 166.52429470000789,
+      "exit_code": 0,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": 247.0,
+          "rop_log2_by_attack": {
+            "bdd_mitm_hybrid": 247.0
+          }
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_bdd_mitm_hybrid.sage",
+      "sage_input_sha256": "646fd14f7230d81730b2554329a2a5959f858174b69413f137576a9481e8b2b1",
+      "shape_model": "GSA",
+      "status": "completed",
+      "stderr": "extended_sigma_3_2_sensitivity_bdd_mitm_hybrid_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_bdd_mitm_hybrid_stdout.txt",
+      "stdout_sha256": "e72b87e21ff93dca791e1d1a38cc9ff42e621aec4fa8bb72b19b90cba378dec1",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bkw",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_seal_exact_cbd21_bkw.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 900.0576609999407,
+      "exit_code": 124,
+      "model": "seal_exact_cbd21",
+      "parsed_costs": {
+        "seal_exact_cbd21": {
+          "minimum_rop_log2": null,
+          "rop_log2_by_attack": {}
+        }
+      },
+      "sage_input": "extended_seal_exact_cbd21_bkw.sage",
+      "sage_input_sha256": "ebcca8a2d916242aee64f812bd3fd7dbada3416b7b47bbd17853b3f937020656",
+      "shape_model": "GSA",
+      "status": "timed_out_partial_output_archived",
+      "stderr": "extended_seal_exact_cbd21_bkw_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_seal_exact_cbd21_bkw_stdout.txt",
+      "stdout_sha256": "23436dffd3d4bb34b640cf9306a286ce5f6ce2a9e65db0044773ed7a1448a8ae",
+      "timeout_seconds": 900.0
+    },
+    {
+      "attack": "bkw",
+      "command": [
+        "wsl",
+        "-d",
+        "CodexSageEstimatorUbuntu",
+        "-u",
+        "root",
+        "--cd",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "--",
+        "env",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONPATH=/mnt/d/PHD/jsupercomp_submission/revision_workspace/tmp/lattice-estimator",
+        "sage",
+        "/mnt/d/PHD/jsupercomp_submission/revision_workspace/results/system_revision/security_expansion/lwe_security/extended_sigma_3_2_sensitivity_bkw.sage"
+      ],
+      "cost_model": "MATZOV",
+      "elapsed_seconds": 900.0571723000612,
+      "exit_code": 124,
+      "model": "sigma_3_2_sensitivity",
+      "parsed_costs": {
+        "sigma_3_2_sensitivity": {
+          "minimum_rop_log2": null,
+          "rop_log2_by_attack": {}
+        }
+      },
+      "sage_input": "extended_sigma_3_2_sensitivity_bkw.sage",
+      "sage_input_sha256": "52c99ba7c401e83e0158161dba65328efd94947a953e8a54e0b853f8b3feed6a",
+      "shape_model": "GSA",
+      "status": "timed_out_partial_output_archived",
+      "stderr": "extended_sigma_3_2_sensitivity_bkw_stderr.txt",
+      "stderr_sha256": "eff53f45a7f54eb3a6641b4089c6930da26174040c718b62b9503ba51275c4db",
+      "stdout": "extended_sigma_3_2_sensitivity_bkw_stdout.txt",
+      "stdout_sha256": "d6015c5933019872ece1c4b5221f1c9d2b13add6848324bfc3efceb26ba26b5a",
+      "timeout_seconds": 900.0
+    }
+  ],
+  "cost_model": "MATZOV (estimator default)",
+  "created_utc": "2026-07-11T13:17:03.698286+00:00",
+  "distinction_from_rough": "Do not compare these exponents as if they used the rough ADPS16/GSA cost model.",
+  "estimator_commit": "3e48ef421ec256afddb3e7d2249a77eab6e9ba12",
+  "last_session_elapsed_seconds": 2358.5465237000026,
+  "overall_budget_seconds": 7200.0,
+  "parameters": {
+    "coeff_mod_bit_sizes_observed": [
+      60,
+      40,
+      60
+    ],
+    "coeff_mod_bit_sizes_requested": [
+      60,
+      40,
+      60
+    ],
+    "coeff_modulus_primes": [
+      1152921504606748673,
+      1099511480321,
+      1152921504606830593
+    ],
+    "coeff_modulus_product_q": "1461501441329443417981674104123436284398337261569",
+    "error_distribution": {
+      "estimator_primary": "ND.CenteredBinomial(21, n)",
+      "exact_standard_deviation": 3.24037034920393,
+      "implementation": "difference of two Hamming weights, 21 independent bits per side",
+      "seal_nominal_standard_deviation": 3.2,
+      "sensitivity_model": "ND.DiscreteGaussian(3.2, n)",
+      "source": "Microsoft SEAL 4.1.1 util/rlwe.cpp sample_poly_cbd",
+      "support": [
+        -21,
+        21
+      ]
+    },
+    "evaluation_keys": {
+      "assumption": "standard key-switching/circular (KDM) security assumption for encryptions of automorphisms of the secret key",
+      "estimator_limitation": "malb/lattice-estimator estimates LWE attacks but does not prove the circular/KDM assumption or circuit privacy",
+      "prototype": "public key plus limited Galois keys; no relinearization keys",
+      "rotation_steps_for_d672": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128,
+        256,
+        512
+      ]
+    },
+    "first_data_level_bits": 100,
+    "global_scale": "1099511627776",
+    "last_data_level_bits": 60,
+    "log2_q": 159.99999980652066,
+    "poly_modulus_degree": 8192,
+    "sample_model": {
+      "m": "infinity",
+      "rationale": "unbounded-sample LWE sensitivity bound; conservative numerical model for public/evaluation material"
+    },
+    "scale_bits": 40,
+    "scheme": "CKKS",
+    "seal_tc128_headroom_bits": 58,
+    "seal_tc128_max_coeff_modulus_bits": 218,
+    "secret_distribution": {
+      "estimator": "ND.Uniform(-1, 1, n)",
+      "implementation": "independent uniform ternary coefficients {-1,0,1}",
+      "source": "Microsoft SEAL 4.1.1 util/rlwe.cpp sample_poly_ternary"
+    },
+    "slot_count": 4096,
+    "total_coeff_modulus_bits": 160
+  },
+  "runtime": {
+    "distribution": "CodexSageEstimatorUbuntu",
+    "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy",
+    "python": "Python 3.10.12",
+    "sage_version": "SageMath version 9.5, Release Date: 2022-01-30",
+    "sagemath_package": "python3-sage\t9.5-4\nsagemath\t9.5-4",
+    "wsl_version": "Версия WSL: 2.6.1.0\r\nВерсия ядра: 6.6.87.2-1\r\nВерсия WSLg: 1.0.66\r\nВерсия MSRDC: 1.2.6353\r\nВерсия Direct3D: 1.611.1-81528511\r\nВерсия DXCore: 10.0.26100.1-240331-1435.ge-release\r\nВерсия Windows: 10.0.26200.8655"
+  },
+  "schema": "ckks_lwe_extended_individual.v1",
+  "shape_model": "GSA (estimator default)",
+  "timeout_termination_semantics": "kill the Windows WSL client then terminate only the dedicated CodexSageEstimatorUbuntu distro"
+}

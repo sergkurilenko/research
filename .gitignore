@@ -1,6 +1,7 @@
 # ---- Large data (regenerate, or set SHARD_DATA; see docs/reproduce.md) ----
 # working-dir originals; curated copies live in shard/ baseline/ results/ paper/
 data/
+/cache/
 notebooks/
 *.npy
 *.npz
@@ -8,6 +9,12 @@ notebooks/
 *.faiss
 *.index
 *.bak
+
+# Small, content-addressed projection bases used by the journal artifact are
+# intentionally versioned; million-row projected matrices remain ignored.
+!results/system_revision/cache/
+!results/system_revision/cache/*.npz
+!results/system_revision/cache/*.manifest.json
 
 # ---- Working-directory originals (kept out of the committed tree) ----
 /figs/
@@ -30,15 +37,21 @@ notebooks/
 
 # ---- LaTeX build artefacts ----
 *.aux
+*.blg
 *.log
 *.out
 *.toc
 *.synctex.gz
 *.fls
 *.fdb_latexmk
+/paper_revised/*.txt
+!/paper_revised/README_SUBMISSION.txt
+/submission/cover_letter.*
+/submission/*build*.txt
 
 # ---- Python ----
 __pycache__/
+.pytest_cache/
 *.py[cod]
 .venv/
 venv/
@@ -48,3 +61,14 @@ venv/
 # ---- OS ----
 .DS_Store
 Thumbs.db
+
+# ---- Local orchestration and delivery staging ----
+# Includes isolated WSL VHDs, render checks, copied build trees, and archives.
+/tmp/
+/output/
+
+# Generated or machine-setup-only security/system transcripts. Canonical Sage
+# inputs, estimator stdout/stderr, and measured result JSON remain versioned.
+/results/system_revision/security_expansion/lwe_security/*.sage.py
+/results/system_revision/security_expansion/lwe_security/*install_stdout.txt
+/results/system_revision/systems_expansion_smoke.json

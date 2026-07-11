@@ -1,0 +1,3269 @@
+{
+  "completed_utc": "2026-07-11T14:03:31.521480+00:00",
+  "created_utc": "2026-07-11T14:03:06.080467+00:00",
+  "datasets": {
+    "arguana": {
+      "384": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.24580579562785973,
+                "ndcg_at_10": 0.3051272587797627,
+                "recall_at_10": 0.4973309608540925,
+                "recall_at_100": 0.8309608540925267
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.2469041235797268,
+                "ndcg_at_10": 0.30649065135697345,
+                "recall_at_10": 0.49955317247542447,
+                "recall_at_100": 0.8346738159070599
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 1124,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.1392139007918213,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.15685951636679257,
+                  -0.12146447762579238
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 1119,
+                "evaluable_ids_sha256": "fa9e6a2fa827cc42d7e85085d76d420f893ee2793081f848c35405fba0a796c1",
+                "requested_count": 1124,
+                "requested_ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+                "zero_count": 5,
+                "zero_query_ids": [
+                  "test-society-asfhwapg-con04a",
+                  "test-free-speech-debate-yfsdfkhbwu-con03a",
+                  "test-education-ufsdfkhbwu-con03a",
+                  "test-politics-dhwem-pro06a",
+                  "test-science-sghwbdgmo-con03a"
+                ]
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.05445415545271591,
+                "total_ms": 60.93419995158911
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.2638649667904987,
+                "ndcg_at_10": 0.3318039490245208,
+                "recall_at_10": 0.549645390070922,
+                "recall_at_100": 0.851063829787234
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.2638649667904987,
+                "ndcg_at_10": 0.3318039490245208,
+                "recall_at_10": 0.549645390070922,
+                "recall_at_100": 0.851063829787234
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 282,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.11385461486698532,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.14798596858028135,
+                  -0.07935901500570992
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 282,
+                "evaluable_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "requested_count": 282,
+                "requested_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.0688365251090087,
+                "total_ms": 19.411900080740452
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6b33d920d3edb4c8ea863c8492d6088d86e0ed51c282cd4136ed0b6cebd808b7",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.20828355363497714,
+                "ndcg_at_10": 0.2556068983243699,
+                "recall_at_10": 0.40747330960854095,
+                "recall_at_100": 0.7366548042704626
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.20921422188178218,
+                "ndcg_at_10": 0.25674902030079694,
+                "recall_at_10": 0.4092940125111707,
+                "recall_at_100": 0.739946380697051
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 1124,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.18873426124721404,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.20687202864448778,
+                  -0.1705583066896929
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 1119,
+                "evaluable_ids_sha256": "fa9e6a2fa827cc42d7e85085d76d420f893ee2793081f848c35405fba0a796c1",
+                "requested_count": 1124,
+                "requested_ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+                "zero_count": 5,
+                "zero_query_ids": [
+                  "test-society-asfhwapg-con04a",
+                  "test-free-speech-debate-yfsdfkhbwu-con03a",
+                  "test-education-ufsdfkhbwu-con03a",
+                  "test-politics-dhwem-pro06a",
+                  "test-science-sghwbdgmo-con03a"
+                ]
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.07789374443172237,
+                "total_ms": 87.16310001909733
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.21328942924687602,
+                "ndcg_at_10": 0.26720385465045704,
+                "recall_at_10": 0.4432624113475177,
+                "recall_at_100": 0.7695035460992907
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.21328942924687602,
+                "ndcg_at_10": 0.26720385465045704,
+                "recall_at_10": 0.4432624113475177,
+                "recall_at_100": 0.7695035460992907
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 282,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.17845470924104914,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.21594566973157092,
+                  -0.14116837503278565
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 282,
+                "evaluable_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "requested_count": 282,
+                "requested_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.10066383009684002,
+                "total_ms": 28.387200087308884
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "84f09451f5a5ef667f8086fae1601ab06e0175fd30ec0758476d5d82fbffa6fc",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3517691210529289,
+                "ndcg_at_10": 0.43143805498714616,
+                "recall_at_10": 0.6895017793594306,
+                "recall_at_100": 0.9483985765124555
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.35334092230875075,
+                "ndcg_at_10": 0.4333658389683219,
+                "recall_at_10": 0.6925826630920465,
+                "recall_at_100": 0.9526362823949955
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 1124,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01290310458443781,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.021225675248930508,
+                  -0.004569304854880561
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 1119,
+                "evaluable_ids_sha256": "fa9e6a2fa827cc42d7e85085d76d420f893ee2793081f848c35405fba0a796c1",
+                "requested_count": 1124,
+                "requested_ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+                "zero_count": 5,
+                "zero_query_ids": [
+                  "test-society-asfhwapg-con04a",
+                  "test-free-speech-debate-yfsdfkhbwu-con03a",
+                  "test-education-ufsdfkhbwu-con03a",
+                  "test-politics-dhwem-pro06a",
+                  "test-science-sghwbdgmo-con03a"
+                ]
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.08309195696195659,
+                "total_ms": 92.97989984042943
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3497495215580322,
+                "ndcg_at_10": 0.43124434984519877,
+                "recall_at_10": 0.6950354609929078,
+                "recall_at_100": 0.9397163120567376
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3497495215580322,
+                "ndcg_at_10": 0.43124434984519877,
+                "recall_at_10": 0.6950354609929078,
+                "recall_at_100": 0.9397163120567376
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 282,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01441421404630743,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.031809038968889834,
+                  0.00248200622923218
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 282,
+                "evaluable_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "requested_count": 282,
+                "requested_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.32477517668422023,
+                "total_ms": 91.5865998249501
+              }
+            }
+          }
+        }
+      },
+      "672": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3406375331864656,
+                "ndcg_at_10": 0.4140575076971439,
+                "recall_at_10": 0.6494661921708185,
+                "recall_at_100": 0.9386120996441281
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3421595954437777,
+                "ndcg_at_10": 0.41590763060910607,
+                "recall_at_10": 0.6523681858802503,
+                "recall_at_100": 0.9428060768543343
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 1124,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.030283651874440137,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.03950197619017734,
+                  -0.021122769268746868
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 1119,
+                "evaluable_ids_sha256": "fa9e6a2fa827cc42d7e85085d76d420f893ee2793081f848c35405fba0a796c1",
+                "requested_count": 1124,
+                "requested_ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+                "zero_count": 5,
+                "zero_query_ids": [
+                  "test-society-asfhwapg-con04a",
+                  "test-free-speech-debate-yfsdfkhbwu-con03a",
+                  "test-education-ufsdfkhbwu-con03a",
+                  "test-politics-dhwem-pro06a",
+                  "test-science-sghwbdgmo-con03a"
+                ]
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.09093279708959195,
+                "total_ms": 101.7537999432534
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.36159236744343126,
+                "ndcg_at_10": 0.43486031846698225,
+                "recall_at_10": 0.6702127659574468,
+                "recall_at_100": 0.9468085106382979
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.36159236744343126,
+                "ndcg_at_10": 0.43486031846698225,
+                "recall_at_10": 0.6702127659574468,
+                "recall_at_100": 0.9468085106382979
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 282,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.010798245424523926,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.028421253007305695,
+                  0.00686635911017662
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 282,
+                "evaluable_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "requested_count": 282,
+                "requested_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.10314432686155146,
+                "total_ms": 29.086700174957514
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6844b729d788f9c04c1f7a9370cc0fef7599af05211d03a2fe5e356f5ecef4f3",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3445274106083715,
+                "ndcg_at_10": 0.4220284740761889,
+                "recall_at_10": 0.6717081850533808,
+                "recall_at_100": 0.9421708185053381
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.346066853908677,
+                "ndcg_at_10": 0.4239142134599073,
+                "recall_at_10": 0.6747095621090259,
+                "recall_at_100": 0.9463806970509383
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 1124,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.022312685495395095,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.031772129798756155,
+                  -0.012961146988085247
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 1119,
+                "evaluable_ids_sha256": "fa9e6a2fa827cc42d7e85085d76d420f893ee2793081f848c35405fba0a796c1",
+                "requested_count": 1124,
+                "requested_ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+                "zero_count": 5,
+                "zero_query_ids": [
+                  "test-society-asfhwapg-con04a",
+                  "test-free-speech-debate-yfsdfkhbwu-con03a",
+                  "test-education-ufsdfkhbwu-con03a",
+                  "test-politics-dhwem-pro06a",
+                  "test-science-sghwbdgmo-con03a"
+                ]
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.0807428060447376,
+                "total_ms": 90.35119996406138
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3531000225149161,
+                "ndcg_at_10": 0.4287887198410419,
+                "recall_at_10": 0.6737588652482269,
+                "recall_at_100": 0.9326241134751773
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3531000225149161,
+                "ndcg_at_10": 0.4287887198410419,
+                "recall_at_10": 0.6737588652482269,
+                "recall_at_100": 0.9326241134751773
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 282,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.016869844050464294,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.035602678374256104,
+                  0.001874214637853207
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 282,
+                "evaluable_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "requested_count": 282,
+                "requested_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.1226060285649084,
+                "total_ms": 34.57490005530417
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "84f09451f5a5ef667f8086fae1601ab06e0175fd30ec0758476d5d82fbffa6fc",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.36396338191267014,
+                "ndcg_at_10": 0.44178443718967747,
+                "recall_at_10": 0.6921708185053381,
+                "recall_at_100": 0.951067615658363
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.36558967048243185,
+                "ndcg_at_10": 0.443758451654332,
+                "recall_at_10": 0.6952636282394995,
+                "recall_at_100": 0.9553172475424486
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 1124,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.002556722381906512,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.005990940909591166,
+                  0.0007253688334393606
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 1119,
+                "evaluable_ids_sha256": "fa9e6a2fa827cc42d7e85085d76d420f893ee2793081f848c35405fba0a796c1",
+                "requested_count": 1124,
+                "requested_ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+                "zero_count": 5,
+                "zero_query_ids": [
+                  "test-society-asfhwapg-con04a",
+                  "test-free-speech-debate-yfsdfkhbwu-con03a",
+                  "test-education-ufsdfkhbwu-con03a",
+                  "test-politics-dhwem-pro06a",
+                  "test-science-sghwbdgmo-con03a"
+                ]
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.09938731013070642,
+                "total_ms": 111.21440003626049
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.37144686479792866,
+                "ndcg_at_10": 0.4478525058047401,
+                "recall_at_10": 0.6950354609929078,
+                "recall_at_100": 0.9468085106382979
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.37144686479792866,
+                "ndcg_at_10": 0.4478525058047401,
+                "recall_at_10": 0.6950354609929078,
+                "recall_at_100": 0.9468085106382979
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 282,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.002193941913233975,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0034723904433634763,
+                  0.008417647155550734
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 282,
+                "evaluable_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "requested_count": 282,
+                "requested_ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.13759893576568322,
+                "total_ms": 38.80289988592267
+              }
+            }
+          }
+        }
+      }
+    },
+    "fiqa": {
+      "384": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.27549848128551835,
+                "ndcg_at_10": 0.21876023807245884,
+                "recall_at_10": 0.2757490194990195,
+                "recall_at_100": 0.48711927647112824
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.27549848128551835,
+                "ndcg_at_10": 0.21876023807245884,
+                "recall_at_10": 0.2757490194990195,
+                "recall_at_100": 0.48711927647112824
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 648,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.16257329596392342,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.18253021569568995,
+                  -0.14309239689197156
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 648,
+                "evaluable_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "requested_count": 648,
+                "requested_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.3639728396435349,
+                "total_ms": 235.8544000890106
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.27696031746031746,
+                "ndcg_at_10": 0.22088892736430168,
+                "recall_at_10": 0.267236457986458,
+                "recall_at_100": 0.49912091242091244
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.27696031746031746,
+                "ndcg_at_10": 0.22088892736430168,
+                "recall_at_10": 0.267236457986458,
+                "recall_at_100": 0.49912091242091244
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 500,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.17413379490232148,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.19834067854918436,
+                  -0.15018443993377587
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 500,
+                "evaluable_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "requested_count": 500,
+                "requested_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.3148959996178746,
+                "total_ms": 157.4479998089373
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6b33d920d3edb4c8ea863c8492d6088d86e0ed51c282cd4136ed0b6cebd808b7",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.2564784195571233,
+                "ndcg_at_10": 0.19258927343296134,
+                "recall_at_10": 0.23409571395682507,
+                "recall_at_100": 0.49794430963412445
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.2564784195571233,
+                "ndcg_at_10": 0.19258927343296134,
+                "recall_at_10": 0.23409571395682507,
+                "recall_at_100": 0.49794430963412445
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 648,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.18874426060342095,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.21083501097102889,
+                  -0.16669077445266053
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 648,
+                "evaluable_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "requested_count": 648,
+                "requested_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.36061975284318587,
+                "total_ms": 233.68159984238446
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.2654611111111111,
+                "ndcg_at_10": 0.20907733056080907,
+                "recall_at_10": 0.2578172882672883,
+                "recall_at_100": 0.4843890442890442
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.2654611111111111,
+                "ndcg_at_10": 0.20907733056080907,
+                "recall_at_10": 0.2578172882672883,
+                "recall_at_100": 0.4843890442890442
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 500,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.18594539170581414,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.21130968519205304,
+                  -0.1626004019811056
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 500,
+                "evaluable_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "requested_count": 500,
+                "requested_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.2798242000862956,
+                "total_ms": 139.9121000431478
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "7b5f7288a49184a99fd982d59ca54c1f0f4cce8985d5871a0061d73ce5a5a9da",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4424480697628846,
+                "ndcg_at_10": 0.3686520387102437,
+                "recall_at_10": 0.44253329832033544,
+                "recall_at_100": 0.7023551851098148
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4424480697628846,
+                "ndcg_at_10": 0.3686520387102437,
+                "recall_at_10": 0.44253329832033544,
+                "recall_at_100": 0.7023551851098148
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 648,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01268149532613852,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.021882045311369943,
+                  -0.003469853209258736
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 648,
+                "evaluable_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "requested_count": 648,
+                "requested_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.3634530861925242,
+                "total_ms": 235.51759985275567
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4557293650793651,
+                "ndcg_at_10": 0.374747159132126,
+                "recall_at_10": 0.43744032634032637,
+                "recall_at_100": 0.7041072483072482
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4557293650793651,
+                "ndcg_at_10": 0.374747159132126,
+                "recall_at_10": 0.43744032634032637,
+                "recall_at_100": 0.7041072483072482
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 500,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.02027556313449718,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.03050083539666002,
+                  -0.010203022722563083
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 500,
+                "evaluable_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "requested_count": 500,
+                "requested_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 1.1846800004132092,
+                "total_ms": 592.3400002066046
+              }
+            }
+          }
+        }
+      },
+      "672": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4423672349598276,
+                "ndcg_at_10": 0.36268803276747397,
+                "recall_at_10": 0.4358118561822265,
+                "recall_at_100": 0.662451056316797
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4423672349598276,
+                "ndcg_at_10": 0.36268803276747397,
+                "recall_at_10": 0.4358118561822265,
+                "recall_at_100": 0.662451056316797
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 648,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.018645501268908307,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.029146535630848087,
+                  -0.008308544877943271
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 648,
+                "evaluable_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "requested_count": 648,
+                "requested_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.5842089504980839,
+                "total_ms": 378.56739992275834
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4417579365079365,
+                "ndcg_at_10": 0.3685710668675063,
+                "recall_at_10": 0.4362878010878011,
+                "recall_at_100": 0.6668785547785548
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4417579365079365,
+                "ndcg_at_10": 0.3685710668675063,
+                "recall_at_10": 0.4362878010878011,
+                "recall_at_100": 0.6668785547785548
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 500,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.026451655399116838,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.03909545707404198,
+                  -0.01425929293329483
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 500,
+                "evaluable_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "requested_count": 500,
+                "requested_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.49318959983065724,
+                "total_ms": 246.59479991532862
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6844b729d788f9c04c1f7a9370cc0fef7599af05211d03a2fe5e356f5ecef4f3",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4224285959239663,
+                "ndcg_at_10": 0.34572545523952974,
+                "recall_at_10": 0.41429801337208744,
+                "recall_at_100": 0.6797520038260778
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4224285959239663,
+                "ndcg_at_10": 0.34572545523952974,
+                "recall_at_10": 0.41429801337208744,
+                "recall_at_100": 0.6797520038260778
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 648,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.035608078796852516,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.046940634758868956,
+                  -0.024885598907875357
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 648,
+                "evaluable_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "requested_count": 648,
+                "requested_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.6068033948799388,
+                "total_ms": 393.20859988220036
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4357634920634921,
+                "ndcg_at_10": 0.3640863171419311,
+                "recall_at_10": 0.436035298035298,
+                "recall_at_100": 0.6856128038628038
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4357634920634921,
+                "ndcg_at_10": 0.3640863171419311,
+                "recall_at_10": 0.436035298035298,
+                "recall_at_100": 0.6856128038628038
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 500,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.030936405124692007,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.04330186871275639,
+                  -0.01865698214531443
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 500,
+                "evaluable_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "requested_count": 500,
+                "requested_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.5758803999051452,
+                "total_ms": 287.9401999525726
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "7b5f7288a49184a99fd982d59ca54c1f0f4cce8985d5871a0061d73ce5a5a9da",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.4564937291789143,
+                "ndcg_at_10": 0.3801191211438288,
+                "recall_at_10": 0.45301916447749774,
+                "recall_at_100": 0.7011102066657622
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.4564937291789143,
+                "ndcg_at_10": 0.3801191211438288,
+                "recall_at_10": 0.45301916447749774,
+                "recall_at_100": 0.7011102066657622
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 648,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0012144128925534882,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0043227033800687965,
+                  0.0018256996174073493
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 648,
+                "evaluable_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "requested_count": 648,
+                "requested_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.6161680557178678,
+                "total_ms": 399.27690010517836
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.47218253968253965,
+                "ndcg_at_10": 0.3936099161033406,
+                "recall_at_10": 0.4654099012099012,
+                "recall_at_100": 0.7166555389055388
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.47218253968253965,
+                "ndcg_at_10": 0.3936099161033406,
+                "recall_at_10": 0.4654099012099012,
+                "recall_at_100": 0.7166555389055388
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 500,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0014128061632825953,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.004846259032283234,
+                  0.002116219127279232
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 500,
+                "evaluable_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "requested_count": 500,
+                "requested_ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.5432825996540487,
+                "total_ms": 271.64129982702434
+              }
+            }
+          }
+        }
+      }
+    },
+    "nfcorpus": {
+      "384": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.42349624060150376,
+                "ndcg_at_10": 0.2418338345818631,
+                "recall_at_10": 0.12137183023119882,
+                "recall_at_100": 0.24075943377040956
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.42349624060150376,
+                "ndcg_at_10": 0.2418338345818631,
+                "recall_at_10": 0.12137183023119882,
+                "recall_at_100": 0.24075943377040956
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 323,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.08300661599817624,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.10019585452052686,
+                  -0.06639615492112987
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 323,
+                "evaluable_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "requested_count": 323,
+                "requested_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.03168328114476735,
+                "total_ms": 10.233699809759855
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.41583872232020375,
+                "ndcg_at_10": 0.21987846671469827,
+                "recall_at_10": 0.08694433570680153,
+                "recall_at_100": 0.21826965779329607
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.41583872232020375,
+                "ndcg_at_10": 0.21987846671469827,
+                "recall_at_10": 0.08694433570680153,
+                "recall_at_100": 0.21826965779329607
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 324,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0921211219002932,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.10839182557468795,
+                  -0.07604880944060795
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 324,
+                "evaluable_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "requested_count": 324,
+                "requested_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.037302777608051715,
+                "total_ms": 12.086099945008755
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6b33d920d3edb4c8ea863c8492d6088d86e0ed51c282cd4136ed0b6cebd808b7",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.37422354906875027,
+                "ndcg_at_10": 0.2210993848992597,
+                "recall_at_10": 0.10873229941359604,
+                "recall_at_100": 0.23321880580750529
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.37422354906875027,
+                "ndcg_at_10": 0.2210993848992597,
+                "recall_at_10": 0.10873229941359604,
+                "recall_at_100": 0.23321880580750529
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 323,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.1037410656807796,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.12184424909358643,
+                  -0.08601455048432188
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 323,
+                "evaluable_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "requested_count": 323,
+                "requested_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.035746748942662686,
+                "total_ms": 11.546199908480048
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3901320301783264,
+                "ndcg_at_10": 0.2049439184993565,
+                "recall_at_10": 0.079034995294684,
+                "recall_at_100": 0.2286278354827855
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3901320301783264,
+                "ndcg_at_10": 0.2049439184993565,
+                "recall_at_10": 0.079034995294684,
+                "recall_at_100": 0.2286278354827855
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 324,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.107055670115635,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.1250051724797072,
+                  -0.0899363185114123
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 324,
+                "evaluable_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "requested_count": 324,
+                "requested_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.049659567683889176,
+                "total_ms": 16.089699929580092
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "733e4248ec0aa0fb1bc57afb61dcb8146746702f1efa94fdf42ea181db3989b5",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5096528084918177,
+                "ndcg_at_10": 0.3229692466844458,
+                "recall_at_10": 0.1586620076382283,
+                "recall_at_100": 0.2921942491785949
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5096528084918177,
+                "ndcg_at_10": 0.3229692466844458,
+                "recall_at_10": 0.1586620076382283,
+                "recall_at_100": 0.2921942491785949
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 323,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0018712038955935463,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.007442232591027222,
+                  0.0035923581481684262
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 323,
+                "evaluable_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "requested_count": 323,
+                "requested_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.035883281408771645,
+                "total_ms": 11.59029989503324
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.507809131883206,
+                "ndcg_at_10": 0.30718167190540296,
+                "recall_at_10": 0.138092666688503,
+                "recall_at_100": 0.29002561663347814
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.507809131883206,
+                "ndcg_at_10": 0.30718167190540296,
+                "recall_at_10": 0.138092666688503,
+                "recall_at_100": 0.29002561663347814
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 324,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0048179167095884455,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.011157796010838847,
+                  0.0015280778391426224
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 324,
+                "evaluable_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "requested_count": 324,
+                "requested_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.1296814815658662,
+                "total_ms": 42.01680002734065
+              }
+            }
+          }
+        }
+      },
+      "672": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.49128826969384254,
+                "ndcg_at_10": 0.30484846377696756,
+                "recall_at_10": 0.1442638422040032,
+                "recall_at_100": 0.2753519766611967
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.49128826969384254,
+                "ndcg_at_10": 0.30484846377696756,
+                "recall_at_10": 0.1442638422040032,
+                "recall_at_100": 0.2753519766611967
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 323,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.019991986803071824,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.027971558662610547,
+                  -0.012413516149897604
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 323,
+                "evaluable_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "requested_count": 323,
+                "requested_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.04728204331392474,
+                "total_ms": 15.272099990397692
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.48712277091906725,
+                "ndcg_at_10": 0.2924420710508703,
+                "recall_at_10": 0.12893308079194668,
+                "recall_at_100": 0.27479577412532075
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.48712277091906725,
+                "ndcg_at_10": 0.2924420710508703,
+                "recall_at_10": 0.12893308079194668,
+                "recall_at_100": 0.27479577412532075
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 324,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01955751756412121,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.028433899299677996,
+                  -0.010965042177019492
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 324,
+                "evaluable_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "requested_count": 324,
+                "requested_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.04441882727989628,
+                "total_ms": 14.391700038686395
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6844b729d788f9c04c1f7a9370cc0fef7599af05211d03a2fe5e356f5ecef4f3",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5072583419332646,
+                "ndcg_at_10": 0.3116143515914278,
+                "recall_at_10": 0.14898839353325677,
+                "recall_at_100": 0.2773757936681922
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5072583419332646,
+                "ndcg_at_10": 0.3116143515914278,
+                "recall_at_10": 0.14898839353325677,
+                "recall_at_100": 0.2773757936681922
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 323,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.013226098988611514,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.021584233387839342,
+                  -0.00482692748088044
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 323,
+                "evaluable_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "requested_count": 323,
+                "requested_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.04772693437780758,
+                "total_ms": 15.415799804031849
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5029027042915932,
+                "ndcg_at_10": 0.2968037343302736,
+                "recall_at_10": 0.1268535679331969,
+                "recall_at_100": 0.2747747266105618
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5029027042915932,
+                "ndcg_at_10": 0.2968037343302736,
+                "recall_at_10": 0.1268535679331969,
+                "recall_at_100": 0.2747747266105618
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 324,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01519585428471781,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.022894074368384802,
+                  -0.007516208222855734
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 324,
+                "evaluable_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "requested_count": 324,
+                "requested_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.048524383196814194,
+                "total_ms": 15.721900155767798
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "733e4248ec0aa0fb1bc57afb61dcb8146746702f1efa94fdf42ea181db3989b5",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5207467197405278,
+                "ndcg_at_10": 0.3270303152080331,
+                "recall_at_10": 0.15684362042145955,
+                "recall_at_100": 0.28653637606522003
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5207467197405278,
+                "ndcg_at_10": 0.3270303152080331,
+                "recall_at_10": 0.15684362042145955,
+                "recall_at_100": 0.28653637606522003
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 323,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.0021898646279937596,
+                "non_inferior": true,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  0.00035869336502888813,
+                  0.004232001716465997
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 323,
+                "evaluable_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "requested_count": 323,
+                "requested_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.055377708961350997,
+                "total_ms": 17.886999994516373
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5066174309229865,
+                "ndcg_at_10": 0.3099246189738461,
+                "recall_at_10": 0.14047657708150402,
+                "recall_at_100": 0.2888585250242892
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5066174309229865,
+                "ndcg_at_10": 0.3099246189738461,
+                "recall_at_10": 0.14047657708150402,
+                "recall_at_100": 0.2888585250242892
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 324,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0020749696411454005,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0043985622627235234,
+                  0.00018127659568644845
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 324,
+                "evaluable_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "requested_count": 324,
+                "requested_ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.0488663582349725,
+                "total_ms": 15.83270006813109
+              }
+            }
+          }
+        }
+      }
+    },
+    "scidocs": {
+      "384": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.20880902777777777,
+                "ndcg_at_10": 0.10924729125047217,
+                "recall_at_10": 0.11174999999999999,
+                "recall_at_100": 0.27229166666666665
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.20880902777777777,
+                "ndcg_at_10": 0.10924729125047217,
+                "recall_at_10": 0.11174999999999999,
+                "recall_at_100": 0.27229166666666665
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 800,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.05650945069635093,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.06532286188198692,
+                  -0.04771836707694182
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 800,
+                "evaluable_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "requested_count": 800,
+                "requested_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.1458509999793023,
+                "total_ms": 116.68079998344183
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.2123075396825397,
+                "ndcg_at_10": 0.1238001614367398,
+                "recall_at_10": 0.13866666666666666,
+                "recall_at_100": 0.3213333333333334
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.2123075396825397,
+                "ndcg_at_10": 0.1238001614367398,
+                "recall_at_10": 0.13866666666666666,
+                "recall_at_100": 0.3213333333333334
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 200,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0726634576983798,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.09342711812389125,
+                  -0.05202149471964671
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 200,
+                "evaluable_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "requested_count": 200,
+                "requested_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.1604044996201992,
+                "total_ms": 32.08089992403984
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6b33d920d3edb4c8ea863c8492d6088d86e0ed51c282cd4136ed0b6cebd808b7",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.1832996031746032,
+                "ndcg_at_10": 0.1001319140806129,
+                "recall_at_10": 0.10543749999999999,
+                "recall_at_100": 0.28166666666666673
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.1832996031746032,
+                "ndcg_at_10": 0.1001319140806129,
+                "recall_at_10": 0.10543749999999999,
+                "recall_at_100": 0.28166666666666673
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 800,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.06562482786621021,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.07485942368397037,
+                  -0.05667497494257014
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 800,
+                "evaluable_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "requested_count": 800,
+                "requested_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.22227012494113296,
+                "total_ms": 177.81609995290637
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.20973214285714284,
+                "ndcg_at_10": 0.11097220155333903,
+                "recall_at_10": 0.11691666666666667,
+                "recall_at_100": 0.30183333333333334
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.20973214285714284,
+                "ndcg_at_10": 0.11097220155333903,
+                "recall_at_10": 0.11691666666666667,
+                "recall_at_100": 0.30183333333333334
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 200,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0854914175817806,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.10623447325274997,
+                  -0.06558202070489004
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 200,
+                "evaluable_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "requested_count": 200,
+                "requested_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.29121150029823184,
+                "total_ms": 58.24230005964637
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "b9c9a26dbd84f852566f0cb7060679066c0ff7f8f99af1e76c5773677705ae17",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.29954017857142856,
+                "ndcg_at_10": 0.16278031951878738,
+                "recall_at_10": 0.165625,
+                "recall_at_100": 0.3894583333333334
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.29954017857142856,
+                "ndcg_at_10": 0.16278031951878738,
+                "recall_at_10": 0.165625,
+                "recall_at_100": 0.3894583333333334
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 800,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0029764224280357065,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0071372691950685515,
+                  0.0011695308365567056
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 800,
+                "evaluable_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "requested_count": 800,
+                "requested_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.15932687500026077,
+                "total_ms": 127.46150000020862
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3459761904761905,
+                "ndcg_at_10": 0.19527033469008953,
+                "recall_at_10": 0.2051666666666667,
+                "recall_at_100": 0.43516666666666665
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3459761904761905,
+                "ndcg_at_10": 0.19527033469008953,
+                "recall_at_10": 0.2051666666666667,
+                "recall_at_100": 0.43516666666666665
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 200,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.001193284445030096,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.011238996594916997,
+                  0.008542280176835485
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 200,
+                "evaluable_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "requested_count": 200,
+                "requested_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 1.1697404994629323,
+                "total_ms": 233.94809989258647
+              }
+            }
+          }
+        }
+      },
+      "672": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.29261656746031744,
+                "ndcg_at_10": 0.15762858995554768,
+                "recall_at_10": 0.16168750000000004,
+                "recall_at_100": 0.36064583333333333
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.29261656746031744,
+                "ndcg_at_10": 0.15762858995554768,
+                "recall_at_10": 0.16168750000000004,
+                "recall_at_100": 0.36064583333333333
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 800,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.008128151991275416,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.012806506511125042,
+                  -0.003569343329273248
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 800,
+                "evaluable_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "requested_count": 800,
+                "requested_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.27834850014187396,
+                "total_ms": 222.67880011349916
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3212222222222222,
+                "ndcg_at_10": 0.18689930292343138,
+                "recall_at_10": 0.19816666666666666,
+                "recall_at_100": 0.4081666666666667
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3212222222222222,
+                "ndcg_at_10": 0.18689930292343138,
+                "recall_at_10": 0.19816666666666666,
+                "recall_at_100": 0.4081666666666667
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 200,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.009564316211688254,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.019669298654748504,
+                  0.0007075903521032332
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 200,
+                "evaluable_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "requested_count": 200,
+                "requested_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.29218950076028705,
+                "total_ms": 58.43790015205741
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6844b729d788f9c04c1f7a9370cc0fef7599af05211d03a2fe5e356f5ecef4f3",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.29140625,
+                "ndcg_at_10": 0.15772055613041566,
+                "recall_at_10": 0.159375,
+                "recall_at_100": 0.3712708333333333
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.29140625,
+                "ndcg_at_10": 0.15772055613041566,
+                "recall_at_10": 0.159375,
+                "recall_at_100": 0.3712708333333333
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 800,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.008036185816407429,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.012873617727414688,
+                  -0.0034016931511646102
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 800,
+                "evaluable_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "requested_count": 800,
+                "requested_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.3628269999171607,
+                "total_ms": 290.2615999337286
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.32858333333333334,
+                "ndcg_at_10": 0.18358832608052184,
+                "recall_at_10": 0.19241666666666668,
+                "recall_at_100": 0.4168333333333334
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.32858333333333334,
+                "ndcg_at_10": 0.18358832608052184,
+                "recall_at_10": 0.19241666666666668,
+                "recall_at_100": 0.4168333333333334
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 200,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.012875293054597803,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.025118944411240206,
+                  -0.0007925415125853806
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 200,
+                "evaluable_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "requested_count": 200,
+                "requested_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.4668120003771037,
+                "total_ms": 93.36240007542074
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "b9c9a26dbd84f852566f0cb7060679066c0ff7f8f99af1e76c5773677705ae17",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3061979166666667,
+                "ndcg_at_10": 0.1661400589177412,
+                "recall_at_10": 0.16868750000000002,
+                "recall_at_100": 0.3920625
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3061979166666667,
+                "ndcg_at_10": 0.1661400589177412,
+                "recall_at_10": 0.16868750000000002,
+                "recall_at_100": 0.3920625
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 800,
+                "equivalent_within_symmetric_margin": true,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.0003833169709180892,
+                "non_inferior": true,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0011158784079388553,
+                  0.00188491099891918
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 800,
+                "evaluable_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "requested_count": 800,
+                "requested_ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.2919277499313466,
+                "total_ms": 233.5421999450773
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.3431329365079365,
+                "ndcg_at_10": 0.19908737317230332,
+                "recall_at_10": 0.21416666666666664,
+                "recall_at_100": 0.4305833333333333
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.3431329365079365,
+                "ndcg_at_10": 0.19908737317230332,
+                "recall_at_10": 0.21416666666666664,
+                "recall_at_100": 0.4305833333333333
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 200,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.0026237540371837256,
+                "non_inferior": true,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.000765035470684454,
+                  0.006257432231797147
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 200,
+                "evaluable_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "requested_count": 200,
+                "requested_ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.31706650042906404,
+                "total_ms": 63.41330008581281
+              }
+            }
+          }
+        }
+      }
+    },
+    "scifact": {
+      "384": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.49771164021164016,
+                "ndcg_at_10": 0.532447172675688,
+                "recall_at_10": 0.6753333333333335,
+                "recall_at_100": 0.850111111111111
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.49771164021164016,
+                "ndcg_at_10": 0.532447172675688,
+                "recall_at_10": 0.6753333333333335,
+                "recall_at_100": 0.850111111111111
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 300,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.1630023592750982,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.19565369710574276,
+                  -0.13153715552693487
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 300,
+                "evaluable_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "requested_count": 300,
+                "requested_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.04545366701980432,
+                "total_ms": 13.636100105941296
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5075710754017305,
+                "ndcg_at_10": 0.5406715334688129,
+                "recall_at_10": 0.6716934487021013,
+                "recall_at_100": 0.8599093531108365
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5075710754017305,
+                "ndcg_at_10": 0.5406715334688129,
+                "recall_at_10": 0.6716934487021013,
+                "recall_at_100": 0.8599093531108365
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 809,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.1582617037036989,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.1778883553803921,
+                  -0.13921225866833475
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 809,
+                "evaluable_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "requested_count": 809,
+                "requested_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.038984301586362576,
+                "total_ms": 31.538299983367324
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6b33d920d3edb4c8ea863c8492d6088d86e0ed51c282cd4136ed0b6cebd808b7",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.5203703703703703,
+                "ndcg_at_10": 0.5529514410762768,
+                "recall_at_10": 0.6793888888888889,
+                "recall_at_100": 0.8405555555555555
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.5203703703703703,
+                "ndcg_at_10": 0.5529514410762768,
+                "recall_at_10": 0.6793888888888889,
+                "recall_at_100": 0.8405555555555555
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 300,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.1424980908745094,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.17393588751462852,
+                  -0.11195118291352926
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 300,
+                "evaluable_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "requested_count": 300,
+                "requested_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.04544066653276483,
+                "total_ms": 13.63219995982945
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.48102350540545846,
+                "ndcg_at_10": 0.5176189859182876,
+                "recall_at_10": 0.6475484136794395,
+                "recall_at_100": 0.830655129789864
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.48102350540545846,
+                "ndcg_at_10": 0.5176189859182876,
+                "recall_at_10": 0.6475484136794395,
+                "recall_at_100": 0.830655129789864
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 809,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.18131425125422423,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.2026621067315675,
+                  -0.16006503354755286
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 809,
+                "evaluable_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "requested_count": 809,
+                "requested_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.0477857848604029,
+                "total_ms": 38.658699952065945
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "a71188ae1ab88089c13c50680482b9a2653e3927b5f0961bad97bd269f57eec8",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6564510582010581,
+                "ndcg_at_10": 0.6884605975607327,
+                "recall_at_10": 0.8128888888888889,
+                "recall_at_100": 0.936
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6564510582010581,
+                "ndcg_at_10": 0.6884605975607327,
+                "recall_at_10": 0.8128888888888889,
+                "recall_at_100": 0.936
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 300,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0069889343900534535,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.01729918958078553,
+                  0.003064611890556141
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 300,
+                "evaluable_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "requested_count": 300,
+                "requested_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.0490746662641565,
+                "total_ms": 14.72239987924695
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6686061569250692,
+                "ndcg_at_10": 0.7003368223447445,
+                "recall_at_10": 0.8195508858673259,
+                "recall_at_100": 0.9478780387309436
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6686061569250692,
+                "ndcg_at_10": 0.7003368223447445,
+                "recall_at_10": 0.8195508858673259,
+                "recall_at_100": 0.9478780387309436
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 809,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.0014035851722326797,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.007295598214810844,
+                  0.010243260060683509
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 809,
+                "evaluable_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "requested_count": 809,
+                "requested_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.37218207649987917,
+                "total_ms": 301.0952998884022
+              }
+            }
+          }
+        }
+      },
+      "672": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.630297619047619,
+                "ndcg_at_10": 0.6619466001662935,
+                "recall_at_10": 0.7876666666666667,
+                "recall_at_100": 0.9186666666666667
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.630297619047619,
+                "ndcg_at_10": 0.6619466001662935,
+                "recall_at_10": 0.7876666666666667,
+                "recall_at_100": 0.9186666666666667
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 300,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.03350293178449266,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.049509202786501415,
+                  -0.018673425788265387
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 300,
+                "evaluable_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "requested_count": 300,
+                "requested_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.06260033308838804,
+                "total_ms": 18.780099926516414
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6521332430788549,
+                "ndcg_at_10": 0.6825905610059126,
+                "recall_at_10": 0.7982282653481665,
+                "recall_at_100": 0.930778739184178
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6521332430788549,
+                "ndcg_at_10": 0.6825905610059126,
+                "recall_at_10": 0.7982282653481665,
+                "recall_at_100": 0.930778739184178
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 809,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01634267616659912,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.02661840227920972,
+                  -0.006266395512109782
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 809,
+                "evaluable_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "requested_count": 809,
+                "requested_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.05975723115794075,
+                "total_ms": 48.34360000677407
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6844b729d788f9c04c1f7a9370cc0fef7599af05211d03a2fe5e356f5ecef4f3",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.646271164021164,
+                "ndcg_at_10": 0.6769668627017273,
+                "recall_at_10": 0.7977777777777777,
+                "recall_at_100": 0.9193333333333333
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.646271164021164,
+                "ndcg_at_10": 0.6769668627017273,
+                "recall_at_10": 0.7977777777777777,
+                "recall_at_100": 0.9193333333333333
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 300,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.018482669249058864,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.03404934482170043,
+                  -0.0036531940347378634
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 300,
+                "evaluable_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "requested_count": 300,
+                "requested_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.06226399991040429,
+                "total_ms": 18.679199973121285
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6498523554456807,
+                "ndcg_at_10": 0.6819723290689396,
+                "recall_at_10": 0.8023485784919653,
+                "recall_at_100": 0.9262463947259991
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6498523554456807,
+                "ndcg_at_10": 0.6819723290689396,
+                "recall_at_10": 0.8023485784919653,
+                "recall_at_100": 0.9262463947259991
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 809,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.01696090810357217,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.02681103860169466,
+                  -0.007666330923728489
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 809,
+                "evaluable_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "requested_count": 809,
+                "requested_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.059850432775334465,
+                "total_ms": 48.41900011524558
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "a71188ae1ab88089c13c50680482b9a2653e3927b5f0961bad97bd269f57eec8",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6666931216931217,
+                "ndcg_at_10": 0.6967798515468028,
+                "recall_at_10": 0.8172222222222223,
+                "recall_at_100": 0.936
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6666931216931217,
+                "ndcg_at_10": 0.6967798515468028,
+                "recall_at_10": 0.8172222222222223,
+                "recall_at_100": 0.936
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 300,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.0013303195960165475,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0037534785951273933,
+                  0.006524142682314446
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 300,
+                "evaluable_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "requested_count": 300,
+                "requested_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.06786566693335772,
+                "total_ms": 20.359700080007315
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6668452135695646,
+                "ndcg_at_10": 0.6997858179497075,
+                "recall_at_10": 0.8164606510094767,
+                "recall_at_100": 0.9484960857025134
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6668452135695646,
+                "ndcg_at_10": 0.6997858179497075,
+                "recall_at_10": 0.8164606510094767,
+                "recall_at_100": 0.9484960857025134
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 809,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": 0.000852580777195753,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.0024749081391964326,
+                  0.004271410195536028
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 809,
+                "evaluable_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "requested_count": 809,
+                "requested_ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 0.057349690928023736,
+                "total_ms": 46.3958999607712
+              }
+            }
+          }
+        }
+      }
+    },
+    "trec-covid": {
+      "384": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6434722222222222,
+                "ndcg_at_10": 0.43017166476483604,
+                "recall_at_10": 0.009426814088962043,
+                "recall_at_100": 0.06904841901224135
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6434722222222222,
+                "ndcg_at_10": 0.43017166476483604,
+                "recall_at_10": 0.009426814088962043,
+                "recall_at_100": 0.06904841901224135
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 40,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.265463697280545,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.34995253710738344,
+                  -0.17910852094238658
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 40,
+                "evaluable_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "requested_count": 40,
+                "requested_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 3.644170000916347,
+                "total_ms": 145.76680003665388
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.611111111111111,
+                "ndcg_at_10": 0.29966839453379174,
+                "recall_at_10": 0.008941288580226723,
+                "recall_at_100": 0.053870245532271634
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.611111111111111,
+                "ndcg_at_10": 0.29966839453379174,
+                "recall_at_10": 0.008941288580226723,
+                "recall_at_100": 0.053870245532271634
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 10,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.402229574375946,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.5680468397703479,
+                  -0.24869642727078195
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 10,
+                "evaluable_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "requested_count": 10,
+                "requested_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 12.820939999073744,
+                "total_ms": 128.20939999073744
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6b33d920d3edb4c8ea863c8492d6088d86e0ed51c282cd4136ed0b6cebd808b7",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.7224999999999999,
+                "ndcg_at_10": 0.48985683738928143,
+                "recall_at_10": 0.011493624450064842,
+                "recall_at_100": 0.0833599011790633
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.7224999999999999,
+                "ndcg_at_10": 0.48985683738928143,
+                "recall_at_10": 0.011493624450064842,
+                "recall_at_100": 0.0833599011790633
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 40,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.20577852465609955,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.27347994006838183,
+                  -0.1401253528876196
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 40,
+                "evaluable_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "requested_count": 40,
+                "requested_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 2.8140374983195215,
+                "total_ms": 112.56149993278086
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.6642857142857143,
+                "ndcg_at_10": 0.37226071038398034,
+                "recall_at_10": 0.012296653934451765,
+                "recall_at_100": 0.06526573709937766
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.6642857142857143,
+                "ndcg_at_10": 0.37226071038398034,
+                "recall_at_10": 0.012296653934451765,
+                "recall_at_100": 0.06526573709937766
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 10,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.32963725852575737,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.429357832429096,
+                  -0.23330225345382785
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 10,
+                "evaluable_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "requested_count": 10,
+                "requested_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 19.913909980095923,
+                "total_ms": 199.13909980095923
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "7ae0f7d5cefd4f8cd73f25dc294eba6ddc3fd921d7b42a277e190fa06a4d17c0",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.9091666666666665,
+                "ndcg_at_10": 0.6722003367867855,
+                "recall_at_10": 0.016581923869275338,
+                "recall_at_100": 0.1235411511448983
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.9091666666666665,
+                "ndcg_at_10": 0.6722003367867855,
+                "recall_at_10": 0.016581923869275338,
+                "recall_at_100": 0.1235411511448983
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 40,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.023435025258595567,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.047293199766779266,
+                  0.000558448085895255
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 40,
+                "evaluable_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "requested_count": 40,
+                "requested_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 4.796357499435544,
+                "total_ms": 191.85429997742176
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.8400000000000001,
+                "ndcg_at_10": 0.7012908483199594,
+                "recall_at_10": 0.024438416188551235,
+                "recall_at_100": 0.14431415387437357
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.8400000000000001,
+                "ndcg_at_10": 0.7012908483199594,
+                "recall_at_10": 0.024438416188551235,
+                "recall_at_100": 0.14431415387437357
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 10,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.0006071205897783483,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.05053001118649758,
+                  0.051069084500472636
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 10,
+                "evaluable_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "requested_count": 10,
+                "requested_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 141.58044999931008,
+                "total_ms": 1415.8044999931008
+              }
+            }
+          }
+        }
+      },
+      "672": {
+        "coordinate": {
+          "metadata": {
+            "method": "first-d coordinate truncation",
+            "seed": null
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.7952380952380952,
+                "ndcg_at_10": 0.6612256942876897,
+                "recall_at_10": 0.016647727593944544,
+                "recall_at_100": 0.11313249698969177
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.7952380952380952,
+                "ndcg_at_10": 0.6612256942876897,
+                "recall_at_10": 0.016647727593944544,
+                "recall_at_100": 0.11313249698969177
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 40,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.03440966775769135,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.07037938164268201,
+                  0.0015184244131320526
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 40,
+                "evaluable_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "requested_count": 40,
+                "requested_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 5.741440004203469,
+                "total_ms": 229.65760016813874
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.8392857142857142,
+                "ndcg_at_10": 0.6753913790315467,
+                "recall_at_10": 0.027100875804732354,
+                "recall_at_100": 0.12962202450125987
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.8392857142857142,
+                "ndcg_at_10": 0.6753913790315467,
+                "recall_at_10": 0.027100875804732354,
+                "recall_at_100": 0.12962202450125987
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 10,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.02650658987819109,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.08382903581575628,
+                  0.04095723099779562
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 10,
+                "evaluable_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "requested_count": 10,
+                "requested_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 25.467070005834103,
+                "total_ms": 254.67070005834103
+              }
+            }
+          }
+        },
+        "random": {
+          "metadata": {
+            "method": "seeded Gaussian orthogonal projection",
+            "projector_sha256": "6844b729d788f9c04c1f7a9370cc0fef7599af05211d03a2fe5e356f5ecef4f3",
+            "seed": 2026
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.8604166666666666,
+                "ndcg_at_10": 0.6519930889311455,
+                "recall_at_10": 0.015947614898551427,
+                "recall_at_100": 0.1080966325469797
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.8604166666666666,
+                "ndcg_at_10": 0.6519930889311455,
+                "recall_at_10": 0.015947614898551427,
+                "recall_at_100": 0.1080966325469797
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 40,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.04364227311423548,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.07955829919610631,
+                  -0.011740668240434654
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 40,
+                "evaluable_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "requested_count": 40,
+                "requested_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 5.2291425003204495,
+                "total_ms": 209.16570001281798
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.8533333333333333,
+                "ndcg_at_10": 0.6410265089362424,
+                "recall_at_10": 0.02098208620451585,
+                "recall_at_100": 0.12258442749040976
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.8533333333333333,
+                "ndcg_at_10": 0.6410265089362424,
+                "recall_at_10": 0.02098208620451585,
+                "recall_at_100": 0.12258442749040976
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 10,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.06087145997349545,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.14345550551114064,
+                  0.048431576741209174
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 10,
+                "evaluable_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "requested_count": 10,
+                "requested_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 18.63106999080628,
+                "total_ms": 186.31069990806282
+              }
+            }
+          }
+        },
+        "svd": {
+          "metadata": {
+            "basis_sha256": "7ae0f7d5cefd4f8cd73f25dc294eba6ddc3fd921d7b42a277e190fa06a4d17c0",
+            "method": "nested prefix of frozen corpus-only SVD basis"
+          },
+          "splits": {
+            "strict_confirmatory": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.8841666666666667,
+                "ndcg_at_10": 0.686702869521442,
+                "recall_at_10": 0.017182135716077115,
+                "recall_at_100": 0.12068806462570669
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.8841666666666667,
+                "ndcg_at_10": 0.686702869521442,
+                "recall_at_10": 0.017182135716077115,
+                "recall_at_100": 0.12068806462570669
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 40,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.008932492523939028,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.017414294406918947,
+                  -0.000297990371575668
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 40,
+                "evaluable_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "requested_count": 40,
+                "requested_ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 4.002540005603805,
+                "total_ms": 160.1016002241522
+              }
+            },
+            "validation": {
+              "metrics_canonical_primary": {
+                "mrr_at_10": 0.8416666666666668,
+                "ndcg_at_10": 0.6929959629404109,
+                "recall_at_10": 0.0254565370546865,
+                "recall_at_100": 0.14575446446577026
+              },
+              "metrics_evaluable_sensitivity": {
+                "mrr_at_10": 0.8416666666666668,
+                "ndcg_at_10": 0.6929959629404109,
+                "recall_at_10": 0.0254565370546865,
+                "recall_at_100": 0.14575446446577026
+              },
+              "minus_raw_exact_ndcg_at_10": {
+                "count": 10,
+                "equivalent_within_symmetric_margin": false,
+                "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+                "mean_delta": -0.008902005969326877,
+                "non_inferior": false,
+                "non_inferiority_margin": 0.002,
+                "paired_two_sided_ci": [
+                  -0.023666079725039663,
+                  0.002233449128657441
+                ],
+                "paired_two_sided_confidence_level": 0.95
+              },
+              "split_metadata": {
+                "evaluable_count": 10,
+                "evaluable_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "requested_count": 10,
+                "requested_ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+                "zero_count": 0,
+                "zero_query_ids": []
+              },
+              "timing": {
+                "backend": "cuda",
+                "mean_per_query_ms": 20.311539992690086,
+                "total_ms": 203.11539992690086
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "dimensions": [
+    384,
+    672
+  ],
+  "methods": [
+    "svd",
+    "random",
+    "coordinate"
+  ],
+  "schema": "ir_expansion.projection_controls.v2",
+  "selection_policy": "Validation and strict-confirmatory metrics are disjoint; controls are interpreted on validation without choosing from confirmatory rows."
+}

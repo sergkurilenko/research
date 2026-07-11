@@ -1,0 +1,2126 @@
+{
+  "created_utc": "2026-07-11T07:55:58.935574+00:00",
+  "datasets": {
+    "arguana": {
+      "confirmatory": {
+        "actual_ckks_evaluable_subset": {
+          "canonical_query_count": 1124,
+          "canonical_zero_query_ids": [
+            "test-education-ufsdfkhbwu-con03a",
+            "test-free-speech-debate-yfsdfkhbwu-con03a",
+            "test-politics-dhwem-pro06a",
+            "test-science-sghwbdgmo-con03a",
+            "test-society-asfhwapg-con04a"
+          ],
+          "ckks_minus_plaintext_ndcg_at_10_canonical_primary": {
+            "count": 1124,
+            "equivalent_within_symmetric_margin": false,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": -0.0004891477640169669,
+            "non_inferior": false,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              -0.0021990004788460644,
+              0.0011644207485994938
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "ckks_minus_plaintext_ndcg_at_10_evaluable_sensitivity": {
+            "count": 1119,
+            "equivalent_within_symmetric_margin": false,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": -0.0004913334108624404,
+            "non_inferior": false,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              -0.0022440702279881786,
+              0.0011695621885738532
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "latency_ms": {
+            "client_decrypt_decode": {
+              "count": 1119,
+              "max": 67.1253,
+              "mean": 7.497574441465594,
+              "min": 5.8529,
+              "p50": 6.834,
+              "p95": 10.222719999999999,
+              "p99": 20.439319999999977
+            },
+            "client_encrypt_serialize": {
+              "count": 1119,
+              "max": 31.5193,
+              "mean": 10.197928060768543,
+              "min": 8.4013,
+              "p50": 9.7109,
+              "p95": 13.577089999999993,
+              "p99": 18.879023999999998
+            },
+            "client_rank": {
+              "count": 1119,
+              "max": 0.2063,
+              "mean": 0.02017569258266309,
+              "min": 0.0157,
+              "p50": 0.0191,
+              "p95": 0.025619999999999983,
+              "p99": 0.0398419999999998
+            },
+            "client_response_frame_parse": {
+              "count": 1119,
+              "max": 0.3455,
+              "mean": 0.07667417336907953,
+              "min": 0.058,
+              "p50": 0.0707,
+              "p95": 0.11325999999999994,
+              "p99": 0.16461799999999968
+            },
+            "ipc_roundtrip": {
+              "count": 1119,
+              "max": 299.7559,
+              "mean": 197.10693199285078,
+              "min": 177.9137,
+              "p50": 192.8696,
+              "p95": 222.10549999999998,
+              "p99": 250.01217599999998
+            },
+            "online_end_to_end": {
+              "count": 1119,
+              "max": 372.6101,
+              "mean": 214.96898275245755,
+              "min": 192.8562,
+              "p50": 210.0711,
+              "p95": 243.30777,
+              "p99": 279.9744259999997
+            },
+            "server_ciphertext_serialize": {
+              "count": 1119,
+              "max": 101.5762,
+              "mean": 11.421765415549597,
+              "min": 6.4098,
+              "p50": 9.6661,
+              "p95": 20.307479999999998,
+              "p99": 34.79320399999992
+            },
+            "server_gather": {
+              "count": 1119,
+              "max": 0.7316,
+              "mean": 0.16198436103663985,
+              "min": 0.0883,
+              "p50": 0.1536,
+              "p95": 0.21705999999999995,
+              "p99": 0.3306479999999996
+            },
+            "server_he_evaluate": {
+              "count": 1119,
+              "max": 222.62469999999996,
+              "mean": 130.66579016979446,
+              "min": 120.8389,
+              "p50": 127.51380000000002,
+              "p95": 145.93896,
+              "p99": 164.92197199999995
+            },
+            "server_kernel_total": {
+              "count": 1119,
+              "max": 298.5842,
+              "mean": 196.3695384271671,
+              "min": 177.1794,
+              "p50": 192.133,
+              "p95": 221.38737,
+              "p99": 249.281318
+            },
+            "server_plaintext_encode": {
+              "count": 1119,
+              "max": 20.4012,
+              "mean": 12.314738963360144,
+              "min": 11.060799999999999,
+              "p50": 12.0148,
+              "p95": 13.982399999999997,
+              "p99": 15.67030199999998
+            },
+            "server_request_deserialize": {
+              "count": 1119,
+              "max": 29.8085,
+              "mean": 7.567333333333335,
+              "min": 6.0158,
+              "p50": 7.0706,
+              "p95": 10.419239999999967,
+              "p99": 17.597527999999972
+            },
+            "server_response_frame_serialize": {
+              "count": 1119,
+              "max": 0.3692,
+              "mean": 0.0662952636282395,
+              "min": 0.0467,
+              "p50": 0.0602,
+              "p95": 0.09493999999999995,
+              "p99": 0.14980999999999997
+            },
+            "server_score_pack": {
+              "count": 1119,
+              "max": 60.5552,
+              "mean": 33.67936041108132,
+              "min": 30.684,
+              "p50": 32.5122,
+              "p95": 39.02849,
+              "p99": 43.81431199999997
+            },
+            "server_total": {
+              "count": 1119,
+              "max": 299.1692,
+              "mean": 196.66052823949954,
+              "min": 177.4836,
+              "p50": 192.4446,
+              "p95": 221.66652,
+              "p99": 249.54137599999999
+            }
+          },
+          "metrics_canonical_primary": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 1124,
+                "mean": 0.36271535897870416
+              },
+              "ndcg_at_10": {
+                "count": 1124,
+                "mean": 0.4404983670126853
+              },
+              "recall_at_10": {
+                "count": 1124,
+                "mean": 0.6903914590747331
+              },
+              "recall_at_100": {
+                "count": 1124,
+                "mean": 0.9048042704626335
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 1124,
+                "mean": 0.3634034485680393
+              },
+              "ndcg_at_10": {
+                "count": 1124,
+                "mean": 0.4409875147767023
+              },
+              "recall_at_10": {
+                "count": 1124,
+                "mean": 0.6903914590747331
+              },
+              "recall_at_100": {
+                "count": 1124,
+                "mean": 0.9048042704626335
+              }
+            }
+          },
+          "metrics_evaluable_sensitivity": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 1119,
+                "mean": 0.3643360710384839
+              },
+              "ndcg_at_10": {
+                "count": 1119,
+                "mean": 0.44246663496180366
+              },
+              "recall_at_10": {
+                "count": 1119,
+                "mean": 0.6934763181411975
+              },
+              "recall_at_100": {
+                "count": 1119,
+                "mean": 0.9088471849865952
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 1119,
+                "mean": 0.365027235201498
+              },
+              "ndcg_at_10": {
+                "count": 1119,
+                "mean": 0.4429579683726661
+              },
+              "recall_at_10": {
+                "count": 1119,
+                "mean": 0.6934763181411975
+              },
+              "recall_at_100": {
+                "count": 1119,
+                "mean": 0.9088471849865952
+              }
+            }
+          },
+          "selected_query_count": 1119,
+          "selected_query_ids_sha256": "107f35a0c411746a2016491c177bf8aec238911733238665027e413bd8e02baf",
+          "subset_validity": "Exact subset of independent per-query CKKS requests; no cross-query state, training, aggregation, or cryptographic replay is required."
+        },
+        "canonical_count": 1124,
+        "canonical_metric_policy": "Queries whose sole positive document is absent from the official corpus are retained with zero metrics.",
+        "canonical_missing_positive_qids": [
+          "test-education-ufsdfkhbwu-con03a",
+          "test-free-speech-debate-yfsdfkhbwu-con03a",
+          "test-politics-dhwem-pro06a",
+          "test-science-sghwbdgmo-con03a",
+          "test-society-asfhwapg-con04a"
+        ],
+        "evaluable_count": 1119,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\arguana_confirmatory_qids.txt",
+        "ids_sha256": "4ca75abf1bf0e46d84b21b5451f3dec77b92715c4e7ae1a9975190fb6a0be119",
+        "ir_metrics": {
+          "pq_only": {
+            "mrr_at_10": {
+              "count": 1124,
+              "mean": 0.2938220216912388
+            },
+            "ndcg_at_10": {
+              "count": 1124,
+              "mean": 0.3681906336979594
+            },
+            "recall_at_10": {
+              "count": 1124,
+              "mean": 0.6094306049822064
+            },
+            "recall_at_100": {
+              "count": 1124,
+              "mean": 0.9048042704626335
+            }
+          },
+          "pq_projected_rerank": {
+            "mrr_at_10": {
+              "count": 1124,
+              "mean": 0.3634034485680393
+            },
+            "ndcg_at_10": {
+              "count": 1124,
+              "mean": 0.4409875147767023
+            },
+            "recall_at_10": {
+              "count": 1124,
+              "mean": 0.6903914590747331
+            },
+            "recall_at_100": {
+              "count": 1124,
+              "mean": 0.9048042704626335
+            }
+          },
+          "projected_exact": {
+            "mrr_at_10": {
+              "count": 1124,
+              "mean": 0.36396338191267014
+            },
+            "ndcg_at_10": {
+              "count": 1124,
+              "mean": 0.44178443718967747
+            },
+            "recall_at_10": {
+              "count": 1124,
+              "mean": 0.6921708185053381
+            },
+            "recall_at_100": {
+              "count": 1124,
+              "mean": 0.951067615658363
+            }
+          },
+          "raw_exact": {
+            "mrr_at_10": {
+              "count": 1124,
+              "mean": 0.366897559735638
+            },
+            "ndcg_at_10": {
+              "count": 1124,
+              "mean": 0.444341159571584
+            },
+            "recall_at_10": {
+              "count": 1124,
+              "mean": 0.693950177935943
+            },
+            "recall_at_100": {
+              "count": 1124,
+              "mean": 0.9537366548042705
+            }
+          }
+        },
+        "policy": {
+          "beir_comparable_full_test": false,
+          "heldout_test_queries": 1124,
+          "partition_seed": 2026,
+          "policy": "deterministic_hash_partition_of_official_test",
+          "requested_split": "test",
+          "source_qrels": "test",
+          "validation_fraction": 0.2,
+          "validation_queries": 282
+        }
+      },
+      "validation": {
+        "count": 282,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\arguana_validation_qids.txt",
+        "ids_sha256": "ead1eebcc5b48c4d435e9e95d517613ecf956c31e648653ac601bf8d48ef221d",
+        "policy": {
+          "beir_comparable_full_test": false,
+          "heldout_test_queries": 1124,
+          "partition_seed": 2026,
+          "policy": "deterministic_hash_partition_of_official_test",
+          "requested_split": "validation",
+          "source_qrels": "test",
+          "validation_fraction": 0.2,
+          "validation_queries": 282
+        }
+      }
+    },
+    "fiqa": {
+      "confirmatory": {
+        "actual_ckks_evaluable_subset": {
+          "canonical_query_count": 648,
+          "canonical_zero_query_ids": [],
+          "ckks_minus_plaintext_ndcg_at_10_canonical_primary": {
+            "count": 648,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 0.0,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "ckks_minus_plaintext_ndcg_at_10_evaluable_sensitivity": {
+            "count": 648,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 0.0,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "latency_ms": {
+            "client_decrypt_decode": {
+              "count": 648,
+              "max": 34.2748,
+              "mean": 7.490690740740741,
+              "min": 5.8341,
+              "p50": 6.84845,
+              "p95": 10.197054999999997,
+              "p99": 20.61978899999998
+            },
+            "client_encrypt_serialize": {
+              "count": 648,
+              "max": 47.6319,
+              "mean": 10.44354212962963,
+              "min": 8.3771,
+              "p50": 9.866800000000001,
+              "p95": 14.583754999999998,
+              "p99": 18.498183999999984
+            },
+            "client_rank": {
+              "count": 648,
+              "max": 0.0949,
+              "mean": 0.020287808641975307,
+              "min": 0.0166,
+              "p50": 0.0195,
+              "p95": 0.025764999999999996,
+              "p99": 0.03297099999999998
+            },
+            "client_response_frame_parse": {
+              "count": 648,
+              "max": 0.2508,
+              "mean": 0.07645925925925925,
+              "min": 0.0578,
+              "p50": 0.0709,
+              "p95": 0.11300499999999991,
+              "p99": 0.182577
+            },
+            "ipc_roundtrip": {
+              "count": 648,
+              "max": 252.2907,
+              "mean": 196.64517839506175,
+              "min": 178.1355,
+              "p50": 193.57145,
+              "p95": 220.09456,
+              "p99": 240.24204499999996
+            },
+            "online_end_to_end": {
+              "count": 648,
+              "max": 312.407,
+              "mean": 214.74603441358025,
+              "min": 193.0427,
+              "p50": 211.33625,
+              "p95": 242.291215,
+              "p99": 264.011118
+            },
+            "server_ciphertext_serialize": {
+              "count": 648,
+              "max": 49.7547,
+              "mean": 11.697688425925927,
+              "min": 6.4529,
+              "p50": 9.85825,
+              "p95": 21.132845,
+              "p99": 36.38962899999994
+            },
+            "server_gather": {
+              "count": 648,
+              "max": 0.4594,
+              "mean": 0.18850123456790122,
+              "min": 0.1125,
+              "p50": 0.1734,
+              "p95": 0.29590999999999995,
+              "p99": 0.387024
+            },
+            "server_he_evaluate": {
+              "count": 648,
+              "max": 164.78459999999998,
+              "mean": 130.197650154321,
+              "min": 120.5518,
+              "p50": 127.63575,
+              "p95": 144.18793,
+              "p99": 151.91662099999996
+            },
+            "server_kernel_total": {
+              "count": 648,
+              "max": 251.2202,
+              "mean": 195.8979637345679,
+              "min": 177.3821,
+              "p50": 192.82569999999998,
+              "p95": 219.39786999999998,
+              "p99": 239.58897499999995
+            },
+            "server_plaintext_encode": {
+              "count": 648,
+              "max": 15.6482,
+              "mean": 12.330220833333332,
+              "min": 11.095400000000001,
+              "p50": 12.09395,
+              "p95": 13.996224999999999,
+              "p99": 14.677744999999998
+            },
+            "server_request_deserialize": {
+              "count": 648,
+              "max": 44.6086,
+              "mean": 7.6018188271604945,
+              "min": 5.9102,
+              "p50": 7.1076999999999995,
+              "p95": 10.518415,
+              "p99": 14.771574
+            },
+            "server_response_frame_serialize": {
+              "count": 648,
+              "max": 0.2262,
+              "mean": 0.06496358024691358,
+              "min": 0.0465,
+              "p50": 0.06085,
+              "p95": 0.09583,
+              "p99": 0.15099499999999996
+            },
+            "server_score_pack": {
+              "count": 648,
+              "max": 52.4633,
+              "mean": 33.353437191358026,
+              "min": 30.5657,
+              "p50": 32.33355,
+              "p95": 37.96044,
+              "p99": 41.501265999999994
+            },
+            "server_total": {
+              "count": 648,
+              "max": 251.6707,
+              "mean": 196.21073935185188,
+              "min": 177.7715,
+              "p50": 193.15879999999999,
+              "p95": 219.65893,
+              "p99": 239.86347299999997
+            }
+          },
+          "metrics_canonical_primary": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 648,
+                "mean": 0.45524262688614536
+              },
+              "ndcg_at_10": {
+                "count": 648,
+                "mean": 0.377736190922918
+              },
+              "recall_at_10": {
+                "count": 648,
+                "mean": 0.45139205787353937
+              },
+              "recall_at_100": {
+                "count": 648,
+                "mean": 0.5896129633398152
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 648,
+                "mean": 0.45524262688614536
+              },
+              "ndcg_at_10": {
+                "count": 648,
+                "mean": 0.377736190922918
+              },
+              "recall_at_10": {
+                "count": 648,
+                "mean": 0.45139205787353937
+              },
+              "recall_at_100": {
+                "count": 648,
+                "mean": 0.5896129633398152
+              }
+            }
+          },
+          "metrics_evaluable_sensitivity": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 648,
+                "mean": 0.45524262688614536
+              },
+              "ndcg_at_10": {
+                "count": 648,
+                "mean": 0.377736190922918
+              },
+              "recall_at_10": {
+                "count": 648,
+                "mean": 0.45139205787353937
+              },
+              "recall_at_100": {
+                "count": 648,
+                "mean": 0.5896129633398152
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 648,
+                "mean": 0.45524262688614536
+              },
+              "ndcg_at_10": {
+                "count": 648,
+                "mean": 0.377736190922918
+              },
+              "recall_at_10": {
+                "count": 648,
+                "mean": 0.45139205787353937
+              },
+              "recall_at_100": {
+                "count": 648,
+                "mean": 0.5896129633398152
+              }
+            }
+          },
+          "selected_query_count": 648,
+          "selected_query_ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+          "subset_validity": "Exact subset of independent per-query CKKS requests; no cross-query state, training, aggregation, or cryptographic replay is required."
+        },
+        "canonical_count": 648,
+        "canonical_metric_policy": "All selected positive judgments exist in the corpus.",
+        "canonical_missing_positive_qids": [],
+        "evaluable_count": 648,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\fiqa_confirmatory_qids.txt",
+        "ids_sha256": "f5cb2bf3f86fe7f555f70c387f158a9dd055844dacba68f52976d69b4c4e3c89",
+        "ir_metrics": {
+          "pq_only": {
+            "mrr_at_10": {
+              "count": 648,
+              "mean": 0.34866132667058597
+            },
+            "ndcg_at_10": {
+              "count": 648,
+              "mean": 0.2820984974376843
+            },
+            "recall_at_10": {
+              "count": 648,
+              "mean": 0.34714591392832134
+            },
+            "recall_at_100": {
+              "count": 648,
+              "mean": 0.5896129633398152
+            }
+          },
+          "pq_projected_rerank": {
+            "mrr_at_10": {
+              "count": 648,
+              "mean": 0.4552426268861455
+            },
+            "ndcg_at_10": {
+              "count": 648,
+              "mean": 0.377736190922918
+            },
+            "recall_at_10": {
+              "count": 648,
+              "mean": 0.45139205787353937
+            },
+            "recall_at_100": {
+              "count": 648,
+              "mean": 0.5896129633398152
+            }
+          },
+          "projected_exact": {
+            "mrr_at_10": {
+              "count": 648,
+              "mean": 0.4564937291789143
+            },
+            "ndcg_at_10": {
+              "count": 648,
+              "mean": 0.3801191211438288
+            },
+            "recall_at_10": {
+              "count": 648,
+              "mean": 0.45301916447749774
+            },
+            "recall_at_100": {
+              "count": 648,
+              "mean": 0.7011102066657622
+            }
+          },
+          "raw_exact": {
+            "mrr_at_10": {
+              "count": 648,
+              "mean": 0.4575770380168528
+            },
+            "ndcg_at_10": {
+              "count": 648,
+              "mean": 0.38133353403638226
+            },
+            "recall_at_10": {
+              "count": 648,
+              "mean": 0.4559512632429299
+            },
+            "recall_at_100": {
+              "count": 648,
+              "mean": 0.7060484782707005
+            }
+          }
+        },
+        "policy": {
+          "beir_comparable_full_test": true,
+          "policy": "official_dev_for_validation_official_test_for_test",
+          "requested_split": "test",
+          "source_qrels": "test"
+        }
+      },
+      "validation": {
+        "count": 500,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\fiqa_validation_qids.txt",
+        "ids_sha256": "3f0f317ef4f76b7036122650b04449274f2b0e125dff40a03a2f140ab2bfa86d",
+        "policy": {
+          "beir_comparable_full_test": false,
+          "policy": "official_dev_for_validation_official_test_for_test",
+          "requested_split": "validation",
+          "source_qrels": "dev"
+        }
+      }
+    },
+    "nfcorpus": {
+      "confirmatory": {
+        "actual_ckks_evaluable_subset": {
+          "canonical_query_count": 323,
+          "canonical_zero_query_ids": [],
+          "ckks_minus_plaintext_ndcg_at_10_canonical_primary": {
+            "count": 323,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": -4.064542999413607e-05,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              -0.00011115230496638322,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "ckks_minus_plaintext_ndcg_at_10_evaluable_sensitivity": {
+            "count": 323,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": -4.064542999413607e-05,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              -0.00011115230496638322,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "latency_ms": {
+            "client_decrypt_decode": {
+              "count": 323,
+              "max": 40.8934,
+              "mean": 7.5190770897832815,
+              "min": 5.8264,
+              "p50": 6.8706,
+              "p95": 9.25703,
+              "p99": 25.687843999999835
+            },
+            "client_encrypt_serialize": {
+              "count": 323,
+              "max": 26.9,
+              "mean": 10.457990712074304,
+              "min": 8.4232,
+              "p50": 9.8586,
+              "p95": 14.731819999999999,
+              "p99": 20.53672399999999
+            },
+            "client_rank": {
+              "count": 323,
+              "max": 0.0564,
+              "mean": 0.020107120743034057,
+              "min": 0.0168,
+              "p50": 0.0194,
+              "p95": 0.024489999999999998,
+              "p99": 0.03545199999999991
+            },
+            "client_response_frame_parse": {
+              "count": 323,
+              "max": 0.317,
+              "mean": 0.07813467492260061,
+              "min": 0.0585,
+              "p50": 0.0696,
+              "p95": 0.13282999999999998,
+              "p99": 0.20221399999999998
+            },
+            "ipc_roundtrip": {
+              "count": 323,
+              "max": 301.1473,
+              "mean": 197.337046749226,
+              "min": 177.0447,
+              "p50": 193.4353,
+              "p95": 221.46617999999998,
+              "p99": 272.27933999999976
+            },
+            "online_end_to_end": {
+              "count": 323,
+              "max": 330.3998,
+              "mean": 215.48113281733745,
+              "min": 191.909,
+              "p50": 211.1847,
+              "p95": 245.17755999999997,
+              "p99": 302.8989199999998
+            },
+            "server_ciphertext_serialize": {
+              "count": 323,
+              "max": 74.8883,
+              "mean": 11.82627894736842,
+              "min": 6.4857,
+              "p50": 9.9375,
+              "p95": 20.460019999999993,
+              "p99": 41.87117799999992
+            },
+            "server_gather": {
+              "count": 323,
+              "max": 0.3624,
+              "mean": 0.15960588235294115,
+              "min": 0.1051,
+              "p50": 0.1513,
+              "p95": 0.24313999999999972,
+              "p99": 0.3332539999999996
+            },
+            "server_he_evaluate": {
+              "count": 323,
+              "max": 216.4024,
+              "mean": 130.78830619195048,
+              "min": 119.6953,
+              "p50": 128.28480000000002,
+              "p95": 144.58083,
+              "p99": 178.06189199999992
+            },
+            "server_kernel_total": {
+              "count": 323,
+              "max": 300.2165,
+              "mean": 196.62748328173376,
+              "min": 176.45,
+              "p50": 192.6891,
+              "p95": 220.62754999999999,
+              "p99": 271.29669599999977
+            },
+            "server_plaintext_encode": {
+              "count": 323,
+              "max": 19.3338,
+              "mean": 12.330847368421052,
+              "min": 11.119499999999999,
+              "p50": 12.163499999999999,
+              "p95": 13.800769999999998,
+              "p99": 16.26373199999999
+            },
+            "server_request_deserialize": {
+              "count": 323,
+              "max": 23.2612,
+              "mean": 7.639421671826625,
+              "min": 6.0644,
+              "p50": 7.1052,
+              "p95": 10.84765,
+              "p99": 16.557222
+            },
+            "server_response_frame_serialize": {
+              "count": 323,
+              "max": 0.1983,
+              "mean": 0.0642876160990712,
+              "min": 0.0484,
+              "p50": 0.0591,
+              "p95": 0.0941699999999999,
+              "p99": 0.1671319999999999
+            },
+            "server_score_pack": {
+              "count": 323,
+              "max": 54.5928,
+              "mean": 33.31567027863777,
+              "min": 30.6769,
+              "p50": 32.1882,
+              "p95": 38.031949999999995,
+              "p99": 46.27419999999984
+            },
+            "server_total": {
+              "count": 323,
+              "max": 300.6647,
+              "mean": 196.91392600619196,
+              "min": 176.6867,
+              "p50": 193.0175,
+              "p95": 220.93338999999997,
+              "p99": 271.7589999999998
+            }
+          },
+          "metrics_canonical_primary": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 323,
+                "mean": 0.5224409061870362
+              },
+              "ndcg_at_10": {
+                "count": 323,
+                "mean": 0.3271734721402004
+              },
+              "recall_at_10": {
+                "count": 323,
+                "mean": 0.15729132026984274
+              },
+              "recall_at_100": {
+                "count": 323,
+                "mean": 0.2646678448317467
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 323,
+                "mean": 0.5224409061870362
+              },
+              "ndcg_at_10": {
+                "count": 323,
+                "mean": 0.32721411757019464
+              },
+              "recall_at_10": {
+                "count": 323,
+                "mean": 0.15729132026984274
+              },
+              "recall_at_100": {
+                "count": 323,
+                "mean": 0.2646678448317467
+              }
+            }
+          },
+          "metrics_evaluable_sensitivity": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 323,
+                "mean": 0.5224409061870362
+              },
+              "ndcg_at_10": {
+                "count": 323,
+                "mean": 0.3271734721402004
+              },
+              "recall_at_10": {
+                "count": 323,
+                "mean": 0.15729132026984274
+              },
+              "recall_at_100": {
+                "count": 323,
+                "mean": 0.2646678448317467
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 323,
+                "mean": 0.5224409061870362
+              },
+              "ndcg_at_10": {
+                "count": 323,
+                "mean": 0.32721411757019464
+              },
+              "recall_at_10": {
+                "count": 323,
+                "mean": 0.15729132026984274
+              },
+              "recall_at_100": {
+                "count": 323,
+                "mean": 0.2646678448317467
+              }
+            }
+          },
+          "selected_query_count": 323,
+          "selected_query_ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+          "subset_validity": "Exact subset of independent per-query CKKS requests; no cross-query state, training, aggregation, or cryptographic replay is required."
+        },
+        "canonical_count": 323,
+        "canonical_metric_policy": "All selected positive judgments exist in the corpus.",
+        "canonical_missing_positive_qids": [],
+        "evaluable_count": 323,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\nfcorpus_confirmatory_qids.txt",
+        "ids_sha256": "0bf15782a5847702153d6e2dc2f5b58b6d9c15cc245c8c05eba4f6ed1a054a4c",
+        "ir_metrics": {
+          "pq_only": {
+            "mrr_at_10": {
+              "count": 323,
+              "mean": 0.48154454764361887
+            },
+            "ndcg_at_10": {
+              "count": 323,
+              "mean": 0.29252930324772547
+            },
+            "recall_at_10": {
+              "count": 323,
+              "mean": 0.14132906431810194
+            },
+            "recall_at_100": {
+              "count": 323,
+              "mean": 0.26466784483174677
+            }
+          },
+          "pq_projected_rerank": {
+            "mrr_at_10": {
+              "count": 323,
+              "mean": 0.5224409061870362
+            },
+            "ndcg_at_10": {
+              "count": 323,
+              "mean": 0.32721411757019464
+            },
+            "recall_at_10": {
+              "count": 323,
+              "mean": 0.15729132026984277
+            },
+            "recall_at_100": {
+              "count": 323,
+              "mean": 0.26466784483174677
+            }
+          },
+          "projected_exact": {
+            "mrr_at_10": {
+              "count": 323,
+              "mean": 0.5207467197405278
+            },
+            "ndcg_at_10": {
+              "count": 323,
+              "mean": 0.3270303152080331
+            },
+            "recall_at_10": {
+              "count": 323,
+              "mean": 0.15684362042145955
+            },
+            "recall_at_100": {
+              "count": 323,
+              "mean": 0.28653637606522003
+            }
+          },
+          "raw_exact": {
+            "mrr_at_10": {
+              "count": 323,
+              "mean": 0.5181151407931593
+            },
+            "ndcg_at_10": {
+              "count": 323,
+              "mean": 0.32484045058003935
+            },
+            "recall_at_10": {
+              "count": 323,
+              "mean": 0.15549909244181664
+            },
+            "recall_at_100": {
+              "count": 323,
+              "mean": 0.28517336186517733
+            }
+          }
+        },
+        "policy": {
+          "beir_comparable_full_test": true,
+          "policy": "official_dev_for_validation_official_test_for_test",
+          "requested_split": "test",
+          "source_qrels": "test"
+        }
+      },
+      "validation": {
+        "count": 324,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\nfcorpus_validation_qids.txt",
+        "ids_sha256": "3b0526ef98707e8db778e6b44f1edd596c5c8be7fec88b406f5e319b23a6de93",
+        "policy": {
+          "beir_comparable_full_test": false,
+          "policy": "official_dev_for_validation_official_test_for_test",
+          "requested_split": "validation",
+          "source_qrels": "dev"
+        }
+      }
+    },
+    "scidocs": {
+      "confirmatory": {
+        "actual_ckks_evaluable_subset": {
+          "canonical_query_count": 800,
+          "canonical_zero_query_ids": [],
+          "ckks_minus_plaintext_ndcg_at_10_canonical_primary": {
+            "count": 800,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 0.0,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "ckks_minus_plaintext_ndcg_at_10_evaluable_sensitivity": {
+            "count": 800,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 0.0,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "latency_ms": {
+            "client_decrypt_decode": {
+              "count": 800,
+              "max": 71.3522,
+              "mean": 7.5064765,
+              "min": 5.8152,
+              "p50": 6.82745,
+              "p95": 10.759704999999999,
+              "p99": 17.77943799999999
+            },
+            "client_encrypt_serialize": {
+              "count": 800,
+              "max": 24.8652,
+              "mean": 10.19486625,
+              "min": 8.4249,
+              "p50": 9.71575,
+              "p95": 13.396939999999995,
+              "p99": 17.84164499999999
+            },
+            "client_rank": {
+              "count": 800,
+              "max": 0.1057,
+              "mean": 0.020230625,
+              "min": 0.0155,
+              "p50": 0.0191,
+              "p95": 0.026919999999999982,
+              "p99": 0.042009
+            },
+            "client_response_frame_parse": {
+              "count": 800,
+              "max": 0.5756,
+              "mean": 0.07574,
+              "min": 0.0567,
+              "p50": 0.0696,
+              "p95": 0.1057,
+              "p99": 0.16307799999999995
+            },
+            "ipc_roundtrip": {
+              "count": 800,
+              "max": 287.7308,
+              "mean": 195.99502862499997,
+              "min": 177.1669,
+              "p50": 193.0217,
+              "p95": 218.55468999999997,
+              "p99": 232.76433099999997
+            },
+            "online_end_to_end": {
+              "count": 800,
+              "max": 351.9588,
+              "mean": 213.862953375,
+              "min": 193.3458,
+              "p50": 210.2895,
+              "p95": 240.747045,
+              "p99": 259.222297
+            },
+            "server_ciphertext_serialize": {
+              "count": 800,
+              "max": 93.6377,
+              "mean": 11.739609500000002,
+              "min": 6.3192,
+              "p50": 9.845400000000001,
+              "p95": 21.067134999999997,
+              "p99": 34.55165399999999
+            },
+            "server_gather": {
+              "count": 800,
+              "max": 0.4222,
+              "mean": 0.166358,
+              "min": 0.0861,
+              "p50": 0.1552,
+              "p95": 0.25007499999999994,
+              "p99": 0.35701499999999997
+            },
+            "server_he_evaluate": {
+              "count": 800,
+              "max": 178.47140000000002,
+              "mean": 129.760878875,
+              "min": 120.1087,
+              "p50": 127.15665000000001,
+              "p95": 143.47629,
+              "p99": 153.45378300000002
+            },
+            "server_kernel_total": {
+              "count": 800,
+              "max": 286.9056,
+              "mean": 195.27593812500004,
+              "min": 176.5809,
+              "p50": 192.30349999999999,
+              "p95": 217.85198,
+              "p99": 232.06438899999998
+            },
+            "server_plaintext_encode": {
+              "count": 800,
+              "max": 17.1523,
+              "mean": 12.277792875,
+              "min": 11.044400000000001,
+              "p50": 12.046700000000001,
+              "p95": 13.935485000000002,
+              "p99": 14.874644999999997
+            },
+            "server_request_deserialize": {
+              "count": 800,
+              "max": 21.5526,
+              "mean": 7.423095250000001,
+              "min": 5.9311,
+              "p50": 7.05795,
+              "p95": 9.971354999999997,
+              "p99": 16.621565999999998
+            },
+            "server_response_frame_serialize": {
+              "count": 800,
+              "max": 0.2848,
+              "mean": 0.06381175,
+              "min": 0.0482,
+              "p50": 0.058550000000000005,
+              "p95": 0.09390499999999999,
+              "p99": 0.146104
+            },
+            "server_score_pack": {
+              "count": 800,
+              "max": 66.6922,
+              "mean": 33.3680715,
+              "min": 30.63,
+              "p50": 32.200599999999994,
+              "p95": 38.14309,
+              "p99": 42.43647099999999
+            },
+            "server_total": {
+              "count": 800,
+              "max": 287.2032,
+              "mean": 195.56623950000002,
+              "min": 176.8391,
+              "p50": 192.602,
+              "p95": 218.15846999999997,
+              "p99": 232.356303
+            }
+          },
+          "metrics_canonical_primary": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 800,
+                "mean": 0.30492013888888886
+              },
+              "ndcg_at_10": {
+                "count": 800,
+                "mean": 0.16490732736761188
+              },
+              "recall_at_10": {
+                "count": 800,
+                "mean": 0.1671875
+              },
+              "recall_at_100": {
+                "count": 800,
+                "mean": 0.3250416666666666
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 800,
+                "mean": 0.30492013888888886
+              },
+              "ndcg_at_10": {
+                "count": 800,
+                "mean": 0.16490732736761188
+              },
+              "recall_at_10": {
+                "count": 800,
+                "mean": 0.1671875
+              },
+              "recall_at_100": {
+                "count": 800,
+                "mean": 0.3250416666666666
+              }
+            }
+          },
+          "metrics_evaluable_sensitivity": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 800,
+                "mean": 0.30492013888888886
+              },
+              "ndcg_at_10": {
+                "count": 800,
+                "mean": 0.16490732736761188
+              },
+              "recall_at_10": {
+                "count": 800,
+                "mean": 0.1671875
+              },
+              "recall_at_100": {
+                "count": 800,
+                "mean": 0.3250416666666666
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 800,
+                "mean": 0.30492013888888886
+              },
+              "ndcg_at_10": {
+                "count": 800,
+                "mean": 0.16490732736761188
+              },
+              "recall_at_10": {
+                "count": 800,
+                "mean": 0.1671875
+              },
+              "recall_at_100": {
+                "count": 800,
+                "mean": 0.3250416666666666
+              }
+            }
+          },
+          "selected_query_count": 800,
+          "selected_query_ids_sha256": "85230082417d893f2be2a1c84427b48c96a0eb7cd80b2fc296a011a1fc061508",
+          "subset_validity": "Exact subset of independent per-query CKKS requests; no cross-query state, training, aggregation, or cryptographic replay is required."
+        },
+        "canonical_count": 800,
+        "canonical_metric_policy": "All selected positive judgments exist in the corpus.",
+        "canonical_missing_positive_qids": [],
+        "evaluable_count": 800,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\scidocs_confirmatory_qids.txt",
+        "ids_sha256": "dc4bd33f5adbb7f657f3f5165fbc013d0e2b0baffc0ff128012bac8bf1a4865b",
+        "ir_metrics": {
+          "pq_only": {
+            "mrr_at_10": {
+              "count": 800,
+              "mean": 0.25986656746031744
+            },
+            "ndcg_at_10": {
+              "count": 800,
+              "mean": 0.1385556935342254
+            },
+            "recall_at_10": {
+              "count": 800,
+              "mean": 0.14097916666666666
+            },
+            "recall_at_100": {
+              "count": 800,
+              "mean": 0.3250416666666667
+            }
+          },
+          "pq_projected_rerank": {
+            "mrr_at_10": {
+              "count": 800,
+              "mean": 0.30492013888888886
+            },
+            "ndcg_at_10": {
+              "count": 800,
+              "mean": 0.16490732736761188
+            },
+            "recall_at_10": {
+              "count": 800,
+              "mean": 0.1671875
+            },
+            "recall_at_100": {
+              "count": 800,
+              "mean": 0.3250416666666667
+            }
+          },
+          "projected_exact": {
+            "mrr_at_10": {
+              "count": 800,
+              "mean": 0.3061979166666667
+            },
+            "ndcg_at_10": {
+              "count": 800,
+              "mean": 0.1661400589177412
+            },
+            "recall_at_10": {
+              "count": 800,
+              "mean": 0.16868750000000002
+            },
+            "recall_at_100": {
+              "count": 800,
+              "mean": 0.3920625
+            }
+          },
+          "raw_exact": {
+            "mrr_at_10": {
+              "count": 800,
+              "mean": 0.30471180555555555
+            },
+            "ndcg_at_10": {
+              "count": 800,
+              "mean": 0.1657567419468231
+            },
+            "recall_at_10": {
+              "count": 800,
+              "mean": 0.16875
+            },
+            "recall_at_100": {
+              "count": 800,
+              "mean": 0.39027083333333334
+            }
+          }
+        },
+        "policy": {
+          "beir_comparable_full_test": false,
+          "heldout_test_queries": 800,
+          "partition_seed": 2026,
+          "policy": "deterministic_hash_partition_of_official_test",
+          "requested_split": "test",
+          "source_qrels": "test",
+          "validation_fraction": 0.2,
+          "validation_queries": 200
+        }
+      },
+      "validation": {
+        "count": 200,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\scidocs_validation_qids.txt",
+        "ids_sha256": "c7de39868157cd2e45138a4c123b4cfe825e70a462a8e2dfc6fd1cb2d97706ab",
+        "policy": {
+          "beir_comparable_full_test": false,
+          "heldout_test_queries": 800,
+          "partition_seed": 2026,
+          "policy": "deterministic_hash_partition_of_official_test",
+          "requested_split": "validation",
+          "source_qrels": "test",
+          "validation_fraction": 0.2,
+          "validation_queries": 200
+        }
+      }
+    },
+    "scifact": {
+      "confirmatory": {
+        "actual_ckks_evaluable_subset": {
+          "canonical_query_count": 300,
+          "canonical_zero_query_ids": [],
+          "ckks_minus_plaintext_ndcg_at_10_canonical_primary": {
+            "count": 300,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 0.0,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "ckks_minus_plaintext_ndcg_at_10_evaluable_sensitivity": {
+            "count": 300,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 0.0,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.0
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "latency_ms": {
+            "client_decrypt_decode": {
+              "count": 300,
+              "max": 29.762,
+              "mean": 7.376177333333334,
+              "min": 5.8266,
+              "p50": 6.80065,
+              "p95": 9.876960000000002,
+              "p99": 17.593436999999987
+            },
+            "client_encrypt_serialize": {
+              "count": 300,
+              "max": 39.5527,
+              "mean": 10.279172666666666,
+              "min": 8.5019,
+              "p50": 9.78425,
+              "p95": 12.803360000000007,
+              "p99": 19.14737199999997
+            },
+            "client_rank": {
+              "count": 300,
+              "max": 0.0585,
+              "mean": 0.020352666666666668,
+              "min": 0.017,
+              "p50": 0.0196,
+              "p95": 0.02404500000000001,
+              "p99": 0.03901099999999999
+            },
+            "client_response_frame_parse": {
+              "count": 300,
+              "max": 0.193,
+              "mean": 0.07612566666666666,
+              "min": 0.058,
+              "p50": 0.07055,
+              "p95": 0.121905,
+              "p99": 0.16382
+            },
+            "ipc_roundtrip": {
+              "count": 300,
+              "max": 241.4036,
+              "mean": 195.26750866666669,
+              "min": 178.7664,
+              "p50": 192.47695,
+              "p95": 218.11594,
+              "p99": 229.20210799999998
+            },
+            "online_end_to_end": {
+              "count": 300,
+              "max": 276.8842,
+              "mean": 213.08920533333333,
+              "min": 193.8064,
+              "p50": 209.41585,
+              "p95": 238.01215000000002,
+              "p99": 254.50903499999993
+            },
+            "server_ciphertext_serialize": {
+              "count": 300,
+              "max": 57.3254,
+              "mean": 11.675565333333333,
+              "min": 6.4813,
+              "p50": 10.232800000000001,
+              "p95": 20.399645,
+              "p99": 28.782999999999905
+            },
+            "server_gather": {
+              "count": 300,
+              "max": 0.4703,
+              "mean": 0.15832833333333332,
+              "min": 0.0782,
+              "p50": 0.1487,
+              "p95": 0.245755,
+              "p99": 0.31663999999999987
+            },
+            "server_he_evaluate": {
+              "count": 300,
+              "max": 160.4618,
+              "mean": 129.131123,
+              "min": 120.247,
+              "p50": 126.20420000000001,
+              "p95": 142.71729000000002,
+              "p99": 149.19466899999995
+            },
+            "server_kernel_total": {
+              "count": 300,
+              "max": 240.6939,
+              "mean": 194.55785866666665,
+              "min": 178.0842,
+              "p50": 191.7477,
+              "p95": 217.362895,
+              "p99": 228.52393899999998
+            },
+            "server_plaintext_encode": {
+              "count": 300,
+              "max": 14.675700000000003,
+              "mean": 12.165606666666665,
+              "min": 11.120600000000003,
+              "p50": 11.896049999999999,
+              "p95": 13.705805000000003,
+              "p99": 14.135557000000002
+            },
+            "server_request_deserialize": {
+              "count": 300,
+              "max": 37.6469,
+              "mean": 7.460601,
+              "min": 5.9958,
+              "p50": 7.01065,
+              "p95": 9.22296,
+              "p99": 16.92061899999997
+            },
+            "server_response_frame_serialize": {
+              "count": 300,
+              "max": 0.2161,
+              "mean": 0.06239166666666666,
+              "min": 0.0473,
+              "p50": 0.057550000000000004,
+              "p95": 0.09122500000000001,
+              "p99": 0.13700199999999946
+            },
+            "server_score_pack": {
+              "count": 300,
+              "max": 43.1903,
+              "mean": 33.43651366666666,
+              "min": 30.6859,
+              "p50": 32.31885,
+              "p95": 37.663305,
+              "p99": 40.225481999999985
+            },
+            "server_total": {
+              "count": 300,
+              "max": 240.9499,
+              "mean": 194.83855966666667,
+              "min": 178.3853,
+              "p50": 192.0942,
+              "p95": 217.7189,
+              "p99": 228.801286
+            }
+          },
+          "metrics_canonical_primary": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 300,
+                "mean": 0.6669193121693121
+              },
+              "ndcg_at_10": {
+                "count": 300,
+                "mean": 0.6969854922380909
+              },
+              "recall_at_10": {
+                "count": 300,
+                "mean": 0.8172222222222223
+              },
+              "recall_at_100": {
+                "count": 300,
+                "mean": 0.912
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 300,
+                "mean": 0.6669193121693121
+              },
+              "ndcg_at_10": {
+                "count": 300,
+                "mean": 0.6969854922380909
+              },
+              "recall_at_10": {
+                "count": 300,
+                "mean": 0.8172222222222223
+              },
+              "recall_at_100": {
+                "count": 300,
+                "mean": 0.912
+              }
+            }
+          },
+          "metrics_evaluable_sensitivity": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 300,
+                "mean": 0.6669193121693121
+              },
+              "ndcg_at_10": {
+                "count": 300,
+                "mean": 0.6969854922380909
+              },
+              "recall_at_10": {
+                "count": 300,
+                "mean": 0.8172222222222223
+              },
+              "recall_at_100": {
+                "count": 300,
+                "mean": 0.912
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 300,
+                "mean": 0.6669193121693121
+              },
+              "ndcg_at_10": {
+                "count": 300,
+                "mean": 0.6969854922380909
+              },
+              "recall_at_10": {
+                "count": 300,
+                "mean": 0.8172222222222223
+              },
+              "recall_at_100": {
+                "count": 300,
+                "mean": 0.912
+              }
+            }
+          },
+          "selected_query_count": 300,
+          "selected_query_ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+          "subset_validity": "Exact subset of independent per-query CKKS requests; no cross-query state, training, aggregation, or cryptographic replay is required."
+        },
+        "canonical_count": 300,
+        "canonical_metric_policy": "All selected positive judgments exist in the corpus.",
+        "canonical_missing_positive_qids": [],
+        "evaluable_count": 300,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\scifact_confirmatory_qids.txt",
+        "ids_sha256": "25177f8e8462967fab828f67d1be30b40f894d164b61d58e2bf244ace7fbb4f6",
+        "ir_metrics": {
+          "pq_only": {
+            "mrr_at_10": {
+              "count": 300,
+              "mean": 0.6336097883597883
+            },
+            "ndcg_at_10": {
+              "count": 300,
+              "mean": 0.6647108396271039
+            },
+            "recall_at_10": {
+              "count": 300,
+              "mean": 0.7904444444444444
+            },
+            "recall_at_100": {
+              "count": 300,
+              "mean": 0.912
+            }
+          },
+          "pq_projected_rerank": {
+            "mrr_at_10": {
+              "count": 300,
+              "mean": 0.6669193121693122
+            },
+            "ndcg_at_10": {
+              "count": 300,
+              "mean": 0.6969854922380909
+            },
+            "recall_at_10": {
+              "count": 300,
+              "mean": 0.8172222222222223
+            },
+            "recall_at_100": {
+              "count": 300,
+              "mean": 0.912
+            }
+          },
+          "projected_exact": {
+            "mrr_at_10": {
+              "count": 300,
+              "mean": 0.6666931216931217
+            },
+            "ndcg_at_10": {
+              "count": 300,
+              "mean": 0.6967798515468028
+            },
+            "recall_at_10": {
+              "count": 300,
+              "mean": 0.8172222222222223
+            },
+            "recall_at_100": {
+              "count": 300,
+              "mean": 0.936
+            }
+          },
+          "raw_exact": {
+            "mrr_at_10": {
+              "count": 300,
+              "mean": 0.6661878306878307
+            },
+            "ndcg_at_10": {
+              "count": 300,
+              "mean": 0.6954495319507862
+            },
+            "recall_at_10": {
+              "count": 300,
+              "mean": 0.8122222222222223
+            },
+            "recall_at_100": {
+              "count": 300,
+              "mean": 0.9393333333333334
+            }
+          }
+        },
+        "policy": {
+          "beir_comparable_full_test": true,
+          "policy": "official_train_for_validation_official_test_for_test",
+          "requested_split": "test",
+          "source_qrels": "test"
+        }
+      },
+      "validation": {
+        "count": 809,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\scifact_validation_qids.txt",
+        "ids_sha256": "a1951dfec5c951cbed1444cb67bd38f25178e2353e3762ad2a49c96c321045e4",
+        "policy": {
+          "beir_comparable_full_test": false,
+          "policy": "official_train_for_validation_official_test_for_test",
+          "requested_split": "validation",
+          "source_qrels": "train"
+        }
+      }
+    },
+    "trec-covid": {
+      "confirmatory": {
+        "actual_ckks_evaluable_subset": {
+          "canonical_query_count": 40,
+          "canonical_zero_query_ids": [],
+          "ckks_minus_plaintext_ndcg_at_10_canonical_primary": {
+            "count": 40,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 7.942496205970706e-05,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.00023827488617912118
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "ckks_minus_plaintext_ndcg_at_10_evaluable_sensitivity": {
+            "count": 40,
+            "equivalent_within_symmetric_margin": true,
+            "interpretation": "Non-inferiority uses the lower endpoint; equivalence requires the complete interval inside the symmetric margin. An interval containing zero alone is inconclusive about equivalence and no rule establishes superiority.",
+            "mean_delta": 7.942496205970706e-05,
+            "non_inferior": true,
+            "non_inferiority_margin": 0.002,
+            "paired_two_sided_ci": [
+              0.0,
+              0.00023827488617912118
+            ],
+            "paired_two_sided_confidence_level": 0.95
+          },
+          "latency_ms": {
+            "client_decrypt_decode": {
+              "count": 40,
+              "max": 20.6905,
+              "mean": 7.208002500000001,
+              "min": 5.8047,
+              "p50": 6.8413,
+              "p95": 8.040119999999998,
+              "p99": 15.940026999999994
+            },
+            "client_encrypt_serialize": {
+              "count": 40,
+              "max": 14.2319,
+              "mean": 10.180445,
+              "min": 8.7144,
+              "p50": 9.8015,
+              "p95": 13.37572,
+              "p99": 13.964087
+            },
+            "client_rank": {
+              "count": 40,
+              "max": 0.0446,
+              "mean": 0.02052,
+              "min": 0.0171,
+              "p50": 0.0196,
+              "p95": 0.022644999999999995,
+              "p99": 0.03637099999999999
+            },
+            "client_response_frame_parse": {
+              "count": 40,
+              "max": 0.097,
+              "mean": 0.0717825,
+              "min": 0.0595,
+              "p50": 0.07055,
+              "p95": 0.08227499999999997,
+              "p99": 0.094036
+            },
+            "ipc_roundtrip": {
+              "count": 40,
+              "max": 214.5201,
+              "mean": 195.94836,
+              "min": 181.664,
+              "p50": 194.35125,
+              "p95": 210.16293499999998,
+              "p99": 214.163016
+            },
+            "online_end_to_end": {
+              "count": 40,
+              "max": 235.4966,
+              "mean": 213.4994025,
+              "min": 197.2664,
+              "p50": 211.16975,
+              "p95": 229.924855,
+              "p99": 234.48962
+            },
+            "server_ciphertext_serialize": {
+              "count": 40,
+              "max": 18.8029,
+              "mean": 10.356695,
+              "min": 6.7612,
+              "p50": 9.1631,
+              "p95": 16.321504999999995,
+              "p99": 18.38872
+            },
+            "server_gather": {
+              "count": 40,
+              "max": 0.4336,
+              "mean": 0.295425,
+              "min": 0.1411,
+              "p50": 0.29835,
+              "p95": 0.3820799999999999,
+              "p99": 0.426697
+            },
+            "server_he_evaluate": {
+              "count": 40,
+              "max": 146.01919999999998,
+              "mean": 130.7464575,
+              "min": 121.04570000000001,
+              "p50": 129.42385000000002,
+              "p95": 144.61611999999997,
+              "p99": 145.575887
+            },
+            "server_kernel_total": {
+              "count": 40,
+              "max": 213.6656,
+              "mean": 195.12167749999998,
+              "min": 180.8588,
+              "p50": 193.52985,
+              "p95": 209.32886499999998,
+              "p99": 213.32708
+            },
+            "server_plaintext_encode": {
+              "count": 40,
+              "max": 13.805299999999999,
+              "mean": 12.312972499999999,
+              "min": 11.183899999999998,
+              "p50": 12.31615,
+              "p95": 13.35775,
+              "p99": 13.797851
+            },
+            "server_request_deserialize": {
+              "count": 40,
+              "max": 10.0199,
+              "mean": 7.321062499999999,
+              "min": 6.1763,
+              "p50": 7.35065,
+              "p95": 8.479579999999999,
+              "p99": 9.53981
+            },
+            "server_response_frame_serialize": {
+              "count": 40,
+              "max": 0.163,
+              "mean": 0.0595575,
+              "min": 0.0484,
+              "p50": 0.0561,
+              "p95": 0.06987999999999994,
+              "p99": 0.13468599999999997
+            },
+            "server_score_pack": {
+              "count": 40,
+              "max": 38.4852,
+              "mean": 33.6148175,
+              "min": 30.8267,
+              "p50": 32.661249999999995,
+              "p95": 37.641835,
+              "p99": 38.268437999999996
+            },
+            "server_total": {
+              "count": 40,
+              "max": 214.141,
+              "mean": 195.5361275,
+              "min": 181.247,
+              "p50": 193.9446,
+              "p95": 209.739275,
+              "p99": 213.783877
+            }
+          },
+          "metrics_canonical_primary": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 40,
+                "mean": 0.9049999999999999
+              },
+              "ndcg_at_10": {
+                "count": 40,
+                "mean": 0.6959461208417809
+              },
+              "recall_at_10": {
+                "count": 40,
+                "mean": 0.017381358596283914
+              },
+              "recall_at_100": {
+                "count": 40,
+                "mean": 0.09287646260494964
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 40,
+                "mean": 0.9049999999999999
+              },
+              "ndcg_at_10": {
+                "count": 40,
+                "mean": 0.6958666958797212
+              },
+              "recall_at_10": {
+                "count": 40,
+                "mean": 0.017381358596283914
+              },
+              "recall_at_100": {
+                "count": 40,
+                "mean": 0.09287646260494964
+              }
+            }
+          },
+          "metrics_evaluable_sensitivity": {
+            "ckks_segmented_score_packed": {
+              "mrr_at_10": {
+                "count": 40,
+                "mean": 0.9049999999999999
+              },
+              "ndcg_at_10": {
+                "count": 40,
+                "mean": 0.6959461208417809
+              },
+              "recall_at_10": {
+                "count": 40,
+                "mean": 0.017381358596283914
+              },
+              "recall_at_100": {
+                "count": 40,
+                "mean": 0.09287646260494964
+              }
+            },
+            "pq_projected_rerank": {
+              "mrr_at_10": {
+                "count": 40,
+                "mean": 0.9049999999999999
+              },
+              "ndcg_at_10": {
+                "count": 40,
+                "mean": 0.6958666958797212
+              },
+              "recall_at_10": {
+                "count": 40,
+                "mean": 0.017381358596283914
+              },
+              "recall_at_100": {
+                "count": 40,
+                "mean": 0.09287646260494964
+              }
+            }
+          },
+          "selected_query_count": 40,
+          "selected_query_ids_sha256": "9f2b46316214552d1716459437cfd534bcbc3e2fba99765aa173d8bb860dc9b6",
+          "subset_validity": "Exact subset of independent per-query CKKS requests; no cross-query state, training, aggregation, or cryptographic replay is required."
+        },
+        "canonical_count": 40,
+        "canonical_metric_policy": "All selected positive judgments exist in the corpus.",
+        "canonical_missing_positive_qids": [],
+        "evaluable_count": 40,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\trec-covid_confirmatory_qids.txt",
+        "ids_sha256": "0994546807e8b104b9d13b8af6a939006174e10c53b0df8cb503922c5633a367",
+        "ir_metrics": {
+          "pq_only": {
+            "mrr_at_10": {
+              "count": 40,
+              "mean": 0.825
+            },
+            "ndcg_at_10": {
+              "count": 40,
+              "mean": 0.5803543408553666
+            },
+            "recall_at_10": {
+              "count": 40,
+              "mean": 0.01405628213104244
+            },
+            "recall_at_100": {
+              "count": 40,
+              "mean": 0.09287646260494964
+            }
+          },
+          "pq_projected_rerank": {
+            "mrr_at_10": {
+              "count": 40,
+              "mean": 0.905
+            },
+            "ndcg_at_10": {
+              "count": 40,
+              "mean": 0.6958666958797212
+            },
+            "recall_at_10": {
+              "count": 40,
+              "mean": 0.017381358596283914
+            },
+            "recall_at_100": {
+              "count": 40,
+              "mean": 0.09287646260494964
+            }
+          },
+          "projected_exact": {
+            "mrr_at_10": {
+              "count": 40,
+              "mean": 0.8841666666666667
+            },
+            "ndcg_at_10": {
+              "count": 40,
+              "mean": 0.686702869521442
+            },
+            "recall_at_10": {
+              "count": 40,
+              "mean": 0.017182135716077115
+            },
+            "recall_at_100": {
+              "count": 40,
+              "mean": 0.12068806462570669
+            }
+          },
+          "raw_exact": {
+            "mrr_at_10": {
+              "count": 40,
+              "mean": 0.8645833333333333
+            },
+            "ndcg_at_10": {
+              "count": 40,
+              "mean": 0.695635362045381
+            },
+            "recall_at_10": {
+              "count": 40,
+              "mean": 0.017459779645658355
+            },
+            "recall_at_100": {
+              "count": 40,
+              "mean": 0.12125037956359734
+            }
+          }
+        },
+        "policy": {
+          "beir_comparable_full_test": false,
+          "heldout_test_queries": 40,
+          "partition_seed": 2026,
+          "policy": "deterministic_hash_partition_of_official_test",
+          "requested_split": "test",
+          "source_qrels": "test",
+          "validation_fraction": 0.2,
+          "validation_queries": 10
+        }
+      },
+      "validation": {
+        "count": 10,
+        "ids_file": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\ir_expansion\\splits\\trec-covid_validation_qids.txt",
+        "ids_sha256": "5c78b6abd20ad69063a0ea01ede8dbfd0607204f49a095f881dad1407caa2c7c",
+        "policy": {
+          "beir_comparable_full_test": false,
+          "heldout_test_queries": 40,
+          "partition_seed": 2026,
+          "policy": "deterministic_hash_partition_of_official_test",
+          "requested_split": "validation",
+          "source_qrels": "test",
+          "validation_fraction": 0.2,
+          "validation_queries": 10
+        }
+      }
+    }
+  },
+  "schema": "ir_expansion.confirmatory_splits.v1",
+  "split_seed": 2026,
+  "validation_fraction": 0.2
+}

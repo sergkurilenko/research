@@ -1,0 +1,371 @@
+{
+  "across_restart_online_summary_ms": {
+    "mean": {
+      "count": 5,
+      "max": 282.287711,
+      "mean": 258.8977966,
+      "min": 252.350629,
+      "p50": 253.19791299999997,
+      "p95": 276.5791208,
+      "p99": 281.14599296,
+      "std": 11.70362320971052
+    },
+    "p50": {
+      "count": 5,
+      "max": 278.46695,
+      "mean": 258.05055000000004,
+      "min": 251.45690000000002,
+      "p50": 253.7024,
+      "p95": 273.53195999999997,
+      "p99": 277.47995199999997,
+      "std": 10.242601655927068
+    },
+    "p95": {
+      "count": 5,
+      "max": 308.26787,
+      "mean": 286.860684,
+      "min": 278.201325,
+      "p50": 280.218955,
+      "p95": 304.10889000000003,
+      "p99": 307.436074,
+      "std": 11.16132834886754
+    },
+    "p99": {
+      "count": 5,
+      "max": 388.6699340000012,
+      "mean": 316.09712240000033,
+      "min": 291.385917,
+      "p50": 302.97927100000004,
+      "p95": 372.056788200001,
+      "p99": 385.3473048400012,
+      "std": 36.73619226693805
+    }
+  },
+  "combined_request_latency_ms": {
+    "client_decrypt_decode": {
+      "count": 500,
+      "max": 39.0304,
+      "mean": 8.0309706,
+      "min": 5.9325,
+      "p50": 7.47645,
+      "p95": 10.90748499999999,
+      "p99": 20.844767999999966,
+      "std": 2.916475471392763
+    },
+    "client_encrypt_serialize": {
+      "count": 500,
+      "max": 187.9638,
+      "mean": 12.295290999999999,
+      "min": 9.0046,
+      "p50": 10.85465,
+      "p95": 16.785029999999978,
+      "p99": 25.618055999999978,
+      "std": 8.528784376471185
+    },
+    "client_pq_search": {
+      "count": 500,
+      "max": 45.6377,
+      "mean": 24.7736774,
+      "min": 21.6211,
+      "p50": 24.77465,
+      "p95": 27.777314999999994,
+      "p99": 30.451435999999994,
+      "std": 2.0055392454871686
+    },
+    "client_query_projection": {
+      "count": 500,
+      "max": 0.8216,
+      "mean": 0.25234059999999997,
+      "min": 0.158,
+      "p50": 0.2462,
+      "p95": 0.3436,
+      "p99": 0.4419549999999999,
+      "std": 0.05809233556709525
+    },
+    "client_rank": {
+      "count": 500,
+      "max": 0.0526,
+      "mean": 0.025345000000000003,
+      "min": 0.0192,
+      "p50": 0.0244,
+      "p95": 0.033804999999999995,
+      "p99": 0.047507999999999995,
+      "std": 0.00451553706661788
+    },
+    "client_response_frame_parse": {
+      "count": 500,
+      "max": 0.2291,
+      "mean": 0.078475,
+      "min": 0.0597,
+      "p50": 0.07444999999999999,
+      "p95": 0.10591499999999998,
+      "p99": 0.14924299999999976,
+      "std": 0.017483406847636992
+    },
+    "ipc_roundtrip": {
+      "count": 500,
+      "max": 407.7639,
+      "mean": 213.30746960000002,
+      "min": 179.0362,
+      "p50": 211.83429999999998,
+      "p95": 245.90454499999998,
+      "p99": 259.782741,
+      "std": 19.720098247932636
+    },
+    "online_end_to_end": {
+      "count": 500,
+      "max": 626.1347,
+      "mean": 258.8977966,
+      "min": 219.2135,
+      "p50": 256.23635,
+      "p95": 292.87320500000004,
+      "p99": 309.4389049999999,
+      "std": 26.222258416611798
+    },
+    "server_ciphertext_serialize": {
+      "count": 500,
+      "max": 78.2049,
+      "mean": 12.209192200000002,
+      "min": 6.506,
+      "p50": 10.6586,
+      "p95": 20.216825,
+      "p99": 33.24975299999999,
+      "std": 6.124146195638961
+    },
+    "server_gather": {
+      "count": 500,
+      "max": 43.9865,
+      "mean": 5.1105100000000006,
+      "min": 0.097,
+      "p50": 0.3411,
+      "p95": 30.312899999999964,
+      "p99": 37.04179099999999,
+      "std": 10.452355433343243
+    },
+    "server_he_evaluate": {
+      "count": 500,
+      "max": 178.50700000000003,
+      "mean": 137.40834700000002,
+      "min": 119.81830000000001,
+      "p50": 138.14300000000003,
+      "p95": 149.81881499999997,
+      "p99": 158.88080100000005,
+      "std": 8.47488313673121
+    },
+    "server_kernel_total": {
+      "count": 500,
+      "max": 373.5898,
+      "mean": 207.56398940000003,
+      "min": 178.2507,
+      "p50": 207.71224999999998,
+      "p95": 229.664675,
+      "p99": 245.69611799999993,
+      "std": 15.762422439240348
+    },
+    "server_plaintext_encode": {
+      "count": 500,
+      "max": 16.192499999999995,
+      "mean": 13.0515438,
+      "min": 11.107800000000001,
+      "p50": 13.1678,
+      "p95": 14.270494999999999,
+      "p99": 15.036092999999997,
+      "std": 0.8764191571055256
+    },
+    "server_request_deserialize": {
+      "count": 500,
+      "max": 179.7339,
+      "mean": 8.403295,
+      "min": 6.1632,
+      "p50": 7.6873000000000005,
+      "p95": 10.365995,
+      "p99": 15.074378999999995,
+      "std": 7.855713129894382
+    },
+    "server_response_frame_serialize": {
+      "count": 500,
+      "max": 0.3754,
+      "mean": 0.0819956,
+      "min": 0.0475,
+      "p50": 0.07395,
+      "p95": 0.1273199999999999,
+      "p99": 0.2107149999999998,
+      "std": 0.032140772558232014
+    },
+    "server_score_pack": {
+      "count": 500,
+      "max": 58.6611,
+      "mean": 35.573818599999996,
+      "min": 30.7671,
+      "p50": 35.6839,
+      "p95": 41.141304999999996,
+      "p99": 45.96457399999999,
+      "std": 3.3147188934559804
+    },
+    "server_total": {
+      "count": 500,
+      "max": 407.3064,
+      "mean": 212.8204424,
+      "min": 178.6441,
+      "p50": 211.3899,
+      "p95": 245.423185,
+      "p99": 259.297593,
+      "std": 19.701728140454133
+    }
+  },
+  "config": {
+    "ckks": {
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        60
+      ],
+      "global_scale": 1099511627776.0,
+      "poly_modulus_degree": 8192,
+      "scale_bits": 40,
+      "slot_count": 4096
+    },
+    "method": "segmented_score_packed",
+    "n_docs": 1000000,
+    "n_queries": 100,
+    "projected_dimension": 672,
+    "shortlist_k": 100,
+    "split": "validation",
+    "top_k": 10
+  },
+  "created_utc": "2026-07-10T18:19:15.599538+00:00",
+  "payload_bytes": {
+    "request": {
+      "count": 500,
+      "max": 236470.0,
+      "mean": 236289.808,
+      "min": 236150.0,
+      "p50": 236290.0,
+      "p95": 236357.05,
+      "p99": 236391.14,
+      "std": 43.16692178045592
+    },
+    "response": {
+      "count": 500,
+      "max": 131876.0,
+      "mean": 131876.0,
+      "min": 131876.0,
+      "p50": 131876.0,
+      "p95": 131876.0,
+      "p99": 131876.0,
+      "std": 0.0
+    },
+    "total": {
+      "count": 500,
+      "max": 368346.0,
+      "mean": 368165.808,
+      "min": 368026.0,
+      "p50": 368166.0,
+      "p95": 368233.05,
+      "p99": 368267.14,
+      "std": 43.16692178045592
+    }
+  },
+  "projected_documents": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\cache\\E_docs_e5base_proj672_1000000.npy",
+  "request_count": 500,
+  "restart_count": 5,
+  "runs": [
+    {
+      "online_end_to_end": {
+        "mean": 282.287711,
+        "p50": 278.46695,
+        "p95": 308.26787,
+        "p99": 388.6699340000012
+      },
+      "query_log_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_1.jsonl",
+      "restart": 1,
+      "server_pid": 29900,
+      "server_total": {
+        "mean": 234.664378,
+        "p50": 232.31959999999998,
+        "p95": 259.30996500000003,
+        "p99": 310.0015770000005
+      },
+      "startup_ms": 131.6647,
+      "summary_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_1.json"
+    },
+    {
+      "online_end_to_end": {
+        "mean": 252.350629,
+        "p50": 251.45690000000002,
+        "p95": 280.218955,
+        "p99": 302.97927100000004
+      },
+      "query_log_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_2.jsonl",
+      "restart": 2,
+      "server_pid": 35396,
+      "server_total": {
+        "mean": 206.52739200000005,
+        "p50": 207.2572,
+        "p95": 224.38250499999998,
+        "p99": 235.8263100000001
+      },
+      "startup_ms": 111.2006,
+      "summary_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_2.json"
+    },
+    {
+      "online_end_to_end": {
+        "mean": 252.90796999999998,
+        "p50": 253.792,
+        "p95": 278.201325,
+        "p99": 291.8462850000001
+      },
+      "query_log_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_3.jsonl",
+      "restart": 3,
+      "server_pid": 42504,
+      "server_total": {
+        "mean": 208.03682300000003,
+        "p50": 208.1833,
+        "p95": 232.36632,
+        "p99": 245.42247899999998
+      },
+      "startup_ms": 119.2217,
+      "summary_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_3.json"
+    },
+    {
+      "online_end_to_end": {
+        "mean": 253.74476,
+        "p50": 252.8345,
+        "p95": 287.47297,
+        "p99": 291.385917
+      },
+      "query_log_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_4.jsonl",
+      "restart": 4,
+      "server_pid": 6116,
+      "server_total": {
+        "mean": 207.816939,
+        "p50": 208.17329999999998,
+        "p95": 229.56671999999998,
+        "p99": 237.59614900000003
+      },
+      "startup_ms": 112.8098,
+      "summary_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_4.json"
+    },
+    {
+      "online_end_to_end": {
+        "mean": 253.19791299999997,
+        "p50": 253.7024,
+        "p95": 280.1423,
+        "p99": 305.60420500000015
+      },
+      "query_log_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_5.jsonl",
+      "restart": 5,
+      "server_pid": 42196,
+      "server_total": {
+        "mean": 207.05668000000003,
+        "p50": 208.32695,
+        "p95": 226.14343999999997,
+        "p99": 252.032957
+      },
+      "startup_ms": 133.0752,
+      "summary_path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\restarts\\unified_validation_restart_5.json"
+    }
+  ],
+  "schema": "unified_ckks_restart_aggregate.v1",
+  "scope": "five independent spawned-server restarts over the same frozen validation queries; query duplicates are retained only for systems latency"
+}

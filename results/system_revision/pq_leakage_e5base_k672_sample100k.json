@@ -1,0 +1,107 @@
+{
+  "artefacts": {
+    "basis": {
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\cache\\e5base_k672_basis.npz",
+      "public_in_protocol": true,
+      "shape": [
+        768,
+        672
+      ]
+    },
+    "projected_docs": {
+      "logical_float32_bytes": 2688000000,
+      "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\cache\\E_docs_e5base_proj672_1000000.npy",
+      "shape": [
+        1000000,
+        672
+      ]
+    },
+    "public_pq_index": {
+      "compression_vs_projected_float32": 27.800699679901005,
+      "compression_vs_raw_float32": 31.77222820560115,
+      "dimension": 672,
+      "ntotal": 1000000,
+      "path": "D:\\PHD\\research\\RES1\\notebooks\\_corpus_cache\\index_cache\\v2_indexpq_e5base_proj672_M96_b8.faiss",
+      "serialized_bytes": 96688214,
+      "sha256": "479df1b07e1cd3d374923f2cf566af4e2f84af98428f4fc0b1494679d23a45dc"
+    },
+    "raw_docs": {
+      "logical_float32_bytes": 3072000000,
+      "path": "D:\\PHD\\research\\RES1\\notebooks\\_corpus_cache\\E_docs_e5base_1000000.npy",
+      "shape": [
+        1000000,
+        768
+      ]
+    }
+  },
+  "created_utc": "2026-07-10T18:02:38.093781+00:00",
+  "interpretation": {
+    "claim": "The public PQ artefact is a lossy view of provider geometry; it is not cryptographic document privacy.",
+    "non_claim": "No resistance to reconstruction, inversion, membership inference, or adaptive score-oracle extraction is asserted."
+  },
+  "reconstruction": {
+    "lifted_original_space": {
+      "coordinate_rmse": 0.009799279272556305,
+      "cosine": {
+        "max": 0.9852114915453811,
+        "mean": 0.9624475010775096,
+        "median": 0.9624834881611628,
+        "min": 0.9334256251885181,
+        "p01": 0.9525476887093863,
+        "p05": 0.9557969278677633,
+        "p95": 0.9689628236276014,
+        "p99": 0.9719595333897099,
+        "std": 0.004084485474648574
+      },
+      "relative_l2_error": {
+        "max": 0.35898706316947937,
+        "mean": 0.27117234787985683,
+        "median": 0.2714671343564987,
+        "min": 0.17134326696395874,
+        "p01": 0.2353685799241066,
+        "p05": 0.24738280326128007,
+        "p95": 0.2941322490572929,
+        "p99": 0.3044896641373634,
+        "std": 0.01460962657651665
+      }
+    },
+    "projected_space": {
+      "coordinate_rmse": 0.010436088778078556,
+      "cosine": {
+        "max": 0.9514237622022549,
+        "mean": 0.8604726656909558,
+        "median": 0.8603253826132369,
+        "min": 0.8005765409516928,
+        "p01": 0.831996865617278,
+        "p05": 0.840606497881578,
+        "p95": 0.8803247257570301,
+        "p99": 0.8906274220524941,
+        "std": 0.012615132932343228
+      },
+      "relative_l2_error": {
+        "max": 0.603076159954071,
+        "mean": 0.5099258733141422,
+        "median": 0.510730654001236,
+        "min": 0.3079756200313568,
+        "p01": 0.45626517057418825,
+        "p05": 0.47542388886213305,
+        "p95": 0.542914655804634,
+        "p99": 0.5563538593053817,
+        "std": 0.021903987844483348
+      }
+    }
+  },
+  "sample": {
+    "id_sha256": "4447a1d79021421cf58e4acfefc7363e820f6820a6ebf1e262e07eead73b2ec5",
+    "n_docs": 1000000,
+    "sample_size": 100000,
+    "seed": 2026
+  },
+  "schema": "public_pq_leakage_audit.v1",
+  "software": {
+    "faiss": "1.13.2",
+    "numpy": "2.4.3",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15"
+  }
+}

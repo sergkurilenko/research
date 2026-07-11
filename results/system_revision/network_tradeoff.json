@@ -1,0 +1,425 @@
+{
+  "created_utc": "2026-07-10T18:30:12.596698+00:00",
+  "scenarios": [
+    {
+      "link_mbps": 100.0,
+      "methods": {
+        "packed_ckks": {
+          "disclosure": "query numerical values and scores encrypted; candidate IDs, public PQ geometry, sizes/timing exposed; exact vectors not directly returned",
+          "ideal_payload_serialization_ms": 29.4525886,
+          "local_p50_ms": 285.5298,
+          "local_p95_ms": 323.50180499999993,
+          "modeled_p50_ms": 315.98238860000004,
+          "modeled_p95_ms": 353.95439359999995,
+          "payload_bytes": 368157.3575
+        },
+        "pq_only": {
+          "disclosure": "public PQ geometry; approximate ordering; no rerank request",
+          "ideal_payload_serialization_ms": 0.0,
+          "local_p50_ms": 24.67915,
+          "local_p95_ms": 28.061629999999997,
+          "modeled_p50_ms": 25.67915,
+          "modeled_p95_ms": 29.061629999999997,
+          "payload_bytes": 0.0
+        },
+        "projected_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 10.815999999999999,
+          "local_p50_ms": 24.94005,
+          "local_p95_ms": 28.355544999999996,
+          "modeled_p50_ms": 36.75605,
+          "modeled_p95_ms": 40.171544999999995,
+          "payload_bytes": 135200.0
+        },
+        "projected_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 21.568,
+          "local_p50_ms": 24.987,
+          "local_p95_ms": 28.482694999999996,
+          "modeled_p50_ms": 47.555,
+          "modeled_p95_ms": 51.050695,
+          "payload_bytes": 269600.0
+        },
+        "projected_int8_symmetric_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 5.472,
+          "local_p50_ms": 25.03105,
+          "local_p95_ms": 28.504934999999996,
+          "modeled_p50_ms": 31.50305,
+          "modeled_p95_ms": 34.976935,
+          "payload_bytes": 68400.0
+        },
+        "raw_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 12.352,
+          "local_p50_ms": 25.0841,
+          "local_p95_ms": 28.516509999999997,
+          "modeled_p50_ms": 38.436099999999996,
+          "modeled_p95_ms": 41.86851,
+          "payload_bytes": 154400.0
+        },
+        "raw_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 24.639999999999997,
+          "local_p50_ms": 25.02735,
+          "local_p95_ms": 28.504534999999997,
+          "modeled_p50_ms": 50.66735,
+          "modeled_p95_ms": 54.14453499999999,
+          "payload_bytes": 308000.0
+        }
+      },
+      "rtt_ms": 1.0
+    },
+    {
+      "link_mbps": 100.0,
+      "methods": {
+        "packed_ckks": {
+          "disclosure": "query numerical values and scores encrypted; candidate IDs, public PQ geometry, sizes/timing exposed; exact vectors not directly returned",
+          "ideal_payload_serialization_ms": 29.4525886,
+          "local_p50_ms": 285.5298,
+          "local_p95_ms": 323.50180499999993,
+          "modeled_p50_ms": 334.98238860000004,
+          "modeled_p95_ms": 372.95439359999995,
+          "payload_bytes": 368157.3575
+        },
+        "pq_only": {
+          "disclosure": "public PQ geometry; approximate ordering; no rerank request",
+          "ideal_payload_serialization_ms": 0.0,
+          "local_p50_ms": 24.67915,
+          "local_p95_ms": 28.061629999999997,
+          "modeled_p50_ms": 44.67915,
+          "modeled_p95_ms": 48.061629999999994,
+          "payload_bytes": 0.0
+        },
+        "projected_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 10.815999999999999,
+          "local_p50_ms": 24.94005,
+          "local_p95_ms": 28.355544999999996,
+          "modeled_p50_ms": 55.75605,
+          "modeled_p95_ms": 59.171544999999995,
+          "payload_bytes": 135200.0
+        },
+        "projected_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 21.568,
+          "local_p50_ms": 24.987,
+          "local_p95_ms": 28.482694999999996,
+          "modeled_p50_ms": 66.555,
+          "modeled_p95_ms": 70.05069499999999,
+          "payload_bytes": 269600.0
+        },
+        "projected_int8_symmetric_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 5.472,
+          "local_p50_ms": 25.03105,
+          "local_p95_ms": 28.504934999999996,
+          "modeled_p50_ms": 50.50305,
+          "modeled_p95_ms": 53.976935,
+          "payload_bytes": 68400.0
+        },
+        "raw_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 12.352,
+          "local_p50_ms": 25.0841,
+          "local_p95_ms": 28.516509999999997,
+          "modeled_p50_ms": 57.436099999999996,
+          "modeled_p95_ms": 60.86851,
+          "payload_bytes": 154400.0
+        },
+        "raw_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 24.639999999999997,
+          "local_p50_ms": 25.02735,
+          "local_p95_ms": 28.504534999999997,
+          "modeled_p50_ms": 69.66735,
+          "modeled_p95_ms": 73.14453499999999,
+          "payload_bytes": 308000.0
+        }
+      },
+      "rtt_ms": 20.0
+    },
+    {
+      "link_mbps": 100.0,
+      "methods": {
+        "packed_ckks": {
+          "disclosure": "query numerical values and scores encrypted; candidate IDs, public PQ geometry, sizes/timing exposed; exact vectors not directly returned",
+          "ideal_payload_serialization_ms": 29.4525886,
+          "local_p50_ms": 285.5298,
+          "local_p95_ms": 323.50180499999993,
+          "modeled_p50_ms": 394.98238860000004,
+          "modeled_p95_ms": 432.95439359999995,
+          "payload_bytes": 368157.3575
+        },
+        "pq_only": {
+          "disclosure": "public PQ geometry; approximate ordering; no rerank request",
+          "ideal_payload_serialization_ms": 0.0,
+          "local_p50_ms": 24.67915,
+          "local_p95_ms": 28.061629999999997,
+          "modeled_p50_ms": 104.67914999999999,
+          "modeled_p95_ms": 108.06163,
+          "payload_bytes": 0.0
+        },
+        "projected_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 10.815999999999999,
+          "local_p50_ms": 24.94005,
+          "local_p95_ms": 28.355544999999996,
+          "modeled_p50_ms": 115.75605,
+          "modeled_p95_ms": 119.171545,
+          "payload_bytes": 135200.0
+        },
+        "projected_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 21.568,
+          "local_p50_ms": 24.987,
+          "local_p95_ms": 28.482694999999996,
+          "modeled_p50_ms": 126.555,
+          "modeled_p95_ms": 130.050695,
+          "payload_bytes": 269600.0
+        },
+        "projected_int8_symmetric_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 5.472,
+          "local_p50_ms": 25.03105,
+          "local_p95_ms": 28.504934999999996,
+          "modeled_p50_ms": 110.50305,
+          "modeled_p95_ms": 113.976935,
+          "payload_bytes": 68400.0
+        },
+        "raw_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 12.352,
+          "local_p50_ms": 25.0841,
+          "local_p95_ms": 28.516509999999997,
+          "modeled_p50_ms": 117.4361,
+          "modeled_p95_ms": 120.86851,
+          "payload_bytes": 154400.0
+        },
+        "raw_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 24.639999999999997,
+          "local_p50_ms": 25.02735,
+          "local_p95_ms": 28.504534999999997,
+          "modeled_p50_ms": 129.66735,
+          "modeled_p95_ms": 133.144535,
+          "payload_bytes": 308000.0
+        }
+      },
+      "rtt_ms": 80.0
+    },
+    {
+      "link_mbps": 1000.0,
+      "methods": {
+        "packed_ckks": {
+          "disclosure": "query numerical values and scores encrypted; candidate IDs, public PQ geometry, sizes/timing exposed; exact vectors not directly returned",
+          "ideal_payload_serialization_ms": 2.9452588599999996,
+          "local_p50_ms": 285.5298,
+          "local_p95_ms": 323.50180499999993,
+          "modeled_p50_ms": 289.47505886000005,
+          "modeled_p95_ms": 327.44706385999996,
+          "payload_bytes": 368157.3575
+        },
+        "pq_only": {
+          "disclosure": "public PQ geometry; approximate ordering; no rerank request",
+          "ideal_payload_serialization_ms": 0.0,
+          "local_p50_ms": 24.67915,
+          "local_p95_ms": 28.061629999999997,
+          "modeled_p50_ms": 25.67915,
+          "modeled_p95_ms": 29.061629999999997,
+          "payload_bytes": 0.0
+        },
+        "projected_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 1.0816000000000001,
+          "local_p50_ms": 24.94005,
+          "local_p95_ms": 28.355544999999996,
+          "modeled_p50_ms": 27.02165,
+          "modeled_p95_ms": 30.437144999999997,
+          "payload_bytes": 135200.0
+        },
+        "projected_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 2.1568,
+          "local_p50_ms": 24.987,
+          "local_p95_ms": 28.482694999999996,
+          "modeled_p50_ms": 28.1438,
+          "modeled_p95_ms": 31.639494999999997,
+          "payload_bytes": 269600.0
+        },
+        "projected_int8_symmetric_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 0.5472,
+          "local_p50_ms": 25.03105,
+          "local_p95_ms": 28.504934999999996,
+          "modeled_p50_ms": 26.57825,
+          "modeled_p95_ms": 30.052134999999996,
+          "payload_bytes": 68400.0
+        },
+        "raw_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 1.2352,
+          "local_p50_ms": 25.0841,
+          "local_p95_ms": 28.516509999999997,
+          "modeled_p50_ms": 27.3193,
+          "modeled_p95_ms": 30.751709999999996,
+          "payload_bytes": 154400.0
+        },
+        "raw_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 2.464,
+          "local_p50_ms": 25.02735,
+          "local_p95_ms": 28.504534999999997,
+          "modeled_p50_ms": 28.491349999999997,
+          "modeled_p95_ms": 31.968534999999996,
+          "payload_bytes": 308000.0
+        }
+      },
+      "rtt_ms": 1.0
+    },
+    {
+      "link_mbps": 1000.0,
+      "methods": {
+        "packed_ckks": {
+          "disclosure": "query numerical values and scores encrypted; candidate IDs, public PQ geometry, sizes/timing exposed; exact vectors not directly returned",
+          "ideal_payload_serialization_ms": 2.9452588599999996,
+          "local_p50_ms": 285.5298,
+          "local_p95_ms": 323.50180499999993,
+          "modeled_p50_ms": 308.47505886000005,
+          "modeled_p95_ms": 346.44706385999996,
+          "payload_bytes": 368157.3575
+        },
+        "pq_only": {
+          "disclosure": "public PQ geometry; approximate ordering; no rerank request",
+          "ideal_payload_serialization_ms": 0.0,
+          "local_p50_ms": 24.67915,
+          "local_p95_ms": 28.061629999999997,
+          "modeled_p50_ms": 44.67915,
+          "modeled_p95_ms": 48.061629999999994,
+          "payload_bytes": 0.0
+        },
+        "projected_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 1.0816000000000001,
+          "local_p50_ms": 24.94005,
+          "local_p95_ms": 28.355544999999996,
+          "modeled_p50_ms": 46.02165,
+          "modeled_p95_ms": 49.437145,
+          "payload_bytes": 135200.0
+        },
+        "projected_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 2.1568,
+          "local_p50_ms": 24.987,
+          "local_p95_ms": 28.482694999999996,
+          "modeled_p50_ms": 47.1438,
+          "modeled_p95_ms": 50.639495,
+          "payload_bytes": 269600.0
+        },
+        "projected_int8_symmetric_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 0.5472,
+          "local_p50_ms": 25.03105,
+          "local_p95_ms": 28.504934999999996,
+          "modeled_p50_ms": 45.57825,
+          "modeled_p95_ms": 49.05213499999999,
+          "payload_bytes": 68400.0
+        },
+        "raw_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 1.2352,
+          "local_p50_ms": 25.0841,
+          "local_p95_ms": 28.516509999999997,
+          "modeled_p50_ms": 46.3193,
+          "modeled_p95_ms": 49.751709999999996,
+          "payload_bytes": 154400.0
+        },
+        "raw_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 2.464,
+          "local_p50_ms": 25.02735,
+          "local_p95_ms": 28.504534999999997,
+          "modeled_p50_ms": 47.49135,
+          "modeled_p95_ms": 50.968534999999996,
+          "payload_bytes": 308000.0
+        }
+      },
+      "rtt_ms": 20.0
+    },
+    {
+      "link_mbps": 1000.0,
+      "methods": {
+        "packed_ckks": {
+          "disclosure": "query numerical values and scores encrypted; candidate IDs, public PQ geometry, sizes/timing exposed; exact vectors not directly returned",
+          "ideal_payload_serialization_ms": 2.9452588599999996,
+          "local_p50_ms": 285.5298,
+          "local_p95_ms": 323.50180499999993,
+          "modeled_p50_ms": 368.47505886000005,
+          "modeled_p95_ms": 406.44706385999996,
+          "payload_bytes": 368157.3575
+        },
+        "pq_only": {
+          "disclosure": "public PQ geometry; approximate ordering; no rerank request",
+          "ideal_payload_serialization_ms": 0.0,
+          "local_p50_ms": 24.67915,
+          "local_p95_ms": 28.061629999999997,
+          "modeled_p50_ms": 104.67914999999999,
+          "modeled_p95_ms": 108.06163,
+          "payload_bytes": 0.0
+        },
+        "projected_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 1.0816000000000001,
+          "local_p50_ms": 24.94005,
+          "local_p95_ms": 28.355544999999996,
+          "modeled_p50_ms": 106.02165,
+          "modeled_p95_ms": 109.437145,
+          "payload_bytes": 135200.0
+        },
+        "projected_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 2.1568,
+          "local_p50_ms": 24.987,
+          "local_p95_ms": 28.482694999999996,
+          "modeled_p50_ms": 107.1438,
+          "modeled_p95_ms": 110.639495,
+          "payload_bytes": 269600.0
+        },
+        "projected_int8_symmetric_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 0.5472,
+          "local_p50_ms": 25.03105,
+          "local_p95_ms": 28.504934999999996,
+          "modeled_p50_ms": 105.57825,
+          "modeled_p95_ms": 109.05213499999999,
+          "payload_bytes": 68400.0
+        },
+        "raw_float16_return": {
+          "disclosure": "near-exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 1.2352,
+          "local_p50_ms": 25.0841,
+          "local_p95_ms": 28.516509999999997,
+          "modeled_p50_ms": 106.3193,
+          "modeled_p95_ms": 109.75171,
+          "payload_bytes": 154400.0
+        },
+        "raw_float32_return": {
+          "disclosure": "exact vector disclosure baseline; not a privacy protocol",
+          "ideal_payload_serialization_ms": 2.464,
+          "local_p50_ms": 25.02735,
+          "local_p95_ms": 28.504534999999997,
+          "modeled_p50_ms": 107.49135,
+          "modeled_p95_ms": 110.968535,
+          "payload_bytes": 308000.0
+        }
+      },
+      "rtt_ms": 80.0
+    }
+  ],
+  "schema": "retrieval_link_tradeoff.v1",
+  "scope": {
+    "formula": "local measured compute + one RTT + 8*payload_bytes/link_bps",
+    "not_measured": "No WAN sockets were used; TCP/TLS framing, handshake, congestion, retransmission, queueing, and final document-payload fetch are excluded.",
+    "pq_only_payload_note": "Zero refers only to ranking after the public index is onboarded; fetching final document content is outside every method row."
+  }
+}

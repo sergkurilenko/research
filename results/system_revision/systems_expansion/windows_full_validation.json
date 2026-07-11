@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "aggregate_count": 7,
+    "amortization_checked": true,
+    "attempted_requests": 1932,
+    "condition_count": 19,
+    "failed_requests": 0,
+    "key_component_sum_checked": true,
+    "loopback_and_tls_checked": true,
+    "role_attestations": 111,
+    "thread_environment_checked": true
+  },
+  "created_utc": "2026-07-11T15:03:17.964609+00:00",
+  "errors": [],
+  "input": {
+    "bytes": 589485,
+    "path": "D:\\PHD\\jsupercomp_submission\\revision_workspace\\results\\system_revision\\systems_expansion\\windows_full.json",
+    "sha256": "640b9098d310792c3b6ba52a4cd9f641614663bb55babebfc34e318563d249f9"
+  },
+  "schema": "systems_expansion_validation.v1",
+  "valid": true
+}

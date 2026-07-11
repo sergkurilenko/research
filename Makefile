@@ -1,37 +1,35 @@
-# SHARD — convenience targets. Override the interpreter with `make PY=python3`.
+# Reproducibility shortcuts for the journal revision.
+# Override tools when needed, for example: make test PY=python3
 PY ?= python
+PDFLATEX ?= pdflatex
+BIBTEX ?= bibtex
 
-.PHONY: help smoke test figures shard baseline paper clean
+.PHONY: help test figures validate paper bundle
 
 help:
-	@echo "make smoke     - synthetic correctness tests (no embeddings needed)"
-	@echo "make figures   - regenerate the SHARD figures into paper/figs/"
-	@echo "make shard     - run all SHARD experiments        (needs SHARD_DATA)"
-	@echo "make baseline  - run the lightweight baseline runs (needs SHARD_DATA)"
-	@echo "make paper     - build paper/paper_en.pdf"
-	@echo "make clean     - remove __pycache__ and LaTeX aux files"
+	@echo "make test      - run the complete current test suite"
+	@echo "make figures   - regenerate manuscript figures from result JSON"
+	@echo "make validate  - validate the completed systems result artifact"
+	@echo "make paper     - build the Springer Nature manuscript PDF"
+	@echo "make bundle    - build arXiv, journal-source, and Online Resource archives"
 
-smoke test:
-	$(PY) shard/test_shard.py
+test:
+	$(PY) -m pytest tests -q
 
 figures:
-	cd shard && $(PY) make_fig_shard.py
+	$(PY) system/make_revision_figures.py
+	$(PY) system/make_expansion_figures.py
 
-shard:
-	cd shard && for e in exp12_shard_utility exp13_shard_alignment exp14_shard_leakage \
-	    exp15_shard_reference exp17_beir_shard exp18_shard_cost exp19_shard_targeted \
-	    exp20_shard_microkey exp21_shard_vs_dp exp22_shard_learned_attack; do \
-	  echo "== $$e ==" && $(PY) $$e.py || exit 1; done
+validate:
+	$(PY) -m system.validate_systems_expansion \
+		--input results/system_revision/systems_expansion/windows_full.json \
+		--output results/system_revision/systems_expansion/windows_full_validation.json
 
-baseline:
-	cd baseline && for e in exp07_alignment_pq_leakage exp08_tradeoff_noise_sweep \
-	    exp09_reference_corpus_attack exp10_denoiser_significance exp11_beir_denoiser; do \
-	  echo "== $$e ==" && $(PY) $$e.py || exit 1; done
+paper: figures
+	cd paper_revised && $(PDFLATEX) -interaction=nonstopmode -halt-on-error main.tex
+	cd paper_revised && $(BIBTEX) main
+	cd paper_revised && $(PDFLATEX) -interaction=nonstopmode -halt-on-error main.tex
+	cd paper_revised && $(PDFLATEX) -interaction=nonstopmode -halt-on-error main.tex
 
-paper:
-	cd paper && pdflatex -interaction=nonstopmode paper_en.tex && \
-	            pdflatex -interaction=nonstopmode paper_en.tex
-
-clean:
-	rm -rf shard/__pycache__ baseline/__pycache__ \
-	       paper/*.aux paper/*.log paper/*.out paper/*.toc
+bundle: paper
+	$(PY) -m system.build_release_bundles

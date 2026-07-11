@@ -1,0 +1,17 @@
+TRANSCRIPT_SCHEMA ckks_lwe_extended_individual.raw.v1
+ESTIMATOR_COMMIT 3e48ef421ec256afddb3e7d2249a77eab6e9ba12
+COST_MODEL MATZOV
+SHAPE_MODEL GSA
+MODEL_BEGIN sigma_3_2_sensitivity
+PARAMETERS LWEParameters(n=8192, q=1461501441329443417981674104123436284398337261569, Xs=D(σ=0.82), Xe=D(σ=3.20), m=+Infinity, tag='SEAL CKKS N8192 q[60,40,60] sigma_3_2_sensitivity')
+ATTACK_BEGIN dual
+ATTACK dual ::          rop: ≈2^177.8
+         mem: ≈2^116.9
+           m: ≈2^13.0
+           β:      508
+           d:    16342
+           ↻:        1
+         tag:     dual
+ATTACK_STATUS completed
+ATTACK_ELAPSED_SECONDS 0.04356178501620889
+MODEL_END sigma_3_2_sensitivity

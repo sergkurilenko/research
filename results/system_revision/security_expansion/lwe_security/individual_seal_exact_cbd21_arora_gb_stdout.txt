@@ -1,0 +1,5 @@
+TRANSCRIPT_SCHEMA ckks_lwe_individual_attack.raw.v1
+ESTIMATOR_COMMIT 3e48ef421ec256afddb3e7d2249a77eab6e9ba12
+MODEL_BEGIN seal_exact_cbd21
+PARAMETERS LWEParameters(n=8192, q=1461501441329443417981674104123436284398337261569, Xs=D(σ=0.82), Xe=D(σ=3.24), m=+Infinity, tag='SEAL CKKS N8192 q[60,40,60] seal_exact_cbd21')
+ATTACK_BEGIN arora_gb

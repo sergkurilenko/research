@@ -1,0 +1,2 @@
+wsl: Конфигурация прокси-сервера localhost обнаружена, но не отражена в WSL. WSL в режиме NAT не поддерживает прокси-серверы localhost.
+wsl: Failed to start the systemd user session for 'root'. See journalctl for more details.
