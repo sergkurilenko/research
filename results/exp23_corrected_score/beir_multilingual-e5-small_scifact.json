@@ -1,0 +1,551 @@
+{
+  "schema_version": 1,
+  "suite": "beir",
+  "encoder": "multilingual-e5-small",
+  "dataset": "scifact",
+  "n_corpus": 5183,
+  "n_queries": 300,
+  "dimension": 384,
+  "mean_relevant_per_query": 1.13,
+  "cache": {
+    "npz": "results/exp17_outputs/emb/multilingual-e5-small_scifact.npz",
+    "npz_bytes": 8422378,
+    "meta": "results/exp17_outputs/emb/multilingual-e5-small_scifact_meta.json",
+    "meta_bytes": 70220
+  },
+  "pca": {
+    "n_fit": 5183,
+    "seed": 2026,
+    "orthogonality_max_abs_float64": 2.058683085115476e-15,
+    "orthogonality_max_abs_float32": 4.76837158203125e-07,
+    "explained_variance_total": 0.20588096295453454,
+    "top_eigenvalues": [
+      0.010047258676931476,
+      0.005106568915169148,
+      0.0039508637208985455,
+      0.003611191846367922,
+      0.0033490187903199103,
+      0.0032641864338385233,
+      0.0028445359179743,
+      0.0026229144344061084,
+      0.0024537050668330474,
+      0.0022839079098678303
+    ]
+  },
+  "score_identity": {
+    "formula": "corrected(q,x) = <V^T q,V^T(x-mu)> = raw(q,x)-<q,mu>",
+    "max_abs_error": 4.81832161502993e-07,
+    "mean_abs_error": 4.932456856579667e-08,
+    "rmse": 6.211103917899213e-08,
+    "max_within_query_std_of_raw_minus_corrected": 1.135956344815522e-07,
+    "max_within_query_range_of_raw_minus_corrected": 8.491333574056625e-07
+  },
+  "rank_equivalence": {
+    "queries": 300,
+    "top10_exact_fraction": 1.0,
+    "top100_exact_fraction": 0.9833333333333333,
+    "top100_mean_set_overlap": 1.0,
+    "full_order_queries_checked": 8,
+    "full_order_exact_fraction": 0.0,
+    "full_order_checks": [
+      {
+        "exact": false,
+        "same_position_fraction": 0.991124831178854,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.008875168821146055,
+        "query_index": 0
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9938259695157244,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.006174030484275516,
+        "query_index": 1
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9922824618946556,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.007717538105344395,
+        "query_index": 2
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9953694771367934,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.004630522863206637,
+        "query_index": 3
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9934400926104573,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.006559907389542736,
+        "query_index": 4
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9942118464209917,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.005788153579008296,
+        "query_index": 5
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9955624155894269,
+        "max_rank_displacement": 2,
+        "mean_rank_displacement": 0.004630522863206637,
+        "query_index": 6
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9953694771367934,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.004630522863206637,
+        "query_index": 7
+      }
+    ],
+    "note": "Full-order differences can arise only from finite-precision near-tie swaps; top-k and IR metrics are the operational checks."
+  },
+  "float64_reference_check": {
+    "queries": 8,
+    "max_abs_error": 6.245004513516506e-16,
+    "mean_abs_error": 1.1813980804516315e-16,
+    "rmse": 1.483861358392153e-16,
+    "top10_exact_fraction": 1.0,
+    "top100_exact_fraction": 1.0,
+    "top100_mean_set_overlap": 1.0,
+    "full_order_exact_fraction": 1.0,
+    "full_order_checks": [
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 0
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 1
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 2
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 3
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 4
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 5
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 6
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 7
+      }
+    ]
+  },
+  "metrics": {
+    "raw": {
+      "ndcg10": 0.5982147684515763,
+      "recall10": 0.7339444444444445,
+      "recall100": 0.901
+    },
+    "old_centered_full": {
+      "ndcg10": 0.5588403165415794,
+      "recall10": 0.6956111111111111,
+      "recall100": 0.8793333333333334,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.03937445190999694,
+          "ci95_low": -0.0589498583533299,
+          "ci95_high": -0.020257415933275104
+        },
+        "recall10": {
+          "delta": -0.03833333333333333,
+          "ci95_low": -0.06833333333333333,
+          "ci95_high": -0.01
+        },
+        "recall100": {
+          "delta": -0.021666666666666667,
+          "ci95_low": -0.045,
+          "ci95_high": 0.0
+        }
+      }
+    },
+    "corrected_full": {
+      "ndcg10": 0.5982147684515763,
+      "recall10": 0.7339444444444445,
+      "recall100": 0.901,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "recall10": {
+          "delta": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "recall100": {
+          "delta": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        }
+      }
+    },
+    "old_centered_half_pca": {
+      "ndcg10": 0.5221890383036324,
+      "recall10": 0.6582777777777777,
+      "recall100": 0.876,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.07602573014794389,
+          "ci95_low": -0.0996910397983858,
+          "ci95_high": -0.05353192864933816
+        },
+        "recall10": {
+          "delta": -0.07566666666666666,
+          "ci95_low": -0.11066666666666668,
+          "ci95_high": -0.043166666666666666
+        },
+        "recall100": {
+          "delta": -0.025,
+          "ci95_low": -0.046708333333333296,
+          "ci95_high": -0.005
+        }
+      }
+    },
+    "corrected_half_pca": {
+      "ndcg10": 0.5493673033147642,
+      "recall10": 0.699111111111111,
+      "recall100": 0.8603333333333334,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.048847465136812054,
+          "ci95_low": -0.06790280994534814,
+          "ci95_high": -0.03026832955841269
+        },
+        "recall10": {
+          "delta": -0.034833333333333334,
+          "ci95_low": -0.06300416666666667,
+          "ci95_high": -0.009833333333333335
+        },
+        "recall100": {
+          "delta": -0.04066666666666666,
+          "ci95_low": -0.065,
+          "ci95_high": -0.017333333333333333
+        }
+      }
+    },
+    "legacy_hybrid_dpub48_kc100": {
+      "ndcg10": 0.5324545289306086,
+      "recall10": 0.6426111111111111,
+      "recall100": 0.75,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.06576023952096767,
+          "ci95_low": -0.09356081494938523,
+          "ci95_high": -0.04053442759575907
+        },
+        "recall10": {
+          "delta": -0.09133333333333332,
+          "ci95_low": -0.12766666666666665,
+          "ci95_high": -0.056666666666666664
+        },
+        "recall100": {
+          "delta": -0.151,
+          "ci95_low": -0.19766666666666666,
+          "ci95_high": -0.106
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub48_kc100": {
+      "ndcg10": 0.5324545289306086,
+      "recall10": 0.6426111111111111,
+      "recall100": 0.75,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.06576023952096767,
+          "ci95_low": -0.09356081494938523,
+          "ci95_high": -0.04053442759575907
+        },
+        "recall10": {
+          "delta": -0.09133333333333332,
+          "ci95_low": -0.12766666666666665,
+          "ci95_high": -0.056666666666666664
+        },
+        "recall100": {
+          "delta": -0.151,
+          "ci95_low": -0.19766666666666666,
+          "ci95_high": -0.106
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub48_kc100": {
+      "ndcg10": 0.5629983932136112,
+      "recall10": 0.6765,
+      "recall100": 0.7558888888888889,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.03521637523796506,
+          "ci95_low": -0.057092615550985194,
+          "ci95_high": -0.016246817313873167
+        },
+        "recall10": {
+          "delta": -0.05744444444444445,
+          "ci95_low": -0.08911111111111111,
+          "ci95_high": -0.028555555555555556
+        },
+        "recall100": {
+          "delta": -0.1451111111111111,
+          "ci95_low": -0.18699999999999997,
+          "ci95_high": -0.10577777777777778
+        }
+      }
+    },
+    "legacy_hybrid_dpub48_kc200": {
+      "ndcg10": 0.5734762235232231,
+      "recall10": 0.6882777777777778,
+      "recall100": 0.8023333333333333,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.024738544928353166,
+          "ci95_low": -0.04271391761091328,
+          "ci95_high": -0.009179117583796649
+        },
+        "recall10": {
+          "delta": -0.04566666666666666,
+          "ci95_low": -0.073,
+          "ci95_high": -0.020666666666666667
+        },
+        "recall100": {
+          "delta": -0.09866666666666667,
+          "ci95_low": -0.134,
+          "ci95_high": -0.06533333333333334
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub48_kc200": {
+      "ndcg10": 0.5734762235232231,
+      "recall10": 0.6882777777777778,
+      "recall100": 0.8023333333333333,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.024738544928353166,
+          "ci95_low": -0.04271391761091328,
+          "ci95_high": -0.009179117583796649
+        },
+        "recall10": {
+          "delta": -0.04566666666666666,
+          "ci95_low": -0.073,
+          "ci95_high": -0.020666666666666667
+        },
+        "recall100": {
+          "delta": -0.09866666666666667,
+          "ci95_low": -0.134,
+          "ci95_high": -0.06533333333333334
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub48_kc200": {
+      "ndcg10": 0.5855813326545448,
+      "recall10": 0.7066111111111111,
+      "recall100": 0.8073333333333333,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.01263343579703143,
+          "ci95_low": -0.02564652623592017,
+          "ci95_high": -0.0015913689620093464
+        },
+        "recall10": {
+          "delta": -0.02733333333333333,
+          "ci95_low": -0.05,
+          "ci95_high": -0.008
+        },
+        "recall100": {
+          "delta": -0.09366666666666668,
+          "ci95_low": -0.12733333333333335,
+          "ci95_high": -0.06233333333333333
+        }
+      }
+    },
+    "legacy_hybrid_dpub96_kc100": {
+      "ndcg10": 0.5830100299961088,
+      "recall10": 0.7066111111111111,
+      "recall100": 0.8273333333333334,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.015204738455467362,
+          "ci95_low": -0.030381562418179235,
+          "ci95_high": -0.002359756299453024
+        },
+        "recall10": {
+          "delta": -0.02733333333333333,
+          "ci95_low": -0.051333333333333335,
+          "ci95_high": -0.005
+        },
+        "recall100": {
+          "delta": -0.07366666666666667,
+          "ci95_low": -0.11,
+          "ci95_high": -0.03866666666666667
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub96_kc100": {
+      "ndcg10": 0.5830100299961088,
+      "recall10": 0.7066111111111111,
+      "recall100": 0.8273333333333334,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.015204738455467362,
+          "ci95_low": -0.030381562418179235,
+          "ci95_high": -0.002359756299453024
+        },
+        "recall10": {
+          "delta": -0.02733333333333333,
+          "ci95_low": -0.051333333333333335,
+          "ci95_high": -0.005
+        },
+        "recall100": {
+          "delta": -0.07366666666666667,
+          "ci95_low": -0.11,
+          "ci95_high": -0.03866666666666667
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub96_kc100": {
+      "ndcg10": 0.5911803806729077,
+      "recall10": 0.7199444444444444,
+      "recall100": 0.829,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.007034387778668563,
+          "ci95_low": -0.017078169546879816,
+          "ci95_high": 0.0010170231805902105
+        },
+        "recall10": {
+          "delta": -0.014,
+          "ci95_low": -0.033999999999999996,
+          "ci95_high": 0.0033333333333333335
+        },
+        "recall100": {
+          "delta": -0.07200000000000001,
+          "ci95_low": -0.10333333333333333,
+          "ci95_high": -0.043333333333333335
+        }
+      }
+    },
+    "legacy_hybrid_dpub96_kc200": {
+      "ndcg10": 0.5897329401384135,
+      "recall10": 0.7166111111111111,
+      "recall100": 0.8653333333333334,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.008481828313162828,
+          "ci95_low": -0.020207601472461076,
+          "ci95_high": 0.0007979205100801702
+        },
+        "recall10": {
+          "delta": -0.017333333333333333,
+          "ci95_low": -0.03333333333333333,
+          "ci95_high": -0.004
+        },
+        "recall100": {
+          "delta": -0.035666666666666666,
+          "ci95_low": -0.059,
+          "ci95_high": -0.014666666666666668
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub96_kc200": {
+      "ndcg10": 0.5897329401384135,
+      "recall10": 0.7166111111111111,
+      "recall100": 0.8653333333333334,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.008481828313162828,
+          "ci95_low": -0.020207601472461076,
+          "ci95_high": 0.0007979205100801702
+        },
+        "recall10": {
+          "delta": -0.017333333333333333,
+          "ci95_low": -0.03333333333333333,
+          "ci95_high": -0.004
+        },
+        "recall100": {
+          "delta": -0.035666666666666666,
+          "ci95_low": -0.059,
+          "ci95_high": -0.014666666666666668
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub96_kc200": {
+      "ndcg10": 0.5936683458289248,
+      "recall10": 0.7272777777777778,
+      "recall100": 0.8510000000000001,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.004546422622651457,
+          "ci95_low": -0.013557360228193675,
+          "ci95_high": 0.0021566063254438617
+        },
+        "recall10": {
+          "delta": -0.006666666666666667,
+          "ci95_low": -0.023333333333333334,
+          "ci95_high": 0.01
+        },
+        "recall100": {
+          "delta": -0.05,
+          "ci95_low": -0.07833333333333334,
+          "ci95_high": -0.023333333333333334
+        }
+      }
+    }
+  },
+  "settings": {
+    "half_pca_dimension": 192,
+    "d_pub_fractions": [
+      0.125,
+      0.25
+    ],
+    "candidate_counts": [
+      100,
+      200
+    ],
+    "bootstrap_samples": 10000,
+    "seed": 2026
+  },
+  "elapsed_seconds": 2.379697561264038
+}

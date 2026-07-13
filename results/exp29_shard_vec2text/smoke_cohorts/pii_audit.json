@@ -1,0 +1,16 @@
+{
+  "visible_item_denominator_by_type": {
+    "name": 80,
+    "email": 80,
+    "phone": 69
+  },
+  "unique_visible_values_by_type": {
+    "name": 71,
+    "email": 80,
+    "phone": 69
+  },
+  "headline_metric": "pii_identifier_recall",
+  "headline_excludes": "name (finite repeated dictionary)",
+  "card_note": "No full card value survives the 32-token embedding truncation.",
+  "n_prediction_rows": 28
+}

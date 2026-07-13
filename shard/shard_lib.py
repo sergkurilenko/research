@@ -4,7 +4,7 @@ A retrieval-preserving protective transform for dense embeddings designed
 against alignment- and index-leakage attacks. Replaces the single global
 SVD+rotation baseline with:
 
-  1. an orthogonal PCA rotation  W  of the centred embedding  x-mu;
+  1. an orthogonal PCA basis V fitted on centred document embeddings;
   2. a split  Wx = [u | r]  into a short PUBLIC prefix u (top d_pub PCA
      directions, used for stage-1 ANN) and a PRIVATE residual r (the
      remaining d_priv = d - d_pub directions);
@@ -12,9 +12,14 @@ SVD+rotation baseline with:
   4. a per-cell secret orthogonal key H_c (cell-local keying), so the
      stored private shard is  z_i = H_{c(i)} r_i.
 
+Document coordinates are formed from x-mu.  A centred query prefix may still
+be used for stage-1 routing, while final scoring coordinates are formed from
+q (without subtracting the document centroid).  Therefore the full split
+score is q^T(x-mu) = q^T x - q^T mu: it differs from the raw dot product by a
+query-only constant and preserves the raw document ranking.
 Because each H_c is orthogonal, <H_c r_q, z_i> = <r_q, r_i> exactly, so the
-two-stage score  S = alpha <u_q,u_i> + beta <r_q,r_i>  reranks in the FULL
-space with no truncation loss; the public index sees only the short prefix.
+two-stage score reranks in the full space with no truncation loss; the public
+index sees only the short prefix.
 
 Everything here is numpy-only (no GPU/faiss/tenseal) and deterministic
 given the seeds, so the privacy/utility geometry experiments are exactly
@@ -61,6 +66,26 @@ def pca_basis(Xc_sample):
     return evecs[:, order].astype(np.float32), evals[order].astype(np.float64)
 
 
+def document_pca_coordinates(X, mu, V):
+    """PCA coordinates stored for documents: ``(x - mu) @ V``.
+
+    ``V`` is fitted on centred document embeddings and contains eigenvectors
+    in its columns.  Keeping the document centring here is useful for PCA and
+    cell construction.
+    """
+    return ((X - mu) @ V).astype(np.float32)
+
+
+def query_pca_coordinates(Q, V):
+    """PCA coordinates used for queries: ``q @ V`` (not ``(q-mu) @ V``).
+
+    With document coordinates ``(x-mu) @ V``, the full split inner product is
+    ``q.T @ (x-mu) = q.T @ x - q.T @ mu``.  The last term is independent of
+    the document, so the ordering is exactly the raw dot-product ordering.
+    """
+    return (Q @ V).astype(np.float32)
+
+
 def fit_transform(X, mu, V, sample_for_cells=None, d_pub=None, C=64,
                   cell_seed=0, n_sample_cov=200_000):
     """Rotate X into PCA coords and split into prefix/residual; assign cells.
@@ -71,7 +96,7 @@ def fit_transform(X, mu, V, sample_for_cells=None, d_pub=None, C=64,
     d = X.shape[1]
     if d_pub is None:
         d_pub = d // 2
-    Xrot = ((X - mu) @ V).astype(np.float32)      # centred PCA coordinates
+    Xrot = document_pca_coordinates(X, mu, V)
     U = Xrot[:, :d_pub]
     R = Xrot[:, d_pub:]
     return {"Xrot": Xrot, "U": U, "R": R, "d_pub": d_pub, "d_priv": d - d_pub}

@@ -1,0 +1,79 @@
+{
+  "experiment": "exp26_ckks_blocksimd",
+  "measurement_kind": "actual TenSEAL/Microsoft SEAL execution; no timing model",
+  "encoders": [
+    "multilingual-e5-small",
+    "multilingual-e5-base"
+  ],
+  "dataset": "SciFact",
+  "embedding_cache": {
+    "multilingual-e5-small": "D:\\PHD\\research\\RES1\\results\\exp17_outputs\\emb\\multilingual-e5-small_scifact.npz",
+    "multilingual-e5-base": "D:\\PHD\\research\\RES1\\results\\exp17_outputs\\emb\\multilingual-e5-base_scifact.npz"
+  },
+  "seeds": [
+    11,
+    23,
+    31
+  ],
+  "candidate_counts": [
+    16,
+    64,
+    128
+  ],
+  "packing_widths_requested": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "repetitions": 5,
+  "warmup_per_encoder_width": 1,
+  "trial_order": "deterministically shuffled within each encoder/seed/candidate-count cell",
+  "cpu_affinity_logical_processors": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "cpu_affinity_rationale": "one hardware thread per i5-14400F P-core to avoid P/E-core migration",
+  "cells": 64,
+  "d_pub_fraction": 0.25,
+  "cell_seed": 42,
+  "key_seed_offset": 260000,
+  "kmeans_iters": 15,
+  "ckks": {
+    "poly_modulus_degree": 8192,
+    "coeff_mod_bit_sizes": [
+      60,
+      40,
+      40,
+      60
+    ],
+    "global_scale_bits": 40
+  },
+  "online_latency_includes": [
+    "client cell-key transforms",
+    "fixed-width zero-padded block construction",
+    "actual CKKS encryption",
+    "query ciphertext serialization",
+    "server ciphertext deserialization",
+    "plaintext-mask construction",
+    "actual ct-pt dot and public-prefix scalar addition",
+    "response ciphertext serialization",
+    "client result deserialization",
+    "actual CKKS decryption"
+  ],
+  "online_latency_excludes": [
+    "embedding inference",
+    "PCA",
+    "cell k-means",
+    "ANN index search",
+    "dense cell-key generation",
+    "stored document key transform",
+    "CKKS context and key generation",
+    "network/TLS/RTT"
+  ],
+  "smoke": false
+}

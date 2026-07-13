@@ -1,0 +1,53 @@
+{
+  "started_unix": 1783870604.1760304,
+  "started_local": "2026-07-12 18:36:44 +0300",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "git_commit": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.9.0",
+    "vec2text": "0.0.13",
+    "datasets": "4.8.5",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.8.0",
+    "sacrebleu": "2.6.0"
+  },
+  "torch_cuda": "12.8",
+  "gpu_start": {
+    "available": true,
+    "name": "NVIDIA GeForce RTX 5060",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "driver": null,
+    "total_bytes": 8546484224,
+    "free_bytes": 7361003520,
+    "total_gib": 7.95953369140625,
+    "free_gib": 6.85546875,
+    "multi_processor_count": 30
+  },
+  "status": "completed",
+  "finished_unix": 1783870659.8122888,
+  "finished_local": "2026-07-12 18:37:39 +0300",
+  "elapsed_seconds": 55.636258363723755,
+  "gpu_end": {
+    "available": true,
+    "name": "NVIDIA GeForce RTX 5060",
+    "compute_capability": [
+      12,
+      0
+    ],
+    "driver": null,
+    "total_bytes": 8546484224,
+    "free_bytes": 4609540096,
+    "total_gib": 7.95953369140625,
+    "free_gib": 4.29296875,
+    "multi_processor_count": 30
+  },
+  "max_full_pca_reconstruction_abs_error": 1.7881393432617188e-07,
+  "corpus_sha256": "0e0e9c33895fe59e94a1166b550d1f579d2ad2c02d85148462516749e20e356b",
+  "ag_news_cache": "C:\\Users\\zerg\\.cache\\huggingface\\datasets\\ag_news\\default\\0.0.0\\eb185aade064a813bc0b7f42de02595523103ca4\\ag_news-test.arrow",
+  "n_runtime_events": 0
+}

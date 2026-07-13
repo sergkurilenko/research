@@ -1,0 +1,12 @@
+{
+  "corpus_sha256": "74951464240e7ce14063e3e445e965988d91f1fe91ff87b52eb3054240776553",
+  "shape": [
+    3000,
+    768
+  ],
+  "dtype": "float32",
+  "embedding_path": "corrector.inversion_trainer.call_embedding_model",
+  "pooling": "attention-mask mean pooling in vec2text InversionModel",
+  "l2_normalized": false,
+  "checkpoint": "sentence-transformers/gtr-t5-base bundled in jxm/gtr__nq__32"
+}

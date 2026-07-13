@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "elapsed_seconds": 82.46289229393005,
+  "records": 588,
+  "git_head_after_run": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "script_sha256": "e6005f3deb0d3a4c7ca7208dc6f6a4d4fac06091ac186834ca3efeb4d22849da",
+  "result_files": [
+    "README.md",
+    "config.json",
+    "metrics.csv",
+    "raw_metrics.json",
+    "summary.csv",
+    "summary.json",
+    "run.log"
+  ]
+}

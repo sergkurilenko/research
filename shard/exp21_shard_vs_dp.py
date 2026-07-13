@@ -1,4 +1,9 @@
-"""Experiment 21 (review #7): attack-aware SHARD vs distortion-aware DP-noise.
+"""Legacy Experiment 21: SHARD vs uncalibrated Gaussian perturbation.
+
+This script is retained for provenance but is NOT evidence of differential
+privacy and is no longer used for the manuscript's security comparison.  It
+has no clipping/sensitivity/accounting, and its original alignment branch
+contains the full-rank gate corrected by exp24_partial_alignment.py.
 
 All defenses protect the SAME private residual r (the public prefix u is a
 common, coarse channel). We place each on the utility-vs-de-anonymisation
@@ -41,16 +46,16 @@ def procrustes(R, Z):
     A, _, Bt = np.linalg.svd(R.T @ Z); return (A @ Bt).astype(np.float32)
 
 
-def two_stage_acc1(U, Uq, prot_R, q_R, gt):
+def two_stage_acc1(U, Uq_route, Uq_score, prot_R, q_R, gt):
     """Acc@1: prefix short-list then rerank by <u_q,u_i>+<q_r, prot_r_i>."""
-    short = S.topk_search(U, Uq, KCANDS)
+    short = S.topk_search(U, Uq_route, KCANDS)
     hit = 0
-    for i in range(len(Uq)):
+    for i in range(len(Uq_route)):
         cand = short[i]
-        sc = (Uq[i] @ U[cand].T) + (q_R[i] @ prot_R[cand].T)
+        sc = (Uq_score[i] @ U[cand].T) + (q_R[i] @ prot_R[cand].T)
         if cand[np.argmax(sc)] == gt[i]:
             hit += 1
-    return hit / len(Uq)
+    return hit / len(Uq_route)
 
 
 def deanon_r1(est, galR, tgt_pos):
@@ -64,9 +69,12 @@ def main():
     mu = X.mean(0, keepdims=True).astype(np.float32)
     rng = np.random.RandomState(0); idx = rng.choice(len(X), min(200000, len(X)), replace=False)
     V, _ = S.pca_basis((X[idx] - mu).astype(np.float32))
-    Xrot = ((X - mu) @ V).astype(np.float32)
-    Qrot = ((Q[:N_Q] - mu) @ V).astype(np.float32); del X
-    U = np.ascontiguousarray(Xrot[:, :D_PUB]); Uq = np.ascontiguousarray(Qrot[:, :D_PUB])
+    Xrot = S.document_pca_coordinates(X, mu, V)
+    Qrot = S.query_pca_coordinates(Q[:N_Q], V)
+    Qroute = ((Q[:N_Q] - mu) @ V).astype(np.float32); del X
+    U = np.ascontiguousarray(Xrot[:, :D_PUB])
+    Uq = np.ascontiguousarray(Qrot[:, :D_PUB])
+    Uq_route = np.ascontiguousarray(Qroute[:, :D_PUB])
     Rr = np.ascontiguousarray(Xrot[:, D_PUB:]); qR = np.ascontiguousarray(Qrot[:, D_PUB:])
     d_priv = Rr.shape[1]
     gt = S.qrels(len(Xrot), N_Q)                            # matches cached self-retrieval queries
@@ -75,7 +83,8 @@ def main():
     targets = np.sort(grng.choice(gallery, 500, replace=False))
     tgt_pos = np.searchsorted(gallery, targets)
     galR = Rr[gallery]; anchor_pool = np.setdiff1d(np.arange(len(Rr)), gallery)
-    res = {"encoder": ENC, "d_priv": int(d_priv), "m_budget": M_BUDGET, "defenses": []}
+    res = {"encoder": ENC, "d_priv": int(d_priv), "m_budget": M_BUDGET, "defenses": [],
+           "warning": "legacy diagnostic: not DP; full-rank-gated alignment is superseded by exp24"}
 
     def add(name, util, deanon):
         res["defenses"].append({"name": name, "acc1": util, "deanon_r1": deanon})
@@ -89,7 +98,7 @@ def main():
             noise = r.standard_normal(Rr.shape).astype(np.float32)
             scale = sig * Rr.std()
             Y = Rr + scale * noise                       # stored noised residual
-            u_acc.append(two_stage_acc1(U, Uq, Y, qR, gt))
+            u_acc.append(two_stage_acc1(U, Uq_route, Uq, Y, qR, gt))
             est = Y[targets]                              # no key to invert
             for m in M_BUDGET:
                 da[m].append(deanon_r1(est, galR, tgt_pos))
@@ -97,7 +106,7 @@ def main():
             {m: round(float(np.mean(da[m])), 3) for m in M_BUDGET})
 
     # keyed utility is identical for all C (client de-keys exactly): compute once.
-    keyed_util = two_stage_acc1(U, Uq, Rr, qR, gt)
+    keyed_util = two_stage_acc1(U, Uq_route, Uq, Rr, qR, gt)
 
     # keyed schemes: global key (C=1) and SHARD cells
     for C in [1, 64, 256]:

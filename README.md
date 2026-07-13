@@ -1,310 +1,218 @@
-# SHARD: Cell-Keyed Residual Splitting for Alignment-Resistant Private Dense Retrieval
+# SHARD: cell-keyed residual splitting for alignment-resistant private dense retrieval
 
-<!-- Replace OWNER/REPO with your GitHub path after pushing. -->
-[![ci](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+This repository contains the manuscript, code, and experimental artifacts for
+SHARD. The current revision treats SHARD as an alignment-compartmentalization
+mechanism with explicit leakage. It does **not** claim unlinkability,
+cancellable templates, differential privacy, or cryptographic protection of
+stored document embeddings.
 
-This repository contains the manuscript, code, and experimental results for
-**SHARD**, a retrieval-preserving protective transform for dense text
-embeddings that is designed against the *alignment* and *index-leakage*
-attack surface, rather than against a distortion surrogate such as the
-reconstruction error `σ_rec`.
+- Manuscript: [`paper/paper_en.pdf`](paper/paper_en.pdf)
+- LaTeX source: [`paper/paper_en.tex`](paper/paper_en.tex)
+- Experiment code: [`shard/`](shard/)
+- Curated outputs: [`results/`](results/)
 
-> **One-line summary.** Instead of protecting a vector store with a single
-> global geometry (data-dependent SVD + one secret rotation), SHARD splits
-> each embedding into a short **public prefix** (for coarse stage-1
-> retrieval) and a **private residual** that is *sharded* into `C` cells,
-> each rotated by its own secret orthogonal key. Re-ranking happens under
-> CKKS homomorphic encryption, where the per-cell keys cancel and preserve
-> the **exact** inner product. A single parameter `C` interpolates between
-> the global-linear baseline (`C=1`) and per-document micro-keys (`C=N`).
+## What changed in the corrected audit
 
-The paper positions the popular **SVD + global-rotation + PQ + CKKS** stack
-as a carefully *measured baseline* (a foil), shows where it breaks, and then
-introduces SHARD as an attack-aware replacement with **measured** advantages.
+### Rank-preserving scoring
 
-- 📄 Manuscript: [`paper/paper_en.pdf`](paper/paper_en.pdf) (37 pages, LaTeX source in [`paper/paper_en.tex`](paper/paper_en.tex))
-- 🧪 All experiment outputs: [`results/`](results/)
-- 🧩 Method + experiment code: [`shard/`](shard/) (contribution) and [`baseline/`](baseline/) (foil)
+PCA is fitted to centered documents, but the scoring query must not be
+centered. With an orthogonal PCA basis `V`, documents use
+`V^T(x - mu)` and scoring queries use `V^T q`. Their full-space inner product
+is
 
----
+```text
+q^T (x - mu) = q^T x - q^T mu,
+```
 
-## Headline results
+so the document order is exactly the raw dot-product order. A separate
+centered query is retained for coarse routing. Across ten BEIR/MIRACL
+encoder--dataset configurations, the corrected full score reproduces raw
+nDCG and recall; the former centered-query implementation lost as much as
+0.080 nDCG.
 
-**1. Utility — SHARD reranks full-dimensionally, recovering the quality that SVD truncation loses on real IR.**
+### Partial alignment has no hard threshold
 
-![BEIR utility](paper/figs/fig_shard_beir.png)
+The older analysis evaluated a full-rank-gated Procrustes attacker and
+mistook complete key identifiability for a de-anonymization threshold.
+Experiment 24 removes the gate and compares rank-deficient Procrustes,
+minimum-norm OLS, ridge, and polar estimators. A known-pair set identifies the
+secret map on its observed span even when the complete orthogonal key remains
+underdetermined.
 
-On BEIR, half-SVD truncation (the baseline) drops nDCG@10 by 2–8 points;
-SHARD with a `d/4` public prefix matches the raw ceiling (e5-base/SciFact:
-**0.638** vs. raw 0.637 vs. baseline 0.585) while exposing a public channel
-half as wide.
+In the measured e5-small residual gallery, minimum-norm OLS exceeds residual
+R@1 = 0.9 with about 32--36 well-spread pairs in the target cell. Increasing
+the cell count spreads diffuse disclosures across cells: the global pair
+budget at the same target moves from 32 pairs at `C=1` to 8,192 at `C=256`.
+This is compartmentalization, not a formal security threshold.
 
-**2. Alignment resistance — cell-local keys multiply the known-plaintext anchor cost by ≈ C.**
+### Re-keying is linkable
 
-![Alignment anchor-complexity](paper/figs/fig_shard_alignment.png)
+Experiment 25 independently re-keys and permutes two releases of the same
+records. Raw cross-key cosine is near chance, but orthogonal invariants are
+much stronger:
 
-The median anchors to map the private residual back to the native frame
-(diffuse leak) rise from **200** (single global key) to **25,600** (`C=64`)
-and **102,400** (`C=256`), reproduced on a second encoder.
+- norm-rank assignment links 99.6% of cell-keyed records and 99.4% of
+  micro-keyed records at `N=10,000`;
+- within-cell Gram signatures link 99.9% of cell-keyed records;
+- the unchanged public prefix links 99.9% of either variant.
 
-**3. The barrier is not an artefact of the Procrustes attacker.**
+Consequently, re-keying changes coordinates but does not establish
+unlinkability or cancellable-template renewal.
 
-![Learned attackers](paper/figs/fig_shard_learned.png)
+Experiment 28 repeats the game with 25--100% document overlap, insert/delete
+churn, two encoders, fp16 and int8 observations. Churn weakens cell-Gram
+matching at low overlap, but the unchanged prefix and clean residual norm link
+persistent documents almost perfectly. Per-document micro-keys remove the
+Gram channel without removing prefix or norm linkage.
 
-The learned-linear core of **ALGEN** (ridge), a non-linear MLP, and the
-unsupervised core of **vec2vec** (covariance matching) all do *no better*
-than orthogonal Procrustes — each still needs `≈ d_priv` in-cell pairs, and
-the unsupervised attacker fails outright (sign ambiguity).
+### Measured CKKS/block-SIMD path
 
-**4. Keying beats noising — vs. a distortion-aware DP defence at matched utility.**
+Experiment 26 performs 315 actual TenSEAL/SEAL CKKS trials. At 128 candidates,
+block packing reduces median query upload by 86.7% for e5-small (width 8) and
+74.2% for e5-base (width 4), with maximum score error `2.29e-6`, no top-1
+flips, and perfect top-10 overlap. It is not a latency win in the current
+layout: p50 rises by 26.3% and 14.5%, because the server still returns one
+encrypted scalar per candidate (`30.13 MB` total).
 
-![SHARD vs DP](paper/figs/fig_shard_vs_dp.png)
+### Formal Gaussian-release baseline
 
-At matched utility, a DP-noise residual is still trivially de-anonymised
-(R@1 ≈ 1.0) because noise has no key to recover; SHARD reaches the same
-utility with **de-anon R@1 = 0.00**.
+Experiment 27 uses fixed-size replacement adjacency, a fixed clipping bound,
+global sensitivity `2.000002`, and exact analytic Gaussian calibration at
+`delta=1e-6`. At `epsilon=1`, nDCG@10 is at most 0.011. Strict utility matches
+to corrected SHARD appear in only 3/8 cases on the finite grid, all at
+`epsilon=32768` with native-gallery linkage R@1 at least 0.995. This is a
+different formal guarantee; SHARD itself is not DP.
 
-| Property | Global-linear baseline | **SHARD** |
+### Checkpoint-compatible GTR text outcome
+
+Experiment 29 feeds raw and reconstructed SHARD views to the official public
+GTR Vec2Text corrector using its mask-aware mean-pooling path. It deliberately
+grants the observer the exact PCA basis and corpus mean, leaving only the cell
+key unknown or partially learned from 8--64 in-cell pairs. Native GTR vectors
+remain unnormalised to stay compatible with the checkpoint, so this is a
+strengthened-oracle, GTR-specific stress test rather than the exact
+L2-normalised e5 deployment or a universal learned-decoder claim. The
+evaluator-selected PII cohort is reported separately; unique email/phone
+recovery is not pooled with repeated-name recall.
+
+Across the two globally largest-cell designs, the descriptive mean token-F1
+is 0.665 for raw/exact geometry, 0.433 for prefix-only, 0.242 when the keyed
+residual is used without its key, and 0.450 after minimum-norm OLS with eight
+in-cell pairs. Thus the unknown key has a real no-anchor effect, but prefix
+leakage and targeted disclosure recover much of it.
+
+## Construction
+
+Let `mu` be the corpus centroid and split an orthogonal PCA basis into a
+public prefix and private residual:
+
+```text
+u_i = V_pub^T  (x_i - mu)
+r_i = V_priv^T (x_i - mu)
+z_i = H_c r_i
+```
+
+The centered prefix `V_pub^T(q - mu)` is used only for routing. Reranking uses
+the uncentered scoring coordinates
+
+```text
+u_q     = V_pub^T q
+t_{q,c} = H_c V_priv^T q,
+```
+
+which give
+
+```text
+<u_q,u_i> + <t_{q,c},z_i> = q^T x_i - q^T mu.
+```
+
+The client holds the cell keys. The CKKS layer encrypts the cell-specific
+scoring query for ciphertext--plaintext reranking. Experiment 26 implements
+this path, including block-SIMD packing, serialization, server evaluation and
+client decryption. Network RTT/TLS, concurrency and packed multi-score
+responses remain outside the local benchmark.
+
+## Main corrected experiments
+
+| Script | Purpose | Output |
 |---|---|---|
-| Re-ranking | truncated half (loses nDCG) | **full-dimensional, exact** |
-| Public index | full protected space (PQ ≈ 0.95 cos, 67% NN) | **short prefix** (NN-overlap 0.20–0.55) |
-| Diffuse alignment cost | `~d/2` anchors (200) | **`~C·d_priv`** (up to 102,400) |
-| Targeted (per-victim) cost | `~d/2` | `~d_priv` (320 / 576) |
-| Neighbour-graph leak | global (1.00) | cell-local (0.50 → **0.00** micro-key) |
-| Unlinkable / renewable | no | **yes** (residual channel) |
-| Online cost | 1 encrypted query | 7–30 encrypted queries / search |
+| `shard/exp23_corrected_score.py` | Corrected score identity, BEIR/MIRACL utility, bootstrap CIs | `results/exp23_corrected_score/` |
+| `shard/exp24_partial_alignment.py` | Rank-deficient partial-alignment audit | `results/exp24_partial_alignment_main_v2/`, `results/exp24_partial_alignment_lowm/` |
+| `shard/exp25_cross_release_linkage.py` | Cross-release matching from norm, Gram, and prefix invariants | `results/exp25_cross_release_linkage/` |
+| `shard/exp26_ckks_blocksimd.py` | Measured TenSEAL CKKS and block-SIMD layouts | `results/exp26_ckks_blocksimd/` |
+| `shard/exp27_formal_dp_baseline.py` | Analytically calibrated Gaussian-release utility/linkage audit | `results/exp27_formal_dp_baseline/` |
+| `shard/exp28_cross_release_churn.py` | Cross-release linkage under partial overlap and churn | `results/exp28_cross_release_churn/` |
+| `shard/exp29_shard_vec2text.py` | GPU Vec2Text outcome under SHARD alignment views | `results/exp29_shard_vec2text/` |
+| `shard/make_fig_corrected_audit.py` | Regenerate corrected utility/alignment figures | `paper/figs/` |
+| `shard/make_fig_maximal_program.py` | Regenerate CKKS, formal-DP and churn figures | `results/maximal_program_figures/` |
+| `shard/test_shard.py` | Algebraic and implementation smoke tests | terminal output |
 
-**Honest limitations (measured, not hidden).** Within a cell the keys
-cancel, so same-cell similarities leak; and an *overlapping* plaintext
-reference corpus still de-anonymises through the public prefix once its
-single cheap global key is recovered. SHARD hardens the diffuse
-alignment/inversion surface, **not** the coarse neighbour graph; it is an
-attack-aware *geometric* defence, not a cryptographic guarantee.
+Experiments 21 and 21b are retained only as legacy distortion diagnostics.
+Their Gaussian noise is not a DP mechanism because no clipping rule,
+sensitivity, adjacency relation, or `(epsilon, delta)` accounting was defined.
 
----
+## Reproduction
 
-## Repository layout
-
-```
-.
-├── README.md                ← you are here
-├── LICENSE                  ← MIT
-├── requirements.txt         ← Python deps for the numpy/CPU experiments
-├── CITATION.cff
-├── paper/
-│   ├── paper_en.tex         ← manuscript source
-│   ├── paper_en.pdf         ← compiled manuscript (37 pp)
-│   └── figs/                ← all figures
-├── shard/                   ← THE CONTRIBUTION (numpy/scikit-learn only)
-│   ├── paths.py             ← portable path resolution (SHARD_DATA / SHARD_RESULTS)
-│   ├── shard_lib.py         ← the SHARD construction + utilities (paper §7)
-│   ├── exp12_shard_utility.py … exp22_shard_learned_attack.py
-│   └── make_fig_shard.py    ← regenerates the SHARD figures
-├── baseline/                ← THE FOIL (global-linear stack + its analysis)
-│   ├── paths.py
-│   ├── exp_integral.py      ← 10^6-doc integral retrieval (paper §8.4)
-│   ├── exp07…exp11.py       ← Procrustes/PQ leakage, σ_rec, significance, BEIR
-│   ├── heavy_adaptive_inversion_rtx4090.py   ← Vec2Text stress test (GPU)
-│   └── make_fig_significance.py, make_paper_figures.py
-├── results/                 ← every experiment's JSON/CSV output
-│   ├── exp12_outputs/ … exp22_outputs/   (SHARD)
-│   ├── exp01_… exp11_outputs/             (baseline)
-│   └── adaptive_inversion_outputs/
-└── docs/
-    ├── data_manifest.md     ← what the cached embeddings are
-    ├── reproduce.md         ← regeneration notes
-    └── environment.lock
-```
-
-The **17 GB of cached embeddings are intentionally not in the repo** (see
-`.gitignore`). Point `SHARD_DATA` at a local copy or regenerate them
-(`docs/reproduce.md`).
-
----
-
-## The SHARD construction (paper §7)
-
-Let `μ` be the corpus centroid and `V ∈ O(d)` the PCA rotation of the
-centred embeddings. For a document `x`, write the centred, rotated coordinate
-
-```
-V(x − μ) = [ u | r ]
-```
-
-- **`u ∈ R^{d_pub}`** — a short *public* prefix (top variance directions),
-  used for stage-1 approximate-nearest-neighbour retrieval;
-- **`r ∈ R^{d_priv}`** — the *private* residual, `d_priv = d − d_pub`.
-
-A coarse partition into `C` **cells** is defined by k-means on `u`. The data
-owner draws one secret orthogonal key per cell, `H_c` (a product of
-Householder reflections), and stores the pair
-
-```
-( u_i ,  z_i = H_{c(i)} r_i ).
-```
-
-**Online query.** The client computes `[u_q | r_q]`, runs stage-1 ANN
-locally over the public prefix to get a `K_cands`-document short-list, then
-for each active cell `c` sends `Enc(H_c r_q)` under CKKS. Because `H_c` is
-orthogonal,
-
-```
-⟨ H_c r_q , z_i ⟩ = ⟨ r_q , r_i ⟩      (exact),
-```
-
-so the full similarity `S(q,i) = ⟨u_q,u_i⟩ + ⟨r_q,r_i⟩ = ⟨x_q−μ, x_i−μ⟩` is
-reranked with **no truncation**. The cell count `C` is a single knob:
-`C=1` is the global-linear baseline; `C=N` is per-document micro-keys
-(no within-cell leak, unlinkable, alignment impossible) at the cost of one
-residual query per candidate.
-
----
-
-## Experiments
-
-All SHARD experiments and the lightweight baseline analyses are **numpy /
-scikit-learn only** (no GPU, no FHE library needed — the per-cell keys are
-orthogonal, so the reranking score is exact and is computed directly). Only
-the BEIR encoding (CPU PyTorch) and the optional Vec2Text stress test (GPU)
-need the deep-learning stack.
-
-### SHARD (the contribution)
-
-| Script | What it measures | Key result | Output | Paper |
-|---|---|---|---|---|
-| `shard/shard_lib.py` | the construction | — | — | §7 |
-| `exp12_shard_utility.py` | self-retrieval utility | SHARD ≈ raw, beats baseline | `results/exp12_outputs/` | §8.11 |
-| `exp17_beir_shard.py` | BEIR utility | recovers raw nDCG@10 | `results/exp17_outputs/` | §8.11 |
-| `exp18_shard_cost.py` | online cost | 7–30 enc. queries/search | `results/exp18_outputs/` | §8.12 |
-| `exp13_shard_alignment.py` | diffuse anchor-complexity | 200 → 25.6k → 102.4k | `results/exp13_outputs/` | §8.13 |
-| `exp19_shard_targeted.py` | targeted attacker | `m₅₀ ≈ d_priv`, ∀C | `results/exp19_outputs/` | §8.13 |
-| `exp22_shard_learned_attack.py` | ridge / MLP / unsupervised | none beats `d_priv` | `results/exp22_outputs/` | §8.16 |
-| `exp14_shard_leakage.py` | public-index leakage | prefix 0.20–0.55 vs 0.76 | `results/exp14_outputs/` | §8.14 |
-| `exp20_shard_microkey.py` | micro-key variant | residual leak 0.00, AUC 0.50 | `results/exp20_outputs/` | §8.15 |
-| `exp21_shard_vs_dp.py` | vs. DP-noise | DP de-anon 1.0, SHARD 0.0 | `results/exp21_outputs/` | §8.17 |
-| `exp15_shard_reference.py` | overlap reference lookup | limitation (prefix de-anon) | `results/exp15_outputs/` | §8.18 |
-
-### Baseline characterisation (the foil)
-
-| Script | What it measures | Output | Paper |
-|---|---|---|---|
-| `baseline/exp_integral.py` | 10⁶-doc integral retrieval + CKKS | `results/exp5_outputs/` | §8.4 |
-| `exp07_alignment_pq_leakage.py` | Procrustes recovers global `R`; public-PQ leakage | `results/exp7_outputs/` | §8.7 |
-| `exp08_tradeoff_noise_sweep.py` | `σ_rec` is not a privacy metric | `results/exp8_outputs/` | §8.4 |
-| `exp09_reference_corpus_attack.py` | overlap reference lookup (99.8% top-1) | `results/exp9_outputs/` | §8.8 |
-| `exp10_denoiser_significance.py` | McNemar/bootstrap on the SVD "denoiser" | `results/exp10_outputs/` | §8.5 |
-| `exp11_beir_denoiser.py` | the denoiser does **not** transfer to BEIR | `results/exp11_outputs/` | §8.6 |
-| `heavy_adaptive_inversion_rtx4090.py` | aligned Vec2Text stress test (GPU) | `results/adaptive_inversion_outputs/` | §8.9 |
-
----
-
-## Reproducing
-
-### 1. Environment
+Create a Python environment and install the dependencies:
 
 ```bash
-python -m venv .venv && source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+python -m venv .venv
 pip install -r requirements.txt
 ```
 
-The geometry/privacy/utility experiments need only `numpy`, `scipy`,
-`scikit-learn`, `matplotlib`. The BEIR experiments additionally need a CPU
-build of `torch`, plus `transformers` and `datasets`. The optional Vec2Text
-stress test needs a GPU (see `docs/reproduce.md`).
-
-### 2. Data
-
-The experiments read cached, L2-normalised embeddings of a 1M-paragraph
-Russian-Wikipedia slice for five encoders (~17 GB; **not** in the repo).
-Either point `SHARD_DATA` at a local copy:
+Run the lightweight correctness tests:
 
 ```bash
-export SHARD_DATA=/path/to/corpus_cache    # contains E_docs_<enc>_1000000.npy, E_queries_*
+python shard/test_shard.py
 ```
 
-or regenerate them (encoder list and exact slicing in `docs/data_manifest.md`).
-
-### 3. Run
+Run the corrected audit from the repository root:
 
 ```bash
-cd shard
-python exp13_shard_alignment.py            # alignment anchor-complexity (e5-small)
-E13_ENC=e5-base E13_DPUB=192 python exp13_shard_alignment.py   # second encoder
-python exp18_shard_cost.py                 # online cost
-python exp19_shard_targeted.py             # targeted attacker
-python exp22_shard_learned_attack.py       # learned/unsupervised attackers
-python exp21_shard_vs_dp.py                # vs. DP-noise
-python exp14_shard_leakage.py              # public-index leakage
-python exp20_shard_microkey.py             # micro-key variant
-python exp12_shard_utility.py              # self-retrieval utility (all encoders)
-python exp17_beir_shard.py                 # BEIR utility (downloads SciFact/NFCorpus)
-python make_fig_shard.py                   # regenerate figures -> ../paper/figs/
+python shard/exp23_corrected_score.py
+python shard/exp24_partial_alignment.py
+python shard/exp25_cross_release_linkage.py
+python shard/exp26_ckks_blocksimd.py
+python shard/exp27_formal_dp_baseline.py
+python shard/exp28_cross_release_churn.py
+python shard/exp29_shard_vec2text.py
+python shard/make_fig_corrected_audit.py
+python shard/make_fig_maximal_program.py
 ```
 
-Every script is deterministic given its master-key / bootstrap seeds and
-writes JSON to `results/`. Results in this repo were produced on a single
-workstation (Intel Core i5-14400F, 32 GB RAM, Windows 11); the privacy/
-utility geometry runs are CPU-only.
+The large embedding caches are not committed. Point `SHARD_DATA` at the
+local cache described in [`docs/data_manifest.md`](docs/data_manifest.md),
+or regenerate the embeddings. Each result directory records its configuration,
+per-seed measurements, summaries, and run log.
 
-### 4. Build the paper
+Build the manuscript with two LaTeX passes:
 
 ```bash
-cd paper && pdflatex paper_en.tex && pdflatex paper_en.tex
+cd paper
+pdflatex -interaction=nonstopmode -halt-on-error paper_en.tex
+pdflatex -interaction=nonstopmode -halt-on-error paper_en.tex
 ```
 
----
+## Scope
 
-## Tests
-
-A self-contained test suite verifies SHARD's core invariants on small
-synthetic arrays — **no embeddings required** — and runs in about a second
-(it is also the CI smoke test):
-
-```bash
-python shard/test_shard.py     # or: make smoke
-```
-
-It checks the orthogonal-key cancellation `⟨H_c r_q, H_c r_i⟩ = ⟨r_q, r_i⟩`
-(the exact-rerank identity), that the prefix+residual score equals the
-centred inner product (no truncation), that orthogonal Procrustes needs
-`≈ d_priv` anchors (the alignment barrier), that per-document micro-keys
-decorrelate, and that the chunked top-k search matches brute force.
-`make` also provides `figures`, `shard`, `baseline`, `paper`, and `clean`
-targets (`make help`).
-
----
-
-## Honest scope
-
-This is a **scientific study of a protective transform**, not a deployable
-privacy-preserving search product and not a cryptographic guarantee. SHARD's
-demonstrated advantage is against **diffuse** known-plaintext alignment and
-inversion, and against public-index leakage. It does **not** hide the
-coarse neighbour graph (within-cell similarities leak; the micro-key limit
-removes this at a bandwidth cost), and an overlapping plaintext reference
-corpus still de-anonymises through the public prefix. Access patterns are
-left to a PIR/ORAM composition, as in the baseline. The full generative
-pipelines of the modern attacks (ALGEN's generator, ZSInvert's zero-shot LLM
-decoder) need a GPU and remain future work; we evaluate their *alignment
-cores* here.
-
----
+The public prefix, cell labels, candidate identities, residual norms,
+within-cell Gram geometry, active cells, and access patterns remain exposed in
+the evaluated design. The churn experiment keeps each persistent embedding
+fixed, so text edits and encoder-version drift remain untested. The CKKS run is
+a local single-process benchmark, not a networked concurrent service. The
+formal DP baseline assumes public participation and replacement adjacency.
+Future work should pack multiple scores per response and test a non-orthogonal
+score-preserving transform that breaks the measured invariants.
 
 ## Citation
 
 ```bibtex
 @misc{kurilenko_shard,
-  title  = {SHARD: Cell-Keyed Residual Splitting for Alignment-Resistant
-            Private Dense Retrieval},
-  author = {Kurilenko, Sergey M.},
-  note   = {Moscow Institute of Physics and Technology},
+  title  = {SHARD: cell-keyed residual splitting for alignment-resistant
+            private dense retrieval},
+  author = {Kurilenko, Sergey},
   year   = {2026}
 }
 ```
 
-## License
-
-Code and documentation are released under the [MIT License](LICENSE). The
-manuscript text and figures are © the author.
+Code and documentation are released under the [MIT License](LICENSE).

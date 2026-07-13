@@ -1,0 +1,551 @@
+{
+  "schema_version": 1,
+  "suite": "beir",
+  "encoder": "multilingual-e5-small",
+  "dataset": "nfcorpus",
+  "n_corpus": 3633,
+  "n_queries": 323,
+  "dimension": 384,
+  "mean_relevant_per_query": 38.18575851393189,
+  "cache": {
+    "npz": "results/exp17_outputs/emb/multilingual-e5-small_nfcorpus.npz",
+    "npz_bytes": 6076906,
+    "meta": "results/exp17_outputs/emb/multilingual-e5-small_nfcorpus_meta.json",
+    "meta_bytes": 237793
+  },
+  "pca": {
+    "n_fit": 3633,
+    "seed": 2026,
+    "orthogonality_max_abs_float64": 3.1086244689504383e-15,
+    "orthogonality_max_abs_float32": 4.76837158203125e-07,
+    "explained_variance_total": 0.2060631909174545,
+    "top_eigenvalues": [
+      0.007935230722181295,
+      0.006195013107047858,
+      0.005807897280560268,
+      0.004430363326603429,
+      0.004022755809493803,
+      0.003694815438700291,
+      0.0032057568978709214,
+      0.0029299384700867933,
+      0.002813625525601584,
+      0.00259210478767354
+    ]
+  },
+  "score_identity": {
+    "formula": "corrected(q,x) = <V^T q,V^T(x-mu)> = raw(q,x)-<q,mu>",
+    "max_abs_error": 4.410312668401417e-07,
+    "mean_abs_error": 4.8845662060249636e-08,
+    "rmse": 6.142569025725241e-08,
+    "max_within_query_std_of_raw_minus_corrected": 1.1440913575744832e-07,
+    "max_within_query_range_of_raw_minus_corrected": 8.200295269489288e-07
+  },
+  "rank_equivalence": {
+    "queries": 323,
+    "top10_exact_fraction": 0.9659442724458205,
+    "top100_exact_fraction": 0.7492260061919505,
+    "top100_mean_set_overlap": 0.999938080495356,
+    "full_order_queries_checked": 8,
+    "full_order_exact_fraction": 0.0,
+    "full_order_checks": [
+      {
+        "exact": false,
+        "same_position_fraction": 0.9917423616845582,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.008257638315441783,
+        "query_index": 0
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9881640517478668,
+        "max_rank_displacement": 2,
+        "mean_rank_displacement": 0.01211120286264795,
+        "query_index": 1
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9900908340214699,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.00990916597853014,
+        "query_index": 2
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9889898155794109,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.011010184420589045,
+        "query_index": 3
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9889898155794109,
+        "max_rank_displacement": 2,
+        "mean_rank_displacement": 0.011560693641618497,
+        "query_index": 4
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9906413432424993,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.009358656757500689,
+        "query_index": 5
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9887145609688962,
+        "max_rank_displacement": 2,
+        "mean_rank_displacement": 0.011560693641618497,
+        "query_index": 6
+      },
+      {
+        "exact": false,
+        "same_position_fraction": 0.9873382879163226,
+        "max_rank_displacement": 1,
+        "mean_rank_displacement": 0.012661712083677402,
+        "query_index": 7
+      }
+    ],
+    "note": "Full-order differences can arise only from finite-precision near-tie swaps; top-k and IR metrics are the operational checks."
+  },
+  "float64_reference_check": {
+    "queries": 8,
+    "max_abs_error": 6.245004513516506e-16,
+    "mean_abs_error": 1.1505192496676486e-16,
+    "rmse": 1.4430392185770352e-16,
+    "top10_exact_fraction": 1.0,
+    "top100_exact_fraction": 1.0,
+    "top100_mean_set_overlap": 1.0,
+    "full_order_exact_fraction": 1.0,
+    "full_order_checks": [
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 0
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 1
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 2
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 3
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 4
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 5
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 6
+      },
+      {
+        "exact": true,
+        "same_position_fraction": 1.0,
+        "max_rank_displacement": 0,
+        "mean_rank_displacement": 0.0,
+        "query_index": 7
+      }
+    ]
+  },
+  "metrics": {
+    "raw": {
+      "ndcg10": 0.3020970886539733,
+      "recall10": 0.14647137012742903,
+      "recall100": 0.24833693816772606
+    },
+    "old_centered_full": {
+      "ndcg10": 0.2947798883423148,
+      "recall10": 0.14055206812040955,
+      "recall100": 0.2484048332434591,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.007317200311658431,
+          "ci95_low": -0.016409632119507456,
+          "ci95_high": 0.0017566676728507074
+        },
+        "recall10": {
+          "delta": -0.005919302007019478,
+          "ci95_low": -0.013292759331295303,
+          "ci95_high": 0.0009339363792253475
+        },
+        "recall100": {
+          "delta": 6.789507573308797e-05,
+          "ci95_low": -0.013818849686155451,
+          "ci95_high": 0.013826693261224182
+        }
+      }
+    },
+    "corrected_full": {
+      "ndcg10": 0.3020970886539733,
+      "recall10": 0.14647137012742903,
+      "recall100": 0.24833693816772606,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "recall10": {
+          "delta": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        },
+        "recall100": {
+          "delta": 0.0,
+          "ci95_low": 0.0,
+          "ci95_high": 0.0
+        }
+      }
+    },
+    "old_centered_half_pca": {
+      "ndcg10": 0.28071812048322975,
+      "recall10": 0.13701077779936205,
+      "recall100": 0.2544719388599281,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.02137896817074344,
+          "ci95_low": -0.0316422838610953,
+          "ci95_high": -0.011361630699020275
+        },
+        "recall10": {
+          "delta": -0.009460592328066977,
+          "ci95_low": -0.016840493609081613,
+          "ci95_high": -0.002688870867360137
+        },
+        "recall100": {
+          "delta": 0.006135000692202058,
+          "ci95_low": -0.008684997631210745,
+          "ci95_high": 0.021394500805198453
+        }
+      }
+    },
+    "corrected_half_pca": {
+      "ndcg10": 0.2902793486868733,
+      "recall10": 0.1400457406053421,
+      "recall100": 0.2531105203371101,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.011817739967100005,
+          "ci95_low": -0.018524288223642642,
+          "ci95_high": -0.005355475464181463
+        },
+        "recall10": {
+          "delta": -0.006425629522086909,
+          "ci95_low": -0.011554290745455126,
+          "ci95_high": -0.002166461519480206
+        },
+        "recall100": {
+          "delta": 0.004773582169384074,
+          "ci95_low": -0.005427450032945713,
+          "ci95_high": 0.014166437590578522
+        }
+      }
+    },
+    "legacy_hybrid_dpub48_kc100": {
+      "ndcg10": 0.2725876018628721,
+      "recall10": 0.12411449485842714,
+      "recall100": 0.2097887478138053,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.029509486791101068,
+          "ci95_low": -0.04107314302155738,
+          "ci95_high": -0.01902241063767979
+        },
+        "recall10": {
+          "delta": -0.022356875269001868,
+          "ci95_low": -0.034554894435641775,
+          "ci95_high": -0.012014630510187523
+        },
+        "recall100": {
+          "delta": -0.03854819035392073,
+          "ci95_low": -0.05716120394767671,
+          "ci95_high": -0.020473807594785186
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub48_kc100": {
+      "ndcg10": 0.2725876018628721,
+      "recall10": 0.12411449485842714,
+      "recall100": 0.2097887478138053,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.029509486791101068,
+          "ci95_low": -0.04107314302155738,
+          "ci95_high": -0.01902241063767979
+        },
+        "recall10": {
+          "delta": -0.022356875269001868,
+          "ci95_low": -0.034554894435641775,
+          "ci95_high": -0.012014630510187523
+        },
+        "recall100": {
+          "delta": -0.03854819035392073,
+          "ci95_low": -0.05716120394767671,
+          "ci95_high": -0.020473807594785186
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub48_kc100": {
+      "ndcg10": 0.27897391002200794,
+      "recall10": 0.12868022974642818,
+      "recall100": 0.21927603768868092,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.023123178631965325,
+          "ci95_low": -0.03307424416540255,
+          "ci95_high": -0.013836308319888255
+        },
+        "recall10": {
+          "delta": -0.01779114038100083,
+          "ci95_low": -0.02804654470075681,
+          "ci95_high": -0.009549493828010134
+        },
+        "recall100": {
+          "delta": -0.029060900479045134,
+          "ci95_low": -0.04462205792187048,
+          "ci95_high": -0.014335409908723158
+        }
+      }
+    },
+    "legacy_hybrid_dpub48_kc200": {
+      "ndcg10": 0.28444715716202823,
+      "recall10": 0.1322218800457217,
+      "recall100": 0.21882448136524835,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.017649931491945013,
+          "ci95_low": -0.02533581124374268,
+          "ci95_high": -0.010655810535947522
+        },
+        "recall10": {
+          "delta": -0.014249490081707337,
+          "ci95_low": -0.023683571476738646,
+          "ci95_high": -0.006897254634314491
+        },
+        "recall100": {
+          "delta": -0.029512456802477684,
+          "ci95_low": -0.04530733351362328,
+          "ci95_high": -0.015082900063799665
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub48_kc200": {
+      "ndcg10": 0.28444715716202823,
+      "recall10": 0.1322218800457217,
+      "recall100": 0.21882448136524835,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.017649931491945013,
+          "ci95_low": -0.02533581124374268,
+          "ci95_high": -0.010655810535947522
+        },
+        "recall10": {
+          "delta": -0.014249490081707337,
+          "ci95_low": -0.023683571476738646,
+          "ci95_high": -0.006897254634314491
+        },
+        "recall100": {
+          "delta": -0.029512456802477684,
+          "ci95_low": -0.04530733351362328,
+          "ci95_high": -0.015082900063799665
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub48_kc200": {
+      "ndcg10": 0.2859561183798642,
+      "recall10": 0.1340536119635768,
+      "recall100": 0.22022699772233365,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.016140970274109028,
+          "ci95_low": -0.024122781844645277,
+          "ci95_high": -0.008927712422445364
+        },
+        "recall10": {
+          "delta": -0.012417758163852216,
+          "ci95_low": -0.021561843476700038,
+          "ci95_high": -0.005575826417431303
+        },
+        "recall100": {
+          "delta": -0.028109940445392376,
+          "ci95_low": -0.04066633623574088,
+          "ci95_high": -0.016821047070941404
+        }
+      }
+    },
+    "legacy_hybrid_dpub96_kc100": {
+      "ndcg10": 0.2960658190803537,
+      "recall10": 0.14054138790974074,
+      "recall100": 0.24168055555110576,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.006031269573619485,
+          "ci95_low": -0.011214263186071322,
+          "ci95_high": -0.001497550697045381
+        },
+        "recall10": {
+          "delta": -0.005929982217688281,
+          "ci95_low": -0.014105093851775942,
+          "ci95_high": -0.0006101753783059684
+        },
+        "recall100": {
+          "delta": -0.006656382616620264,
+          "ci95_low": -0.02285971453764454,
+          "ci95_high": 0.009119741567919027
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub96_kc100": {
+      "ndcg10": 0.2960658190803537,
+      "recall10": 0.14054138790974074,
+      "recall100": 0.24168055555110576,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.006031269573619485,
+          "ci95_low": -0.011214263186071322,
+          "ci95_high": -0.001497550697045381
+        },
+        "recall10": {
+          "delta": -0.005929982217688281,
+          "ci95_low": -0.014105093851775942,
+          "ci95_high": -0.0006101753783059684
+        },
+        "recall100": {
+          "delta": -0.006656382616620264,
+          "ci95_low": -0.02285971453764454,
+          "ci95_high": 0.009119741567919027
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub96_kc100": {
+      "ndcg10": 0.2990918022811276,
+      "recall10": 0.1439850645727965,
+      "recall100": 0.2427739341656706,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.003005286372845584,
+          "ci95_low": -0.005893543653150638,
+          "ci95_high": -0.0003391386908943083
+        },
+        "recall10": {
+          "delta": -0.00248630555463254,
+          "ci95_low": -0.005244152182804686,
+          "ci95_high": -0.000589850830420866
+        },
+        "recall100": {
+          "delta": -0.005563004002055417,
+          "ci95_low": -0.01703938339782167,
+          "ci95_high": 0.005227888253272571
+        }
+      }
+    },
+    "legacy_hybrid_dpub96_kc200": {
+      "ndcg10": 0.30041350790617727,
+      "recall10": 0.14568744763974223,
+      "recall100": 0.24150085380782282,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.0016835807477959231,
+          "ci95_low": -0.004096697751831927,
+          "ci95_high": 0.0004162662959242954
+        },
+        "recall10": {
+          "delta": -0.0007839224876868017,
+          "ci95_low": -0.0018204819666841102,
+          "ci95_high": 0.00021114856176465536
+        },
+        "recall100": {
+          "delta": -0.0068360843599031725,
+          "ci95_low": -0.01919870338952478,
+          "ci95_high": 0.003941606396820619
+        }
+      }
+    },
+    "corrected_shard_centered_router_dpub96_kc200": {
+      "ndcg10": 0.30041350790617727,
+      "recall10": 0.14568744763974223,
+      "recall100": 0.24150085380782282,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.0016835807477959231,
+          "ci95_low": -0.004096697751831927,
+          "ci95_high": 0.0004162662959242954
+        },
+        "recall10": {
+          "delta": -0.0007839224876868017,
+          "ci95_low": -0.0018204819666841102,
+          "ci95_high": 0.00021114856176465536
+        },
+        "recall100": {
+          "delta": -0.0068360843599031725,
+          "ci95_low": -0.01919870338952478,
+          "ci95_high": 0.003941606396820619
+        }
+      }
+    },
+    "corrected_shard_uncentered_router_dpub96_kc200": {
+      "ndcg10": 0.3008082148522895,
+      "recall10": 0.14582156347999375,
+      "recall100": 0.2482350762792745,
+      "vs_raw": {
+        "ndcg10": {
+          "delta": -0.0012888738016837368,
+          "ci95_low": -0.0033817406129840466,
+          "ci95_high": 0.000508810451331523
+        },
+        "recall10": {
+          "delta": -0.0006498066474352621,
+          "ci95_low": -0.001297151385296106,
+          "ci95_high": -0.00014954681972664978
+        },
+        "recall100": {
+          "delta": -0.00010186188845153538,
+          "ci95_low": -0.004735521663328129,
+          "ci95_high": 0.004762023109200305
+        }
+      }
+    }
+  },
+  "settings": {
+    "half_pca_dimension": 192,
+    "d_pub_fractions": [
+      0.125,
+      0.25
+    ],
+    "candidate_counts": [
+      100,
+      200
+    ],
+    "bootstrap_samples": 10000,
+    "seed": 2026
+  },
+  "elapsed_seconds": 2.7797160148620605
+}

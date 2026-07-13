@@ -1,0 +1,8 @@
+Highlights
+
+- Corrected PCA scoring reproduces raw ranks in ten BEIR/MIRACL settings.
+- Cell keys spread diffuse evidence but create no hard security threshold.
+- Block-SIMD cuts CKKS query upload 74--87% with no top-1 flips.
+- Churn leaves persistent-row prefix linkage at R@1 at least 0.9997.
+- Formal Gaussian DP matches SHARD utility only at epsilon 32768 in 3/8 cases.
+

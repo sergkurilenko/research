@@ -1,0 +1,75 @@
+{
+  "experiment": "exp28_cross_release_churn",
+  "encoders": [
+    "e5-small",
+    "e5-base"
+  ],
+  "pool": 50000,
+  "pca_sample": 50000,
+  "sizes": [
+    2000,
+    10000
+  ],
+  "overlaps": [
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    1.0
+  ],
+  "d_pub": {
+    "e5-small": 96,
+    "e5-base": 192
+  },
+  "cells": 64,
+  "seeds": [
+    11,
+    23,
+    47
+  ],
+  "conditions": [
+    "clean",
+    "fp16",
+    "int8"
+  ],
+  "quantile_count": 17,
+  "neighbour_width": 12,
+  "universe_size": 17500,
+  "selection_seed": 2801,
+  "cell_seed": 2802,
+  "git_head_before_run": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.6",
+  "protocol": {
+    "release_rows_each": "N",
+    "shared_rows": "round(overlap*N)",
+    "a_only_deletions": "N-shared",
+    "b_only_insertions": "N-shared",
+    "independent_rekeying": true,
+    "independent_row_permutation": true,
+    "persistent_ids_visible_to_attacker": false,
+    "public_cell_rule_fixed_across_releases": true,
+    "mnn_acceptance": "reciprocal nearest neighbour; no distance threshold",
+    "feature_scaling": "unsupervised pooled marginal standardisation; no correspondences"
+  },
+  "limitations": [
+    "The corpus embedding pool is fixed; churn changes membership, not document text.",
+    "AUC uses ten sampled within-cell non-mates per shared row.",
+    "Microkey Haar images are sampled directly on the equal-norm sphere, which is distributionally exact per row.",
+    "FP16 and INT8 are storage controls, not privacy mechanisms."
+  ],
+  "reproduction_command": "D:\\PHD\\research\\RES\\experiments\\.venv\\Scripts\\python.exe D:\\PHD\\research\\RES1\\shard\\exp28_cross_release_churn.py --encoders e5-small,e5-base --pool 50000 --pca-sample 50000 --sizes 2000,10000 --overlaps 0.25,0.5,0.75,0.9,1.0 --d-pub 96,192 --cells 64 --seeds 11,23,47 --conditions clean,fp16,int8 --quantile-count 17 --neighbour-width 12 --output D:\\PHD\\research\\RES1\\results\\exp28_cross_release_churn",
+  "input_files": {
+    "e5-small": {
+      "path": "D:\\PHD\\research\\RES1\\notebooks\\_corpus_cache\\E_docs_e5small_1000000.npy",
+      "sha256": null,
+      "size_bytes": 1536000128
+    },
+    "e5-base": {
+      "path": "D:\\PHD\\research\\RES1\\notebooks\\_corpus_cache\\E_docs_e5base_1000000.npy",
+      "sha256": null,
+      "size_bytes": 3072000128
+    }
+  }
+}

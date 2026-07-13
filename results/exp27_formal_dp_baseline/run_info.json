@@ -1,0 +1,19 @@
+{
+  "started_utc": "2026-07-12T14:21:57.999415+00:00",
+  "finished_utc": "2026-07-12T14:23:07.613644+00:00",
+  "elapsed_seconds": 69.61422944068909,
+  "git_revision": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_device": "NVIDIA GeForce RTX 5060",
+  "command": [
+    "shard\\exp27_formal_dp_baseline.py",
+    "--out",
+    "results\\exp27_formal_dp_baseline",
+    "--force"
+  ]
+}

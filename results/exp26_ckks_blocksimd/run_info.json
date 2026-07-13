@@ -1,0 +1,53 @@
+{
+  "start_utc": "2026-07-12T14:34:59.541710+00:00",
+  "end_utc": "2026-07-12T14:45:27.023691+00:00",
+  "wall_seconds": 627.4714925999288,
+  "git_revision": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "python_executable": "D:\\PHD\\research\\RES\\experiments\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 191 Stepping 2, GenuineIntel",
+  "logical_cpu_count": 16,
+  "physical_cpu_count": 10,
+  "cpu_affinity_logical_processors": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "system_memory_bytes": 34194833408,
+  "numpy": "2.4.6",
+  "tenseal": "0.3.16",
+  "psutil": "7.2.2",
+  "gpu_inventory": [
+    {
+      "name": "NVIDIA GeForce RTX 5060",
+      "driver_version": "591.86",
+      "memory_mib": "8151"
+    }
+  ],
+  "ckks": {
+    "scheme": "CKKS",
+    "poly_modulus_degree": 8192,
+    "slot_capacity": 4096,
+    "coeff_mod_bit_sizes": [
+      60,
+      40,
+      40,
+      60
+    ],
+    "global_scale_bits": 40,
+    "context_and_key_setup_seconds": 0.6341488999314606,
+    "public_server_context_bytes": 34075337,
+    "server_has_secret_key": false,
+    "server_has_public_key": true,
+    "server_has_galois_keys": true,
+    "server_has_relin_keys": false
+  },
+  "raw_measurement_count": 315,
+  "summary_cell_count": 21,
+  "measured_not_modelled": true,
+  "gpu_used_by_tenseal": false
+}

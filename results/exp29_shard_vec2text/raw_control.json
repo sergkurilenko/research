@@ -1,0 +1,42 @@
+{
+  "official_embedding_path": "corrector.inversion_trainer.call_embedding_model",
+  "pooling": "attention-mask mean pooling; no L2 normalization",
+  "token_f1_mean": 0.8170289855072463,
+  "bleu_mean": 0.6213601047821709,
+  "threshold": 0.1,
+  "passed": true,
+  "inversion": {
+    "seconds": 6.718228101730347,
+    "requested_batch_size": 2,
+    "effective_batch_size": 2,
+    "requested_steps": 4,
+    "effective_steps": 4,
+    "peak_allocated_bytes": 1629355520
+  },
+  "samples": [
+    {
+      "reference": "The city council approved a new public transit plan in Boston.",
+      "hypothesis": "The city council approved a new public transportation plan in bot, bot,  Boston.",
+      "token_f1": 0.8333333333333333,
+      "bleu": 0.44803042738802723
+    },
+    {
+      "reference": "Scientists discovered a new planet near a distant star.",
+      "hypothesis": "         Scientists discovered a new planet near a distant star.",
+      "token_f1": 1.0,
+      "bleu": 1.0000000000000004
+    },
+    {
+      "reference": "Alice Brown email alice.brown@example.com phone 415-555-1234.",
+      "hypothesis": "alice Brown alice Brown a.k.a. example e-mail 800-225225",
+      "token_f1": 0.43478260869565216,
+      "bleu": 0.03740999174065509
+    },
+    {
+      "reference": "The company reported stronger revenue after expanding cloud services.",
+      "hypothesis": "          The company reported stronger revenue after expanding cloud services. ",
+      "token_f1": 1.0,
+      "bleu": 1.0000000000000004
+    }
+  ]
+}

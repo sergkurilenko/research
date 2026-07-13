@@ -36,7 +36,8 @@ def run(enc):
     mu = X.mean(0, keepdims=True).astype(np.float32)
     rng = np.random.RandomState(0); idx = rng.choice(len(X), min(200000, len(X)), replace=False)
     V, _ = S.pca_basis((X[idx] - mu).astype(np.float32))
-    Xrot = ((X - mu) @ V).astype(np.float32); del X
+    Xrot = S.document_pca_coordinates(X, mu, V); del X
+    # Active-cell cost is determined by the centred stage-1 routing query.
     Qrot = ((Q[:N_Q] - mu) @ V).astype(np.float32)
     d_pub = max(8, d // 4)
     U = np.ascontiguousarray(Xrot[:, :d_pub]); Uq = np.ascontiguousarray(Qrot[:, :d_pub])

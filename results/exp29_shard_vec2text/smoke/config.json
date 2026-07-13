@@ -1,0 +1,45 @@
+{
+  "profile": "smoke",
+  "out": "D:\\PHD\\research\\RES1\\results\\exp29_shard_vec2text\\smoke",
+  "n_ag": 240,
+  "n_pii": 80,
+  "n_test": 2,
+  "geometries": "192:4:17:101",
+  "known_pairs": "8,16",
+  "procrustes_pairs": "16",
+  "encode_batch_size": 32,
+  "invert_batch_size": 1,
+  "num_steps": 2,
+  "beam_width": 0,
+  "max_embed_tokens": 32,
+  "sample_seed": 20260712,
+  "pii_seed": 290029,
+  "selection_seed": 290030,
+  "bootstrap_reps": 100,
+  "bootstrap_seed": 290031,
+  "kmeans_iters": 20,
+  "rank_rtol": 1e-06,
+  "resume": true,
+  "require_raw_token_f1": 0.1,
+  "finalize_only": false,
+  "geometries_parsed": [
+    {
+      "d_pub": 192,
+      "cells": 4,
+      "cell_seed": 17,
+      "key_seed": 101
+    }
+  ],
+  "known_pairs_parsed": [
+    8,
+    16
+  ],
+  "procrustes_pairs_parsed": [
+    16
+  ],
+  "encoder": "sentence-transformers/gtr-t5-base",
+  "vec2text_inversion_checkpoint": "jxm/gtr__nq__32",
+  "vec2text_corrector_checkpoint": "jxm/gtr__nq__32__correct",
+  "embedding_path": "corrector.inversion_trainer.call_embedding_model",
+  "pooling": "attention-mask mean pooling; no L2 normalization"
+}

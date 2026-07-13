@@ -1,0 +1,61 @@
+{
+  "created_utc": "2026-07-12T10:28:47.475401+00:00",
+  "command": [
+    "D:\\PHD\\research\\RES\\experiments\\.venv\\Scripts\\python.exe",
+    "shard\\exp23_corrected_score.py",
+    "--suite",
+    "all",
+    "--query-batch",
+    "8",
+    "--full-order-queries",
+    "8",
+    "--bootstrap",
+    "10000",
+    "--output",
+    "results\\exp23_corrected_score",
+    "--force"
+  ],
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.6",
+  "git_revision": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "parameters": {
+    "suite": "all",
+    "encoders": [
+      "multilingual-e5-small",
+      "multilingual-e5-base"
+    ],
+    "datasets": [
+      "scifact",
+      "nfcorpus",
+      "arguana"
+    ],
+    "langs": [
+      "sw",
+      "bn"
+    ],
+    "dpub_fracs": [
+      0.125,
+      0.25
+    ],
+    "kc": [
+      100,
+      200
+    ],
+    "max_pca_docs": 200000,
+    "max_queries": 0,
+    "pca_chunk": 4096,
+    "transform_chunk": 32768,
+    "query_batch": 8,
+    "full_order_queries": 8,
+    "bootstrap": 10000,
+    "seed": 2026,
+    "output": "D:\\PHD\\research\\RES1\\results\\exp23_corrected_score",
+    "force": true
+  },
+  "score_conventions": {
+    "raw": "q^T x",
+    "old_centered": "(V^T(q-mu))^T(V^T(x-mu))",
+    "corrected": "(V^T q)^T(V^T(x-mu))"
+  }
+}

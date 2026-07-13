@@ -1,0 +1,8 @@
+[
+  {
+    "encoder": "multilingual-e5-base",
+    "packing_width": 8,
+    "reason": "width*d_priv=4608 exceeds single-ciphertext slot capacity=4096",
+    "maximum_single_ciphertext_width": 7
+  }
+]

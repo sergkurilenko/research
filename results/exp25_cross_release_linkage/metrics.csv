@@ -1,0 +1,589 @@
+encoder,d,d_pub,d_priv,scheme,n,seed,condition,evaluated_queries,view,linkage_method,n_queries,top1,top5,top10,mrr,median_rank,mean_rank,auc,note
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,residual_norm_nn,500,0.988,1.0,1.0,0.994,1.0,1.012,0.9986932,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,residual_norm_rank_assignment,500,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,11,clean,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,clean,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,gram_signature_hungarian,500,1.0,,,,,,,global one-to-one assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,raw_cross_key_cosine_control,500,0.138,0.606,0.894,0.33087560511384045,5.0,5.476,0.500023,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,known_anchor_ip_0.01,495,0.18383838383838383,0.6262626262626263,0.9171717171717172,0.3748521733102838,4.0,5.036363636363636,0.5313784307723701,
+e5-small,384,96,288,cell_C64,500,11,clean,500,residual,known_anchor_ip_0.1,450,0.6155555555555555,0.8622222222222222,0.9911111111111112,0.7166833660166994,1.0,2.5244444444444443,0.759567901234568,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,residual_norm_nn,500,0.986,1.0,1.0,0.993,1.0,1.014,0.9981264,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,residual_norm_rank_assignment,500,0.952,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,11,fp16,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,known_anchor_ip_0.01,495,0.18383838383838383,0.6262626262626263,0.9171717171717172,0.3748521733102838,4.0,5.036363636363636,0.5153168044077134,
+e5-small,384,96,288,cell_C64,500,11,fp16,500,residual,known_anchor_ip_0.1,450,0.6155555555555555,0.8622222222222222,0.9911111111111112,0.7166833660166994,1.0,2.5244444444444443,0.6978148148148149,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,residual_norm_nn,500,0.944,1.0,1.0,0.9716666666666667,1.0,1.058,0.9935088,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,residual_norm_rank_assignment,500,0.254,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,11,int8,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.9999076,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,int8,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,known_anchor_ip_0.01,495,0.18383838383838383,0.6262626262626263,0.9171717171717172,0.3748521733102838,4.0,5.036363636363636,0.5020663197632895,
+e5-small,384,96,288,cell_C64,500,11,int8,500,residual,known_anchor_ip_0.1,450,0.5888888888888889,0.8622222222222222,0.9911111111111112,0.7027944771278104,1.0,2.5555555555555554,0.6473965432098765,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,residual_norm_nn,500,0.964,1.0,1.0,0.982,1.0,1.036,0.9956886,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,residual_norm_rank_assignment,500,0.304,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.9999832,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,known_anchor_ip_0.01,495,0.1797979797979798,0.6262626262626263,0.9171717171717172,0.3728319712900818,4.0,5.040404040404041,0.5029845934088358,
+e5-small,384,96,288,cell_C64,500,11,noise_0.01,500,residual,known_anchor_ip_0.1,450,0.5933333333333334,0.8622222222222222,0.9911111111111112,0.7052018845352178,1.0,2.548888888888889,0.6474948148148149,
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,residual,residual_norm_nn,500,0.624,0.998,1.0,0.7835333333333333,1.0,1.584,0.9981291999999999,
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,residual,residual_norm_rank_assignment,500,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,residual,raw_cross_key_cosine_control,500,0.0,0.018,0.028,0.014842063044358762,263.5,255.714,0.4901722,
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,residual,known_anchor_ip_0.01,495,0.00202020202020202,0.006060606060606061,0.010101010101010102,0.012084094441150623,240.0,241.43232323232323,0.5137867564534231,
+e5-small,384,96,288,microkey_perdoc,500,11,clean,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.015555555555555555,0.035555555555555556,0.017173653128554796,213.0,221.44666666666666,0.5595950617283951,
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,residual,residual_norm_nn,500,0.612,0.994,1.0,0.7730333333333334,1.0,1.636,0.9982674,
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,residual,residual_norm_rank_assignment,500,0.946,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,residual,known_anchor_ip_0.01,495,0.00202020202020202,0.006060606060606061,0.010101010101010102,0.012092551908298986,239.0,241.42626262626263,0.5137806346291195,
+e5-small,384,96,288,microkey_perdoc,500,11,fp16,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.015555555555555555,0.035555555555555556,0.01717252070734048,213.0,221.44222222222223,0.559601975308642,
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,residual,residual_norm_nn,500,0.242,0.756,0.938,0.4494425071889468,3.0,4.206,0.9937451999999999,
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,residual,residual_norm_rank_assignment,500,0.278,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,residual,known_anchor_ip_0.01,495,0.00202020202020202,0.006060606060606061,0.00808080808080808,0.011951114324305918,238.0,241.4949494949495,0.5139271502907866,
+e5-small,384,96,288,microkey_perdoc,500,11,int8,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.015555555555555555,0.035555555555555556,0.017138051701302823,214.5,221.77333333333334,0.5593555555555556,
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,residual,residual_norm_nn,500,0.242,0.772,0.958,0.4595509164811797,3.0,3.91,0.9947218,
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,residual,residual_norm_rank_assignment,500,0.292,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,residual,known_anchor_ip_0.01,495,0.00202020202020202,0.006060606060606061,0.00808080808080808,0.011976587580242375,239.0,241.63030303030303,0.5137145189266401,
+e5-small,384,96,288,microkey_perdoc,500,11,noise_0.01,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.015555555555555555,0.035555555555555556,0.017268708720832186,214.5,221.52,0.5594656790123457,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,cell_label_chance_control,1000,0.031930141962286177,0.15965070981143087,0.31930141962286174,0.1269129633887017,17.75,18.0925,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,residual_norm_nn,1000,0.959,1.0,1.0,0.9791666666666667,1.0,1.043,0.998859,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,residual_norm_rank_assignment,1000,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,gram_signature_hungarian,1000,1.0,,,,,,,global one-to-one assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,raw_cross_key_cosine_control,1000,0.024,0.164,0.326,0.12699933754000717,16.0,18.07,0.50777525,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,known_anchor_ip_0.01,989,0.30940343781597573,0.41253791708796766,0.5338725985844287,0.382065507136105,9.0,12.48938321536906,0.6336466551684301,
+e5-small,384,96,288,cell_C64,2000,11,clean,1000,residual,known_anchor_ip_0.1,898,0.9187082405345212,0.9320712694877505,0.9398663697104677,0.9269168427571365,1.0,2.2661469933184857,0.952545870308183,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,cell_label_chance_control,1000,0.031930141962286177,0.15965070981143087,0.31930141962286174,0.1269129633887017,17.75,18.0925,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,residual_norm_nn,1000,0.947,1.0,1.0,0.9731666666666666,1.0,1.055,0.9984169999999999,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,residual_norm_rank_assignment,1000,0.776,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,known_anchor_ip_0.01,989,0.30940343781597573,0.41253791708796766,0.5338725985844287,0.382065507136105,9.0,12.48938321536906,0.5810475391081471,
+e5-small,384,96,288,cell_C64,2000,11,fp16,1000,residual,known_anchor_ip_0.1,898,0.9175946547884187,0.9320712694877505,0.9398663697104677,0.9263600498840853,1.0,2.267260579064588,0.9343895863611787,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,cell_label_chance_control,1000,0.031930141962286177,0.15965070981143087,0.31930141962286174,0.1269129633887017,17.75,18.0925,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,residual_norm_nn,1000,0.806,1.0,1.0,0.8969833333333334,1.0,1.235,0.9924475500000001,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,residual_norm_rank_assignment,1000,0.08,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,known_anchor_ip_0.01,989,0.2558139534883721,0.4115267947421638,0.5338725985844287,0.35210258162211777,9.0,12.567239635995955,0.542435854050777,
+e5-small,384,96,288,cell_C64,2000,11,int8,1000,residual,known_anchor_ip_0.1,898,0.9053452115812918,0.9320712694877505,0.9398663697104677,0.9202353282805218,1.0,2.279510022271715,0.918939886210882,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,cell_label_chance_control,1000,0.031930141962286177,0.15965070981143087,0.31930141962286174,0.1269129633887017,17.75,18.0925,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,residual_norm_nn,1000,0.842,1.0,1.0,0.9145833333333334,1.0,1.199,0.9946158500000001,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.094,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,known_anchor_ip_0.01,989,0.25985844287158744,0.4115267947421638,0.5338725985844287,0.35496742826856204,9.0,12.556117290192113,0.5409225443477852,
+e5-small,384,96,288,cell_C64,2000,11,noise_0.01,1000,residual,known_anchor_ip_0.1,898,0.9064587973273942,0.9320712694877505,0.9398663697104677,0.9204209259048722,1.0,2.2806236080178173,0.9190606693419179,
+e5-small,384,96,288,microkey_perdoc,2000,11,clean,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,11,clean,1000,residual,residual_norm_nn,1000,0.279,0.849,0.99,0.5068957181707182,2.0,3.17,0.9988585,
+e5-small,384,96,288,microkey_perdoc,2000,11,clean,1000,residual,residual_norm_rank_assignment,1000,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,11,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,clean,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,clean,1000,residual,raw_cross_key_cosine_control,1000,0.0,0.002,0.004,0.00322944401309703,1081.0,1040.999,0.4849213,
+e5-small,384,96,288,microkey_perdoc,2000,11,fp16,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,11,fp16,1000,residual,residual_norm_nn,1000,0.265,0.826,0.982,0.4899862054612054,3.0,3.378,0.99878565,
+e5-small,384,96,288,microkey_perdoc,2000,11,fp16,1000,residual,residual_norm_rank_assignment,1000,0.803,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,11,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,fp16,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,int8,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,11,int8,1000,residual,residual_norm_nn,1000,0.078,0.33,0.549,0.21723443594907177,9.0,12.82,0.99336975,
+e5-small,384,96,288,microkey_perdoc,2000,11,int8,1000,residual,residual_norm_rank_assignment,1000,0.077,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,11,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,int8,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,noise_0.01,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,11,noise_0.01,1000,residual,residual_norm_nn,1000,0.099,0.332,0.566,0.23105816800544351,9.0,11.892,0.99446425,
+e5-small,384,96,288,microkey_perdoc,2000,11,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.094,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,11,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,11,noise_0.01,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,cell_label_chance_control,1000,0.006426387010301603,0.03213193505150802,0.06426387010301604,0.035860746359992285,81.0,85.751,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,residual_norm_nn,1000,0.838,1.0,1.0,0.9148333333333334,1.0,1.19,0.99894745,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,residual_norm_rank_assignment,1000,0.994,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,gram_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,nn_graph_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,0.9999364,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,raw_cross_key_cosine_control,1000,0.007,0.038,0.073,0.039512659554978756,74.0,83.153,0.51594695,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,known_anchor_ip_0.01,989,0.8119312436804853,0.8240647118301314,0.833164812942366,0.8207868331483014,1.0,13.863498483316482,0.8937964730335,
+e5-small,384,96,288,cell_C64,10000,11,clean,1000,residual,known_anchor_ip_0.1,886,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,cell_label_chance_control,1000,0.006426387010301603,0.03213193505150802,0.06426387010301604,0.035860746359992285,81.0,85.751,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,residual_norm_nn,1000,0.827,1.0,1.0,0.9073333333333332,1.0,1.213,0.9988562000000001,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,residual_norm_rank_assignment,1000,0.395,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,gram_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,0.9999999999999999,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,nn_graph_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,0.9999026,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,combined_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,full_server,combined_prefix_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,known_anchor_ip_0.01,989,0.8008088978766431,0.8240647118301314,0.833164812942366,0.8152256602463802,1.0,13.874620829120323,0.8581391259363617,
+e5-small,384,96,288,cell_C64,10000,11,fp16,1000,residual,known_anchor_ip_0.1,886,0.9988713318284425,1.0,1.0,0.9994356659142212,1.0,1.0011286681715577,1.0,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,cell_label_chance_control,1000,0.006426387010301603,0.03213193505150802,0.06426387010301604,0.035860746359992285,81.0,85.751,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,residual_norm_nn,1000,0.444,0.943,0.997,0.6498071428571429,2.0,2.248,0.9932881,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,residual_norm_rank_assignment,1000,0.028,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,gram_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,nn_graph_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,0.99997235,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,combined_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,full_server,combined_prefix_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,known_anchor_ip_0.01,989,0.5884732052578362,0.7977755308392316,0.8311425682507584,0.6791586601753357,1.0,14.383215369059656,0.825001099046028,
+e5-small,384,96,288,cell_C64,10000,11,int8,1000,residual,known_anchor_ip_0.1,886,0.9988713318284425,1.0,1.0,0.9994356659142212,1.0,1.0011286681715577,0.9999999999999999,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,cell_label_chance_control,1000,0.006426387010301603,0.03213193505150802,0.06426387010301604,0.035860746359992285,81.0,85.751,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,residual_norm_nn,1000,0.536,0.963,0.998,0.7153195165945165,1.0,1.95,0.9949986499999999,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.026,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,gram_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,nn_graph_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,0.9999292000000001,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,combined_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,full_server,combined_prefix_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,known_anchor_ip_0.01,989,0.6117290192113246,0.8119312436804853,0.833164812942366,0.6951416407943121,1.0,14.277047522750253,0.8257820862654006,
+e5-small,384,96,288,cell_C64,10000,11,noise_0.01,1000,residual,known_anchor_ip_0.1,886,0.9988713318284425,1.0,1.0,0.9994356659142212,1.0,1.0011286681715577,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,clean,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,11,clean,1000,residual,residual_norm_nn,1000,0.09,0.326,0.538,0.22328751726498294,10.0,11.797,0.9993965499999999,
+e5-small,384,96,288,microkey_perdoc,10000,11,clean,1000,residual,residual_norm_rank_assignment,1000,0.994,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,11,clean,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,clean,1000,full_server,combined_prefix_norm_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,clean,1000,residual,raw_cross_key_cosine_control,1000,0.001,0.001,0.003,0.0018713827023327265,4976.0,5026.349,0.4943271,
+e5-small,384,96,288,microkey_perdoc,10000,11,fp16,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,11,fp16,1000,residual,residual_norm_nn,1000,0.082,0.304,0.513,0.21170508014015965,10.0,13.055,0.9990132,
+e5-small,384,96,288,microkey_perdoc,10000,11,fp16,1000,residual,residual_norm_rank_assignment,1000,0.389,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,11,fp16,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,fp16,1000,full_server,combined_prefix_norm_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,int8,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,11,int8,1000,residual,residual_norm_nn,1000,0.02,0.072,0.126,0.06434913461031025,54.0,71.671,0.9934818999999999,
+e5-small,384,96,288,microkey_perdoc,10000,11,int8,1000,residual,residual_norm_rank_assignment,1000,0.025,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,11,int8,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,int8,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,noise_0.01,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,11,noise_0.01,1000,residual,residual_norm_nn,1000,0.021,0.115,0.197,0.08416030027320505,37.0,53.877,0.9956913,
+e5-small,384,96,288,microkey_perdoc,10000,11,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.02,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,11,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,11,noise_0.01,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,residual_norm_nn,500,0.99,1.0,1.0,0.995,1.0,1.01,0.9992616,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,residual_norm_rank_assignment,500,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,23,clean,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,clean,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,gram_signature_hungarian,500,1.0,,,,,,,global one-to-one assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,raw_cross_key_cosine_control,500,0.102,0.61,0.906,0.3168992262639322,5.0,5.298,0.49133119999999997,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,known_anchor_ip_0.01,495,0.20202020202020202,0.6444444444444445,0.9313131313131313,0.3916962711481428,4.0,4.8121212121212125,0.539561269258239,
+e5-small,384,96,288,cell_C64,500,23,clean,500,residual,known_anchor_ip_0.1,450,0.6311111111111111,0.8577777777777778,0.9688888888888889,0.7242550267452228,1.0,2.6555555555555554,0.7684074074074074,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,residual_norm_nn,500,0.988,1.0,1.0,0.994,1.0,1.012,0.9981662,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,residual_norm_rank_assignment,500,0.942,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,23,fp16,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,known_anchor_ip_0.01,495,0.20202020202020202,0.6444444444444445,0.9313131313131313,0.3916962711481428,4.0,4.8121212121212125,0.5191796755433119,
+e5-small,384,96,288,cell_C64,500,23,fp16,500,residual,known_anchor_ip_0.1,450,0.6311111111111111,0.8577777777777778,0.9688888888888889,0.7242550267452228,1.0,2.6555555555555554,0.7072592592592593,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,residual_norm_nn,500,0.948,1.0,1.0,0.9736666666666667,1.0,1.054,0.9931274,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,residual_norm_rank_assignment,500,0.246,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,23,int8,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.999992,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.9998528000000001,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,int8,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,known_anchor_ip_0.01,495,0.19595959595959597,0.6444444444444445,0.9313131313131313,0.38866596811783977,4.0,4.818181818181818,0.5034053667993061,
+e5-small,384,96,288,cell_C64,500,23,int8,500,residual,known_anchor_ip_0.1,450,0.6155555555555555,0.8577777777777778,0.9688888888888889,0.716477248967445,1.0,2.671111111111111,0.6602330864197531,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,residual_norm_nn,500,0.966,1.0,1.0,0.983,1.0,1.034,0.9939874,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,residual_norm_rank_assignment,500,0.286,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.9999436,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,known_anchor_ip_0.01,495,0.19595959595959597,0.6444444444444445,0.9313131313131313,0.3883292677811394,4.0,4.820202020202021,0.5033045607591062,
+e5-small,384,96,288,cell_C64,500,23,noise_0.01,500,residual,known_anchor_ip_0.1,450,0.6177777777777778,0.8577777777777778,0.9688888888888889,0.7175883600785561,1.0,2.668888888888889,0.6601476543209877,
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,residual,residual_norm_nn,500,0.62,0.996,1.0,0.7840714285714285,1.0,1.574,0.9993032,
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,residual,residual_norm_rank_assignment,500,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,residual,raw_cross_key_cosine_control,500,0.0,0.004,0.006,0.009997842551278911,244.5,248.286,0.5062422,
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,residual,known_anchor_ip_0.01,495,0.0,0.010101010101010102,0.022222222222222223,0.012482012249785892,248.0,250.8868686868687,0.49991633506785016,
+e5-small,384,96,288,microkey_perdoc,500,23,clean,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.008888888888888889,0.022222222222222223,0.014019130830776634,227.5,223.15555555555557,0.5589995061728394,
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,residual,residual_norm_nn,500,0.578,0.998,1.0,0.7584857142857143,1.0,1.65,0.9989239999999999,
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,residual,residual_norm_rank_assignment,500,0.952,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,residual,known_anchor_ip_0.01,495,0.0,0.010101010101010102,0.022222222222222223,0.012579252552824235,248.0,250.8969696969697,0.49992408937863486,
+e5-small,384,96,288,microkey_perdoc,500,23,fp16,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.008888888888888889,0.022222222222222223,0.014015794884172846,227.5,223.15333333333334,0.5590004938271604,
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,residual,residual_norm_nn,500,0.25,0.718,0.93,0.4436728954151471,3.0,4.446,0.9936685999999999,
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,residual,residual_norm_rank_assignment,500,0.26,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,residual,known_anchor_ip_0.01,495,0.0,0.00808080808080808,0.022222222222222223,0.0123934555776632,251.0,250.9878787878788,0.5000387715539231,
+e5-small,384,96,288,microkey_perdoc,500,23,int8,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.008888888888888889,0.024444444444444446,0.013986097122393362,227.0,223.28222222222223,0.5587713580246914,
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,residual,residual_norm_nn,500,0.286,0.788,0.944,0.4890861341273106,3.0,3.782,0.996051,
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,residual,residual_norm_rank_assignment,500,0.298,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,residual,known_anchor_ip_0.01,495,0.0,0.00808080808080808,0.022222222222222223,0.012529069885725923,250.0,251.04040404040404,0.4997045199469442,
+e5-small,384,96,288,microkey_perdoc,500,23,noise_0.01,500,residual,known_anchor_ip_0.1,450,0.0022222222222222222,0.011111111111111112,0.02,0.01420240939431033,227.0,223.32222222222222,0.5588004938271605,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,cell_label_chance_control,1000,0.032409577851403894,0.16204788925701946,0.3240957785140389,0.1284786037235746,17.0,17.749,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,residual_norm_nn,1000,0.961,1.0,1.0,0.9803333333333334,1.0,1.04,0.99889005,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,residual_norm_rank_assignment,1000,0.998,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,gram_signature_hungarian,1000,1.0,,,,,,,global one-to-one assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,raw_cross_key_cosine_control,1000,0.024,0.147,0.321,0.11915231959092333,16.0,17.969,0.49476030000000004,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,known_anchor_ip_0.01,989,0.28816986855409504,0.38018200202224467,0.512639029322548,0.35947773866339205,10.0,13.080889787664308,0.6222829281857766,
+e5-small,384,96,288,cell_C64,2000,23,clean,1000,residual,known_anchor_ip_0.1,903,0.9623477297895903,0.9678848283499446,0.9789590254706534,0.9663937417515773,1.0,1.5182724252491695,0.9772721419557547,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,cell_label_chance_control,1000,0.032409577851403894,0.16204788925701946,0.3240957785140389,0.1284786037235746,17.0,17.749,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,residual_norm_nn,1000,0.95,1.0,1.0,0.9745,1.0,1.053,0.9986368999999999,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,residual_norm_rank_assignment,1000,0.778,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,known_anchor_ip_0.01,989,0.28816986855409504,0.38018200202224467,0.512639029322548,0.35947773866339205,10.0,13.080889787664308,0.5783019176564045,
+e5-small,384,96,288,cell_C64,2000,23,fp16,1000,residual,known_anchor_ip_0.1,903,0.9623477297895903,0.9678848283499446,0.9789590254706534,0.9663937417515773,1.0,1.5182724252491695,0.969052340604531,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,cell_label_chance_control,1000,0.032409577851403894,0.16204788925701946,0.3240957785140389,0.1284786037235746,17.0,17.749,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,residual_norm_nn,1000,0.792,1.0,1.0,0.8874500000000001,1.0,1.264,0.9916071000000001,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,residual_norm_rank_assignment,1000,0.092,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,known_anchor_ip_0.01,989,0.24064711830131447,0.38018200202224467,0.512639029322548,0.33302003728152485,10.0,13.145601617795753,0.535495966245485,
+e5-small,384,96,288,cell_C64,2000,23,int8,1000,residual,known_anchor_ip_0.1,903,0.9213732004429679,0.9678848283499446,0.9789590254706534,0.9451681972702188,1.0,1.5636766334440753,0.9591221705916908,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,cell_label_chance_control,1000,0.032409577851403894,0.16204788925701946,0.3240957785140389,0.1284786037235746,17.0,17.749,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,residual_norm_nn,1000,0.817,1.0,1.0,0.9016166666666666,1.0,1.227,0.993151,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.105,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,known_anchor_ip_0.01,989,0.2487360970677452,0.38018200202224467,0.512639029322548,0.33824416940151136,10.0,13.129423660262892,0.5375738788963738,
+e5-small,384,96,288,cell_C64,2000,23,noise_0.01,1000,residual,known_anchor_ip_0.1,903,0.9346622369878184,0.9678848283499446,0.9789590254706534,0.9520341994850583,1.0,1.550387596899225,0.9601818228643539,
+e5-small,384,96,288,microkey_perdoc,2000,23,clean,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,23,clean,1000,residual,residual_norm_nn,1000,0.284,0.844,0.989,0.5021694666444666,3.0,3.256,0.9989576,
+e5-small,384,96,288,microkey_perdoc,2000,23,clean,1000,residual,residual_norm_rank_assignment,1000,0.999,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,23,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,clean,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,clean,1000,residual,raw_cross_key_cosine_control,1000,0.0,0.003,0.004,0.0030539361516057277,1048.0,1026.279,0.4909167,
+e5-small,384,96,288,microkey_perdoc,2000,23,fp16,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,23,fp16,1000,residual,residual_norm_nn,1000,0.262,0.808,0.983,0.48267665667665666,3.0,3.449,0.9989014,
+e5-small,384,96,288,microkey_perdoc,2000,23,fp16,1000,residual,residual_norm_rank_assignment,1000,0.772,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,23,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,fp16,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,int8,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,23,int8,1000,residual,residual_norm_nn,1000,0.08,0.308,0.511,0.21074571811419557,10.0,14.083,0.9944374,
+e5-small,384,96,288,microkey_perdoc,2000,23,int8,1000,residual,residual_norm_rank_assignment,1000,0.092,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,23,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,int8,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,noise_0.01,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,23,noise_0.01,1000,residual,residual_norm_nn,1000,0.098,0.355,0.572,0.23378506506270522,9.0,11.616,0.9952103999999999,
+e5-small,384,96,288,microkey_perdoc,2000,23,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.108,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,23,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,23,noise_0.01,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,cell_label_chance_control,1000,0.006419951465720389,0.03209975732860194,0.06419951465720387,0.03581064545921767,83.0,85.819,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,residual_norm_nn,1000,0.816,1.0,1.0,0.9028666666666667,1.0,1.217,0.9984883,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,residual_norm_rank_assignment,1000,0.996,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,raw_cross_key_cosine_control,1000,0.003,0.027,0.059,0.03345363183707734,80.0,87.871,0.48828845,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,known_anchor_ip_0.01,989,0.8210313447927199,0.8281092012133469,0.8361981799797775,0.8283718208432859,1.0,12.381193124368048,0.8982104463558189,
+e5-small,384,96,288,cell_C64,10000,23,clean,1000,residual,known_anchor_ip_0.1,902,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,cell_label_chance_control,1000,0.006419951465720389,0.03209975732860194,0.06419951465720387,0.03581064545921767,83.0,85.819,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,residual_norm_nn,1000,0.815,0.999,1.0,0.9016666666666666,1.0,1.225,0.9982487,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,residual_norm_rank_assignment,1000,0.346,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,known_anchor_ip_0.01,989,0.8149646107178968,0.8281092012133469,0.8361981799797775,0.8253384538058743,1.0,12.38725985844287,0.8640996359346134,
+e5-small,384,96,288,cell_C64,10000,23,fp16,1000,residual,known_anchor_ip_0.1,902,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,cell_label_chance_control,1000,0.006419951465720389,0.03209975732860194,0.06419951465720387,0.03581064545921767,83.0,85.819,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,residual_norm_nn,1000,0.447,0.955,0.995,0.6519996753246753,2.0,2.214,0.99200295,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,residual_norm_rank_assignment,1000,0.01,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,0.9999999999999999,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,known_anchor_ip_0.01,989,0.6713852376137512,0.8099089989888777,0.8361981799797775,0.7316587709452007,1.0,12.740141557128412,0.8342297629843343,
+e5-small,384,96,288,cell_C64,10000,23,int8,1000,residual,known_anchor_ip_0.1,902,0.9988913525498891,1.0,1.0,0.9992609016999261,1.0,1.0022172949002217,0.9999178961755351,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,cell_label_chance_control,1000,0.006419951465720389,0.03209975732860194,0.06419951465720387,0.03581064545921767,83.0,85.819,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,residual_norm_nn,1000,0.49,0.958,0.999,0.6811082722832722,2.0,2.081,0.993461,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.021,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,0.9999999999999999,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,known_anchor_ip_0.01,989,0.698685540950455,0.8129423660262892,0.8361981799797775,0.7517207222508324,1.0,12.655207280080889,0.8349320789554667,
+e5-small,384,96,288,cell_C64,10000,23,noise_0.01,1000,residual,known_anchor_ip_0.1,902,1.0,1.0,1.0,1.0,1.0,1.0,0.9999896755669835,
+e5-small,384,96,288,microkey_perdoc,10000,23,clean,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,23,clean,1000,residual,residual_norm_nn,1000,0.06,0.305,0.503,0.19602107319417938,10.0,12.794,0.9984587,
+e5-small,384,96,288,microkey_perdoc,10000,23,clean,1000,residual,residual_norm_rank_assignment,1000,0.996,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,23,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,23,clean,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,0.9999999999999999,
+e5-small,384,96,288,microkey_perdoc,10000,23,clean,1000,residual,raw_cross_key_cosine_control,1000,0.0,0.001,0.003,0.001185646376837282,5152.5,5038.096,0.49772049999999995,
+e5-small,384,96,288,microkey_perdoc,10000,23,fp16,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,23,fp16,1000,residual,residual_norm_nn,1000,0.057,0.275,0.487,0.1832346814424044,11.0,14.165,0.9986301,
+e5-small,384,96,288,microkey_perdoc,10000,23,fp16,1000,residual,residual_norm_rank_assignment,1000,0.346,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,23,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,23,fp16,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,23,int8,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,23,int8,1000,residual,residual_norm_nn,1000,0.021,0.083,0.149,0.0697436450968155,55.0,70.844,0.9927634000000001,
+e5-small,384,96,288,microkey_perdoc,10000,23,int8,1000,residual,residual_norm_rank_assignment,1000,0.017,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,23,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,23,int8,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,23,noise_0.01,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,23,noise_0.01,1000,residual,residual_norm_nn,1000,0.02,0.094,0.159,0.07577990234924897,42.0,56.097,0.994286,
+e5-small,384,96,288,microkey_perdoc,10000,23,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.025,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,23,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,23,noise_0.01,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,residual_norm_nn,500,0.988,1.0,1.0,0.994,1.0,1.012,0.997898,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,residual_norm_rank_assignment,500,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,47,clean,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,clean,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,gram_signature_hungarian,500,1.0,,,,,,,global one-to-one assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,raw_cross_key_cosine_control,500,0.138,0.626,0.916,0.3447296597193656,4.0,5.142,0.5130205999999999,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,known_anchor_ip_0.01,495,0.2101010101010101,0.6545454545454545,0.9313131313131313,0.3989890401075784,4.0,4.743434343434344,0.5408631772268137,
+e5-small,384,96,288,cell_C64,500,47,clean,500,residual,known_anchor_ip_0.1,450,0.6266666666666667,0.8422222222222222,0.96,0.718078524235387,1.0,2.7844444444444445,0.7652839506172839,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,residual_norm_nn,500,0.988,1.0,1.0,0.994,1.0,1.012,0.998004,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,residual_norm_rank_assignment,500,0.956,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,47,fp16,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,known_anchor_ip_0.01,495,0.2101010101010101,0.6545454545454545,0.9313131313131313,0.3989890401075784,4.0,4.743434343434344,0.5188246097337006,
+e5-small,384,96,288,cell_C64,500,47,fp16,500,residual,known_anchor_ip_0.1,450,0.6266666666666667,0.8422222222222222,0.96,0.718078524235387,1.0,2.7844444444444445,0.7072098765432099,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,residual_norm_nn,500,0.954,1.0,1.0,0.9766666666666667,1.0,1.048,0.9923426,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,residual_norm_rank_assignment,500,0.272,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,47,int8,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.9999664,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,int8,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,known_anchor_ip_0.01,495,0.2,0.6545454545454545,0.9313131313131313,0.39292843404697236,4.0,4.759595959595959,0.504062034486277,
+e5-small,384,96,288,cell_C64,500,47,int8,500,residual,known_anchor_ip_0.1,450,0.6022222222222222,0.8422222222222222,0.96,0.7054859316427944,1.0,2.811111111111111,0.6588997530864198,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,cell_label_chance_control,500,0.12799999999999997,0.6059999999999999,0.918,0.3334187309422604,5.0,5.242,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,residual_norm_nn,500,0.946,1.0,1.0,0.9726666666666667,1.0,1.056,0.9926885999999999,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,residual_norm_rank_assignment,500,0.272,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,gram_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,nn_graph_signature_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,0.9999904,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,combined_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,full_server,combined_prefix_invariants_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,known_anchor_ip_0.01,495,0.19797979797979798,0.6545454545454545,0.9313131313131313,0.39292843404697236,4.0,4.7555555555555555,0.5049431690643812,
+e5-small,384,96,288,cell_C64,500,47,noise_0.01,500,residual,known_anchor_ip_0.1,450,0.6022222222222222,0.8422222222222222,0.96,0.7058563020131647,1.0,2.8088888888888888,0.6597464197530865,
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,residual,residual_norm_nn,500,0.622,1.0,1.0,0.7854333333333334,1.0,1.558,0.9983134,
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,residual,residual_norm_rank_assignment,500,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,residual,raw_cross_key_cosine_control,500,0.002,0.016,0.03,0.015612598149611398,237.5,243.776,0.503628,
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,residual,known_anchor_ip_0.01,495,0.00404040404040404,0.010101010101010102,0.01616161616161616,0.015364570385268901,228.0,238.6828282828283,0.5153653708805224,
+e5-small,384,96,288,microkey_perdoc,500,47,clean,500,residual,known_anchor_ip_0.1,450,0.0,0.0044444444444444444,0.015555555555555555,0.011612123624144622,223.0,225.36666666666667,0.5520987654320988,
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,residual,residual_norm_nn,500,0.596,0.992,1.0,0.766152380952381,1.0,1.638,0.9974628,
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,residual,residual_norm_rank_assignment,500,0.942,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,residual,known_anchor_ip_0.01,495,0.00404040404040404,0.010101010101010102,0.01616161616161616,0.015370305534664994,228.0,238.6727272727273,0.515374757677788,
+e5-small,384,96,288,microkey_perdoc,500,47,fp16,500,residual,known_anchor_ip_0.1,450,0.0,0.0044444444444444444,0.015555555555555555,0.011611784623359264,223.0,225.36888888888888,0.5520896296296296,
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,residual,residual_norm_nn,500,0.236,0.724,0.926,0.4331550279497951,3.0,4.396,0.9916879999999999,
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,residual,residual_norm_rank_assignment,500,0.228,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,residual,known_anchor_ip_0.01,495,0.00404040404040404,0.010101010101010102,0.01616161616161616,0.015592888747431933,229.0,238.7919191919192,0.5152135496377921,
+e5-small,384,96,288,microkey_perdoc,500,47,int8,500,residual,known_anchor_ip_0.1,450,0.0,0.006666666666666667,0.015555555555555555,0.011601933324275823,222.0,225.2422222222222,0.5520725925925927,
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,residual,cell_label_chance_control,500,0.002000000000000001,0.01,0.02,0.013585646859981046,250.5,250.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,residual,residual_norm_nn,500,0.224,0.77,0.956,0.44810168050903343,3.0,3.904,0.9940132000000002,
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,residual,residual_norm_rank_assignment,500,0.262,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,full_server,public_prefix_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,full_server,combined_prefix_norm_nn,500,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,residual,known_anchor_ip_0.01,495,0.00404040404040404,0.010101010101010102,0.01616161616161616,0.015200140192584862,230.0,238.789898989899,0.5152833384348536,
+e5-small,384,96,288,microkey_perdoc,500,47,noise_0.01,500,residual,known_anchor_ip_0.1,450,0.0,0.006666666666666667,0.017777777777777778,0.012101546709963435,222.5,225.5688888888889,0.5517360493827161,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,cell_label_chance_control,1000,0.03212117538894192,0.16060587694470962,0.32121175388941925,0.12756907946807305,17.0,17.957,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,residual_norm_nn,1000,0.96,1.0,1.0,0.9793333333333333,1.0,1.044,0.998847,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,residual_norm_rank_assignment,1000,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,gram_signature_hungarian,1000,1.0,,,,,,,global one-to-one assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,raw_cross_key_cosine_control,1000,0.03,0.157,0.32,0.12532422670016127,16.0,18.2,0.5018336,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,known_anchor_ip_0.01,995,0.3185929648241206,0.40804020100502514,0.5276381909547738,0.3878721721845878,9.0,12.22713567839196,0.6330504785232697,
+e5-small,384,96,288,cell_C64,2000,47,clean,1000,residual,known_anchor_ip_0.1,900,0.9522222222222222,0.9655555555555555,0.9777777777777777,0.9596771554185178,1.0,1.491111111111111,0.9713392592592592,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,cell_label_chance_control,1000,0.03212117538894192,0.16060587694470962,0.32121175388941925,0.12756907946807305,17.0,17.957,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,residual_norm_nn,1000,0.954,1.0,1.0,0.9761666666666666,1.0,1.051,0.99894545,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,residual_norm_rank_assignment,1000,0.776,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,known_anchor_ip_0.01,995,0.3155778894472362,0.40804020100502514,0.5276381909547738,0.38636463449614555,9.0,12.230150753768845,0.5823377187444762,
+e5-small,384,96,288,cell_C64,2000,47,fp16,1000,residual,known_anchor_ip_0.1,900,0.9511111111111111,0.9655555555555555,0.9777777777777777,0.9591215998629622,1.0,1.4922222222222221,0.9602935802469136,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,cell_label_chance_control,1000,0.03212117538894192,0.16060587694470962,0.32121175388941925,0.12756907946807305,17.0,17.957,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,residual_norm_nn,1000,0.823,1.0,1.0,0.9056666666666667,1.0,1.214,0.99324395,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,residual_norm_rank_assignment,1000,0.088,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,known_anchor_ip_0.01,995,0.25728643216080405,0.40703517587939697,0.5276381909547738,0.35366063832481276,9.0,12.317587939698493,0.5432404232216359,
+e5-small,384,96,288,cell_C64,2000,47,int8,1000,residual,known_anchor_ip_0.1,900,0.9311111111111111,0.9655555555555555,0.9777777777777777,0.9487512294925919,1.0,1.5144444444444445,0.9491721604938271,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,cell_label_chance_control,1000,0.03212117538894192,0.16060587694470962,0.32121175388941925,0.12756907946807305,17.0,17.957,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,residual_norm_nn,1000,0.839,1.0,1.0,0.9137000000000001,1.0,1.199,0.99366165,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.084,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,known_anchor_ip_0.01,995,0.25326633165829143,0.40804020100502514,0.5276381909547738,0.35184202143081905,9.0,12.316582914572864,0.5427285169566425,
+e5-small,384,96,288,cell_C64,2000,47,noise_0.01,1000,residual,known_anchor_ip_0.1,900,0.9233333333333333,0.9655555555555555,0.9777777777777777,0.9448623406037031,1.0,1.5222222222222221,0.94908987654321,
+e5-small,384,96,288,microkey_perdoc,2000,47,clean,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,47,clean,1000,residual,residual_norm_nn,1000,0.285,0.848,0.994,0.5055481032856033,3.0,3.171,0.99913345,
+e5-small,384,96,288,microkey_perdoc,2000,47,clean,1000,residual,residual_norm_rank_assignment,1000,1.0,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,47,clean,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,clean,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,clean,1000,residual,raw_cross_key_cosine_control,1000,0.0,0.002,0.006,0.0037458603923313754,986.5,983.781,0.5060838999999999,
+e5-small,384,96,288,microkey_perdoc,2000,47,fp16,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,47,fp16,1000,residual,residual_norm_nn,1000,0.258,0.822,0.981,0.48174988622488624,3.0,3.431,0.9988672999999999,
+e5-small,384,96,288,microkey_perdoc,2000,47,fp16,1000,residual,residual_norm_rank_assignment,1000,0.798,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,47,fp16,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,fp16,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,int8,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,47,int8,1000,residual,residual_norm_nn,1000,0.086,0.315,0.52,0.2145576240513447,10.0,13.541,0.99492205,
+e5-small,384,96,288,microkey_perdoc,2000,47,int8,1000,residual,residual_norm_rank_assignment,1000,0.077,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,47,int8,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,int8,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,noise_0.01,1000,residual,cell_label_chance_control,1000,0.0005000000000000002,0.0025,0.005,0.00408918405180514,1000.5,1000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,2000,47,noise_0.01,1000,residual,residual_norm_nn,1000,0.075,0.344,0.57,0.21708522051585372,9.0,11.941,0.99515455,
+e5-small,384,96,288,microkey_perdoc,2000,47,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.089,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,2000,47,noise_0.01,1000,full_server,public_prefix_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,2000,47,noise_0.01,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,cell_label_chance_control,1000,0.006469700890943899,0.03234850445471949,0.06469700890943898,0.03597415146996343,83.0,86.049,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,residual_norm_nn,1000,0.82,1.0,1.0,0.90575,1.0,1.207,0.9987489999999999,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,residual_norm_rank_assignment,1000,0.997,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,gram_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,nn_graph_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,combined_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,full_server,combined_prefix_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,raw_cross_key_cosine_control,1000,0.007,0.038,0.073,0.03715633865461978,78.0,86.456,0.49899725,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,known_anchor_ip_0.01,988,0.7975708502024291,0.8137651821862348,0.819838056680162,0.808392518318165,1.0,12.79251012145749,0.8890358389745775,
+e5-small,384,96,288,cell_C64,10000,47,clean,1000,residual,known_anchor_ip_0.1,905,0.9988950276243094,1.0,1.0,0.9994475138121547,1.0,1.0011049723756906,1.0,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,cell_label_chance_control,1000,0.006469700890943899,0.03234850445471949,0.06469700890943898,0.03597415146996343,83.0,86.049,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,residual_norm_nn,1000,0.804,0.999,1.0,0.8956761904761904,1.0,1.241,0.9987503,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,residual_norm_rank_assignment,1000,0.397,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,0.9999999999999999,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,combined_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,full_server,combined_prefix_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,known_anchor_ip_0.01,988,0.791497975708502,0.8137651821862348,0.819838056680162,0.8053560810712015,1.0,12.798582995951417,0.8485676293661591,
+e5-small,384,96,288,cell_C64,10000,47,fp16,1000,residual,known_anchor_ip_0.1,905,0.9988950276243094,1.0,1.0,0.9994475138121547,1.0,1.0011049723756906,1.0,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,cell_label_chance_control,1000,0.006469700890943899,0.03234850445471949,0.06469700890943898,0.03597415146996343,83.0,86.049,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,residual_norm_nn,1000,0.442,0.953,0.996,0.651334040959041,2.0,2.216,0.99326975,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,residual_norm_rank_assignment,1000,0.027,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,gram_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,nn_graph_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,full_server,combined_prefix_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,known_anchor_ip_0.01,988,0.638663967611336,0.7925101214574899,0.819838056680162,0.705374556747572,1.0,13.183198380566802,0.8166072833516367,
+e5-small,384,96,288,cell_C64,10000,47,int8,1000,residual,known_anchor_ip_0.1,905,0.9988950276243094,1.0,1.0,0.9994475138121547,1.0,1.0011049723756906,1.0,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,cell_label_chance_control,1000,0.006469700890943899,0.03234850445471949,0.06469700890943898,0.03597415146996343,83.0,86.049,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,residual_norm_nn,1000,0.519,0.957,0.999,0.6976102564102564,1.0,2.051,0.9940237,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.018,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,gram_signature_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,nn_graph_signature_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,combined_invariants_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,full_server,combined_prefix_invariants_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,known_anchor_ip_0.01,988,0.6336032388663968,0.8016194331983806,0.819838056680162,0.7055709612202923,1.0,13.145748987854251,0.8171424502942188,
+e5-small,384,96,288,cell_C64,10000,47,noise_0.01,1000,residual,known_anchor_ip_0.1,905,0.9988950276243094,1.0,1.0,0.9994475138121547,1.0,1.0011049723756906,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,clean,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,47,clean,1000,residual,residual_norm_nn,1000,0.084,0.313,0.505,0.21608077028805228,10.0,12.216,0.99900775,
+e5-small,384,96,288,microkey_perdoc,10000,47,clean,1000,residual,residual_norm_rank_assignment,1000,0.993,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,47,clean,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,clean,1000,full_server,combined_prefix_norm_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,clean,1000,residual,raw_cross_key_cosine_control,1000,0.0,0.002,0.003,0.0016124913111001395,5110.0,5061.854,0.49810760000000004,
+e5-small,384,96,288,microkey_perdoc,10000,47,fp16,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,47,fp16,1000,residual,residual_norm_nn,1000,0.086,0.296,0.478,0.20913857307407457,11.0,13.026,0.9988464499999999,
+e5-small,384,96,288,microkey_perdoc,10000,47,fp16,1000,residual,residual_norm_rank_assignment,1000,0.387,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,47,fp16,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,fp16,1000,full_server,combined_prefix_norm_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,int8,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,47,int8,1000,residual,residual_norm_nn,1000,0.028,0.098,0.148,0.07815079436467204,50.0,69.98,0.9927058999999999,
+e5-small,384,96,288,microkey_perdoc,10000,47,int8,1000,residual,residual_norm_rank_assignment,1000,0.018,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,47,int8,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,int8,1000,full_server,combined_prefix_norm_nn,1000,1.0,1.0,1.0,1.0,1.0,1.0,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,noise_0.01,1000,residual,cell_label_chance_control,1000,0.00010000000000000003,0.0005000000000000002,0.0010000000000000005,0.0009787606036044379,5000.5,5000.5,0.5,analytic chance level given disclosed cell labels
+e5-small,384,96,288,microkey_perdoc,10000,47,noise_0.01,1000,residual,residual_norm_nn,1000,0.033,0.113,0.18,0.0895031467496212,41.0,55.057,0.9945450499999999,
+e5-small,384,96,288,microkey_perdoc,10000,47,noise_0.01,1000,residual,residual_norm_rank_assignment,1000,0.025,,,,,,,one-to-one monotone assignment; only top-1 is defined
+e5-small,384,96,288,microkey_perdoc,10000,47,noise_0.01,1000,full_server,public_prefix_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,
+e5-small,384,96,288,microkey_perdoc,10000,47,noise_0.01,1000,full_server,combined_prefix_norm_nn,1000,0.999,1.0,1.0,0.9995,1.0,1.001,1.0,

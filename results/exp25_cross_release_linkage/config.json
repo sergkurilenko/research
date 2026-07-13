@@ -1,0 +1,53 @@
+{
+  "experiment": "exp25_cross_release_linkage",
+  "encoder": "e5-small",
+  "pool": 50000,
+  "sizes": [
+    500,
+    2000,
+    10000
+  ],
+  "d_pub": 96,
+  "cells": 64,
+  "seeds": [
+    11,
+    23,
+    47
+  ],
+  "conditions": [
+    "clean",
+    "fp16",
+    "int8",
+    "noise_0.01"
+  ],
+  "large_query_limit": 1000,
+  "hungarian_max_n": 2000,
+  "anchor_fractions": "0.01,0.1",
+  "dataset_path": "D:\\PHD\\research\\RES1\\notebooks\\_corpus_cache\\E_docs_e5small_1000000.npy",
+  "dataset_sha256": null,
+  "git_head_before_run": "23455bee1acf59fa08f5f7900dc895facadcbb11",
+  "python": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.6",
+  "threat_game": {
+    "same_documents": true,
+    "fresh_row_handles": true,
+    "independent_row_permutation": true,
+    "persistent_document_ids_visible": false,
+    "residual_only_view": [
+      "keyed_residual",
+      "stable_cell_label_for_cell_keys"
+    ],
+    "full_server_view": [
+      "public_prefix",
+      "keyed_residual",
+      "cell_label"
+    ]
+  },
+  "limitations": [
+    "N=10000 reports all scalar/graph invariants but caps exact global NN queries.",
+    "Microkey Haar images are sampled directly on the equal-norm sphere; this is distributionally exact for each row.",
+    "Gaussian noise and quantization are diagnostic controls, not a formal privacy mechanism.",
+    "AUC uses ten sampled non-mates per evaluated query; ranking metrics are exact in the disclosed candidate set."
+  ]
+}

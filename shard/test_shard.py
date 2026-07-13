@@ -49,21 +49,26 @@ def test_key_cancellation_preserves_inner_product():
     assert np.allclose(lhs, rhs, atol=1e-4), "orthogonal key did not cancel"
 
 
-def test_full_dim_score_equals_centered_raw():
-    """alpha<u_q,u_i> + beta<r_q,r_i> == <x_q-mu, x_i-mu> (no truncation)."""
+def test_full_dim_score_preserves_raw_ranking():
+    """Split score equals raw dot product up to a query-only constant."""
     X = _toy()
     mu = X.mean(0, keepdims=True)
     V, _ = S.pca_basis((X[:500] - mu).astype(np.float32))
-    rot = ((X - mu) @ V).astype(np.float32)
+    docs = S.document_pca_coordinates(X, mu, V)
+    queries = S.query_pca_coordinates(X[:5], V)
     d_pub = 16
-    u, r = rot[:, :d_pub], rot[:, d_pub:]
-    full = (u @ u[:1].T + r @ r[:1].T).ravel()
-    centered = ((X - mu) @ (X[:1] - mu).T).ravel()
-    assert np.allclose(full, centered, atol=1e-3), "split score != centered raw"
+    ud, rd = docs[:, :d_pub], docs[:, d_pub:]
+    uq, rq = queries[:, :d_pub], queries[:, d_pub:]
+    split = uq @ ud.T + rq @ rd.T
+    corrected = X[:5] @ (X - mu).T
+    raw = X[:5] @ X.T
+    assert np.allclose(split, corrected, atol=1e-3), "split score != q^T(x-mu)"
+    assert np.array_equal(np.argsort(-split, axis=1), np.argsort(-raw, axis=1)), \
+        "corrected split score did not preserve raw ranking"
 
 
-def test_procrustes_needs_d_priv_anchors():
-    """Exact recovery at d_priv anchors; partial below it (the alignment barrier)."""
+def test_exact_key_recovery_is_full_rank_but_partial_signal_exists():
+    """Full rank recovers the key, while lower rank still leaks signal."""
     d_priv = 24
     R = RNG.standard_normal((300, d_priv)).astype(np.float32)
     H = S.random_orthogonal(d_priv, 7)
@@ -74,7 +79,21 @@ def test_procrustes_needs_d_priv_anchors():
     cos_full = _cos_rows(Z[held] @ full.T, R[held])
     cos_half = _cos_rows(Z[held] @ half.T, R[held])
     assert cos_full > 0.99, f"full-anchor recovery weak: {cos_full:.3f}"
-    assert cos_half < 0.9, f"half-anchor recovery should be partial: {cos_half:.3f}"
+    assert 0.05 < cos_half < 0.9, f"half-anchor recovery should be partial: {cos_half:.3f}"
+
+
+def test_min_norm_alignment_recovers_anchor_span_projection():
+    """Noiseless OLS predicts the target projection onto the anchor span."""
+    d, m = 32, 8
+    R = RNG.standard_normal((100, d)).astype(np.float32)
+    H = S.random_orthogonal(d, 71)
+    Z = R @ H.T
+    W = np.linalg.pinv(Z[:m]) @ R[:m]
+    prediction = Z[m:] @ W
+    projector = np.linalg.pinv(R[:m]) @ R[:m]
+    expected = R[m:] @ projector
+    assert np.allclose(prediction, expected, atol=2e-4)
+    assert _cos_rows(prediction, R[m:]) > 0.1, "partial span leaked no signal"
 
 
 def test_microkey_decorrelates():

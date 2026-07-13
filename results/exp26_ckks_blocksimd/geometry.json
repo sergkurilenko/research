@@ -1,0 +1,34 @@
+[
+  {
+    "encoder": "multilingual-e5-small",
+    "cache_path": "D:\\PHD\\research\\RES1\\results\\exp17_outputs\\emb\\multilingual-e5-small_scifact.npz",
+    "cache_sha256": "19d7c216ba9bc646c2703495893d955aa0b1078f1ffd0dc2d07c783047ea23bb",
+    "d": 384,
+    "d_pub": 96,
+    "d_priv": 288,
+    "n_documents": 5183,
+    "n_queries": 300,
+    "offline_prepare_seconds": 3.671657199971378,
+    "basis_orthogonality_max_abs_float32": 3.5762786865234375e-07,
+    "corrected_score_identity_max_abs_float32": 2.7194619178771973e-07,
+    "cell_size_min": 26,
+    "cell_size_median": 79.0,
+    "cell_size_max": 133
+  },
+  {
+    "encoder": "multilingual-e5-base",
+    "cache_path": "D:\\PHD\\research\\RES1\\results\\exp17_outputs\\emb\\multilingual-e5-base_scifact.npz",
+    "cache_sha256": "00d208db105f409ce96e491bbe09eac424fa63c87e44d78d54a0a890a393a3a3",
+    "d": 768,
+    "d_pub": 192,
+    "d_priv": 576,
+    "n_documents": 5183,
+    "n_queries": 300,
+    "offline_prepare_seconds": 2.0151282001752406,
+    "basis_orthogonality_max_abs_float32": 4.76837158203125e-07,
+    "corrected_score_identity_max_abs_float32": 2.50060111284256e-07,
+    "cell_size_min": 32,
+    "cell_size_median": 76.0,
+    "cell_size_max": 185
+  }
+]

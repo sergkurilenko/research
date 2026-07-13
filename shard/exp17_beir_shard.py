@@ -111,13 +111,19 @@ def rank_all(D, Q):
 
 
 def shard_rank(D, Q, mu, V, d_pub, kc):
-    Drot = (D - mu) @ V; Qrot = (Q - mu) @ V
-    U = np.ascontiguousarray(Drot[:, :d_pub]); Uq = np.ascontiguousarray(Qrot[:, :d_pub])
+    Drot = S.document_pca_coordinates(D, mu, V)
+    Qrot = S.query_pca_coordinates(Q, V)
+    # Routing may stay centred (the previous, empirically stronger ANN rule),
+    # while the final split score uses the uncentred query coordinates.
+    Qroute = ((Q - mu) @ V).astype(np.float32)
+    U = np.ascontiguousarray(Drot[:, :d_pub]); Uq = np.ascontiguousarray(Qroute[:, :d_pub])
     short = np.argsort(-(Uq @ U.T), axis=1)[:, :kc]            # stage-1 prefix shortlist
     order = np.empty((len(Q), 10), np.int64)
     for qi in range(len(Q)):
         cand = short[qi]
-        sc = D[cand] @ Q[qi]                                    # stage-2 full-dim rerank (raw)
+        # Implement the actual SHARD split score rather than substituting a
+        # raw-score oracle.  This is q^T(x-mu), hence raw-rank equivalent.
+        sc = Drot[cand] @ Qrot[qi]
         order[qi] = cand[np.argsort(-sc)[:10]]
     return order
 
@@ -127,17 +133,22 @@ def run(enc, ds):
     D, Q, cids, qids, qrels = get_emb(enc, ds)
     d = D.shape[1]; k = d // 2
     mu = D.mean(0, keepdims=True).astype(np.float32)
-    import shard_lib as S
     rng = np.random.RandomState(0)
     idx = rng.choice(len(D), size=min(len(D), 200000), replace=False)
     V, _ = S.pca_basis((D[idx] - mu).astype(np.float32))
     raw = per_query_ndcg(rank_all(D, Q), cids, qids, qrels)
-    Drot = (D - mu) @ V; Qrot = (Q - mu) @ V
+    Drot = S.document_pca_coordinates(D, mu, V)
+    Qrot = S.query_pca_coordinates(Q, V)
+    Qrot_legacy = ((Q - mu) @ V).astype(np.float32)
     Pk = np.ascontiguousarray(Drot[:, :k]); Qk = np.ascontiguousarray(Qrot[:, :k])
     svd = per_query_ndcg(rank_all(Pk, Qk), cids, qids, qrels)
+    legacy_svd = per_query_ndcg(rank_all(Pk, np.ascontiguousarray(Qrot_legacy[:, :k])),
+                                cids, qids, qrels)
     res = {"encoder": enc, "dataset": ds, "d": d, "n_q": len(qids),
            "raw_ndcg10": float(raw.mean()), "svd_ndcg10": float(svd.mean()),
-           "svd_vs_raw": boot(raw, svd), "shard": {}}
+           "svd_vs_raw": boot(raw, svd),
+           "legacy_centered_svd_ndcg10": float(legacy_svd.mean()),
+           "legacy_centered_svd_vs_raw": boot(raw, legacy_svd), "shard": {}}
     for pf in PUB_FRACS:
         dp = max(8, int(round(d * pf)))
         for kc in KCANDS:

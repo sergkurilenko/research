@@ -1,0 +1,8 @@
+{
+  "n_ag_news": 240,
+  "n_synthetic_pii": 80,
+  "max_embed_tokens": 32,
+  "ag_news_cache": "C:\\Users\\zerg\\.cache\\huggingface\\datasets\\ag_news\\default\\0.0.0\\eb185aade064a813bc0b7f42de02595523103ca4\\ag_news-test.arrow",
+  "corpus_sha256": "0e0e9c33895fe59e94a1166b550d1f579d2ad2c02d85148462516749e20e356b",
+  "pii_note": "Only items visible before the 32-token embedding truncation are scored."
+}

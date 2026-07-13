@@ -1,0 +1,47 @@
+[
+  {
+    "run_id": "p192_c4_cs17_ks101",
+    "geometry_id": "p192_c4_cs17",
+    "d": 768,
+    "d_pub": 192,
+    "d_priv": 576,
+    "cells": 4,
+    "cell_seed": 17,
+    "key_seed": 101,
+    "target_cell": 3,
+    "target_cell_size": 149,
+    "target_cell_ag_news": 149,
+    "target_cell_synthetic_pii": 0,
+    "n_test": 2,
+    "n_test_ag_news": 2,
+    "n_test_synthetic_pii": 0,
+    "target_indices": [
+      312,
+      203
+    ],
+    "anchor_indices_first_max_m": [
+      128,
+      253,
+      314,
+      108,
+      125,
+      269,
+      196,
+      246,
+      52,
+      205,
+      213,
+      234,
+      289,
+      257,
+      37,
+      178
+    ],
+    "cell_sizes": [
+      24,
+      67,
+      80,
+      149
+    ]
+  }
+]

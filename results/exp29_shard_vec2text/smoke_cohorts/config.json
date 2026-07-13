@@ -1,0 +1,52 @@
+{
+  "profile": "smoke",
+  "out": "D:\\PHD\\research\\RES1\\results\\exp29_shard_vec2text\\smoke_cohorts",
+  "n_ag": 240,
+  "n_pii": 80,
+  "n_test": 2,
+  "geometries": "192:4:17:101",
+  "known_pairs": "8,16",
+  "procrustes_pairs": "16",
+  "encode_batch_size": 32,
+  "invert_batch_size": 1,
+  "num_steps": 2,
+  "beam_width": 0,
+  "max_embed_tokens": 32,
+  "sample_seed": 20260712,
+  "pii_seed": 290029,
+  "selection_seed": 290030,
+  "bootstrap_reps": 100,
+  "bootstrap_seed": 290031,
+  "kmeans_iters": 100,
+  "rank_rtol": 1e-06,
+  "resume": true,
+  "require_raw_token_f1": 0.1,
+  "finalize_only": false,
+  "geometries_parsed": [
+    {
+      "d_pub": 192,
+      "cells": 4,
+      "cell_seed": 17,
+      "key_seed": 101
+    }
+  ],
+  "known_pairs_parsed": [
+    8,
+    16
+  ],
+  "procrustes_pairs_parsed": [
+    16
+  ],
+  "encoder": "sentence-transformers/gtr-t5-base",
+  "vec2text_inversion_checkpoint": "jxm/gtr__nq__32",
+  "vec2text_corrector_checkpoint": "jxm/gtr__nq__32__correct",
+  "embedding_path": "corrector.inversion_trainer.call_embedding_model",
+  "pooling": "attention-mask mean pooling; no L2 normalization",
+  "cell_clustering": "sklearn KMeans(k-means++, n_init=10, algorithm=lloyd)",
+  "attacker_side_information": "Strengthened observer knows the exact full PCA basis V and document mean mu; only target cell key H is unknown in unknown-key/OLS/Procrustes.",
+  "normalization_scope": "Native GTR vectors are intentionally unnormalized because the official corrector is checkpoint-compatible only with that representation; this is not the paper's literal unit-normalized e5 retrieval configuration.",
+  "pii_scope": "Headline exact PII-ID recall excludes repeated names and includes visible email/phone/card identifiers. Names use a finite dictionary; cards have no visible denominator after 32-token truncation in this corpus.",
+  "bootstrap_scope": "Descriptive conditional 95% hierarchical bootstrap; only two independent geometry designs, with key seed sampled within geometry/cohort.",
+  "finalizer_source_sha256": "8a89b1cb52a975785d2a0cd7523e080585a64dfca86df97ded2c61cb2b148b96",
+  "protocol_fingerprint_sha256": "640b6e1efe2420a60e45c6d1f092ef3dfdc214e2142ec1984cf94accc3de6395"
+}

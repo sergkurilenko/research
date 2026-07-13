@@ -1,0 +1,162 @@
+{
+  "beir|multilingual-e5-small|scifact": {
+    "n_corpus": 5183,
+    "n_queries": 300,
+    "dimension": 384,
+    "mean_relevant_per_query": 1.13,
+    "clip": {
+      "norm_min": 0.9999998681822373,
+      "norm_mean": 0.9999999994453249,
+      "norm_max": 1.0000001319946257,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001319946257
+    },
+    "gallery_size": 5000,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.5982147684515763,
+      "recall10": 0.7339444444444445,
+      "recall100": 0.901
+    }
+  },
+  "beir|multilingual-e5-small|nfcorpus": {
+    "n_corpus": 3633,
+    "n_queries": 323,
+    "dimension": 384,
+    "mean_relevant_per_query": 38.18575851393189,
+    "clip": {
+      "norm_min": 0.99999986093007,
+      "norm_mean": 0.9999999991368014,
+      "norm_max": 1.000000144807263,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.000000144807263
+    },
+    "gallery_size": 3633,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.3020970886539733,
+      "recall10": 0.14647137012742903,
+      "recall100": 0.24833693816772606
+    }
+  },
+  "beir|multilingual-e5-small|arguana": {
+    "n_corpus": 8674,
+    "n_queries": 1401,
+    "dimension": 384,
+    "mean_relevant_per_query": 1.0,
+    "clip": {
+      "norm_min": 0.9999998699978537,
+      "norm_mean": 0.9999999997888542,
+      "norm_max": 1.0000001398922211,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001398922211
+    },
+    "gallery_size": 5000,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.3576589612389282,
+      "recall10": 0.7237687366167024,
+      "recall100": 0.9628836545324768
+    }
+  },
+  "miracl|multilingual-e5-small|sw": {
+    "n_corpus": 131924,
+    "n_queries": 482,
+    "dimension": 384,
+    "mean_relevant_per_query": 1.887966804979253,
+    "clip": {
+      "norm_min": 0.9999998332390571,
+      "norm_mean": 1.0000000001612843,
+      "norm_max": 1.0000001554169482,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001554169482
+    },
+    "gallery_size": 5000,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.6795075081358255,
+      "recall10": 0.7904218533886584,
+      "recall100": 0.9460531515510768
+    }
+  },
+  "miracl|multilingual-e5-small|bn": {
+    "n_corpus": 297265,
+    "n_queries": 411,
+    "dimension": 384,
+    "mean_relevant_per_query": 2.099756690997567,
+    "clip": {
+      "norm_min": 0.9999998378158841,
+      "norm_mean": 1.0000000001237015,
+      "norm_max": 1.0000001712725366,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001712725366
+    },
+    "gallery_size": 5000,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.6882742370034259,
+      "recall10": 0.8082551268682656,
+      "recall100": 0.9634621326227166
+    }
+  },
+  "beir|multilingual-e5-base|scifact": {
+    "n_corpus": 5183,
+    "n_queries": 300,
+    "dimension": 768,
+    "mean_relevant_per_query": 1.13,
+    "clip": {
+      "norm_min": 0.9999998566926803,
+      "norm_mean": 1.0000000011835206,
+      "norm_max": 1.0000001501010813,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001501010813
+    },
+    "gallery_size": 5000,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.6370362842054732,
+      "recall10": 0.7670000000000001,
+      "recall100": 0.915
+    }
+  },
+  "beir|multilingual-e5-base|nfcorpus": {
+    "n_corpus": 3633,
+    "n_queries": 323,
+    "dimension": 768,
+    "mean_relevant_per_query": 38.18575851393189,
+    "clip": {
+      "norm_min": 0.9999998556243695,
+      "norm_mean": 0.9999999996022423,
+      "norm_max": 1.0000001650742212,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001650742212
+    },
+    "gallery_size": 3633,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.3268519109169606,
+      "recall10": 0.1585764389648086,
+      "recall100": 0.2869507395011091
+    }
+  },
+  "beir|multilingual-e5-base|arguana": {
+    "n_corpus": 8674,
+    "n_queries": 1401,
+    "dimension": 768,
+    "mean_relevant_per_query": 1.0,
+    "clip": {
+      "norm_min": 0.9999998477064056,
+      "norm_mean": 1.0000000001272886,
+      "norm_max": 1.0000001793659428,
+      "fraction_clipped": 0.0,
+      "max_postclip_norm": 1.0000001793659428
+    },
+    "gallery_size": 5000,
+    "targets": 256,
+    "raw_metrics": {
+      "ndcg10": 0.3457650276755434,
+      "recall10": 0.6952177016416845,
+      "recall100": 0.9550321199143469
+    }
+  }
+}

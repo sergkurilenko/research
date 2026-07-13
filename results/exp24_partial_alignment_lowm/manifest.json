@@ -1,0 +1,21 @@
+{
+  "elapsed_seconds": 321.60715990001336,
+  "n_per_target_rows": 258048,
+  "n_cell_fit_rows": 8568,
+  "n_summary_rows": 336,
+  "ridge_selected_relative_alpha_counts": {
+    "0.0": 2279,
+    "0.0001": 814,
+    "1e-06": 1191,
+    "1e-08": 784
+  },
+  "files": [
+    "config.json",
+    "metrics_per_target.csv",
+    "cell_fits.csv",
+    "summary.csv",
+    "summary.json",
+    "run.log",
+    "manifest.json"
+  ]
+}

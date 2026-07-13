@@ -1,129 +1,149 @@
-# Reproducing the results
+# Reproducing the corrected SHARD audit
 
-This repo ships the manuscript, all code, and every experiment's JSON/CSV
-output. The only thing not included is the ~17 GB of cached embeddings (see
-[data](#1-data)). All paths are resolved by `shard/paths.py` /
-`baseline/paths.py` and can be overridden with the `SHARD_DATA`,
-`SHARD_RESULTS`, and `SHARD_FIGS` environment variables; by default results
-go to `results/` and figures to `paper/figs/`.
+The repository includes the manuscript, scripts, configurations, summaries,
+per-seed measurements, and run logs. Large embedding caches are not committed.
+The current manuscript relies on corrective and maximal-audit Experiments
+23--29; Experiments 12--22 remain available for provenance and baseline
+characterization.
 
-## 0. Environment
+## 1. Environment
 
 ```bash
-python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
+python -m venv .venv
+# Linux/macOS: source .venv/bin/activate
+# Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-The geometry / privacy / utility experiments need only
-`numpy scipy scikit-learn matplotlib`. The BEIR experiments (`exp11`,
-`exp17`) additionally need a CPU build of `torch` plus `transformers` and
-`datasets`:
+The geometry, alignment, linkage, DP and plotting code uses NumPy, SciPy,
+scikit-learn, pandas, psutil and Matplotlib. Experiment 26 additionally uses
+`tenseal==0.3.16`; Experiment 29 uses the frozen PyTorch/Transformers/Vec2Text
+environment recorded in its result directory and an NVIDIA GPU. Encoding new
+BEIR/MIRACL caches also requires PyTorch, Transformers, and Datasets.
 
-```bash
-pip install --index-url https://download.pytorch.org/whl/cpu torch
-pip install transformers datasets
-```
+## 2. Data
 
-`baseline/exp_integral.py` also uses `faiss-cpu` and `tenseal` (CKKS); the
-optional Vec2Text stress test needs a GPU (see
-[heavy experiment](#5-optional-heavy-gpu-experiment)).
-
-## 1. Data
-
-The experiments read L2-normalised embeddings of a 1M-paragraph
-Russian-Wikipedia slice for five encoders, plus 500 self-retrieval queries
-per encoder. Point `SHARD_DATA` at a directory containing:
-
-```
-E_docs_e5small_1000000.npy      E_queries_e5small_self_q500.npy
-E_docs_e5base_1000000.npy       E_queries_e5base_self_q500.npy
-E_docs_mpnet_1000000.npy        E_queries_mpnet_self_q500.npy
-E_docs_e5large_1000000.npy      E_queries_e5large_self_q500.npy
-E_docs_bgem3_1000000.npy        E_queries_bgem3_self_q500.npy
-corpus_wiki_ru_1000000.pkl      # paragraph text, for the reference-lookup attack
-```
+Set `SHARD_DATA` to the embedding-cache directory described in
+[`data_manifest.md`](../data_manifest.md):
 
 ```bash
 export SHARD_DATA=/path/to/corpus_cache
 ```
 
-Encoders, shapes, seeds, and the slicing recipe are in
-[`data_manifest.md`](data_manifest.md). If `SHARD_DATA` is unset, the code
-looks for `data/corpus_cache/` (then a legacy `notebooks/_corpus_cache/`)
-under the repo root.
+On Windows PowerShell:
 
-## 2. SHARD experiments (the contribution)
-
-Numpy / scikit-learn only (the per-cell keys are orthogonal, so the
-residual reranking score is exact and is computed directly — no FHE library
-needed to measure it). All write to `results/`.
-
-```bash
-cd shard
-python exp12_shard_utility.py        # self-retrieval utility (all 5 encoders)
-python exp17_beir_shard.py           # BEIR utility (downloads SciFact/NFCorpus)
-python exp18_shard_cost.py           # active cells/query -> upload bandwidth (C trade-off)
-python exp13_shard_alignment.py      # diffuse anchor-complexity m50 vs C  (e5-small)
-python exp19_shard_targeted.py       # targeted attacker: m50 ~ d_priv regardless of C
-python exp22_shard_learned_attack.py # ridge (ALGEN) / MLP / unsupervised (vec2vec) cores
-python exp14_shard_leakage.py        # public-prefix NN-overlap + within-cell leak
-python exp20_shard_microkey.py       # micro-key: residual leak -> 0, unlinkability AUC
-python exp21_shard_vs_dp.py          # vs. distortion-aware DP-noise at matched utility
-python exp15_shard_reference.py      # overlap reference-lookup limitation
-python make_fig_shard.py             # regenerate fig_shard_* -> ../paper/figs/
+```powershell
+$env:SHARD_DATA = 'D:\path\to\corpus_cache'
 ```
 
-Second-encoder validation (e5-base) for the privacy experiments:
+The code also recognizes the legacy cache locations documented in
+`shard/paths.py`. Cached BEIR and MIRACL arrays are intentionally excluded from
+the public repository because of their size.
+
+## 3. Corrective experiments
+
+Run from the repository root:
 
 ```bash
-E13_ENC=e5-base E13_DPUB=192 python exp13_shard_alignment.py
-E14_ENC=e5-base               python exp14_shard_leakage.py
-E19_ENC=e5-base E19_DPUB=192  python exp19_shard_targeted.py
+python shard/test_shard.py
+python shard/exp23_corrected_score.py
+python shard/exp24_partial_alignment.py
+python shard/exp25_cross_release_linkage.py
+python shard/exp26_ckks_blocksimd.py
+python shard/exp27_formal_dp_baseline.py
+python shard/exp28_cross_release_churn.py
+python shard/exp29_shard_vec2text.py
+python shard/make_fig_corrected_audit.py
+python shard/make_fig_maximal_program.py
 ```
 
-Expected headline numbers: diffuse alignment `m50` 200 → 25,600 (C=64) →
-102,400 (C=256); targeted `m50 ≈ d_priv` (320 / 576); online cost ≈ 7–30
-encrypted residual queries per search; public prefix NN-overlap 0.20–0.55
-vs. 0.76 baseline; micro-key residual leak 0.00 and unlinkability AUC ≈ 0.5;
-SHARD recovers raw nDCG@10 on BEIR where SVD-`k/2` loses 2–8 points.
+Outputs:
 
-## 3. Baseline experiments (the foil)
+| Experiment | Directory | Purpose |
+|---|---|---|
+| 23 | `results/exp23_corrected_score/` | Corrected query/document score, BEIR/MIRACL utility, paired-bootstrap intervals |
+| 24 primary | `results/exp24_partial_alignment_main_v2/` | Rank-deficient Procrustes, minimum-norm OLS, ridge, and polar estimators |
+| 24 low-anchor | `results/exp24_partial_alignment_lowm/` | Extension down to 4--16 global pairs |
+| 25 | `results/exp25_cross_release_linkage/` | Norm, Gram, prefix, quantization, and perturbation linkage controls |
+| 26 | `results/exp26_ckks_blocksimd/` | Actual TenSEAL/SEAL phase timings, traffic, errors and block packing |
+| 27 | `results/exp27_formal_dp_baseline/` | Analytic Gaussian calibration, utility and native-gallery linkage |
+| 28 | `results/exp28_cross_release_churn/` | Partial-overlap, insert/delete-churn and quantization linkage |
+| 29 | `results/exp29_shard_vec2text/` | GPU text-inversion outcomes for raw and SHARD alignment views |
+| figures | `results/maximal_program_figures/` | Deterministic CKKS, DP and churn PDF/PNG plots |
+
+The main checks to expect are:
+
+- corrected full scoring reproduces the raw rank in float64; centering the
+  scoring query caused up to 0.080 nDCG loss;
+- minimum-norm OLS first exceeds residual-gallery R@1 = 0.9 at global budgets
+  32, 512, 2,048, and 8,192 for `C = 1, 16, 64, 256`, corresponding to about
+  32--36 anchors in the average target cell and zero full-key-rank coverage;
+- at `N = 10,000`, clean norm-rank linkage is 0.9957 for cell keys and 0.9943
+  for micro-keys; cell Gram linkage and full-view prefix linkage are 0.9993.
+- block-SIMD cuts median query upload by 74--87% at `K=128`, but the measured
+  p50 latency rises by 14--26% because per-candidate encrypted responses remain;
+- at `epsilon=1`, the formal Gaussian release reaches at most 0.011 nDCG@10;
+  only 3/8 strict SHARD-utility matches occur on the finite grid, all at
+  `epsilon=32768` with linkage R@1 at least 0.995;
+- under 25--100% release overlap, clean prefix and norm still link persistent
+  rows almost perfectly, while cell-Gram linkage degrades with churn.
+- in the strengthened GTR outcome audit, largest-cell mean token-F1 is 0.665
+  for raw geometry, 0.242 for an unknown key, 0.433 for prefix-only and 0.450
+  for eight-pair OLS; raw itself recovers no exact unique email or phone, so
+  the PII diagnostic is explicitly inconclusive.
+
+These findings supersede the interpretations previously attached to
+Experiments 13, 19, 20, 21, and 22. In particular, the old full-rank gate is
+not a de-anonymization threshold, the cosine-only cross-key test is not an
+unlinkability test, and the uncalibrated Gaussian perturbation is not a DP
+mechanism.
+
+## 4. Figures and manuscripts
+
+Regenerate the corrected vector/PDF and PNG figures:
 
 ```bash
-cd baseline
-python exp07_alignment_pq_leakage.py   # Procrustes recovers global R; public-PQ leakage
-python exp08_tradeoff_noise_sweep.py   # sigma_rec is not a privacy metric
-python exp09_reference_corpus_attack.py# overlap reference lookup (99.8% top-1)
-python exp10_denoiser_significance.py  # paired McNemar/bootstrap on the SVD effect
-python exp11_beir_denoiser.py          # the denoiser does NOT transfer to BEIR
-python make_fig_significance.py
-python make_paper_figures.py
+python shard/make_fig_corrected_audit.py
+python shard/make_fig_maximal_program.py
 ```
 
-`exp_integral.py` (the 10⁶-document integral retrieval + CKKS reranking,
-paper §8.4) additionally needs `faiss-cpu` and `tenseal`.
-
-## 4. Build the paper
+Build the canonical manuscript:
 
 ```bash
 cd paper
-pdflatex paper_en.tex && pdflatex paper_en.tex
+pdflatex -interaction=nonstopmode -halt-on-error paper_en.tex
+pdflatex -interaction=nonstopmode -halt-on-error paper_en.tex
 ```
 
-## 5. Optional: heavy GPU experiment
-
-The aligned Vec2Text stress test (paper §8.9) needs a GPU and is **not**
-required for any SHARD result. Dependencies are pinned in
-[`requirements_rtx4090.txt`](requirements_rtx4090.txt).
+Generate and build the JISA review wrapper:
 
 ```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r docs/requirements_rtx4090.txt
-python baseline/heavy_adaptive_inversion_rtx4090.py \
-  --profile rtx4090_11gb --output-dir results/adaptive_inversion_outputs
+cd jisa
+python sync_from_canonical.py
+pdflatex -interaction=nonstopmode -halt-on-error paper_jisa.tex
+pdflatex -interaction=nonstopmode -halt-on-error paper_jisa.tex
 ```
 
-It writes per-case `case_*.json` checkpoints (resumable with `--resume`)
-and rebuilds `adaptive_inversion_summary.json` / `_samples.csv`. If Hub
-dataset downloads are blocked, add `--dataset synthetic_news
---disable-ssl-verification` to use the built-in offline corpus.
+`jisa/sync_from_canonical.py` copies the scientific body and bibliography from
+`paper/paper_en.tex` and applies only review-layout formatting.
+
+## 5. Scope of the maximal audit
+
+Experiment 26 is a measured local CKKS implementation: its online latency
+includes transform, packing, encryption, serialization, ct--pt evaluation,
+response serialization, decryption and ranking checks. It excludes network
+RTT/TLS, ANN latency and concurrent clients. The server emits one ciphertext
+per candidate, so packed multi-score output is not claimed.
+
+Experiment 27 is central DP for document-vector content under fixed-size
+replacement adjacency and public participation. It is not an add/remove
+membership guarantee, does not protect queries, and assumes public or
+independently trained preprocessing parameters. Repeated releases compose.
+
+Experiment 28 inserts and deletes rows but does not change the embedding of a
+persistent document. Experiment 29 is tied to its named GTR/Vec2Text
+checkpoints and intentionally grants the observer the exact PCA basis and
+corpus mean. Its native GTR vectors are unnormalised to match the public
+corrector. Neither result is a universal claim about all embedding drift or
+all learned reconstruction models; the evaluator-selected PII cohort and
+repeated-name recall are kept separate from exact unique email/phone recovery.

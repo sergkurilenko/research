@@ -1,0 +1,9 @@
+{
+  "finalized_local": "2026-07-12 19:49:13 +0300",
+  "finalizer_source": "D:\\PHD\\research\\RES1\\shard\\exp29_shard_vec2text.py",
+  "finalizer_source_sha256": "8a89b1cb52a975785d2a0cd7523e080585a64dfca86df97ded2c61cb2b148b96",
+  "protocol_fingerprint_sha256": "ced6664508f9bad15f39454f2884d349b18aafbcd7dd4600fa171a8082fe056f",
+  "case_files": 80,
+  "case_files_completed": 80,
+  "note": "The long-running process loaded the core inference protocol at launch. During execution only summary/bootstrap logic and explanatory annotations were edited; immutable per-case JSON was then finalized with the recorded source."
+}

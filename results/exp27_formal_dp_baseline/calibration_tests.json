@@ -1,0 +1,27 @@
+[
+  {
+    "name": "calibrated_log_delta_matches_target",
+    "passed": true,
+    "max_abs_log_error": 1.1253220577600587e-11
+  },
+  {
+    "name": "sigma_decreases_with_epsilon",
+    "passed": true
+  },
+  {
+    "name": "sigma_scales_linearly_with_sensitivity",
+    "passed": true
+  },
+  {
+    "name": "stable_formula_matches_direct_formula",
+    "passed": true,
+    "absolute_error": 2.541098841762901e-21
+  },
+  {
+    "name": "clipping_implies_replacement_sensitivity_2B",
+    "passed": true,
+    "observed_max_norm": 1.249998927116394,
+    "observed_max_paired_difference": 2.3341357707977295,
+    "theoretical_sensitivity": 2.5
+  }
+]

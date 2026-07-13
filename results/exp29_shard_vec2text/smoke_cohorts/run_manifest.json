@@ -1,0 +1,108 @@
+[
+  {
+    "run_id": "p192_c4_cs17_ks101_largest",
+    "geometry_id": "p192_c4_cs17",
+    "target_cohort": "largest",
+    "is_global_largest_cell": true,
+    "d": 768,
+    "d_pub": 192,
+    "d_priv": 576,
+    "cells": 4,
+    "cell_seed": 17,
+    "key_seed": 101,
+    "target_cell": 3,
+    "target_cell_size": 149,
+    "target_cell_ag_news": 149,
+    "target_cell_synthetic_pii": 0,
+    "n_test": 2,
+    "n_test_ag_news": 2,
+    "n_test_synthetic_pii": 0,
+    "target_indices": [
+      98,
+      308
+    ],
+    "anchor_indices_first_max_m": [
+      193,
+      50,
+      116,
+      64,
+      83,
+      178,
+      292,
+      47,
+      241,
+      119,
+      205,
+      269,
+      249,
+      278,
+      234,
+      257
+    ],
+    "cell_sizes": [
+      24,
+      67,
+      80,
+      149
+    ],
+    "cell_pii_sizes": [
+      0,
+      0,
+      80,
+      0
+    ]
+  },
+  {
+    "run_id": "p192_c4_cs17_ks101_largest_pii",
+    "geometry_id": "p192_c4_cs17",
+    "target_cohort": "largest_pii",
+    "is_global_largest_cell": false,
+    "d": 768,
+    "d_pub": 192,
+    "d_priv": 576,
+    "cells": 4,
+    "cell_seed": 17,
+    "key_seed": 101,
+    "target_cell": 2,
+    "target_cell_size": 80,
+    "target_cell_ag_news": 0,
+    "target_cell_synthetic_pii": 80,
+    "n_test": 2,
+    "n_test_ag_news": 0,
+    "n_test_synthetic_pii": 2,
+    "target_indices": [
+      156,
+      123
+    ],
+    "anchor_indices_first_max_m": [
+      126,
+      206,
+      45,
+      226,
+      22,
+      102,
+      158,
+      185,
+      174,
+      168,
+      301,
+      247,
+      225,
+      120,
+      145,
+      82
+    ],
+    "cell_sizes": [
+      24,
+      67,
+      80,
+      149
+    ],
+    "cell_pii_sizes": [
+      0,
+      0,
+      80,
+      0
+    ]
+  }
+]

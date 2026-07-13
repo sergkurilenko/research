@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "mechanism": "row-clipped analytic Gaussian, followed by row-wise unit normalisation",
+  "adjacency": "fixed-size bounded/replacement; one embedding row may change",
+  "public_information": "participation, row identities, encoder, dimension, release size",
+  "clip_bound": 1.000001,
+  "clip_bound_source": "fixed e5 unit-normalisation contract plus 1e-6 float32 margin; not data-fitted",
+  "sensitivity": 2.000002,
+  "delta": 1e-06,
+  "epsilons": [
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0,
+    256.0,
+    512.0,
+    1024.0,
+    2048.0,
+    4096.0,
+    8192.0,
+    16384.0,
+    32768.0
+  ],
+  "seeds": [
+    11,
+    23,
+    31
+  ],
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 20260712,
+  "cases": [
+    {
+      "suite": "beir",
+      "encoder": "multilingual-e5-small",
+      "dataset": "scifact"
+    },
+    {
+      "suite": "beir",
+      "encoder": "multilingual-e5-small",
+      "dataset": "nfcorpus"
+    },
+    {
+      "suite": "beir",
+      "encoder": "multilingual-e5-small",
+      "dataset": "arguana"
+    },
+    {
+      "suite": "miracl",
+      "encoder": "multilingual-e5-small",
+      "dataset": "sw"
+    },
+    {
+      "suite": "miracl",
+      "encoder": "multilingual-e5-small",
+      "dataset": "bn"
+    },
+    {
+      "suite": "beir",
+      "encoder": "multilingual-e5-base",
+      "dataset": "scifact"
+    },
+    {
+      "suite": "beir",
+      "encoder": "multilingual-e5-base",
+      "dataset": "nfcorpus"
+    },
+    {
+      "suite": "beir",
+      "encoder": "multilingual-e5-base",
+      "dataset": "arguana"
+    }
+  ],
+  "max_queries": 0,
+  "topk": 100,
+  "chunk_size": 8192,
+  "gallery_size": 5000,
+  "targets": 256,
+  "negatives_per_target": 16,
+  "device": "cuda",
+  "match_ndcg_tolerance": 0.01,
+  "match_recall100_tolerance": 0.02,
+  "composition_note": "k independent releases satisfy basic (k*epsilon,k*delta)-DP",
+  "scope_note": "content privacy conditional on public participation; not add/remove membership DP"
+}

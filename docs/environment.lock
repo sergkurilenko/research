@@ -1,6 +1,6 @@
 # Environment lock used for the revised manuscript build
 
-Date: 2026-05-30
+Date: 2026-07-12
 OS: Windows 11
 GPU: NVIDIA GeForce RTX 5060, 8 GB VRAM
 Driver/CUDA reported by nvidia-smi: 591.86 / CUDA 13.1
@@ -34,3 +34,22 @@ root-level copies, `heavy_adaptive_inversion_rtx4090.py` and
 standalone remote directories such as `~/train2`. The RTX 4090 files pin
 Python 3.12 Linux directly to the PyTorch 2.6.0 CUDA 12.4 wheel so that
 driver 550.x hosts do not accidentally install CUDA 13 wheels from PyPI.
+
+Maximal-audit Experiments 26--28 use the existing experiment venv:
+`D:\PHD\research\RES\experiments\.venv\Scripts\python.exe`.
+
+- Python 3.12.3
+- NumPy 2.4.6
+- SciPy 1.17.1
+- TenSEAL 0.3.16 (Experiment 26 only)
+- psutil 7.2.2 (Experiment 26 only)
+- PyTorch 2.11.0+cu128 is installed but not used by CKKS
+
+Experiment 26 pins logical processors `[0,2,4,6,8,10]`, one hardware thread
+per i5-14400F P-core. TenSEAL/SEAL executes the measured CKKS path on the CPU;
+the RTX 5060 is inventoried but unused. Experiments 27--28 record their own
+run metadata and do not use GPU kernels for the reported calculations.
+
+Experiment 29 has a separate machine-readable environment record in
+`results/exp29_shard_vec2text/`. It uses the RTX 5060, PyTorch 2.11.0+cu128,
+Transformers 5.9.0, Vec2Text 0.0.13 and the named cached official checkpoints.

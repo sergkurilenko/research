@@ -1,0 +1,15 @@
+{
+  "dense_key_orthogonality_max_abs": 2.9060176265360838e-08,
+  "keyed_dot_identity_abs_error": 1.57642524811763e-07,
+  "packed_plaintext_mask_identity_abs_error": 0.0,
+  "ckks_packed_mask_abs_error": 6.272003028051643e-08,
+  "ckks_query_ciphertext_bytes": 334418,
+  "ckks_scalar_response_bytes": 235340,
+  "thresholds": {
+    "orthogonality": 2e-06,
+    "keyed_dot": 2e-06,
+    "plaintext_mask": 1e-10,
+    "ckks_mask": 0.002
+  },
+  "passed": true
+}

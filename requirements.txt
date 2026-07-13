@@ -11,9 +11,15 @@ matplotlib>=3.7
 # transformers>=4.40
 # datasets>=2.19
 
+# Measured SHARD CKKS experiment 26:
+psutil==7.2.2
+tenseal==0.3.16
+
 # The integral pipeline (baseline/exp_integral.py) additionally uses:
 # faiss-cpu
-# tenseal            # CKKS; only needed to time the encrypted reranking
+# tenseal
 
 # The optional Vec2Text stress test (baseline/heavy_adaptive_inversion_rtx4090.py)
 # needs a GPU; see docs/requirements_rtx4090.txt.
+# The local exp29 environment is recorded with its outputs because vec2text
+# 0.0.13 requires a compatibility loader with the installed Transformers 5.x.
